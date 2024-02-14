@@ -2,12 +2,15 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:UICatalog/UICatalog.xcodeproj">
+      location = "group:DISampleAppPackage">
    </FileRef>
    <FileRef
       location = "group:Development/Development.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:Production/Production.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:UICatalog/UICatalog.xcodeproj">
    </FileRef>
 </Workspace>

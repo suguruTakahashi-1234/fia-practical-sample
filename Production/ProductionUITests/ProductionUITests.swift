@@ -1,13 +1,13 @@
 //
-//  DISampleUITests.swift
-//  DISampleUITests
+//  ProductionUITests.swift
+//  ProductionUITests
 //
 //  Created by Suguru Takahashi on 2024/02/14.
 //
 
 import XCTest
 
-final class DISampleUITests: XCTestCase {
+final class ProductionUITests: XCTestCase {
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.

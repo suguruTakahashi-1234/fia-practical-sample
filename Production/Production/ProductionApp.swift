@@ -1,8 +1,6 @@
 //
-//  ProductionApp.swift
-//  Production
-//
-//  Created by Suguru Takahashi on 2024/02/14.
+//  Created by sugurutakahashi on 2024/02/15
+//  Copyright © 2024 sugurutakahashi. All rights reserved.
 //
 
 import SwiftUI

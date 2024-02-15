@@ -6,12 +6,13 @@
 //
 
 import SwiftUI
+import UICatalogApp
 
 @main
 struct UICatalogApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            UICatalogRootView()
         }
     }
 }

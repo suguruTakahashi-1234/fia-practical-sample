@@ -5,19 +5,32 @@ import PackageDescription
 
 let package = Package(
     name: "DISampleAppPackage",
+    defaultLocalization: "ja",
+    platforms: [
+        .iOS(.v17),
+        .macOS(.v14),
+    ],
     products: [
-        // Products define the executables and libraries a package produces, making them visible to other packages.
-        .library(
-            name: "DISampleAppPackage",
-            targets: ["DISampleAppPackage"]),
+        .library(name: "Production", targets: ["ProductionApp"]),
+        .library(name: "Develop", targets: ["DevelopApp"]),
+        .library(name: "UICatalog", targets: ["UICatalogApp"]),
     ],
     targets: [
-        // Targets are the basic building blocks of a package, defining a module or a test suite.
-        // Targets can depend on other targets in this package and products from dependencies.
+        // App layer
         .target(
-            name: "DISampleAppPackage"),
-        .testTarget(
-            name: "DISampleAppPackageTests",
-            dependencies: ["DISampleAppPackage"]),
+            name: "ProductionApp",
+            dependencies: [],
+            path: "./Sources/AppLayer/Production"
+        ),
+        .target(
+            name: "DevelopApp",
+            dependencies: [],
+            path: "./Sources/AppLayer/Develop"
+        ),
+        .target(
+            name: "UICatalogApp",
+            dependencies: [],
+            path: "./Sources/AppLayer/UICatalog"
+        ),
     ]
 )

@@ -8,15 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		4428A46C2B7CBF2100C57F9A /* UICatalogApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4428A46B2B7CBF2100C57F9A /* UICatalogApp.swift */; };
-		4428A46E2B7CBF2100C57F9A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4428A46D2B7CBF2100C57F9A /* ContentView.swift */; };
 		4428A4702B7CBF2100C57F9A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4428A46F2B7CBF2100C57F9A /* Assets.xcassets */; };
 		4428A4742B7CBF2100C57F9A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4428A4732B7CBF2100C57F9A /* Preview Assets.xcassets */; };
+		445E7A152B7DD042006FD0DB /* UICatalog in Frameworks */ = {isa = PBXBuildFile; productRef = 445E7A142B7DD042006FD0DB /* UICatalog */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		4428A4682B7CBF2100C57F9A /* UICatalog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UICatalog.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4428A46B2B7CBF2100C57F9A /* UICatalogApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICatalogApp.swift; sourceTree = "<group>"; };
-		4428A46D2B7CBF2100C57F9A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		4428A46F2B7CBF2100C57F9A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4428A4712B7CBF2100C57F9A /* UICatalog.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = UICatalog.entitlements; sourceTree = "<group>"; };
 		4428A4732B7CBF2100C57F9A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -27,6 +26,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				445E7A152B7DD042006FD0DB /* UICatalog in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -38,6 +38,7 @@
 			children = (
 				4428A46A2B7CBF2100C57F9A /* UICatalog */,
 				4428A4692B7CBF2100C57F9A /* Products */,
+				445E7A132B7DD042006FD0DB /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -53,7 +54,6 @@
 			isa = PBXGroup;
 			children = (
 				4428A46B2B7CBF2100C57F9A /* UICatalogApp.swift */,
-				4428A46D2B7CBF2100C57F9A /* ContentView.swift */,
 				4428A46F2B7CBF2100C57F9A /* Assets.xcassets */,
 				4428A4712B7CBF2100C57F9A /* UICatalog.entitlements */,
 				4428A4722B7CBF2100C57F9A /* Preview Content */,
@@ -67,6 +67,13 @@
 				4428A4732B7CBF2100C57F9A /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		445E7A132B7DD042006FD0DB /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -85,6 +92,9 @@
 			dependencies = (
 			);
 			name = UICatalog;
+			packageProductDependencies = (
+				445E7A142B7DD042006FD0DB /* UICatalog */,
+			);
 			productName = UICatalog;
 			productReference = 4428A4682B7CBF2100C57F9A /* UICatalog.app */;
 			productType = "com.apple.product-type.application";
@@ -139,7 +149,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4428A46E2B7CBF2100C57F9A /* ContentView.swift in Sources */,
 				4428A46C2B7CBF2100C57F9A /* UICatalogApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -359,6 +368,13 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		445E7A142B7DD042006FD0DB /* UICatalog */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = UICatalog;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 4428A4602B7CBF2100C57F9A /* Project object */;
 }

@@ -20,9 +20,6 @@
 		4428A4382B7CBEEE00C57F9A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4428A43A2B7CBEEE00C57F9A /* Development.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Development.entitlements; sourceTree = "<group>"; };
 		4428A43C2B7CBEEE00C57F9A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		4428A4462B7CBEEE00C57F9A /* DevelopmentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevelopmentTests.swift; sourceTree = "<group>"; };
-		4428A4502B7CBEEE00C57F9A /* DevelopmentUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevelopmentUITests.swift; sourceTree = "<group>"; };
-		4428A4522B7CBEEE00C57F9A /* DevelopmentUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevelopmentUITestsLaunchTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -40,8 +37,6 @@
 			isa = PBXGroup;
 			children = (
 				4428A4332B7CBEED00C57F9A /* Development */,
-				4428A4452B7CBEEE00C57F9A /* DevelopmentTests */,
-				4428A44F2B7CBEEE00C57F9A /* DevelopmentUITests */,
 				4428A4322B7CBEED00C57F9A /* Products */,
 			);
 			sourceTree = "<group>";
@@ -72,23 +67,6 @@
 				4428A43C2B7CBEEE00C57F9A /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
-			sourceTree = "<group>";
-		};
-		4428A4452B7CBEEE00C57F9A /* DevelopmentTests */ = {
-			isa = PBXGroup;
-			children = (
-				4428A4462B7CBEEE00C57F9A /* DevelopmentTests.swift */,
-			);
-			path = DevelopmentTests;
-			sourceTree = "<group>";
-		};
-		4428A44F2B7CBEEE00C57F9A /* DevelopmentUITests */ = {
-			isa = PBXGroup;
-			children = (
-				4428A4502B7CBEEE00C57F9A /* DevelopmentUITests.swift */,
-				4428A4522B7CBEEE00C57F9A /* DevelopmentUITestsLaunchTests.swift */,
-			);
-			path = DevelopmentUITests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

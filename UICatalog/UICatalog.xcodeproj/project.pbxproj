@@ -20,9 +20,6 @@
 		4428A46F2B7CBF2100C57F9A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4428A4712B7CBF2100C57F9A /* UICatalog.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = UICatalog.entitlements; sourceTree = "<group>"; };
 		4428A4732B7CBF2100C57F9A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		4428A47D2B7CBF2200C57F9A /* UICatalogTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICatalogTests.swift; sourceTree = "<group>"; };
-		4428A4872B7CBF2200C57F9A /* UICatalogUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICatalogUITests.swift; sourceTree = "<group>"; };
-		4428A4892B7CBF2200C57F9A /* UICatalogUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICatalogUITestsLaunchTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -40,8 +37,6 @@
 			isa = PBXGroup;
 			children = (
 				4428A46A2B7CBF2100C57F9A /* UICatalog */,
-				4428A47C2B7CBF2200C57F9A /* UICatalogTests */,
-				4428A4862B7CBF2200C57F9A /* UICatalogUITests */,
 				4428A4692B7CBF2100C57F9A /* Products */,
 			);
 			sourceTree = "<group>";
@@ -72,23 +67,6 @@
 				4428A4732B7CBF2100C57F9A /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
-			sourceTree = "<group>";
-		};
-		4428A47C2B7CBF2200C57F9A /* UICatalogTests */ = {
-			isa = PBXGroup;
-			children = (
-				4428A47D2B7CBF2200C57F9A /* UICatalogTests.swift */,
-			);
-			path = UICatalogTests;
-			sourceTree = "<group>";
-		};
-		4428A4862B7CBF2200C57F9A /* UICatalogUITests */ = {
-			isa = PBXGroup;
-			children = (
-				4428A4872B7CBF2200C57F9A /* UICatalogUITests.swift */,
-				4428A4892B7CBF2200C57F9A /* UICatalogUITestsLaunchTests.swift */,
-			);
-			path = UICatalogUITests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

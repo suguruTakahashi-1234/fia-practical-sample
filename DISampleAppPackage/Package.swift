@@ -4,7 +4,7 @@
 import PackageDescription
 
 private enum SourcesPath {
-    static let appLayer = "./Sources/App/"
+    static let appLayer = "./Sources/Application/"
     static let domainLayer = "./Sources/Domain/"
     static let presentationLayer = "./Sources/Presentation/"
     static let frameworkLayer = "./Sources/Framework/"
@@ -38,9 +38,7 @@ let package = Package(
         .macOS(.v14),
     ],
     products: [
-        // App
-        .library(name: "Production", targets: ["ProductionApp"]),
-        .library(name: "Develop", targets: ["DevelopApp"]),
+        .library(name: "DISampleApp", targets: ["DISampleApp"]),
         .library(name: "UICatalog", targets: ["UICatalogApp"]),
     ],
     dependencies: [
@@ -56,19 +54,14 @@ let package = Package(
     targets: [
         // App layer
         .target(
-            name: "ProductionApp",
-            dependencies: [],
-            path: SourcesPath.appLayer + "Production"
-        ),
-        .target(
-            name: "DevelopApp",
+            name: "DISampleApp",
             dependencies: [
                 .domainLayer,
                 .licensePresentation,
                 .loggerFramework,
                 .licenseFramework,
             ],
-            path: SourcesPath.appLayer + "Develop"
+            path: SourcesPath.appLayer + "DISampleApp"
         ),
         .target(
             name: "UICatalogApp",
@@ -87,13 +80,14 @@ let package = Package(
         ),
 
         // Presentation layer
-        .target(
-            name: "CorePresentation",
-            dependencies: [
-                .domainLayer,
-            ],
-            path: SourcesPath.presentationLayer + "Core"
-        ),
+//        .target(
+//            name: "CorePresentation",
+//            dependencies: [
+//                .domainLayer,
+//            ],
+//            path: SourcesPath.presentationLayer + "Core"
+//        ),
+        
         .target(
             name: "LicensePresentation",
             dependencies: [
@@ -105,13 +99,13 @@ let package = Package(
         ),
 
         // Framework layer
-        .target(
-            name: "CoreFramework",
-            dependencies: [
-                .domainLayer
-            ],
-            path: SourcesPath.frameworkLayer + "Core"
-        ),
+//        .target(
+//            name: "CoreFramework",
+//            dependencies: [
+//                .domainLayer
+//            ],
+//            path: SourcesPath.frameworkLayer + "Core"
+//        ),
         .target(
             name: "LoggerFramework",
             dependencies: [

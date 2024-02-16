@@ -4,13 +4,13 @@
 //
 
 import SwiftUI
-import DevelopApp
+import DISampleApp
 
 @main
 struct DevelopmentApp: App {
     var body: some Scene {
         WindowGroup {
-            DevelopRootView()
+            AppRootView(router: DevelopRouter())
         }
     }
 }

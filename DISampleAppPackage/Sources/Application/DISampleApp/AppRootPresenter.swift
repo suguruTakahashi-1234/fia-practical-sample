@@ -1,19 +1,20 @@
 //
-//  Created by sugurutakahashi on 2024/02/16
+//  Created by sugurutakahashi on 2024/02/17
 //  Copyright sugurutakahashi. All rights reserved.
 //
 
 import Foundation
 import DomainLayer
+import LoggerFramework
 
 @MainActor
-final class LicenseDetailPresenter: ObservableObject {
-    let license: License
+final class AppRootPresenter: ObservableObject {
 
-    init(license: License) {
+    init() {
         LoggerContainer.initLog()
-
-        self.license = license
+        
+        LoggerContainer.append(logger: OSLogger(subsystem: Bundle.main.bundleIdentifier!, category: Constants.Logger.categoryName))
+        LoggerContainer.debugLog("completed setup LoggerContainer")
     }
 
     deinit {

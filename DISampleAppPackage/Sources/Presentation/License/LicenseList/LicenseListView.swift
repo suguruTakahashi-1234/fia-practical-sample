@@ -7,7 +7,13 @@ import SwiftUI
 import DomainLayer
 
 public struct LicenseListView: View {
-    @StateObject private var presenter: LicenseListPresenter = .init()
+    @StateObject private var presenter: LicenseListPresenter
+    private let viewFactory: LicenseListWireframe
+
+    public init(viewFactory: some LicenseListWireframe, libraryLicenseDriver: some LibraryLicenseDriverProtocol) {
+        self.viewFactory = viewFactory
+        _presenter = .init(wrappedValue: .init(libraryLicenseDriver: libraryLicenseDriver))
+    }
 
     public var body: some View {
         List {
@@ -21,7 +27,7 @@ public struct LicenseListView: View {
             }
         }
         .sheet(item: $presenter.selectedLicense) { license in
-            LicenseDetailView(license: license)
+            viewFactory.createLicenseDetailView(license: license)
         }
         .navigationTitle("ライセンス")
         .task {
@@ -31,6 +37,4 @@ public struct LicenseListView: View {
             presenter.onDisappear()
         }
     }
-
-    public init() {}
 }

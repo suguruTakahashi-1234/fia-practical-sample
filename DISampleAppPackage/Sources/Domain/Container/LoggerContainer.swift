@@ -4,7 +4,6 @@
 //
 
 import Foundation
-import DomainLayer
 
 public enum LoggerContainer {
     private static var loggers: [LoggerProtocol] = []

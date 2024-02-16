@@ -6,14 +6,13 @@
 import Foundation
 import DomainLayer
 import LicenseFramework
-import LoggerFramework
 
 @MainActor
 final class LicenseListPresenter: ObservableObject {
     @Published private(set) var licenseList: [License]
     @Published var selectedLicense: License?
 
-    init(libraryLicenseDriver: LibraryLicenseDriverProtocol = LibraryLicenseDriver()) {
+    init(libraryLicenseDriver: some LibraryLicenseDriverProtocol) {
         LoggerContainer.initLog()
 
         licenseList = libraryLicenseDriver.licenseList

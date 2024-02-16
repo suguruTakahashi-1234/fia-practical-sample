@@ -10,7 +10,7 @@
 		4428A3FE2B7CBE9200C57F9A /* ProductionApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4428A3FD2B7CBE9200C57F9A /* ProductionApp.swift */; };
 		4428A4022B7CBE9300C57F9A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4428A4012B7CBE9300C57F9A /* Assets.xcassets */; };
 		4428A4062B7CBE9300C57F9A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4428A4052B7CBE9300C57F9A /* Preview Assets.xcassets */; };
-		445E7A182B7DD052006FD0DB /* Production in Frameworks */ = {isa = PBXBuildFile; productRef = 445E7A172B7DD052006FD0DB /* Production */; };
+		4471BCA82B7FB68400218534 /* DISampleApp in Frameworks */ = {isa = PBXBuildFile; productRef = 4471BCA72B7FB68400218534 /* DISampleApp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,7 +26,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				445E7A182B7DD052006FD0DB /* Production in Frameworks */,
+				4471BCA82B7FB68400218534 /* DISampleApp in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -93,7 +93,7 @@
 			);
 			name = Production;
 			packageProductDependencies = (
-				445E7A172B7DD052006FD0DB /* Production */,
+				4471BCA72B7FB68400218534 /* DISampleApp */,
 			);
 			productName = Production;
 			productReference = 4428A3FA2B7CBE9200C57F9A /* Production.app */;
@@ -370,9 +370,9 @@
 /* End XCConfigurationList section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		445E7A172B7DD052006FD0DB /* Production */ = {
+		4471BCA72B7FB68400218534 /* DISampleApp */ = {
 			isa = XCSwiftPackageProductDependency;
-			productName = Production;
+			productName = DISampleApp;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

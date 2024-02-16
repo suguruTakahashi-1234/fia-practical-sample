@@ -6,14 +6,14 @@
 import SwiftUI
 import DomainLayer
 
-struct LicenseDetailView: View {
+public struct LicenseDetailView: View {
     @StateObject private var presenter: LicenseDetailPresenter
     
-    init(license: License) {
+    public init(license: License) {
         _presenter = .init(wrappedValue: .init(license: license))
     }
     
-    var body: some View {
+    public var body: some View {
         NavigationStack {
             ScrollView {
                 Text(presenter.license.text)

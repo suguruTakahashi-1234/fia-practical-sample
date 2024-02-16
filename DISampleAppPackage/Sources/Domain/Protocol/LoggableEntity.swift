@@ -5,4 +5,4 @@
 
 import Foundation
 
-public protocol LoggableEntity: SnakeCasedStructNameProvidable, ConvertibleToDictionary {}
+public protocol LoggableEntity: SnakeCasedStructNameProvidable {}

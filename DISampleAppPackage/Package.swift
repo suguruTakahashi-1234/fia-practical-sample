@@ -44,11 +44,14 @@ let package = Package(
         .library(name: "UICatalog", targets: ["UICatalogApp"]),
     ],
     dependencies: [
-        // Libraries
+        // Library
         .package(url: "https://github.com/playbook-ui/playbook-ios.git", from: "0.3.5"),
 
-        // Plugins
+        // Plugin
         .package(url: "https://github.com/maiyama18/LicensesPlugin", from: "0.1.6"),
+        
+        // CLI
+        .package(url: "https://github.com/uber/mockolo", from: "2.0.1"),
     ],
     targets: [
         // App layer

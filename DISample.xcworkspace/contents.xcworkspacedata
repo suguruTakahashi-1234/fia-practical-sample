@@ -5,7 +5,7 @@
       location = "group:DISampleAppPackage">
    </FileRef>
    <FileRef
-      location = "group:Development/Development.xcodeproj">
+      location = "group:Develop/Develop.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:Staging/Staging.xcodeproj">

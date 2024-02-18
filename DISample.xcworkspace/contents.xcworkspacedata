@@ -8,6 +8,9 @@
       location = "group:Development/Development.xcodeproj">
    </FileRef>
    <FileRef
+      location = "group:Staging/Staging.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:Production/Production.xcodeproj">
    </FileRef>
    <FileRef

@@ -9,7 +9,7 @@ import LicensePresentation
 import LicenseFramework
 
 final public class DevelopRouter: RootWireframe, LicenseListWireframe {
-    private let libraryLicenseDriver: LibraryLicenseDriverProtocol = LibraryLicenseDriver()
+    private let libraryLicenseDriver: LibraryLicenseDriverProtocol = LibraryLicenseDriverProtocolStub()
 
     public init() {}
     

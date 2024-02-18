@@ -1,6 +1,6 @@
 PACKAGE_NAME := DISampleAppPackage
 SOURCE_DIR:= ./$(PACKAGE_NAME)/Sources/Domain/Protocol
-MOCKOLO_OUTPUT := ./$(PACKAGE_NAME)/Sources/Domain/Protocol/Mock/MockoloMocks.swift
+MOCKOLO_OUTPUT := ./$(PACKAGE_NAME)/Sources/Domain/Toolkit/Mock/MockoloMocks.swift
 
 .PHONY: help
 help:

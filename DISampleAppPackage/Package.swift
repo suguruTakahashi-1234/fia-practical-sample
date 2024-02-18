@@ -52,7 +52,9 @@ let package = Package(
         .package(url: "https://github.com/uber/mockolo", from: "2.0.1"),
     ],
     targets: [
-        // App layer
+        // Application layer
+        // TODO: ディベロップのDIはフレームワーク依存せずに実装する
+        // TODO: routerを分離する。目的はフレームワーク依存のrouterとフレームワークに依存しないrouterに分割するため
         .target(
             name: "DISampleApp",
             dependencies: [

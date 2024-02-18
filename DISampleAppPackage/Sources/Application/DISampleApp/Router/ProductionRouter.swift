@@ -9,7 +9,7 @@ import LicensePresentation
 import LicenseFramework
 
 final public class ProductionRouter: RootWireframe, LicenseListWireframe {
-    private let libraryLicenseDriver: some LibraryLicenseDriverProtocol = LibraryLicenseDriverProtocolMock()
+    private let libraryLicenseDriver: some LibraryLicenseDriverProtocol = LibraryLicenseDriver()
     
     public init() {}
     

@@ -5,7 +5,7 @@
 
 import Foundation
 
-public extension String {    
+public extension String {
     /// ex1) "snakeCase" -> "snake_case"
     /// ex2) "SnakeCase" -> "snake_case"
     /// ex3) "_SnakeCase" -> "_snake_case"

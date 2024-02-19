@@ -11,10 +11,10 @@ final class LicenseListPresenter: ObservableObject {
     @Published private(set) var licenseList: [License]
     @Published var selectedLicense: License?
 
-    init(libraryLicenseDriver: some LibraryLicenseDriverProtocol) {
+    init(dependency: some LicenseListPresenterDependency) {
         LoggerContainer.initLog()
 
-        licenseList = libraryLicenseDriver.licenseList
+        licenseList = dependency.libraryLicenseDriver.licenseList
     }
 
     deinit {

@@ -7,22 +7,18 @@ import LicensePresentation
 import DomainLayer
 
 final public class AppRootRouter: AppRootWireframe, LicenseListWireframe {
-    private let osLogDriver: OSLogDriverProtocol
-    private let firebaseSetupDriver: FirebaseSetupDriverProtocol
-    private let libraryLicenseDriver: LibraryLicenseDriverProtocol
-    
-    public init(dependencyInjector: some RootRouterDependency) {
-        osLogDriver = dependencyInjector.osLogDriver
-        libraryLicenseDriver = dependencyInjector.libraryLicenseDriver
-        firebaseSetupDriver = dependencyInjector.firebaseSetupDriver
+    private let dependency: AppRootRouterDependency
+
+    public init(dependency: some AppRootRouterDependency) {
+        self.dependency = dependency
     }
     
     public func createAppRootView() -> AppRootView {
-        AppRootView(router: self, osLogDriver: osLogDriver, firebaseSetupDriver: firebaseSetupDriver)
+        AppRootView(router: self, dependency: dependency)
     }
     
     public func createLicenseListView() -> LicenseListView {
-        LicenseListView(router: self, libraryLicenseDriver: self.libraryLicenseDriver)
+        LicenseListView(router: self, dependency: dependency)
     }
     
     public func createLicenseDetailView(license: License) -> LicenseDetailView {

@@ -5,7 +5,7 @@
 
 import Foundation
 
-final public class NonFrameworkDependencyInjector: RootRouterDependency {
+final public class NonFrameworkDependencyInjector: AppRootRouterDependency {
     public let osLogDriver: OSLogDriverProtocol = OSLogDriverProtocolMock()
     public let firebaseSetupDriver: FirebaseSetupDriverProtocol = FirebaseSetupDriverProtocolMock()
     public let libraryLicenseDriver: LibraryLicenseDriverProtocol = LibraryLicenseDriverProtocolStub()

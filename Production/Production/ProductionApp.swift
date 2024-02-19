@@ -9,7 +9,7 @@ import DILayer
 
 @main
 struct ProductionApp: App {
-    private let router = AppRootRouter(dependencyInjector: RootDependencyInjector())
+    private let router = AppRootRouter(dependency: RootDependencyInjector())
     
     var body: some Scene {
         WindowGroup {

@@ -7,12 +7,12 @@ import SwiftUI
 import DomainLayer
 
 public struct LicenseListView: View {
-    @StateObject private var presenter: LicenseListPresenter
     private let router: LicenseListWireframe
+    @StateObject private var presenter: LicenseListPresenter
 
-    public init(router: some LicenseListWireframe, libraryLicenseDriver: some LibraryLicenseDriverProtocol) {
+    public init(router: some LicenseListWireframe, dependency: some LicenseListPresenterDependency) {
         self.router = router
-        _presenter = .init(wrappedValue: .init(libraryLicenseDriver: libraryLicenseDriver))
+        _presenter = .init(wrappedValue: .init(dependency: dependency))
     }
 
     public var body: some View {

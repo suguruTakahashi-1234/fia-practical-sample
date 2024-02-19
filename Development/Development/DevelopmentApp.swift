@@ -9,7 +9,7 @@ import DomainLayer
 
 @main
 struct ProductionApp: App {
-    private let router = RootRouter(dependencyInjector: NonFrameworkDependencyInjector())
+    private let router = AppRootRouter(dependencyInjector: NonFrameworkDependencyInjector())
     
     var body: some Scene {
         WindowGroup {

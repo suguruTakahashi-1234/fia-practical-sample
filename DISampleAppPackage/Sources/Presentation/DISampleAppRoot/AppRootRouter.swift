@@ -6,7 +6,7 @@
 import LicensePresentation
 import DomainLayer
 
-final public class RootRouter: AppRootWireframe, LicenseListWireframe {
+final public class AppRootRouter: AppRootWireframe, LicenseListWireframe {
     private let osLogDriver: OSLogDriverProtocol
     private let libraryLicenseDriver: LibraryLicenseDriverProtocol
     

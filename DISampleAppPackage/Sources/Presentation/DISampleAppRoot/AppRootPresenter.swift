@@ -9,11 +9,18 @@ import DomainLayer
 @MainActor
 final class AppRootPresenter: ObservableObject {
 
-    init(osLogDriver: some OSLogDriverProtocol) {
+    init(
+        osLogDriver: some OSLogDriverProtocol,
+        firebaseSetupDriver: some FirebaseSetupDriverProtocol
+    ) {
+        // Setup Logger
         LoggerContainer.append(logger: osLogDriver)
         LoggerContainer.debugLog("completed setup LoggerContainer")
         
         LoggerContainer.initLog()
+        
+        // Setup Firebase
+        firebaseSetupDriver.configure()
     }
 
     deinit {

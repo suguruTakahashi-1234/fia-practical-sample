@@ -7,9 +7,11 @@ import Foundation
 import DomainLayer
 import LicenseFramework
 import LoggerFramework
+import CloudServiceFramework
 
 final public class RootDependencyInjector: RootRouterDependency {
     public let osLogDriver: OSLogDriverProtocol = OSLogger(subsystem: Bundle.main.bundleIdentifier!, category: Constants.Logger.categoryName)
+    public let firebaseSetupDriver: FirebaseSetupDriverProtocol = FirebaseSetupDriver()
     public let libraryLicenseDriver: LibraryLicenseDriverProtocol = LibraryLicenseDriver()
     
     public init() {}

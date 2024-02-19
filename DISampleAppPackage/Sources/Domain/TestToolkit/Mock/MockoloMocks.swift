@@ -7,6 +7,21 @@
 import Foundation
 
 
+public final class FirebaseSetupDriverProtocolMock: FirebaseSetupDriverProtocol {
+    public init() { }
+
+
+    public private(set) var configureCallCount = 0
+    public var configureHandler: (() -> ())?
+    public func configure()  {
+        configureCallCount += 1
+        if let configureHandler = configureHandler {
+            configureHandler()
+        }
+        
+    }
+}
+
 public final class LibraryLicenseDriverProtocolMock: LibraryLicenseDriverProtocol {
     public init() { }
     public init(licenseList: [License] = [License]()) {

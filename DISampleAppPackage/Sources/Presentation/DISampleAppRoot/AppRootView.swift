@@ -10,9 +10,9 @@ public struct AppRootView: View {
     private let router: AppRootWireframe
     @StateObject private var presenter: AppRootPresenter
 
-    public init(router: some AppRootWireframe, osLogDriver: OSLogDriverProtocol) {
+    public init(router: some AppRootWireframe, osLogDriver: some OSLogDriverProtocol, firebaseSetupDriver: some FirebaseSetupDriverProtocol) {
         self.router = router
-        _presenter = .init(wrappedValue: .init(osLogDriver: osLogDriver))
+        _presenter = .init(wrappedValue: .init(osLogDriver: osLogDriver, firebaseSetupDriver: firebaseSetupDriver))
     }
     
     public var body: some View {

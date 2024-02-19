@@ -13,6 +13,7 @@ private enum SourcesPath {
 // Ref: 【Swift】Package.swiftのdependenciesをタイプセーフに扱う https://qiita.com/SNQ-2001/items/ed068414747e28999415
 private extension PackageDescription.Target.Dependency {
     /// Third party SDK
+    static let firebaseAnalytics: Self = .product(name: "FirebaseAnalytics", package: "firebase-ios-sdk")
     static let playbook: Self = .product(name: "Playbook", package: "playbook-ios")
     static let playbookUI: Self = .product(name: "PlaybookUI", package: "playbook-ios")
 
@@ -24,6 +25,7 @@ private extension PackageDescription.Target.Dependency {
     static let licensePresentation: Self = "LicensePresentation"
     static let loggerFramework: Self = "LoggerFramework"
     static let licenseFramework: Self = "LicenseFramework"
+    static let cloudServiceFramework: Self = "CloudServiceFramework"
 }
 
 private extension PackageDescription.Target.PluginUsage {
@@ -44,6 +46,7 @@ let package = Package(
     ],
     dependencies: [
         // Library
+        .package(url: "https://github.com/firebase/firebase-ios-sdk.git", exact: "10.19.0"), // TODO: 10.22 以上がリリースされたらアップデートする（直らないかもしれないが） https://github.com/firebase/firebase-ios-sdk/issues/12390
         .package(url: "https://github.com/playbook-ui/playbook-ios.git", from: "0.3.5"),
 
         // Plugin
@@ -105,14 +108,23 @@ let package = Package(
                 .licensesPlugin,
             ]
         ),
-
+        .target(
+            name: "CloudServiceFramework",
+            dependencies: [
+                .domainLayer,
+                .firebaseAnalytics,
+            ],
+            path: SourcesPath.frameworkLayer + "CloudService"
+        ),
+        
         // DI Layer
         .target(
             name: "DILayer",
             dependencies: [
                 .domainLayer,
                 .licenseFramework,
-                .loggerFramework
+                .loggerFramework,
+                .cloudServiceFramework,
             ],
             path: SourcesPath.diLayer
         ),

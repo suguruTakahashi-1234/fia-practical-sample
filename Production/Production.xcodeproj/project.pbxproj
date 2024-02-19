@@ -10,6 +10,7 @@
 		4428A3FE2B7CBE9200C57F9A /* ProductionApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4428A3FD2B7CBE9200C57F9A /* ProductionApp.swift */; };
 		4428A4022B7CBE9300C57F9A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4428A4012B7CBE9300C57F9A /* Assets.xcassets */; };
 		4428A4062B7CBE9300C57F9A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4428A4052B7CBE9300C57F9A /* Preview Assets.xcassets */; };
+		446033A52B8370F800CBEA30 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 446033A42B8370F800CBEA30 /* GoogleService-Info.plist */; };
 		4471BCA82B7FB68400218534 /* DISampleApp in Frameworks */ = {isa = PBXBuildFile; productRef = 4471BCA72B7FB68400218534 /* DISampleApp */; };
 /* End PBXBuildFile section */
 
@@ -19,6 +20,7 @@
 		4428A4012B7CBE9300C57F9A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4428A4032B7CBE9300C57F9A /* Production.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Production.entitlements; sourceTree = "<group>"; };
 		4428A4052B7CBE9300C57F9A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		446033A42B8370F800CBEA30 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Desktop/GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +56,7 @@
 			isa = PBXGroup;
 			children = (
 				4428A3FD2B7CBE9200C57F9A /* ProductionApp.swift */,
+				446033A42B8370F800CBEA30 /* GoogleService-Info.plist */,
 				4428A4012B7CBE9300C57F9A /* Assets.xcassets */,
 				4428A4032B7CBE9300C57F9A /* Production.entitlements */,
 				4428A4042B7CBE9300C57F9A /* Preview Content */,
@@ -139,6 +142,7 @@
 			files = (
 				4428A4062B7CBE9300C57F9A /* Preview Assets.xcassets in Resources */,
 				4428A4022B7CBE9300C57F9A /* Assets.xcassets in Resources */,
+				446033A52B8370F800CBEA30 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

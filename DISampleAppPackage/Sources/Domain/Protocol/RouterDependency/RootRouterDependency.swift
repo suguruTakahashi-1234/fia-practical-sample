@@ -7,5 +7,6 @@ import Foundation
 
 public protocol RootRouterDependency {
     var osLogDriver: OSLogDriverProtocol { get }
+    var firebaseSetupDriver: FirebaseSetupDriverProtocol { get }
     var libraryLicenseDriver: LibraryLicenseDriverProtocol { get }
 }

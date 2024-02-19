@@ -4,10 +4,10 @@
 import PackageDescription
 
 private enum SourcesPath {
-    static let appLayer = "./Sources/Application/"
     static let domainLayer = "./Sources/Domain/"
     static let presentationLayer = "./Sources/Presentation/"
     static let frameworkLayer = "./Sources/Framework/"
+    static let diLayer = "./Sources/DI/"
 }
 
 // Ref: 【Swift】Package.swiftのdependenciesをタイプセーフに扱う https://qiita.com/SNQ-2001/items/ed068414747e28999415
@@ -38,8 +38,9 @@ let package = Package(
         .macOS(.v14),
     ],
     products: [
-        .library(name: "DISampleApp", targets: ["DISampleApp"]),
-        .library(name: "UICatalog", targets: ["UICatalogApp"]),
+        .library(name: "DISampleApp", targets: ["DISampleAppRootPresentation", "DomainLayer", "DILayer"]),
+        .library(name: "NonFrameworkDISampleApp", targets: ["DISampleAppRootPresentation", "DomainLayer"]),
+        .library(name: "UICatalogApp", targets: ["UICatalogAppRootPresentation", "DomainLayer"]),
     ],
     dependencies: [
         // Library
@@ -52,28 +53,6 @@ let package = Package(
         .package(url: "https://github.com/uber/mockolo", from: "2.0.1"),
     ],
     targets: [
-        // Application layer
-        // TODO: ディベロップのDIはフレームワーク依存せずに実装する
-        // TODO: routerを分離する。目的はフレームワーク依存のrouterとフレームワークに依存しないrouterに分割するため
-        .target(
-            name: "DISampleApp",
-            dependencies: [
-                .domainLayer,
-                .licensePresentation,
-                .loggerFramework,
-                .licenseFramework,
-            ],
-            path: SourcesPath.appLayer + "DISampleApp"
-        ),
-        .target(
-            name: "UICatalogApp",
-            dependencies: [
-                .playbook,
-                .playbookUI,
-            ],
-            path: SourcesPath.appLayer + "UICatalog"
-        ),
-        
         // Domain layer
         .target(
             name: "DomainLayer",
@@ -81,33 +60,34 @@ let package = Package(
             path: SourcesPath.domainLayer
         ),
 
-        // Presentation layer
-//        .target(
-//            name: "CorePresentation",
-//            dependencies: [
-//                .domainLayer,
-//            ],
-//            path: SourcesPath.presentationLayer + "Core"
-//        ),
+        // App Presentation layer
+        .target(
+            name: "DISampleAppRootPresentation",
+            dependencies: [
+                .domainLayer,
+                .licensePresentation,
+            ],
+            path: SourcesPath.presentationLayer + "DISampleAppRoot"
+        ),
+        .target(
+            name: "UICatalogAppRootPresentation",
+            dependencies: [
+                .playbook,
+                .playbookUI,
+            ],
+            path: SourcesPath.presentationLayer + "UICatalogAppRoot"
+        ),
         
+        // Presentation layer
         .target(
             name: "LicensePresentation",
             dependencies: [
                 .domainLayer,
-                "LoggerFramework",
-                "LicenseFramework",
             ],
             path: SourcesPath.presentationLayer + "License"
         ),
 
         // Framework layer
-//        .target(
-//            name: "CoreFramework",
-//            dependencies: [
-//                .domainLayer
-//            ],
-//            path: SourcesPath.frameworkLayer + "Core"
-//        ),
         .target(
             name: "LoggerFramework",
             dependencies: [
@@ -125,5 +105,17 @@ let package = Package(
                 .licensesPlugin,
             ]
         ),
+
+        // DI Layer
+        .target(
+            name: "DILayer",
+            dependencies: [
+                .domainLayer,
+                .licenseFramework,
+                .loggerFramework
+            ],
+            path: SourcesPath.diLayer
+        ),
+        
     ]
 )

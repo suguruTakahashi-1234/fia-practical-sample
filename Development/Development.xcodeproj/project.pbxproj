@@ -7,10 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		44238A1D2B8357EB003976C3 /* NonFrameworkDISampleApp in Frameworks */ = {isa = PBXBuildFile; productRef = 44238A1C2B8357EB003976C3 /* NonFrameworkDISampleApp */; };
 		446C33E42B83018300B3DD37 /* DevelopmentApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 446C33E32B83018300B3DD37 /* DevelopmentApp.swift */; };
 		446C33E82B83018400B3DD37 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 446C33E72B83018400B3DD37 /* Assets.xcassets */; };
 		446C33EC2B83018400B3DD37 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 446C33EB2B83018400B3DD37 /* Preview Assets.xcassets */; };
-		446C33F42B83019C00B3DD37 /* DISampleApp in Frameworks */ = {isa = PBXBuildFile; productRef = 446C33F32B83019C00B3DD37 /* DISampleApp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,7 +26,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				446C33F42B83019C00B3DD37 /* DISampleApp in Frameworks */,
+				44238A1D2B8357EB003976C3 /* NonFrameworkDISampleApp in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -93,7 +93,7 @@
 			);
 			name = Development;
 			packageProductDependencies = (
-				446C33F32B83019C00B3DD37 /* DISampleApp */,
+				44238A1C2B8357EB003976C3 /* NonFrameworkDISampleApp */,
 			);
 			productName = Development;
 			productReference = 446C33E02B83018300B3DD37 /* Development.app */;
@@ -370,9 +370,9 @@
 /* End XCConfigurationList section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		446C33F32B83019C00B3DD37 /* DISampleApp */ = {
+		44238A1C2B8357EB003976C3 /* NonFrameworkDISampleApp */ = {
 			isa = XCSwiftPackageProductDependency;
-			productName = DISampleApp;
+			productName = NonFrameworkDISampleApp;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

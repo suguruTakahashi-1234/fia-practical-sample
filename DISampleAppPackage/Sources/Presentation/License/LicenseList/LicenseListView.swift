@@ -8,10 +8,10 @@ import DomainLayer
 
 public struct LicenseListView: View {
     @StateObject private var presenter: LicenseListPresenter
-    private let viewFactory: LicenseListWireframe
+    private let router: LicenseListWireframe
 
-    public init(viewFactory: some LicenseListWireframe, libraryLicenseDriver: some LibraryLicenseDriverProtocol) {
-        self.viewFactory = viewFactory
+    public init(router: some LicenseListWireframe, libraryLicenseDriver: some LibraryLicenseDriverProtocol) {
+        self.router = router
         _presenter = .init(wrappedValue: .init(libraryLicenseDriver: libraryLicenseDriver))
     }
 
@@ -27,7 +27,7 @@ public struct LicenseListView: View {
             }
         }
         .sheet(item: $presenter.selectedLicense) { license in
-            viewFactory.createLicenseDetailView(license: license)
+            router.createLicenseDetailView(license: license)
         }
         .navigationTitle("ライセンス")
         .task {

@@ -6,9 +6,9 @@
 import Foundation
 
 public enum LoggerContainer {
-    private static var loggers: [LoggerProtocol] = []
+    private static var loggers: [LoggerContainable] = []
 
-    public static func append(logger: LoggerProtocol) {
+    public static func append(logger: LoggerContainable) {
         loggers.append(logger)
     }
 

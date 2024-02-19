@@ -5,7 +5,6 @@
 
 import Foundation
 import DomainLayer
-import LicenseFramework
 
 @MainActor
 final class LicenseListPresenter: ObservableObject {

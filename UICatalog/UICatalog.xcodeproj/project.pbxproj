@@ -7,10 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		44238A1B2B831C5C003976C3 /* UICatalogApp in Frameworks */ = {isa = PBXBuildFile; productRef = 44238A1A2B831C5C003976C3 /* UICatalogApp */; };
 		4428A46C2B7CBF2100C57F9A /* UICatalogApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4428A46B2B7CBF2100C57F9A /* UICatalogApp.swift */; };
 		4428A4702B7CBF2100C57F9A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4428A46F2B7CBF2100C57F9A /* Assets.xcassets */; };
 		4428A4742B7CBF2100C57F9A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4428A4732B7CBF2100C57F9A /* Preview Assets.xcassets */; };
-		445E7A152B7DD042006FD0DB /* UICatalog in Frameworks */ = {isa = PBXBuildFile; productRef = 445E7A142B7DD042006FD0DB /* UICatalog */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,7 +26,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				445E7A152B7DD042006FD0DB /* UICatalog in Frameworks */,
+				44238A1B2B831C5C003976C3 /* UICatalogApp in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -93,7 +93,7 @@
 			);
 			name = UICatalog;
 			packageProductDependencies = (
-				445E7A142B7DD042006FD0DB /* UICatalog */,
+				44238A1A2B831C5C003976C3 /* UICatalogApp */,
 			);
 			productName = UICatalog;
 			productReference = 4428A4682B7CBF2100C57F9A /* UICatalog.app */;
@@ -370,9 +370,9 @@
 /* End XCConfigurationList section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		445E7A142B7DD042006FD0DB /* UICatalog */ = {
+		44238A1A2B831C5C003976C3 /* UICatalogApp */ = {
 			isa = XCSwiftPackageProductDependency;
-			productName = UICatalog;
+			productName = UICatalogApp;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

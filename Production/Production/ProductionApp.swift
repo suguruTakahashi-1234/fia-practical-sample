@@ -4,13 +4,16 @@
 //
 
 import SwiftUI
-import DISampleApp
+import DISampleAppRootPresentation
+import DILayer
 
 @main
 struct ProductionApp: App {
+    private let router = RootRouter(dependencyInjector: RootDependencyInjector())
+    
     var body: some Scene {
         WindowGroup {
-            AppRootView(router: ProductionRouter())
+            router.createAppRootView()
         }
     }
 }

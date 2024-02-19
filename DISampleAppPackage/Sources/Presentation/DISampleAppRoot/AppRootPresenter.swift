@@ -5,16 +5,15 @@
 
 import Foundation
 import DomainLayer
-import LoggerFramework
 
 @MainActor
 final class AppRootPresenter: ObservableObject {
 
-    init() {
-        LoggerContainer.initLog()
-        
-        LoggerContainer.append(logger: OSLogger(subsystem: Bundle.main.bundleIdentifier!, category: Constants.Logger.categoryName))
+    init(osLogDriver: some OSLogDriverProtocol) {
+        LoggerContainer.append(logger: osLogDriver)
         LoggerContainer.debugLog("completed setup LoggerContainer")
+        
+        LoggerContainer.initLog()
     }
 
     deinit {

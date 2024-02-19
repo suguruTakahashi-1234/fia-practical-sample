@@ -9,7 +9,7 @@ import os.log
 
 // Ref: https://developer.apple.com/documentation/os/logging/generating_log_messages_from_your_code
 // Ref: https://qiita.com/Nick_paper/items/3a6f7d41bc80773b90bf
-public class OSLogger: LoggerProtocol {
+public class OSLogger: OSLogDriverProtocol {
     private let logger: Logger
 
     public init(subsystem: String, category: String) {

@@ -18,3 +18,18 @@ public final class LibraryLicenseDriverProtocolMock: LibraryLicenseDriverProtoco
     public var licenseList: [License] = [License]() { didSet { licenseListSetCallCount += 1 } }
 }
 
+public final class OSLogDriverProtocolMock: OSLogDriverProtocol {
+    public init() { }
+
+
+    public private(set) var logCallCount = 0
+    public var logHandler: ((LogEventType, LogLevel, String, String, Int) -> ())?
+    public func log(_ _arg: LogEventType, level: LogLevel, file: String, function: String, line: Int)  {
+        logCallCount += 1
+        if let logHandler = logHandler {
+            logHandler(_arg, level, file, function, line)
+        }
+        
+    }
+}
+

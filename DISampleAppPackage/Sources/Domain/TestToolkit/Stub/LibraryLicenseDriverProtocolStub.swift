@@ -5,11 +5,10 @@
 
 import Foundation
 
-public final class LibraryLicenseDriverProtocolStub: LibraryLicenseDriverProtocol {
+public struct LibraryLicenseDriverProtocolStub: LibraryLicenseDriverProtocol {
     public var licenseList: [License] {
-        .samples
+        .randoms
     }
     
     public init() {}
 }
-

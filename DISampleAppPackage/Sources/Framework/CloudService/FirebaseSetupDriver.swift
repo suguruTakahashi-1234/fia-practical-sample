@@ -7,7 +7,7 @@ import Foundation
 import FirebaseCore
 import DomainLayer
 
-public final class FirebaseSetupDriver: FirebaseSetupDriverProtocol {
+public struct FirebaseSetupDriver: FirebaseSetupDriverProtocol {
     public init() {}
 
     public func configure() {

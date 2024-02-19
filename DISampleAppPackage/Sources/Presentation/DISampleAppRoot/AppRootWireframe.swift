@@ -6,6 +6,6 @@
 import Foundation
 import LicensePresentation
 
-public protocol AppRootWireframe: AnyObject {
+public protocol AppRootWireframe {
     func createLicenseListView() -> LicenseListView
 }

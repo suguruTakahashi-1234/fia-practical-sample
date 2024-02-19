@@ -6,6 +6,6 @@
 import Foundation
 import DomainLayer
 
-public protocol LicenseListWireframe: AnyObject {
+public protocol LicenseListWireframe {
     func createLicenseDetailView(license: License) -> LicenseDetailView
 }

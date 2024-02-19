@@ -6,7 +6,7 @@
 import Foundation
 import DomainLayer
 
-public final class LibraryLicenseDriver: LibraryLicenseDriverProtocol {
+public struct LibraryLicenseDriver: LibraryLicenseDriverProtocol {
     public init() {}
 
     public var licenseList: [License] {

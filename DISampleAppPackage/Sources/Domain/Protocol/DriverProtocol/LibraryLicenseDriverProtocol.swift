@@ -6,6 +6,6 @@
 import Foundation
 
 /// @mockable
-public protocol LibraryLicenseDriverProtocol: AnyObject {
+public protocol LibraryLicenseDriverProtocol {
     var licenseList: [License] { get }
 }

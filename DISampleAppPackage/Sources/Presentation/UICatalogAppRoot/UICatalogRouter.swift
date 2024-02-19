@@ -3,8 +3,15 @@
 //  Copyright sugurutakahashi. All rights reserved.
 //
 
-import Foundation
+import LicensePresentation
+import DomainLayer
 
-final public class UICatalogRouter {
-    public init() {}
+public struct UICatalogRouter: LicenseListWireframe {
+    public static let shared = UICatalogRouter()
+
+    private init() {}
+    
+    public func createLicenseDetailView(license: DomainLayer.License) -> LicensePresentation.LicenseDetailView {
+        LicenseDetailView(license: .random)
+    }
 }

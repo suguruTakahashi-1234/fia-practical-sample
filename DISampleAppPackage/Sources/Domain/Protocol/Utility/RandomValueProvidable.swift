@@ -9,21 +9,21 @@ public protocol RandomValueProvidable {
     static var random: Self { get }
 }
 
-extension String: RandomValueProvidable {
-    public static var random: String {
-        random(count: Int.random(in: 0...256))
+public extension Array where Element: RandomValueProvidable {
+    static var randoms: [Element] {
+        randoms()
     }
 
-    public static func random(count: Int) -> String {
-        let base = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
-        var randomString = ""
+    static var emptySample: [Element] {
+        []
+    }
 
-        for _ in 0..<count {
-            let randomValue = Int.random(in: 0..<base.count)
-            let index: Index = base.index(base.startIndex, offsetBy: randomValue)
-            let character: Character = base[index]
-            randomString += String(character)
-        }
-        return randomString
+    static func samples(count: Int) -> [Element] {
+        (0..<count).map { _ in Element.random }
+    }
+
+    static func randoms(countRange: ClosedRange<Int> = 0...5, isEmptyAllowed: Bool = false) -> [Element] {
+        let adjustedRange = isEmptyAllowed ? countRange : (Swift.max(1, countRange.lowerBound)...countRange.upperBound)
+        return samples(count: Int.random(in: adjustedRange))
     }
 }

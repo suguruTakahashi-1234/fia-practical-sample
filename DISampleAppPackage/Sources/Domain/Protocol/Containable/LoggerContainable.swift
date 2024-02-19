@@ -5,6 +5,6 @@
 
 import Foundation
 
-public protocol LoggerContainable: AnyObject {
+public protocol LoggerContainable {
     func log(_: LogEventType, level: LogLevel, file: String, function: String, line: Int)
 }

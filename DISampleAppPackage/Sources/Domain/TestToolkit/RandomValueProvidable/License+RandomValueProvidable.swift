@@ -5,8 +5,8 @@
 
 import Foundation
 
-extension License: SampleValueProvidable {
-    public static var sample: License {
+extension License: RandomValueProvidable {
+    public static var random: License {
         .init(id: .random, name: .random, text: .random)
     }
 }

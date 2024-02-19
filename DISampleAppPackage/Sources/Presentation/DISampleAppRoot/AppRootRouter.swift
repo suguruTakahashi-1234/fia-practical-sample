@@ -6,7 +6,7 @@
 import LicensePresentation
 import DomainLayer
 
-final public class AppRootRouter: AppRootWireframe, LicenseListWireframe {
+public struct AppRootRouter: AppRootWireframe, LicenseListWireframe {
     private let dependency: AppRootRouterDependency
 
     public init(dependency: some AppRootRouterDependency) {

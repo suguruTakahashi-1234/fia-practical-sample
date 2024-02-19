@@ -22,6 +22,7 @@ private extension PackageDescription.Target.Dependency {
     
     /// DISample target
     static let domainLayer: Self = "DomainLayer"
+    static let appRootPresentation: Self = "DISampleAppRootPresentation"
     static let licensePresentation: Self = "LicensePresentation"
     static let loggerFramework: Self = "LoggerFramework"
     static let licenseFramework: Self = "LicenseFramework"
@@ -77,6 +78,9 @@ let package = Package(
             dependencies: [
                 .playbook,
                 .playbookUI,
+                .domainLayer,
+                .appRootPresentation,
+                .licensePresentation,
             ],
             path: SourcesPath.presentationLayer + "UICatalogAppRoot"
         ),

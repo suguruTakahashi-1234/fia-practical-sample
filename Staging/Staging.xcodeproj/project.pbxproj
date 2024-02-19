@@ -7,20 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		44548C892B8387B600E51F99 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 44548C882B8387B600E51F99 /* GoogleService-Info.plist */; };
 		4471BCB62B81F08800218534 /* StagingApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4471BCB52B81F08800218534 /* StagingApp.swift */; };
 		4471BCBA2B81F08900218534 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4471BCB92B81F08900218534 /* Assets.xcassets */; };
 		4471BCBE2B81F08900218534 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4471BCBD2B81F08900218534 /* Preview Assets.xcassets */; };
 		4471BCE22B81F0CD00218534 /* DISampleApp in Frameworks */ = {isa = PBXBuildFile; productRef = 4471BCE12B81F0CD00218534 /* DISampleApp */; };
+		44CB56D42B83923F0086D1F2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 44CB56D32B83923F0086D1F2 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		44548C882B8387B600E51F99 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Desktop/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4471BCB22B81F08800218534 /* Staging.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Staging.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4471BCB52B81F08800218534 /* StagingApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StagingApp.swift; sourceTree = "<group>"; };
 		4471BCB92B81F08900218534 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4471BCBB2B81F08900218534 /* Staging.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Staging.entitlements; sourceTree = "<group>"; };
 		4471BCBD2B81F08900218534 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		44CB56D32B83923F0086D1F2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,7 +56,7 @@
 			isa = PBXGroup;
 			children = (
 				4471BCB52B81F08800218534 /* StagingApp.swift */,
-				44548C882B8387B600E51F99 /* GoogleService-Info.plist */,
+				44CB56D32B83923F0086D1F2 /* GoogleService-Info.plist */,
 				4471BCB92B81F08900218534 /* Assets.xcassets */,
 				4471BCBB2B81F08900218534 /* Staging.entitlements */,
 				4471BCBC2B81F08900218534 /* Preview Content */,
@@ -142,7 +142,7 @@
 			files = (
 				4471BCBE2B81F08900218534 /* Preview Assets.xcassets in Resources */,
 				4471BCBA2B81F08900218534 /* Assets.xcassets in Resources */,
-				44548C892B8387B600E51F99 /* GoogleService-Info.plist in Resources */,
+				44CB56D42B83923F0086D1F2 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -7,7 +7,7 @@ private enum SourcesPath {
     static let domainLayer = "./Sources/Domain/"
     static let presentationLayer = "./Sources/Presentation/"
     static let frameworkLayer = "./Sources/Framework/"
-    static let diLayer = "./Sources/DI/"
+    static let diLayer = "./Sources/DependencyInjector/"
 }
 
 // Ref: 【Swift】Package.swiftのdependenciesをタイプセーフに扱う https://qiita.com/SNQ-2001/items/ed068414747e28999415

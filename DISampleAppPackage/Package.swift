@@ -7,7 +7,7 @@ private enum SourcesPath {
     static let domainLayer = "./Sources/Domain/"
     static let presentationLayer = "./Sources/Presentation/"
     static let frameworkLayer = "./Sources/Framework/"
-    static let diLayer = "./Sources/DependencyInjector/"
+    static let diLayer = "./Sources/DI/"
 }
 
 // Ref: 【Swift】Package.swiftのdependenciesをタイプセーフに扱う https://qiita.com/SNQ-2001/items/ed068414747e28999415
@@ -42,8 +42,9 @@ let package = Package(
     ],
     products: [
         .library(name: "DISampleApp", targets: ["DISampleAppRootPresentation", "DomainLayer", "DILayer"]),
-        .library(name: "NonFrameworkDISampleApp", targets: ["DISampleAppRootPresentation", "DomainLayer"]),
+        .library(name: "NonFrameworkDISampleApp", targets: ["DISampleAppRootPresentation", "DomainLayer"]), // 開発向け高速ビルド用
         .library(name: "UICatalogApp", targets: ["UICatalogAppRootPresentation", "DomainLayer"]),
+        .library(name: "ValidationBuild", targets: ["DISampleAppRootPresentation", "DomainLayer", "DILayer", "UICatalogAppRootPresentation"]) // ビルドチェック用
     ],
     dependencies: [
         // Library
@@ -57,14 +58,23 @@ let package = Package(
         .package(url: "https://github.com/uber/mockolo", from: "2.0.1"),
     ],
     targets: [
-        // Domain layer
+        // MARK: Domain layer
         .target(
             name: "DomainLayer",
             dependencies: [],
             path: SourcesPath.domainLayer
         ),
 
-        // App Presentation layer
+        // MARK: Presentation layer
+        .target(
+            name: "LicensePresentation",
+            dependencies: [
+                .domainLayer,
+            ],
+            path: SourcesPath.presentationLayer + "License"
+        ),
+
+        // MARK: App Presentation layer
         .target(
             name: "DISampleAppRootPresentation",
             dependencies: [
@@ -84,17 +94,8 @@ let package = Package(
             ],
             path: SourcesPath.presentationLayer + "UICatalogAppRoot"
         ),
-        
-        // Presentation layer
-        .target(
-            name: "LicensePresentation",
-            dependencies: [
-                .domainLayer,
-            ],
-            path: SourcesPath.presentationLayer + "License"
-        ),
 
-        // Framework layer
+        // MARK: Framework layer
         .target(
             name: "LoggerFramework",
             dependencies: [
@@ -120,8 +121,8 @@ let package = Package(
             ],
             path: SourcesPath.frameworkLayer + "CloudService"
         ),
-        
-        // DI Layer
+
+        // MARK: DI Layer
         .target(
             name: "DILayer",
             dependencies: [

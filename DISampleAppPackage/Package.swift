@@ -38,16 +38,12 @@ let package = Package(
     defaultLocalization: "ja",
     platforms: [
         .iOS(.v17),
-        .macOS(.v14),
     ],
     products: [
-        // Library
-        .library(name: "DISampleApp", targets: ["DomainLayer", "PresentationLayer", "DILayer"]),
-        .library(name: "NonFrameworkDISampleApp", targets: ["DomainLayer", "PresentationLayer"]), // 開発向け高速ビルド用
-        .library(name: "UICatalogApp", targets: ["UICatalogAppLayer"]),
-
-        // Presentation Layer
+        .library(name: "DomainLayer", targets: ["DomainLayer"]),
         .library(name: "PresentationLayer", targets: ["PresentationLayer"]),
+        .library(name: "DILayer", targets: ["DILayer"]),
+        .library(name: "UICatalogApp", targets: ["UICatalogAppLayer"]),
     ],
     dependencies: [
         // Library

@@ -5,7 +5,6 @@
 
 import SwiftUI
 import PresentationLayer
-import DomainLayer
 
 @main
 struct ProductionApp: App {

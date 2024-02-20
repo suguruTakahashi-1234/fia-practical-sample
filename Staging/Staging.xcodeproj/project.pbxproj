@@ -10,7 +10,8 @@
 		4471BCB62B81F08800218534 /* StagingApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4471BCB52B81F08800218534 /* StagingApp.swift */; };
 		4471BCBA2B81F08900218534 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4471BCB92B81F08900218534 /* Assets.xcassets */; };
 		4471BCBE2B81F08900218534 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4471BCBD2B81F08900218534 /* Preview Assets.xcassets */; };
-		4471BCE22B81F0CD00218534 /* DISampleApp in Frameworks */ = {isa = PBXBuildFile; productRef = 4471BCE12B81F0CD00218534 /* DISampleApp */; };
+		447577602B84D3EA00DC2FDB /* PresentationLayer in Frameworks */ = {isa = PBXBuildFile; productRef = 4475775F2B84D3EA00DC2FDB /* PresentationLayer */; };
+		447577622B84D3ED00DC2FDB /* DILayer in Frameworks */ = {isa = PBXBuildFile; productRef = 447577612B84D3ED00DC2FDB /* DILayer */; };
 		44CB56D42B83923F0086D1F2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 44CB56D32B83923F0086D1F2 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
@@ -28,7 +29,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4471BCE22B81F0CD00218534 /* DISampleApp in Frameworks */,
+				447577602B84D3EA00DC2FDB /* PresentationLayer in Frameworks */,
+				447577622B84D3ED00DC2FDB /* DILayer in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -96,7 +98,8 @@
 			);
 			name = Staging;
 			packageProductDependencies = (
-				4471BCE12B81F0CD00218534 /* DISampleApp */,
+				4475775F2B84D3EA00DC2FDB /* PresentationLayer */,
+				447577612B84D3ED00DC2FDB /* DILayer */,
 			);
 			productName = Staging;
 			productReference = 4471BCB22B81F08800218534 /* Staging.app */;
@@ -305,7 +308,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.suguru-takahashi.DISample.Staging";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -343,7 +347,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.suguru-takahashi.DISample.Staging";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -374,9 +379,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		4471BCE12B81F0CD00218534 /* DISampleApp */ = {
+		4475775F2B84D3EA00DC2FDB /* PresentationLayer */ = {
 			isa = XCSwiftPackageProductDependency;
-			productName = DISampleApp;
+			productName = PresentationLayer;
+		};
+		447577612B84D3ED00DC2FDB /* DILayer */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = DILayer;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

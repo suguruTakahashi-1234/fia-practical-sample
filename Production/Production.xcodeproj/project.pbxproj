@@ -10,7 +10,8 @@
 		4428A3FE2B7CBE9200C57F9A /* ProductionApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4428A3FD2B7CBE9200C57F9A /* ProductionApp.swift */; };
 		4428A4022B7CBE9300C57F9A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4428A4012B7CBE9300C57F9A /* Assets.xcassets */; };
 		4428A4062B7CBE9300C57F9A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4428A4052B7CBE9300C57F9A /* Preview Assets.xcassets */; };
-		4471BCA82B7FB68400218534 /* DISampleApp in Frameworks */ = {isa = PBXBuildFile; productRef = 4471BCA72B7FB68400218534 /* DISampleApp */; };
+		447577642B84D3F600DC2FDB /* DILayer in Frameworks */ = {isa = PBXBuildFile; productRef = 447577632B84D3F600DC2FDB /* DILayer */; };
+		447577662B84D3F900DC2FDB /* PresentationLayer in Frameworks */ = {isa = PBXBuildFile; productRef = 447577652B84D3F900DC2FDB /* PresentationLayer */; };
 		44CB56D22B8392230086D1F2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 44CB56D12B8392230086D1F2 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
@@ -28,7 +29,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4471BCA82B7FB68400218534 /* DISampleApp in Frameworks */,
+				447577662B84D3F900DC2FDB /* PresentationLayer in Frameworks */,
+				447577642B84D3F600DC2FDB /* DILayer in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -96,7 +98,8 @@
 			);
 			name = Production;
 			packageProductDependencies = (
-				4471BCA72B7FB68400218534 /* DISampleApp */,
+				447577632B84D3F600DC2FDB /* DILayer */,
+				447577652B84D3F900DC2FDB /* PresentationLayer */,
 			);
 			productName = Production;
 			productReference = 4428A3FA2B7CBE9200C57F9A /* Production.app */;
@@ -305,7 +308,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.suguru-takahashi.DISample.Production";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -343,7 +347,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.suguru-takahashi.DISample.Production";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -374,9 +379,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		4471BCA72B7FB68400218534 /* DISampleApp */ = {
+		447577632B84D3F600DC2FDB /* DILayer */ = {
 			isa = XCSwiftPackageProductDependency;
-			productName = DISampleApp;
+			productName = DILayer;
+		};
+		447577652B84D3F900DC2FDB /* PresentationLayer */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = PresentationLayer;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

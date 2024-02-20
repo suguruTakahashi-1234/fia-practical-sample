@@ -20,7 +20,6 @@ public struct LicenseDetailView: View {
                     .padding()
             }
             .navigationTitle(presenter.license.name)
-            .navigationBarTitleDisplayMode(.inline)
         }
         .task {
             presenter.onAppear()

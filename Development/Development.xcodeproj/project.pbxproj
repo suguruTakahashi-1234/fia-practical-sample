@@ -7,10 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		44238A1D2B8357EB003976C3 /* NonFrameworkDISampleApp in Frameworks */ = {isa = PBXBuildFile; productRef = 44238A1C2B8357EB003976C3 /* NonFrameworkDISampleApp */; };
 		446C33E42B83018300B3DD37 /* DevelopmentApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 446C33E32B83018300B3DD37 /* DevelopmentApp.swift */; };
 		446C33E82B83018400B3DD37 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 446C33E72B83018400B3DD37 /* Assets.xcassets */; };
 		446C33EC2B83018400B3DD37 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 446C33EB2B83018400B3DD37 /* Preview Assets.xcassets */; };
+		4475775E2B84D3C700DC2FDB /* PresentationLayer in Frameworks */ = {isa = PBXBuildFile; productRef = 4475775D2B84D3C700DC2FDB /* PresentationLayer */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,7 +26,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				44238A1D2B8357EB003976C3 /* NonFrameworkDISampleApp in Frameworks */,
+				4475775E2B84D3C700DC2FDB /* PresentationLayer in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -93,7 +93,7 @@
 			);
 			name = Development;
 			packageProductDependencies = (
-				44238A1C2B8357EB003976C3 /* NonFrameworkDISampleApp */,
+				4475775D2B84D3C700DC2FDB /* PresentationLayer */,
 			);
 			productName = Development;
 			productReference = 446C33E02B83018300B3DD37 /* Development.app */;
@@ -301,7 +301,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.suguru-takahashi.DISample.Development";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -339,7 +340,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.suguru-takahashi.DISample.Development";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -370,9 +372,9 @@
 /* End XCConfigurationList section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		44238A1C2B8357EB003976C3 /* NonFrameworkDISampleApp */ = {
+		4475775D2B84D3C700DC2FDB /* PresentationLayer */ = {
 			isa = XCSwiftPackageProductDependency;
-			productName = NonFrameworkDISampleApp;
+			productName = PresentationLayer;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

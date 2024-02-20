@@ -3,7 +3,6 @@
 //  Copyright sugurutakahashi. All rights reserved.
 //
 
-import LicensePresentation
 import DomainLayer
 
 public struct AppRootRouter: AppRootWireframe, LicenseListWireframe {

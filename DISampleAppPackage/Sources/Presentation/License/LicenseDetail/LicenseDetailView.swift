@@ -30,3 +30,7 @@ public struct LicenseDetailView: View {
         }
     }
 }
+
+#Preview {
+    LicenseDetailView(license: .random)
+}

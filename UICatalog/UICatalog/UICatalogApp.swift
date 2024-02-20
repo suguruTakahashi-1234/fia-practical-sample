@@ -4,7 +4,7 @@
 //
 
 import SwiftUI
-import UICatalogAppRootPresentation
+import UICatalogAppLayer
 
 @main
 struct UICatalogApp: App {

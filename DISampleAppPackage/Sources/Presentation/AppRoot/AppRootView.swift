@@ -27,3 +27,7 @@ public struct AppRootView: View {
         }
     }
 }
+
+#Preview {
+    AppRootView(router: AppRootWireframeMock(), dependency: AppRootPresenterDependencyMock())
+}

@@ -5,6 +5,7 @@
 
 import Foundation
 
+/// @mockable
 public protocol AppRootPresenterDependency {
     var osLogDriver: OSLogDriverProtocol { get }
     var firebaseSetupDriver: FirebaseSetupDriverProtocol { get }

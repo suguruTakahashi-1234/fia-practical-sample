@@ -5,7 +5,7 @@
 
 import Playbook
 import DomainLayer
-import LicensePresentation
+import PresentationLayer
 
 struct LicenseDetailScenarios: ScenarioProvider {
     static func addScenarios(into playbook: Playbook) {

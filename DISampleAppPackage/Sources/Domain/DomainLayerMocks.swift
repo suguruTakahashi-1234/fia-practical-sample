@@ -7,6 +7,21 @@
 import Foundation
 
 
+public final class AppRootPresenterDependencyMock: AppRootPresenterDependency {
+    public init() { }
+    public init(osLogDriver: OSLogDriverProtocol = OSLogDriverProtocolMock(), firebaseSetupDriver: FirebaseSetupDriverProtocol = FirebaseSetupDriverProtocolMock()) {
+        self.osLogDriver = osLogDriver
+        self.firebaseSetupDriver = firebaseSetupDriver
+    }
+
+
+    public private(set) var osLogDriverSetCallCount = 0
+    public var osLogDriver: OSLogDriverProtocol = OSLogDriverProtocolMock() { didSet { osLogDriverSetCallCount += 1 } }
+
+    public private(set) var firebaseSetupDriverSetCallCount = 0
+    public var firebaseSetupDriver: FirebaseSetupDriverProtocol = FirebaseSetupDriverProtocolMock() { didSet { firebaseSetupDriverSetCallCount += 1 } }
+}
+
 public final class FirebaseSetupDriverProtocolMock: FirebaseSetupDriverProtocol {
     public init() { }
 
@@ -31,6 +46,17 @@ public final class LibraryLicenseDriverProtocolMock: LibraryLicenseDriverProtoco
 
     public private(set) var licenseListSetCallCount = 0
     public var licenseList: [License] = [License]() { didSet { licenseListSetCallCount += 1 } }
+}
+
+public final class LicenseListPresenterDependencyMock: LicenseListPresenterDependency {
+    public init() { }
+    public init(libraryLicenseDriver: LibraryLicenseDriverProtocol = LibraryLicenseDriverProtocolMock()) {
+        self.libraryLicenseDriver = libraryLicenseDriver
+    }
+
+
+    public private(set) var libraryLicenseDriverSetCallCount = 0
+    public var libraryLicenseDriver: LibraryLicenseDriverProtocol = LibraryLicenseDriverProtocolMock() { didSet { libraryLicenseDriverSetCallCount += 1 } }
 }
 
 public final class OSLogDriverProtocolMock: OSLogDriverProtocol {

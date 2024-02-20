@@ -14,4 +14,3 @@ public struct FirebaseSetupDriver: FirebaseSetupDriverProtocol {
         FirebaseApp.configure()
     }
 }
-

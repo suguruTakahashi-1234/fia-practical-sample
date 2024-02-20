@@ -4,10 +4,11 @@
 import PackageDescription
 
 private enum SourcesPath {
-    static let domainLayer = "./Sources/Domain/"
-    static let presentationLayer = "./Sources/Presentation/"
-    static let frameworkLayer = "./Sources/Framework/"
     static let diLayer = "./Sources/DI/"
+    static let domainLayer = "./Sources/Domain/"
+    static let frameworkLayer = "./Sources/Framework/"
+    static let presentationLayer = "./Sources/Presentation/"
+    static let uiCatalogAppLayer = "./Sources/UICatalogApp/"
 }
 
 // Ref: 【Swift】Package.swiftのdependenciesをタイプセーフに扱う https://qiita.com/SNQ-2001/items/ed068414747e28999415
@@ -20,10 +21,9 @@ private extension PackageDescription.Target.Dependency {
     // TODO: PlaybookSnapshot によるテスト
     // static let playbookSnapshot: Self = .product(name: "PlaybookSnapshot", package: "playbook-ios")
     
-    /// DISample target
+    // DISample target
     static let domainLayer: Self = "DomainLayer"
-    static let appRootPresentation: Self = "DISampleAppRootPresentation"
-    static let licensePresentation: Self = "LicensePresentation"
+    static let presentationLayer: Self = "PresentationLayer"
     static let loggerFramework: Self = "LoggerFramework"
     static let licenseFramework: Self = "LicenseFramework"
     static let cloudServiceFramework: Self = "CloudServiceFramework"
@@ -41,10 +41,13 @@ let package = Package(
         .macOS(.v14),
     ],
     products: [
-        .library(name: "DISampleApp", targets: ["DISampleAppRootPresentation", "DomainLayer", "DILayer"]),
-        .library(name: "NonFrameworkDISampleApp", targets: ["DISampleAppRootPresentation", "DomainLayer"]), // 開発向け高速ビルド用
-        .library(name: "UICatalogApp", targets: ["UICatalogAppRootPresentation", "DomainLayer"]),
-        .library(name: "ValidationBuild", targets: ["DISampleAppRootPresentation", "DomainLayer", "DILayer", "UICatalogAppRootPresentation"]) // ビルドチェック用
+        // Library
+        .library(name: "DISampleApp", targets: ["DomainLayer", "PresentationLayer", "DILayer"]),
+        .library(name: "NonFrameworkDISampleApp", targets: ["DomainLayer", "PresentationLayer"]), // 開発向け高速ビルド用
+        .library(name: "UICatalogApp", targets: ["UICatalogAppLayer"]),
+
+        // Presentation Layer
+        .library(name: "PresentationLayer", targets: ["PresentationLayer"]),
     ],
     dependencies: [
         // Library
@@ -67,32 +70,11 @@ let package = Package(
 
         // MARK: Presentation layer
         .target(
-            name: "LicensePresentation",
+            name: "PresentationLayer",
             dependencies: [
                 .domainLayer,
             ],
-            path: SourcesPath.presentationLayer + "License"
-        ),
-
-        // MARK: App Presentation layer
-        .target(
-            name: "DISampleAppRootPresentation",
-            dependencies: [
-                .domainLayer,
-                .licensePresentation,
-            ],
-            path: SourcesPath.presentationLayer + "DISampleAppRoot"
-        ),
-        .target(
-            name: "UICatalogAppRootPresentation",
-            dependencies: [
-                .playbook,
-                .playbookUI,
-                .domainLayer,
-                .appRootPresentation,
-                .licensePresentation,
-            ],
-            path: SourcesPath.presentationLayer + "UICatalogAppRoot"
+            path: SourcesPath.presentationLayer
         ),
 
         // MARK: Framework layer
@@ -134,5 +116,16 @@ let package = Package(
             path: SourcesPath.diLayer
         ),
         
+        // MARK: UICatalog App layer
+        .target(
+            name: "UICatalogAppLayer",
+            dependencies: [
+                .playbook,
+                .playbookUI,
+                .domainLayer,
+                .presentationLayer,
+            ],
+            path: SourcesPath.uiCatalogAppLayer
+        ),
     ]
 )

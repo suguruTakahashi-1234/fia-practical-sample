@@ -38,3 +38,7 @@ public struct LicenseListView: View {
         }
     }
 }
+
+#Preview {
+    LicenseListView(router: LicenseListWireframeMock(), dependency: LicenseListPresenterDependencyMock())
+}

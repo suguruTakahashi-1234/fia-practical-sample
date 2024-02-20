@@ -4,7 +4,7 @@
 //
 
 import SwiftUI
-import DISampleAppRootPresentation
+import PresentationLayer
 import DILayer
 
 @main

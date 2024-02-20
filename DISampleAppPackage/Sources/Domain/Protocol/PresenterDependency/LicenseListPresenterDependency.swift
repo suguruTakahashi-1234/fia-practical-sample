@@ -5,6 +5,7 @@
 
 import Foundation
 
+/// @mockable
 public protocol LicenseListPresenterDependency {
     var libraryLicenseDriver: LibraryLicenseDriverProtocol { get }
 }

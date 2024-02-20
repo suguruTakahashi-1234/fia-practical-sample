@@ -6,6 +6,7 @@
 import Foundation
 import DomainLayer
 
+/// @mockable
 public protocol LicenseListWireframe {
     func createLicenseDetailView(license: License) -> LicenseDetailView
 }

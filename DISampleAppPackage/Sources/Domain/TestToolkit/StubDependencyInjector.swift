@@ -20,13 +20,31 @@ public struct StubDependencyInjector: AppRootRouterDependency {
         self.libraryLicenseDriver = libraryLicenseDriver
     }
 
-    public static var emptyScenario: Self {
+    public static var empty: Self {
         .init()
     }
 
-    public static var randomScenario: Self {
+    public static var random: Self {
         .init(
             libraryLicenseDriver: .init(licenseList: .randoms)
+        )
+    }
+    
+    public static var sizeS: Self {
+        .init(
+            libraryLicenseDriver: .init(licenseList: .multipleSizeS)
+        )
+    }
+    
+    public static var sizeM: Self {
+        .init(
+            libraryLicenseDriver: .init(licenseList: .multipleSizeM)
+        )
+    }
+    
+    public static var sizeL: Self {
+        .init(
+            libraryLicenseDriver: .init(licenseList: .multipleSizeL)
         )
     }
 }

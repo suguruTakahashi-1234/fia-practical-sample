@@ -10,16 +10,20 @@ import LicensePresentation
 struct LicenseListScenarios: ScenarioProvider {
     static func addScenarios(into playbook: Playbook) {
         playbook.addScenarios(of: "LicenseList") {
-            Scenario("long string", layout: .fill) {
-                LicenseListView(router: UICatalogRouter.shared, dependency: StubDependencyInjector.randomScenario)
+            Scenario(type: .small, layout: .fill) {
+                LicenseListView(router: UICatalogRouter.shared, dependency: StubDependencyInjector.sizeS)
             }
 
-            Scenario("short string", layout: .fill) {
-                LicenseListView(router: UICatalogRouter.shared, dependency: StubDependencyInjector.randomScenario)
+            Scenario(type: .medium, layout: .fill) {
+                LicenseListView(router: UICatalogRouter.shared, dependency: StubDependencyInjector.sizeM)
             }
 
-            Scenario("empty", layout: .fill) {
-                LicenseListView(router: UICatalogRouter.shared, dependency: StubDependencyInjector.emptyScenario)
+            Scenario(type: .large, layout: .fill) {
+                LicenseListView(router: UICatalogRouter.shared, dependency: StubDependencyInjector.sizeL)
+            }
+            
+            Scenario(type: .empty, layout: .fill) {
+                LicenseListView(router: UICatalogRouter.shared, dependency: StubDependencyInjector.empty)
             }
         }
     }

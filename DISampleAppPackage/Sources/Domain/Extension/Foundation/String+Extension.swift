@@ -57,3 +57,17 @@ extension String: RandomValueProvidable {
         return randomString
     }
 }
+
+extension String: SizeValueProvidable {
+    public static var sizeS: String {
+        "short str"
+    }
+    
+    public static var sizeM: String {
+        "medium length string, medium length string"
+    }
+    
+    public static var sizeL: String {
+        "long length string, long string, long string, long string, long string, long string, long string, long string, long string, long string, long string"
+    }
+}

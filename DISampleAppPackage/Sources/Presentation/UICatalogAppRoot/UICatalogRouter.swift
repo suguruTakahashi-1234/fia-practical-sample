@@ -7,16 +7,16 @@ import LicensePresentation
 import DomainLayer
 import DISampleAppRootPresentation
 
-public struct UICatalogRouter: AppRootWireframe,LicenseListWireframe {
-    public func createLicenseListView() -> LicensePresentation.LicenseListView {
-        .init(router: self, dependency: StubDependencyInjector.randomScenario)
-    }
-    
+public struct UICatalogRouter: AppRootWireframe, LicenseListWireframe {
     public static let shared = UICatalogRouter()
 
     private init() {}
     
+    public func createLicenseListView() -> LicensePresentation.LicenseListView {
+        .init(router: self, dependency: StubDependencyInjector.random)
+    }
+
     public func createLicenseDetailView(license: DomainLayer.License) -> LicensePresentation.LicenseDetailView {
-        LicenseDetailView(license: .random)
+        .init(license: .random)
     }
 }

@@ -10,12 +10,16 @@ import LicensePresentation
 struct LicenseDetailScenarios: ScenarioProvider {
     static func addScenarios(into playbook: Playbook) {
         playbook.addScenarios(of: "LicenseDetail") {
-            Scenario("long string", layout: .fill) {
-                LicenseDetailView(license: .random)
+            Scenario(type: .small, layout: .fill) {
+                LicenseDetailView(license: .sizeS)
             }
 
-            Scenario("short string", layout: .fill) {
-                LicenseDetailView(license: .random)
+            Scenario(type: .medium, layout: .fill) {
+                LicenseDetailView(license: .sizeM)
+            }
+            
+            Scenario(type: .large, layout: .fill) {
+                LicenseDetailView(license: .sizeL)
             }
         }
     }

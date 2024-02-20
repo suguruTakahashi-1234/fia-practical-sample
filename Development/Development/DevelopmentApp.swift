@@ -9,7 +9,7 @@ import DomainLayer
 
 @main
 struct ProductionApp: App {
-    private let router = AppRootRouter(dependency: StubDependencyInjector.random)
+    private let router = AppRootRouter.random
     
     var body: some Scene {
         WindowGroup {

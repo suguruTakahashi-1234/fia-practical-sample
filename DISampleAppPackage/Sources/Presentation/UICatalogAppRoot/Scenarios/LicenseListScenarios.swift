@@ -6,24 +6,25 @@
 import Playbook
 import DomainLayer
 import LicensePresentation
+import DISampleAppRootPresentation
 
 struct LicenseListScenarios: ScenarioProvider {
     static func addScenarios(into playbook: Playbook) {
         playbook.addScenarios(of: "LicenseList") {
             Scenario(type: .small, layout: .fill) {
-                LicenseListView(router: UICatalogRouter.shared, dependency: StubDependencyInjector.sizeS)
+                LicenseListView(router: AppRootRouter.random, dependency: StubDependencyInjector.sizeS)
             }
 
             Scenario(type: .medium, layout: .fill) {
-                LicenseListView(router: UICatalogRouter.shared, dependency: StubDependencyInjector.sizeM)
+                LicenseListView(router: AppRootRouter.random, dependency: StubDependencyInjector.sizeM)
             }
 
             Scenario(type: .large, layout: .fill) {
-                LicenseListView(router: UICatalogRouter.shared, dependency: StubDependencyInjector.sizeL)
+                LicenseListView(router: AppRootRouter.random, dependency: StubDependencyInjector.sizeL)
             }
             
             Scenario(type: .empty, layout: .fill) {
-                LicenseListView(router: UICatalogRouter.shared, dependency: StubDependencyInjector.empty)
+                LicenseListView(router: AppRootRouter.random, dependency: StubDependencyInjector.empty)
             }
         }
     }

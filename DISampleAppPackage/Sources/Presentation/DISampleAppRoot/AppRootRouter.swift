@@ -7,8 +7,12 @@ import LicensePresentation
 import DomainLayer
 
 public struct AppRootRouter: AppRootWireframe, LicenseListWireframe {
-    private let dependency: AppRootRouterDependency
+    public static var random: Self {
+        AppRootRouter(dependency: StubDependencyInjector.random)
+    }
 
+    private let dependency: AppRootRouterDependency
+    
     public init(dependency: some AppRootRouterDependency) {
         self.dependency = dependency
     }

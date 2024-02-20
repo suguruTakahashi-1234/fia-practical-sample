@@ -8,6 +8,7 @@ import DomainLayer
 import LicenseFramework
 import LoggerFramework
 import CloudServiceFramework
+import PresentationLayer
 
 public struct AppRootDependencyInjector: AppRootRouterDependency {
     public let osLogDriver: OSLogDriverProtocol = OSLogger(subsystem: Bundle.main.bundleIdentifier!, category: Constants.Logger.categoryName)

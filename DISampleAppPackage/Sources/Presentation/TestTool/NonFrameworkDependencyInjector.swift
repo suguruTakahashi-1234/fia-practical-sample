@@ -4,8 +4,9 @@
 //
 
 import Foundation
+import DomainLayer
 
-public struct StubDependencyInjector: AppRootRouterDependency {
+public struct NonFrameworkDependencyInjector: AppRootRouterDependency {
     public let osLogDriver: OSLogDriverProtocol
     public let firebaseSetupDriver: FirebaseSetupDriverProtocol
     public let libraryLicenseDriver: LibraryLicenseDriverProtocol

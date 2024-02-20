@@ -5,7 +5,6 @@
 
 import Foundation
 
-/// @mockable
 public protocol AppRootWireframe {
     func createLicenseListView() -> LicenseListView
 }

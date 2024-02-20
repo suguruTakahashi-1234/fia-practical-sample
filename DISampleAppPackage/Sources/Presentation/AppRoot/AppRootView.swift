@@ -29,5 +29,5 @@ public struct AppRootView: View {
 }
 
 #Preview {
-    AppRootView(router: AppRootWireframeMock(), dependency: AppRootPresenterDependencyMock())
+    AppRootView(router: AppRootRouter.random, dependency: NonFrameworkDependencyInjector.random)
 }

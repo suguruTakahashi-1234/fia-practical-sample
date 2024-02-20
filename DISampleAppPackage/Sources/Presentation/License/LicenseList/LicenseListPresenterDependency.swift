@@ -4,8 +4,8 @@
 //
 
 import Foundation
+import DomainLayer
 
-/// @mockable
 public protocol LicenseListPresenterDependency {
     var libraryLicenseDriver: LibraryLicenseDriverProtocol { get }
 }

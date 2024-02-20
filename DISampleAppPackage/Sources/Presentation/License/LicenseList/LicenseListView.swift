@@ -40,5 +40,5 @@ public struct LicenseListView: View {
 }
 
 #Preview {
-    LicenseListView(router: LicenseListWireframeMock(), dependency: LicenseListPresenterDependencyMock())
+    LicenseListView(router: AppRootRouter.random, dependency: NonFrameworkDependencyInjector.random)
 }

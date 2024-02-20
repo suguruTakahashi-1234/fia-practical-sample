@@ -7,7 +7,7 @@ import DomainLayer
 
 public struct AppRootRouter: AppRootWireframe, LicenseListWireframe {
     public static var random: Self {
-        AppRootRouter(dependency: StubDependencyInjector.random)
+        AppRootRouter(dependency: NonFrameworkDependencyInjector.random)
     }
 
     private let dependency: AppRootRouterDependency

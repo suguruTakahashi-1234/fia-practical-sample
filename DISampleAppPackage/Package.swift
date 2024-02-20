@@ -105,6 +105,7 @@ let package = Package(
             name: "DILayer",
             dependencies: [
                 .domainLayer,
+                .presentationLayer,
                 .licenseFramework,
                 .loggerFramework,
                 .cloudServiceFramework,

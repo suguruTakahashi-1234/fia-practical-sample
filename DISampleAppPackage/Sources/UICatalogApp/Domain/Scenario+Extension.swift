@@ -5,17 +5,18 @@
 
 import SwiftUI
 import Playbook
+import PresentationLayer
 
 package extension Scenario {
     init<Content: View>(
-        type: ScenarioType,
+        type: UITestScenarioType,
         layout: ScenarioLayout,
         file: StaticString = #file,
         line: UInt = #line,
         content: @escaping () -> Content
     ) {
         self.init(
-            ScenarioName(rawValue: type.rawValue),
+            ScenarioName(rawValue: type.name),
             layout: layout,
             file: file,
             line: line,

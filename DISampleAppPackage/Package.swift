@@ -17,9 +17,8 @@ private extension PackageDescription.Target.Dependency {
     static let firebaseAnalytics: Self = .product(name: "FirebaseAnalytics", package: "firebase-ios-sdk")
     static let playbook: Self = .product(name: "Playbook", package: "playbook-ios")
     static let playbookUI: Self = .product(name: "PlaybookUI", package: "playbook-ios")
-    
-    // TODO: 使い方がよくわからなかった（PlaybookUIはそこそこ使えたので簡単にSnapshotTestができるのであれば導入したい）
-    // static let playbookSnapshot: Self = .product(name: "PlaybookSnapshot", package: "playbook-ios")
+    static let previewSnapshots: Self = .product(name: "PreviewSnapshots", package: "swiftui-preview-snapshots")
+    static let previewSnapshotsTesting: Self = .product(name: "PreviewSnapshotsTesting", package: "swiftui-preview-snapshots")
 
     // DISample target
     static let domainLayer: Self = "DomainLayer"
@@ -46,12 +45,12 @@ let package = Package(
         .library(name: "PresentationLayer", targets: ["PresentationLayer"]),
         .library(name: "DILayer", targets: ["DILayer"]),
         .library(name: "UICatalogApp", targets: ["UICatalogAppLayer"]),
-        .library(name: "ValidationBuild", targets: ["DomainLayer", "PresentationLayer", "DILayer", "UICatalogAppLayer"]),
     ],
     dependencies: [
         // Library
         .package(url: "https://github.com/firebase/firebase-ios-sdk.git", exact: "10.19.0"), // TODO: 10.22 以上がリリースされたらアップデートする（直らないかもしれないが） https://github.com/firebase/firebase-ios-sdk/issues/12390
         .package(url: "https://github.com/playbook-ui/playbook-ios.git", from: "0.3.5"),
+        .package(url: "https://github.com/doordash-oss/swiftui-preview-snapshots", from: "1.1.1"),
 
         // Plugin
         .package(url: "https://github.com/maiyama18/LicensesPlugin", from: "0.1.6"),
@@ -72,6 +71,7 @@ let package = Package(
             name: "PresentationLayer",
             dependencies: [
                 .domainLayer,
+                .previewSnapshots,
             ],
             path: SourcesPath.presentationLayer
         ),
@@ -126,6 +126,14 @@ let package = Package(
                 .presentationLayer,
             ],
             path: SourcesPath.uiCatalogAppLayer
+        ),
+
+        .testTarget(
+            name: "SnapshotTests",
+            dependencies: [
+                .presentationLayer,
+                .previewSnapshotsTesting,
+            ]
         ),
     ]
 )

@@ -30,6 +30,23 @@ public struct LicenseDetailView: View {
     }
 }
 
-#Preview {
-    LicenseDetailView(license: .random)
+import PreviewSnapshots
+
+struct LicenseDetailView_Previews: PreviewProvider {
+    static var previews: some View {
+        snapshots.previews.previewLayout(.sizeThatFits)
+    }
+
+    static var snapshots: PreviewSnapshots<License> {
+        PreviewSnapshots(
+            configurations: [
+                .init(type: .small, state: .sizeS),
+                .init(type: .medium, state: .sizeM),
+                .init(type: .large, state: .sizeL),
+            ],
+            configure: { state in
+                LicenseDetailView(license: state)
+            }
+        )
+    }
 }

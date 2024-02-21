@@ -6,6 +6,10 @@
 import DomainLayer
 
 public struct AppRootRouter: AppRootWireframe, LicenseListWireframe {
+    public static var empty: Self {
+        AppRootRouter(dependency: NonFrameworkDependencyInjector.empty)
+    }
+
     public static var random: Self {
         AppRootRouter(dependency: NonFrameworkDependencyInjector.random)
     }

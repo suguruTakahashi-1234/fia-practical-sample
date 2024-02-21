@@ -28,6 +28,19 @@ public struct AppRootView: View {
     }
 }
 
-#Preview {
-    AppRootView(router: AppRootRouter.random, dependency: NonFrameworkDependencyInjector.random)
+import PreviewSnapshots
+
+struct AppRootView_Previews: PreviewProvider {
+    static var previews: some View {
+        snapshots.previews.fixedSize(horizontal: false, vertical: false)
+    }
+
+    static var snapshots: PreviewSnapshots<AppRootRouterDependency> {
+        PreviewSnapshots(
+            configurations: emptyConfiguration,
+            configure: { state in
+                AppRootView(router: AppRootRouter.empty, dependency: state)
+            }
+        )
+    }
 }

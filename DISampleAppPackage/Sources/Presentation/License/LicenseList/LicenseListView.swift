@@ -39,6 +39,19 @@ public struct LicenseListView: View {
     }
 }
 
-#Preview {
-    LicenseListView(router: AppRootRouter.random, dependency: NonFrameworkDependencyInjector.random)
+import PreviewSnapshots
+
+struct LicenseListView_Previews: PreviewProvider {
+    static var previews: some View {
+        snapshots.previews.previewLayout(.sizeThatFits)
+    }
+
+    static var snapshots: PreviewSnapshots<AppRootRouterDependency> {
+        .init(
+            configurations: allSizeConfigurations,
+            configure: { state in
+                LicenseListView(router: AppRootRouter.empty, dependency: state)
+            }
+        )
+    }
 }

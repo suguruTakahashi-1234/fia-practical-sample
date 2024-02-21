@@ -5,8 +5,8 @@
 
 import Playbook
 
-struct AllScenarios: ScenarioProvider {
-    static func addScenarios(into playbook: Playbook) {
+public struct AllScenarios: ScenarioProvider {
+    public static func addScenarios(into playbook: Playbook) {
         playbook
             .add(LicenseListScenarios.self)
             .add(LicenseDetailScenarios.self)

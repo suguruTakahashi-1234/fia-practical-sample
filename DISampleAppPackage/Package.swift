@@ -17,16 +17,17 @@ private extension PackageDescription.Target.Dependency {
     static let firebaseAnalytics: Self = .product(name: "FirebaseAnalytics", package: "firebase-ios-sdk")
     static let playbook: Self = .product(name: "Playbook", package: "playbook-ios")
     static let playbookUI: Self = .product(name: "PlaybookUI", package: "playbook-ios")
-
-    // TODO: PlaybookSnapshot によるテスト
-    // static let playbookSnapshot: Self = .product(name: "PlaybookSnapshot", package: "playbook-ios")
     
+    // TODO: 使い方がよくわからなかった（PlaybookUIはそこそこ使えたので簡単にSnapshotTestができるのであれば導入したい）
+    // static let playbookSnapshot: Self = .product(name: "PlaybookSnapshot", package: "playbook-ios")
+
     // DISample target
     static let domainLayer: Self = "DomainLayer"
     static let presentationLayer: Self = "PresentationLayer"
     static let loggerFramework: Self = "LoggerFramework"
     static let licenseFramework: Self = "LicenseFramework"
     static let cloudServiceFramework: Self = "CloudServiceFramework"
+    static let uiCatalogAppLayer: Self = "UICatalogAppLayer"
 }
 
 private extension PackageDescription.Target.PluginUsage {
@@ -38,12 +39,14 @@ let package = Package(
     defaultLocalization: "ja",
     platforms: [
         .iOS(.v17),
+        .macOS(.v14),
     ],
     products: [
         .library(name: "DomainLayer", targets: ["DomainLayer"]),
         .library(name: "PresentationLayer", targets: ["PresentationLayer"]),
         .library(name: "DILayer", targets: ["DILayer"]),
         .library(name: "UICatalogApp", targets: ["UICatalogAppLayer"]),
+        .library(name: "ValidationBuild", targets: ["DomainLayer", "PresentationLayer", "DILayer", "UICatalogAppLayer"]),
     ],
     dependencies: [
         // Library

@@ -11,23 +11,14 @@ import XCTest
 
 final class SnapshotTests: XCTestCase {
     func test_AppRootView() {
-        AppRootView_Previews.snapshots.assertSnapshots(as: [
-            .image(layout: .device(config: .iPhoneSe)),
-            .image(layout: .device(config: .iPhone13ProMax)),
-        ])
+        AppRootView_Previews.snapshots.assertSnapshots(as: [.image(layout: .device(config: .iPhoneSe)), .image(layout: .device(config: .iPhone13ProMax))])
     }
     
     func test_LicenseListView() {
-        LicenseListView_Previews.snapshots.assertSnapshots(as: [
-            .image(layout: .device(config: .iPhoneSe)),
-            .image(layout: .device(config: .iPhone13ProMax)),
-        ])
+        LicenseListView_Previews.snapshots.assertSnapshots(as: [.image(layout: .device(config: .iPhoneSe)), .image(layout: .device(config: .iPhone13ProMax))])
     }
     
     func test_LicenseDetailView() {
-        LicenseDetailView_Previews.snapshots.assertSnapshots(as: [
-            .image(layout: .device(config: .iPhoneSe)),
-            .image(layout: .device(config: .iPhone13ProMax)),
-        ])
+        LicenseDetailView_Previews.snapshots.assertSnapshots(as: [.image(layout: .device(config: .iPhoneSe)), .image(layout: .device(config: .iPhone13ProMax))])
     }
 }

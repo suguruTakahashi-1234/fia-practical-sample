@@ -17,21 +17,31 @@ enum FrameworkTargetType: CaseIterable {
     case cloudService
     case license
     case logger
-    
+
     var folderName: String {
         "\(self)".initialUppercased
     }
 }
 
-enum TargetType {
+enum TargetType: CaseIterable {
     case dependencyInjector
     case domain
     case framework(FrameworkTargetType)
     case presentation
     case previewCatalog
     case scenarioCatalog
-    
-    private var folderName: String {
+
+    static var allCases: [TargetType] {
+        FrameworkTargetType.allCases.map { .framework($0) } + [
+            .dependencyInjector,
+            .domain,
+            .presentation,
+            .previewCatalog,
+            .scenarioCatalog
+        ]
+    }
+
+    var folderName: String {
         switch self {
         case .framework:
             "Framework"
@@ -39,7 +49,7 @@ enum TargetType {
             "\(self)".initialUppercased
         }
     }
-    
+
     var path: String {
         switch self {
         case .framework(let frameworkTargetType):
@@ -48,7 +58,7 @@ enum TargetType {
             "./Sources/\(folderName)/"
         }
     }
-    
+
     var name: String {
         switch self {
         case .framework(let frameworkTargetType):
@@ -57,66 +67,6 @@ enum TargetType {
             "\(folderName)Layer"
         }
         
-    }
-    
-    var dependencies: [PackageDescription.Target.Dependency] {
-        switch self {
-        case .dependencyInjector:
-            [
-                .presentationLayer,
-                .licenseFramework,
-                .loggerFramework,
-                .cloudServiceFramework,
-            ]
-        case .domain:
-            []
-        case .framework(let frameworkTargetType):
-            switch frameworkTargetType {
-            case .cloudService:
-                [
-                    .domainLayer,
-                    .cloudServiceFramework,
-                ]
-            case .license:
-                [
-                    .domainLayer,
-                ]
-            case .logger:
-                [
-                    .domainLayer,
-                ]
-            }
-        case .presentation:
-            [
-                .domainLayer,
-                .previewSnapshots,
-            ]
-        case .previewCatalog:
-            [
-                .presentationLayer, // PreviewGallery() 行うモジュールに依存させるとその Preview が生成される
-                .previewGallery,
-            ]
-        case .scenarioCatalog:
-            [
-                .playbook,
-                .playbookUI,
-                .presentationLayer,
-            ]
-        }
-    }
-    
-    var plugins: [PackageDescription.Target.PluginUsage] {
-        switch self {
-        case .framework(let frameworkTargetType):
-            switch frameworkTargetType {
-            case .license:
-                [.licensesPlugin]
-            default:
-                []
-            }
-        default:
-            []
-        }
     }
 
     var target: Target {
@@ -127,34 +77,30 @@ enum TargetType {
             plugins: plugins
         )
     }
-}
 
-extension TargetType: CaseIterable {
-    static var allCases: [TargetType] {
-        FrameworkTargetType.allCases.map { .framework($0) } + [
-            .dependencyInjector,
-            .domain,
-            .presentation,
-            .previewCatalog,
-            .scenarioCatalog
-        ]
+    var dependency: PackageDescription.Target.Dependency {
+        PackageDescription.Target.Dependency(stringLiteral: name)
+    }
+
+    var product: PackageDescription.Product {
+        .library(name: name, targets: [name])
     }
 }
 
-func sourcesPath(_ targetType: TargetType) -> String {
-    targetType.path
-}
+enum TestTargetType: CaseIterable {
+    case snapshotTests
 
-func targetName(_ targetType: TargetType) -> String {
-    targetType.name
-}
+    private var name: String {
+        "\(self)".initialUppercased
+    }
 
-func plugins(_ targetType: TargetType) -> [PackageDescription.Target.PluginUsage] {
-    targetType.plugins
-}
-
-func dependencies(_ targetType: TargetType) -> [PackageDescription.Target.Dependency] {
-    targetType.dependencies
+    var target: Target {
+        .testTarget(
+            name: name,
+            dependencies: dependencies,
+            plugins: plugins
+        )
+    }
 }
 
 // Ref: 【Swift】Package.swiftのdependenciesをタイプセーフに扱う https://qiita.com/SNQ-2001/items/ed068414747e28999415
@@ -168,13 +114,6 @@ private extension PackageDescription.Target.Dependency {
     static let previewGallery: Self = .product(name: "PreviewGallery", package: "SnapshotPreviews-iOS")
     static let snapshotting: Self = .product(name: "Snapshotting", package: "SnapshotPreviews-iOS")
     static let snapshottingTests: Self = .product(name: "SnapshottingTests", package: "SnapshotPreviews-iOS")
-
-    // DISample target
-    static let domainLayer: Self = "DomainLayer"
-    static let presentationLayer: Self = "PresentationLayer"
-    static let loggerFramework: Self = "LoggerFramework"
-    static let licenseFramework: Self = "LicenseFramework"
-    static let cloudServiceFramework: Self = "CloudServiceFramework"
 }
 
 private extension PackageDescription.Target.PluginUsage {
@@ -188,13 +127,7 @@ let package = Package(
         .iOS(.v17),
         .macOS(.v14),
     ],
-    products: [
-        .library(name: "DependencyInjectorLayer", targets: ["DependencyInjectorLayer"]),
-        .library(name: "DomainLayer", targets: ["DomainLayer"]),
-        .library(name: "PresentationLayer", targets: ["PresentationLayer"]),
-        .library(name: "PreviewCatalogLayer", targets: ["PreviewCatalogLayer"]),
-        .library(name: "ScenarioCatalogLayer", targets: ["ScenarioCatalogLayer"]),
-    ],
+    products: TargetType.allCases.map { $0.product },
     dependencies: [
         // Library
         .package(url: "https://github.com/firebase/firebase-ios-sdk.git", exact: "10.19.0"), // TODO: 10.22 以上がリリースされたらアップデートする（直らないかもしれないが） https://github.com/firebase/firebase-ios-sdk/issues/12390
@@ -208,96 +141,81 @@ let package = Package(
         // CLI
         .package(url: "https://github.com/uber/mockolo", from: "2.0.1"),
     ],
-    targets: [
-        // MARK: Dependency Injector layer
-        .target(
-            name: targetName(.dependencyInjector),
-            dependencies: [
-                .presentationLayer,
-                .licenseFramework,
-                .loggerFramework,
-                .cloudServiceFramework,
-            ],
-            path: sourcesPath(.dependencyInjector),
-            plugins: plugins(.dependencyInjector)
-        ),
-        
-        // MARK: Domain layer
-        .target(
-            name: targetName(.domain),
-            dependencies: [],
-            path: sourcesPath(.domain),
-            plugins: plugins(.domain)
-        ),
+    targets: TargetType.allCases.map { $0.target } + TestTargetType.allCases.map { $0.target }
+)
 
-        // MARK: Framework layer
-        .target(
-            name: targetName(.framework(.cloudService)),
-            dependencies: [
-                .domainLayer,
+/// 以下を主に編集する
+extension TargetType {
+    var dependencies: [PackageDescription.Target.Dependency] {
+        switch self {
+        case .dependencyInjector:
+            [
+                TargetType.domain.dependency,
+                TargetType.presentation.dependency,
+                TargetType.framework(.cloudService).dependency,
+                TargetType.framework(.license).dependency,
+                TargetType.framework(.logger).dependency,
+            ]
+        case .domain:
+            []
+        case .framework(.cloudService):
+            [
+                TargetType.domain.dependency,
                 .firebaseAnalytics,
-            ],
-            path: sourcesPath(.framework(.cloudService)),
-            plugins: plugins(.framework(.cloudService))
-        ),
-        .target(
-            name: targetName(.framework(.license)),
-            dependencies: [
-                .domainLayer,
-            ],
-            path: sourcesPath(.framework(.license)),
-            plugins: plugins(.framework(.license))
-        ),
-        .target(
-            name: targetName(.framework(.logger)),
-            dependencies: [
-                .domainLayer,
-            ],
-            path: sourcesPath(.framework(.logger)),
-            plugins: plugins(.framework(.logger))
-        ),
-
-        // MARK: Presentation layer
-        .target(
-            name: targetName(.presentation),
-            dependencies: [
-                .domainLayer,
+            ]
+        case .framework(.license):
+            [
+                TargetType.domain.dependency,
+            ]
+        case .framework(.logger):
+            [
+                TargetType.domain.dependency,
+            ]
+        case .presentation:
+            [
+                TargetType.domain.dependency,
                 .previewSnapshots,
-            ],
-            path: sourcesPath(.presentation),
-            plugins: plugins(.presentation)
-        ),
-        
-        // MARK: Preview Catalog layer
-        .target(
-            name: targetName(.previewCatalog),
-            dependencies: [
-                .presentationLayer, // PreviewGallery() 行うモジュールに依存させるとその Preview が生成される
+            ]
+        case .previewCatalog:
+            [
+                TargetType.presentation.dependency, // PreviewGallery() 行うモジュールに依存させるとその Preview が生成される
                 .previewGallery,
-            ],
-            path: sourcesPath(.previewCatalog),
-            plugins: plugins(.previewCatalog)
-        ),
-        
-        // MARK: Scenario Catalog layer
-        .target(
-            name: targetName(.scenarioCatalog),
-            dependencies: [
+            ]
+        case .scenarioCatalog:
+            [
+                TargetType.presentation.dependency,
                 .playbook,
                 .playbookUI,
-                .presentationLayer,
-            ],
-            path: sourcesPath(.scenarioCatalog),
-            plugins: plugins(.scenarioCatalog)
-        ),
+            ]
+        }
+    }
+    
+    var plugins: [PackageDescription.Target.PluginUsage] {
+        switch self {
+        case .framework(.license):
+            [.licensesPlugin]
+        default:
+            []
+        }
+    }
+}
 
-        // MARK: Tests
-        .testTarget(
-            name: "SnapshotTests",
-            dependencies: [
-                .presentationLayer,
+/// 以下を主に編集する
+extension TestTargetType {
+    var dependencies: [PackageDescription.Target.Dependency] {
+        switch self {
+        case .snapshotTests:
+            [
+                TargetType.presentation.dependency,
                 .previewSnapshotsTesting,
             ]
-        ),
-    ]
-)
+        }
+    }
+
+    var plugins: [PackageDescription.Target.PluginUsage] {
+        switch self {
+        default:
+            []
+        }
+    }
+}

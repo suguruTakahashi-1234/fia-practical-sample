@@ -7,74 +7,69 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		445C83982B873C7D00DDF236 /* DependencyInjectorLayer in Frameworks */ = {isa = PBXBuildFile; productRef = 445C83972B873C7D00DDF236 /* DependencyInjectorLayer */; };
-		4471BCB62B81F08800218534 /* StagingApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4471BCB52B81F08800218534 /* StagingApp.swift */; };
-		4471BCBA2B81F08900218534 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4471BCB92B81F08900218534 /* Assets.xcassets */; };
-		4471BCBE2B81F08900218534 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4471BCBD2B81F08900218534 /* Preview Assets.xcassets */; };
-		447577602B84D3EA00DC2FDB /* PresentationLayer in Frameworks */ = {isa = PBXBuildFile; productRef = 4475775F2B84D3EA00DC2FDB /* PresentationLayer */; };
-		44CB56D42B83923F0086D1F2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 44CB56D32B83923F0086D1F2 /* GoogleService-Info.plist */; };
+		445C83662B87144D00DDF236 /* PreviewCatalogApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445C83652B87144D00DDF236 /* PreviewCatalogApp.swift */; };
+		445C836A2B87144D00DDF236 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 445C83692B87144D00DDF236 /* Assets.xcassets */; };
+		445C836E2B87144D00DDF236 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 445C836D2B87144D00DDF236 /* Preview Assets.xcassets */; };
+		445C83782B87166F00DDF236 /* PreviewCatalogLayer in Frameworks */ = {isa = PBXBuildFile; productRef = 445C83772B87166F00DDF236 /* PreviewCatalogLayer */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		4471BCB22B81F08800218534 /* Staging.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Staging.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		4471BCB52B81F08800218534 /* StagingApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StagingApp.swift; sourceTree = "<group>"; };
-		4471BCB92B81F08900218534 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		4471BCBB2B81F08900218534 /* Staging.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Staging.entitlements; sourceTree = "<group>"; };
-		4471BCBD2B81F08900218534 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		44CB56D32B83923F0086D1F2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		445C83622B87144D00DDF236 /* PreviewCatalog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PreviewCatalog.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		445C83652B87144D00DDF236 /* PreviewCatalogApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewCatalogApp.swift; sourceTree = "<group>"; };
+		445C83692B87144D00DDF236 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		445C836B2B87144D00DDF236 /* PreviewCatalog.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PreviewCatalog.entitlements; sourceTree = "<group>"; };
+		445C836D2B87144D00DDF236 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		4471BCAF2B81F08800218534 /* Frameworks */ = {
+		445C835F2B87144D00DDF236 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				447577602B84D3EA00DC2FDB /* PresentationLayer in Frameworks */,
-				445C83982B873C7D00DDF236 /* DependencyInjectorLayer in Frameworks */,
+				445C83782B87166F00DDF236 /* PreviewCatalogLayer in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		4471BCA92B81F08800218534 = {
+		445C83592B87144D00DDF236 = {
 			isa = PBXGroup;
 			children = (
-				4471BCB42B81F08800218534 /* Staging */,
-				4471BCB32B81F08800218534 /* Products */,
-				4471BCE02B81F0CD00218534 /* Frameworks */,
+				445C83642B87144D00DDF236 /* PreviewCatalog */,
+				445C83632B87144D00DDF236 /* Products */,
+				445C83762B87166F00DDF236 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
-		4471BCB32B81F08800218534 /* Products */ = {
+		445C83632B87144D00DDF236 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				4471BCB22B81F08800218534 /* Staging.app */,
+				445C83622B87144D00DDF236 /* PreviewCatalog.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		4471BCB42B81F08800218534 /* Staging */ = {
+		445C83642B87144D00DDF236 /* PreviewCatalog */ = {
 			isa = PBXGroup;
 			children = (
-				4471BCB52B81F08800218534 /* StagingApp.swift */,
-				44CB56D32B83923F0086D1F2 /* GoogleService-Info.plist */,
-				4471BCB92B81F08900218534 /* Assets.xcassets */,
-				4471BCBB2B81F08900218534 /* Staging.entitlements */,
-				4471BCBC2B81F08900218534 /* Preview Content */,
+				445C83652B87144D00DDF236 /* PreviewCatalogApp.swift */,
+				445C83692B87144D00DDF236 /* Assets.xcassets */,
+				445C836B2B87144D00DDF236 /* PreviewCatalog.entitlements */,
+				445C836C2B87144D00DDF236 /* Preview Content */,
 			);
-			path = Staging;
+			path = PreviewCatalog;
 			sourceTree = "<group>";
 		};
-		4471BCBC2B81F08900218534 /* Preview Content */ = {
+		445C836C2B87144D00DDF236 /* Preview Content */ = {
 			isa = PBXGroup;
 			children = (
-				4471BCBD2B81F08900218534 /* Preview Assets.xcassets */,
+				445C836D2B87144D00DDF236 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		4471BCE02B81F0CD00218534 /* Frameworks */ = {
+		445C83762B87166F00DDF236 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 			);
@@ -84,43 +79,42 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		4471BCB12B81F08800218534 /* Staging */ = {
+		445C83612B87144D00DDF236 /* PreviewCatalog */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 4471BCD72B81F08900218534 /* Build configuration list for PBXNativeTarget "Staging" */;
+			buildConfigurationList = 445C83712B87144D00DDF236 /* Build configuration list for PBXNativeTarget "PreviewCatalog" */;
 			buildPhases = (
-				4471BCAE2B81F08800218534 /* Sources */,
-				4471BCAF2B81F08800218534 /* Frameworks */,
-				4471BCB02B81F08800218534 /* Resources */,
+				445C835E2B87144D00DDF236 /* Sources */,
+				445C835F2B87144D00DDF236 /* Frameworks */,
+				445C83602B87144D00DDF236 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = Staging;
+			name = PreviewCatalog;
 			packageProductDependencies = (
-				4475775F2B84D3EA00DC2FDB /* PresentationLayer */,
-				445C83972B873C7D00DDF236 /* DependencyInjectorLayer */,
+				445C83772B87166F00DDF236 /* PreviewCatalogLayer */,
 			);
-			productName = Staging;
-			productReference = 4471BCB22B81F08800218534 /* Staging.app */;
+			productName = PreviewCatalog;
+			productReference = 445C83622B87144D00DDF236 /* PreviewCatalog.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		4471BCAA2B81F08800218534 /* Project object */ = {
+		445C835A2B87144D00DDF236 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1530;
 				LastUpgradeCheck = 1530;
 				TargetAttributes = {
-					4471BCB12B81F08800218534 = {
+					445C83612B87144D00DDF236 = {
 						CreatedOnToolsVersion = 15.3;
 					};
 				};
 			};
-			buildConfigurationList = 4471BCAD2B81F08800218534 /* Build configuration list for PBXProject "Staging" */;
+			buildConfigurationList = 445C835D2B87144D00DDF236 /* Build configuration list for PBXProject "PreviewCatalog" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -128,42 +122,41 @@
 				en,
 				Base,
 			);
-			mainGroup = 4471BCA92B81F08800218534;
-			productRefGroup = 4471BCB32B81F08800218534 /* Products */;
+			mainGroup = 445C83592B87144D00DDF236;
+			productRefGroup = 445C83632B87144D00DDF236 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				4471BCB12B81F08800218534 /* Staging */,
+				445C83612B87144D00DDF236 /* PreviewCatalog */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		4471BCB02B81F08800218534 /* Resources */ = {
+		445C83602B87144D00DDF236 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4471BCBE2B81F08900218534 /* Preview Assets.xcassets in Resources */,
-				4471BCBA2B81F08900218534 /* Assets.xcassets in Resources */,
-				44CB56D42B83923F0086D1F2 /* GoogleService-Info.plist in Resources */,
+				445C836E2B87144D00DDF236 /* Preview Assets.xcassets in Resources */,
+				445C836A2B87144D00DDF236 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		4471BCAE2B81F08800218534 /* Sources */ = {
+		445C835E2B87144D00DDF236 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4471BCB62B81F08800218534 /* StagingApp.swift in Sources */,
+				445C83662B87144D00DDF236 /* PreviewCatalogApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		4471BCD52B81F08900218534 /* Debug */ = {
+		445C836F2B87144D00DDF236 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -224,7 +217,7 @@
 			};
 			name = Debug;
 		};
-		4471BCD62B81F08900218534 /* Release */ = {
+		445C83702B87144D00DDF236 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -277,15 +270,15 @@
 			};
 			name = Release;
 		};
-		4471BCD82B81F08900218534 /* Debug */ = {
+		445C83722B87144D00DDF236 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = Staging/Staging.entitlements;
+				CODE_SIGN_ENTITLEMENTS = PreviewCatalog/PreviewCatalog.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Staging/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"PreviewCatalog/Preview Content\"";
 				DEVELOPMENT_TEAM = Z374HA4GH7;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
@@ -305,26 +298,25 @@
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.3;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.suguru-takahashi.DISample.Staging";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.suguru-takahashi.DISample.PreviewCatalog";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
-				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
-		4471BCD92B81F08900218534 /* Release */ = {
+		445C83732B87144D00DDF236 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = Staging/Staging.entitlements;
+				CODE_SIGN_ENTITLEMENTS = PreviewCatalog/PreviewCatalog.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Staging/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"PreviewCatalog/Preview Content\"";
 				DEVELOPMENT_TEAM = Z374HA4GH7;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
@@ -344,11 +336,10 @@
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.3;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.suguru-takahashi.DISample.Staging";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.suguru-takahashi.DISample.PreviewCatalog";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
-				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -358,20 +349,20 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		4471BCAD2B81F08800218534 /* Build configuration list for PBXProject "Staging" */ = {
+		445C835D2B87144D00DDF236 /* Build configuration list for PBXProject "PreviewCatalog" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				4471BCD52B81F08900218534 /* Debug */,
-				4471BCD62B81F08900218534 /* Release */,
+				445C836F2B87144D00DDF236 /* Debug */,
+				445C83702B87144D00DDF236 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		4471BCD72B81F08900218534 /* Build configuration list for PBXNativeTarget "Staging" */ = {
+		445C83712B87144D00DDF236 /* Build configuration list for PBXNativeTarget "PreviewCatalog" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				4471BCD82B81F08900218534 /* Debug */,
-				4471BCD92B81F08900218534 /* Release */,
+				445C83722B87144D00DDF236 /* Debug */,
+				445C83732B87144D00DDF236 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -379,15 +370,11 @@
 /* End XCConfigurationList section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		445C83972B873C7D00DDF236 /* DependencyInjectorLayer */ = {
+		445C83772B87166F00DDF236 /* PreviewCatalogLayer */ = {
 			isa = XCSwiftPackageProductDependency;
-			productName = DependencyInjectorLayer;
-		};
-		4475775F2B84D3EA00DC2FDB /* PresentationLayer */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = PresentationLayer;
+			productName = PreviewCatalogLayer;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
-	rootObject = 4471BCAA2B81F08800218534 /* Project object */;
+	rootObject = 445C835A2B87144D00DDF236 /* Project object */;
 }

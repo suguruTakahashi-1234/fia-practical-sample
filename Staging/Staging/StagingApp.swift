@@ -5,7 +5,7 @@
 
 import SwiftUI
 import PresentationLayer
-import DILayer
+import DependencyInjectorLayer
 
 @main
 struct ProductionApp: App {

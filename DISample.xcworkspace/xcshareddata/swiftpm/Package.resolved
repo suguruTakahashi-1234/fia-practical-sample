@@ -1,5 +1,5 @@
 {
-  "originHash" : "dc271e21b9a904aa2f06166939caee0535a858cc2d7c42dcc9513cab0b6e0a95",
+  "originHash" : "8a8fdb941f0e2bbcca0ab03a24ee99a4340afcc6849d2d7a57fe3934d2b47d8d",
   "pins" : [
     {
       "identity" : "abseil-cpp-binary",
@@ -8,6 +8,15 @@
       "state" : {
         "revision" : "bfc0b6f81adc06ce5121eb23f628473638d67c5c",
         "version" : "1.2022062300.0"
+      }
+    },
+    {
+      "identity" : "accessibilitysnapshot",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/EmergeTools/AccessibilitySnapshot.git",
+      "state" : {
+        "revision" : "f305653df67004266e4c49d10a23a278b7168986",
+        "version" : "1.0.1"
       }
     },
     {
@@ -26,6 +35,15 @@
       "state" : {
         "revision" : "d9bcd141c3e4ad48a9500e6faeebb073f43cbcbd",
         "version" : "10.19.0"
+      }
+    },
+    {
+      "identity" : "flyingfox",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/swhitty/FlyingFox.git",
+      "state" : {
+        "revision" : "ed86fc6d68ec1467aaab3e494b581e66dd7a4512",
+        "version" : "0.12.2"
       }
     },
     {
@@ -134,6 +152,15 @@
       "state" : {
         "revision" : "e70e889c0196c76d22759eb50d6a0270ca9f1d9e",
         "version" : "2.3.1"
+      }
+    },
+    {
+      "identity" : "snapshotpreviews-ios",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/EmergeTools/SnapshotPreviews-iOS",
+      "state" : {
+        "revision" : "6c3eef438a1f8458180f7d0f3c52959594a329f7",
+        "version" : "0.8.4"
       }
     },
     {

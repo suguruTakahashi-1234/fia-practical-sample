@@ -6,13 +6,8 @@
 import SwiftUI
 import PlaybookUI
 
-private enum UICatalogRootTab {
-    case gallery
-    case catalog
-}
-
-public struct UICatalogRootView: View {
-    @State private var selectedTab: UICatalogRootTab = .gallery
+public struct ScenarioCatalogRootView: View {
+    @State private var selectedTab: ScenarioCatalogRootTab = .gallery
     
     public init() {
         Playbook.default.add(AllScenarios.self)
@@ -21,7 +16,7 @@ public struct UICatalogRootView: View {
     public var body: some View {
         TabView(selection: $selectedTab) {
             PlaybookGallery()
-                .tag(UICatalogRootTab.gallery)
+                .tag(ScenarioCatalogRootTab.gallery)
                 .tabItem {
                     Image(systemName: "rectangle.grid.3x2")
                         .accessibilityHidden(true)
@@ -29,7 +24,7 @@ public struct UICatalogRootView: View {
                 }
 
             PlaybookCatalog()
-                .tag(UICatalogRootTab.catalog)
+                .tag(ScenarioCatalogRootTab.catalog)
                 .tabItem {
                     Image(systemName: "doc.text.magnifyingglass")
                         .accessibilityHidden(true)

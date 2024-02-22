@@ -15,10 +15,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "4428A4672B7CBF2100C57F9A"
-               BuildableName = "UICatalog.app"
-               BlueprintName = "UICatalog"
-               ReferencedContainer = "container:UICatalog.xcodeproj">
+               BlueprintIdentifier = "DependencyInjectorLayer"
+               BuildableName = "DependencyInjectorLayer"
+               BlueprintName = "DependencyInjectorLayer"
+               ReferencedContainer = "container:">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -40,16 +40,6 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "4428A4672B7CBF2100C57F9A"
-            BuildableName = "UICatalog.app"
-            BlueprintName = "UICatalog"
-            ReferencedContainer = "container:UICatalog.xcodeproj">
-         </BuildableReference>
-      </BuildableProductRunnable>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
@@ -57,16 +47,15 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "4428A4672B7CBF2100C57F9A"
-            BuildableName = "UICatalog.app"
-            BlueprintName = "UICatalog"
-            ReferencedContainer = "container:UICatalog.xcodeproj">
+            BlueprintIdentifier = "DependencyInjectorLayer"
+            BuildableName = "DependencyInjectorLayer"
+            BlueprintName = "DependencyInjectorLayer"
+            ReferencedContainer = "container:">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

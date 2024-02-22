@@ -31,7 +31,7 @@ enum TargetType {
     case previewCatalog
     case scenarioCatalog
     
-    var folderName: String {
+    private var folderName: String {
         switch self {
         case .framework:
             "Framework"
@@ -63,7 +63,6 @@ enum TargetType {
         switch self {
         case .dependencyInjector:
             [
-                .domainLayer,
                 .presentationLayer,
                 .licenseFramework,
                 .loggerFramework,
@@ -101,7 +100,6 @@ enum TargetType {
             [
                 .playbook,
                 .playbookUI,
-                .domainLayer,
                 .presentationLayer,
             ]
         }
@@ -121,7 +119,7 @@ enum TargetType {
         }
     }
 
-    var value: Target {
+    var target: Target {
         .target(
             name: name,
             dependencies: dependencies,
@@ -151,6 +149,14 @@ func targetName(_ targetType: TargetType) -> String {
     targetType.name
 }
 
+func plugins(_ targetType: TargetType) -> [PackageDescription.Target.PluginUsage] {
+    targetType.plugins
+}
+
+func dependencies(_ targetType: TargetType) -> [PackageDescription.Target.Dependency] {
+    targetType.dependencies
+}
+
 // Ref: 【Swift】Package.swiftのdependenciesをタイプセーフに扱う https://qiita.com/SNQ-2001/items/ed068414747e28999415
 private extension PackageDescription.Target.Dependency {
     /// Third party SDK
@@ -166,8 +172,6 @@ private extension PackageDescription.Target.Dependency {
     // DISample target
     static let domainLayer: Self = "DomainLayer"
     static let presentationLayer: Self = "PresentationLayer"
-    static let scenarioCatalogLayer: Self = "ScenarioCatalogLayer"
-    static let previewCatalogLayer: Self = "PreviewCatalog"
     static let loggerFramework: Self = "LoggerFramework"
     static let licenseFramework: Self = "LicenseFramework"
     static let cloudServiceFramework: Self = "CloudServiceFramework"
@@ -214,14 +218,16 @@ let package = Package(
                 .loggerFramework,
                 .cloudServiceFramework,
             ],
-            path: sourcesPath(.dependencyInjector)
+            path: sourcesPath(.dependencyInjector),
+            plugins: plugins(.dependencyInjector)
         ),
         
         // MARK: Domain layer
         .target(
             name: targetName(.domain),
             dependencies: [],
-            path: sourcesPath(.domain)
+            path: sourcesPath(.domain),
+            plugins: plugins(.domain)
         ),
 
         // MARK: Framework layer
@@ -231,7 +237,8 @@ let package = Package(
                 .domainLayer,
                 .firebaseAnalytics,
             ],
-            path: sourcesPath(.framework(.cloudService))
+            path: sourcesPath(.framework(.cloudService)),
+            plugins: plugins(.framework(.cloudService))
         ),
         .target(
             name: targetName(.framework(.license)),
@@ -239,16 +246,15 @@ let package = Package(
                 .domainLayer,
             ],
             path: sourcesPath(.framework(.license)),
-            plugins: [
-                .licensesPlugin,
-            ]
+            plugins: plugins(.framework(.license))
         ),
         .target(
             name: targetName(.framework(.logger)),
             dependencies: [
                 .domainLayer,
             ],
-            path: sourcesPath(.framework(.logger))
+            path: sourcesPath(.framework(.logger)),
+            plugins: plugins(.framework(.logger))
         ),
 
         // MARK: Presentation layer
@@ -258,7 +264,8 @@ let package = Package(
                 .domainLayer,
                 .previewSnapshots,
             ],
-            path: sourcesPath(.presentation)
+            path: sourcesPath(.presentation),
+            plugins: plugins(.presentation)
         ),
         
         // MARK: Preview Catalog layer
@@ -268,7 +275,8 @@ let package = Package(
                 .presentationLayer, // PreviewGallery() 行うモジュールに依存させるとその Preview が生成される
                 .previewGallery,
             ],
-            path: sourcesPath(.previewCatalog)
+            path: sourcesPath(.previewCatalog),
+            plugins: plugins(.previewCatalog)
         ),
         
         // MARK: Scenario Catalog layer
@@ -279,7 +287,8 @@ let package = Package(
                 .playbookUI,
                 .presentationLayer,
             ],
-            path: sourcesPath(.scenarioCatalog)
+            path: sourcesPath(.scenarioCatalog),
+            plugins: plugins(.scenarioCatalog)
         ),
 
         // MARK: Tests

@@ -88,7 +88,7 @@ enum TargetType: CaseIterable {
 }
 
 enum TestTargetType: CaseIterable {
-    case snapshotTests
+    case previewSnapshotTests
 
     private var name: String {
         "\(self)".initialUppercased
@@ -204,7 +204,7 @@ extension TargetType {
 extension TestTargetType {
     var dependencies: [PackageDescription.Target.Dependency] {
         switch self {
-        case .snapshotTests:
+        case .previewSnapshotTests:
             [
                 TargetType.presentation.dependency,
                 .previewSnapshotsTesting,

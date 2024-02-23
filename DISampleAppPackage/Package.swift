@@ -103,7 +103,6 @@ enum TestTargetType: CaseIterable {
     }
 }
 
-// Ref: 【Swift】Package.swiftのdependenciesをタイプセーフに扱う https://qiita.com/SNQ-2001/items/ed068414747e28999415
 private extension PackageDescription.Target.Dependency {
     /// Third party SDK
     static let firebaseAnalytics: Self = .product(name: "FirebaseAnalytics", package: "firebase-ios-sdk")

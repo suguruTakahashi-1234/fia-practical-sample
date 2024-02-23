@@ -112,8 +112,6 @@ private extension PackageDescription.Target.Dependency {
     static let previewSnapshots: Self = .product(name: "PreviewSnapshots", package: "swiftui-preview-snapshots")
     static let previewSnapshotsTesting: Self = .product(name: "PreviewSnapshotsTesting", package: "swiftui-preview-snapshots")
     static let previewGallery: Self = .product(name: "PreviewGallery", package: "SnapshotPreviews-iOS")
-    static let snapshotting: Self = .product(name: "Snapshotting", package: "SnapshotPreviews-iOS")
-    static let snapshottingTests: Self = .product(name: "SnapshottingTests", package: "SnapshotPreviews-iOS")
 }
 
 private extension PackageDescription.Target.PluginUsage {

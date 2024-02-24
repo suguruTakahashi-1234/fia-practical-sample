@@ -3,7 +3,7 @@
 
 import PackageDescription
 
-extension String {
+private extension String {
     /// ex) "dependencyInjector" -> "DependencyInjector"
     var initialUppercased: String {
         guard !isEmpty else {

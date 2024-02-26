@@ -2,6 +2,7 @@
 // The swift-tools-version declares the minimum version of Swift required to build this package.
 
 import PackageDescription
+import CompilerPluginSupport // for Swift Macros
 
 private extension String {
     /// ex) "dependencyInjector" -> "DependencyInjector"
@@ -20,6 +21,26 @@ struct DependencyLibrary {
     init(_ dependencies: [PackageDescription.Target.Dependency] = [], plugins: [PackageDescription.Target.PluginUsage] = []) {
         self.dependencies = dependencies
         self.plugins = plugins
+    }
+}
+
+enum MacroTargetType: CaseIterable {
+    case swiftMacroSample
+
+    private var name: String {
+        "\(self)".initialUppercased
+    }
+
+    var target: PackageDescription.Target {
+        .macro(
+            name: name,
+            dependencies: dependencyLibrary.dependencies,
+            plugins: dependencyLibrary.plugins
+        )
+    }
+
+    var dependency: PackageDescription.Target.Dependency {
+        PackageDescription.Target.Dependency(stringLiteral: name)
     }
 }
 
@@ -79,7 +100,7 @@ enum TargetType: CaseIterable {
         
     }
 
-    var target: Target {
+    var target: PackageDescription.Target {
         .target(
             name: name,
             dependencies: dependencyLibrary.dependencies,
@@ -104,7 +125,7 @@ enum TestTargetType: CaseIterable {
         "\(self)".initialUppercased
     }
 
-    var target: Target {
+    var target: PackageDescription.Target {
         .testTarget(
             name: name,
             dependencies: dependencyLibrary.dependencies,
@@ -121,8 +142,10 @@ private extension PackageDescription.Target.Dependency {
     static let previewSnapshots: Self = .product(name: "PreviewSnapshots", package: "swiftui-preview-snapshots")
     static let previewSnapshotsTesting: Self = .product(name: "PreviewSnapshotsTesting", package: "swiftui-preview-snapshots")
     static let previewGallery: Self = .product(name: "PreviewGallery", package: "SnapshotPreviews-iOS")
+    static let swiftSyntaxMacros: Self = .product(name: "SwiftSyntaxMacros", package: "swift-syntax")
+    static let swiftCompilerPlugin: Self = .product(name: "SwiftCompilerPlugin", package: "swift-syntax")
 
-    // TODO: "0.8.4" のバージョンでは、以下のSDKに依存したテスコードを作成しようとしてビルドに失敗したため、バージョンが上がったら再度確認する（おそらくSDK側のバグ）
+    // TODO: "0.8.4" のバージョンでは、以下のSDKに依存したテスコードを作成しようとしたがビルドに失敗したため、バージョンが上がったら再度確認する（おそらくSDK側のバグ）
 //    static let snapshotting: Self = .product(name: "Snapshotting", package: "SnapshotPreviews-iOS")
 //    static let snapshottingTests: Self = .product(name: "SnapshottingTests", package: "SnapshotPreviews-iOS")
 }
@@ -145,17 +168,32 @@ let package = Package(
         .package(url: "https://github.com/playbook-ui/playbook-ios.git", from: "0.3.5"),
         .package(url: "https://github.com/doordash-oss/swiftui-preview-snapshots", from: "1.1.1"),
         .package(url: "https://github.com/EmergeTools/SnapshotPreviews-iOS", from: "0.8.4"),
-
+        .package(url: "https://github.com/apple/swift-syntax", from: "509.1.1"),
+        
         // Plugin
         .package(url: "https://github.com/maiyama18/LicensesPlugin", from: "0.1.6"),
-        
+
         // CLI
-        .package(url: "https://github.com/uber/mockolo", from: "2.0.1"),
+        // .package(url: "https://github.com/uber/mockolo", from: "2.0.1"), // TODO: Spyable への移行もしくはMintへの移行の検討（SpyableとMockoloはSPMでバージョンが競合するので同時の管理は今のところ難しい）
+        // .package(url: "https://github.com/Matejkob/swift-spyable", from: "0.3.0"),
     ],
-    targets: TargetType.allCases.map { $0.target } + TestTargetType.allCases.map { $0.target }
+    targets: MacroTargetType.allCases.map { $0.target } + TargetType.allCases.map { $0.target } + TestTargetType.allCases.map { $0.target }
 )
 
-/// 以下を主に編集する
+// MARK: Macro
+extension MacroTargetType {
+    var dependencyLibrary: DependencyLibrary {
+        switch self {
+        case .swiftMacroSample:
+            .init([
+                .swiftSyntaxMacros,
+                .swiftCompilerPlugin,
+            ])
+        }
+    }
+}
+
+// MARK: Target
 extension TargetType {
     var dependencyLibrary: DependencyLibrary {
         switch self {
@@ -204,7 +242,7 @@ extension TargetType {
     }
 }
 
-/// 以下を主に編集する
+// MARK: Test
 extension TestTargetType {
     var dependencyLibrary: DependencyLibrary {
         switch self {

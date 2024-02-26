@@ -13,6 +13,16 @@ private extension String {
     }
 }
 
+struct DependencySDK {
+    let dependencies: [PackageDescription.Target.Dependency]
+    let plugins: [PackageDescription.Target.PluginUsage]
+    
+    init(_ dependencies: [PackageDescription.Target.Dependency] = [], plugins: [PackageDescription.Target.PluginUsage] = []) {
+        self.dependencies = dependencies
+        self.plugins = plugins
+    }
+}
+
 enum FrameworkTargetType: CaseIterable {
     case cloudService
     case license
@@ -72,9 +82,9 @@ enum TargetType: CaseIterable {
     var target: Target {
         .target(
             name: name,
-            dependencies: dependencies,
+            dependencies: sdk.dependencies,
             path: path,
-            plugins: plugins
+            plugins: sdk.plugins
         )
     }
 
@@ -97,8 +107,8 @@ enum TestTargetType: CaseIterable {
     var target: Target {
         .testTarget(
             name: name,
-            dependencies: dependencies,
-            plugins: plugins
+            dependencies: sdk.dependencies,
+            plugins: sdk.plugins
         )
     }
 }
@@ -145,78 +155,64 @@ let package = Package(
 
 /// 以下を主に編集する
 extension TargetType {
-    var dependencies: [PackageDescription.Target.Dependency] {
+    var sdk: DependencySDK {
         switch self {
         case .dependencyInjector:
-            [
-                TargetType.domain.dependency,
-                TargetType.presentation.dependency,
-                TargetType.framework(.cloudService).dependency,
-                TargetType.framework(.license).dependency,
-                TargetType.framework(.logger).dependency,
-            ]
+                .init([
+                    TargetType.domain.dependency,
+                    TargetType.presentation.dependency,
+                    TargetType.framework(.cloudService).dependency,
+                    TargetType.framework(.license).dependency,
+                    TargetType.framework(.logger).dependency,
+                ])
         case .domain:
-            []
+                .init()
         case .framework(.cloudService):
-            [
-                TargetType.domain.dependency,
-                .firebaseAnalytics,
-            ]
+                .init([
+                    TargetType.domain.dependency,
+                    .firebaseAnalytics,
+                ])
         case .framework(.license):
-            [
-                TargetType.domain.dependency,
-            ]
+                .init([
+                    TargetType.domain.dependency,
+                ], plugins: [
+                    .licensesPlugin
+                ])
         case .framework(.logger):
-            [
-                TargetType.domain.dependency,
-            ]
+                .init([
+                    TargetType.domain.dependency,
+                ])
         case .presentation:
-            [
-                TargetType.domain.dependency,
-                .previewSnapshots,
-            ]
+                .init([
+                    TargetType.domain.dependency,
+                    .previewSnapshots,
+                ])
         case .previewCatalog:
-            [
-                TargetType.presentation.dependency, // PreviewGallery() 行うモジュールに依存させるとその Preview が生成される
-                .previewGallery,
-            ]
+                .init([
+                    TargetType.presentation.dependency, // PreviewGallery() 行うモジュールに依存させるとその Preview が生成される
+                    .previewGallery,
+                ])
         case .scenarioCatalog:
-            [
-                TargetType.presentation.dependency,
-                .playbook,
-                .playbookUI,
-            ]
-        }
-    }
-    
-    var plugins: [PackageDescription.Target.PluginUsage] {
-        switch self {
-        case .framework(.license):
-            [.licensesPlugin]
-        default:
-            []
+                .init([
+                    TargetType.presentation.dependency,
+                    .playbook,
+                    .playbookUI,
+                ])
         }
     }
 }
 
 /// 以下を主に編集する
 extension TestTargetType {
-    var dependencies: [PackageDescription.Target.Dependency] {
+    var sdk: DependencySDK {
         switch self {
         case .previewSnapshotTest:
-            [
+            .init([
                 TargetType.presentation.dependency,
                 .previewSnapshotsTesting,
 //                .snapshotting,
 //                .snapshottingTests,
-            ]
-        }
-    }
-
-    var plugins: [PackageDescription.Target.PluginUsage] {
-        switch self {
-        default:
-            []
+            ])
         }
     }
 }

@@ -1,0 +1,11 @@
+// TODO: update file header
+
+import PreviewSnapshotsTesting
+import XCTest
+@testable import PresentationLayer
+
+final class {{ argument.screenName }}ViewTest: XCTestCase {
+    func test{{ argument.screenName }}View() {
+        SnapshotConfig.previewTest({{ argument.screenName }}View_Previews.self)
+    }
+}

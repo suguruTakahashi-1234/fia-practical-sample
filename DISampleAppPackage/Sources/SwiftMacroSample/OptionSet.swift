@@ -10,7 +10,7 @@ import SwiftSyntaxMacros
 @attached(extension, conformances: OptionSet)
 public macro OptionSet<RawType>() = #externalMacro(module: "SwiftMacros", type: "OptionSetMacro")
 
-// MARK: - sample
+// MARK: - sample(使う予定はないです)
 
 @OptionSet<Int>
 public struct SundaeToppings {

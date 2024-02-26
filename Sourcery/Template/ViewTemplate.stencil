@@ -1,21 +1,19 @@
-// Generated using Sourcery 2.1.7 — https://github.com/krzysztofzablocki/Sourcery
-// DO NOT EDIT
-
 // TODO: update file header
 
 import SwiftUI
 import DomainLayer
 
-public struct SettingView: View {
-    private let router: SettingWireframe
-    @StateObject private var presenter: SettingPresenter
+public struct {{ argument.screenName }}View: View {
+    private let router: {{ argument.screenName }}Wireframe
+    @StateObject private var presenter: {{ argument.screenName }}Presenter
 
-    public init(router: some SettingWireframe, dependency: some SettingPresenterDependency) {
+    public init(router: some {{ argument.screenName }}Wireframe, dependency: some {{ argument.screenName }}PresenterDependency) {
         self.router = router
         _presenter = .init(wrappedValue: .init(dependency: dependency))
     }
+    
     public var body: some View {
-        Text("SettingView")
+        Text("{{ argument.screenName }}View")
             .task {
                 presenter.onAppear()
             }
@@ -28,7 +26,7 @@ public struct SettingView: View {
 // MARK: Preview
 import PreviewSnapshots
 
-struct SettingView_Previews: PreviewProvider, SnapshotTestable {
+struct {{ argument.screenName }}View_Previews: PreviewProvider, SnapshotTestable {
     static var previews: some View {
         snapshots.previews.previewLayout(.sizeThatFits)
     }
@@ -37,7 +35,7 @@ struct SettingView_Previews: PreviewProvider, SnapshotTestable {
         .init(
             configurations: emptyConfiguration,
             configure: { state in
-                SettingView(router: AppRootRouter.empty, dependency: state)
+                {{ argument.screenName }}View(router: AppRootRouter.empty, dependency: state)
             }
         )
     }

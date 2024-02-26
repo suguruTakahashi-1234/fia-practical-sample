@@ -5,4 +5,4 @@
 
 import Foundation
 
-public protocol AppRootRouterDependency: AppRootPresenterDependency, LicenseListPresenterDependency {}
+public protocol AppRootRouterDependency: AppRootPresenterDependency, LicenseListPresenterDependency, SettingPresenterDependency {}

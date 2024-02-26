@@ -168,14 +168,13 @@ let package = Package(
         .package(url: "https://github.com/playbook-ui/playbook-ios.git", from: "0.3.5"),
         .package(url: "https://github.com/doordash-oss/swiftui-preview-snapshots", from: "1.1.1"),
         .package(url: "https://github.com/EmergeTools/SnapshotPreviews-iOS", from: "0.8.4"),
-        .package(url: "https://github.com/apple/swift-syntax", from: "509.1.1"),
-        
+        .package(url: "https://github.com/apple/swift-syntax", from: "509.1.1"), // SwiftSyntax の競合
+
         // Plugin
         .package(url: "https://github.com/maiyama18/LicensesPlugin", from: "0.1.6"),
 
-        // CLI
-        // .package(url: "https://github.com/uber/mockolo", from: "2.0.1"), // TODO: Spyable への移行もしくはMintへの移行の検討（SpyableとMockoloはSPMでバージョンが競合するので同時の管理は今のところ難しい）
-        // .package(url: "https://github.com/Matejkob/swift-spyable", from: "0.3.0"),
+        // for CLI
+        .package(url: "https://github.com/yonaskolb/Mint.git", from: "0.17.5"),
     ],
     targets: MacroTargetType.allCases.map { $0.target } + TargetType.allCases.map { $0.target } + TestTargetType.allCases.map { $0.target }
 )

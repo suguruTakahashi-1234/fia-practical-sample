@@ -1,15 +1,12 @@
-// Generated using Sourcery 2.1.7 — https://github.com/krzysztofzablocki/Sourcery
-// DO NOT EDIT
-
 // TODO: update file header
 
 import Foundation
 import DomainLayer
 
 @MainActor
-final class SettingPresenter: ObservableObject {
+final class {{ argument.screenName }}Presenter: ObservableObject {
 
-    init(dependency: some SettingPresenterDependency) {
+    init(dependency: some {{ argument.screenName }}PresenterDependency) {
         LoggerContainer.initLog()
     }
 

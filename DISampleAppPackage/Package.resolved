@@ -1,5 +1,5 @@
 {
-  "originHash" : "7eb2c11cf6f0f9ee1f74f736d7917990fc86c7b3b94f5be1f9d5c8b972321b3b",
+  "originHash" : "1eddbd9e14dd80e13cb6f4b214b0257d2577f3374cdfb8ac4d99734137ced74a",
   "pins" : [
     {
       "identity" : "abseil-cpp-binary",
@@ -8,6 +8,15 @@
       "state" : {
         "revision" : "bfc0b6f81adc06ce5121eb23f628473638d67c5c",
         "version" : "1.2022062300.0"
+      }
+    },
+    {
+      "identity" : "accessibilitysnapshot",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/EmergeTools/AccessibilitySnapshot.git",
+      "state" : {
+        "revision" : "f305653df67004266e4c49d10a23a278b7168986",
+        "version" : "1.0.1"
       }
     },
     {
@@ -26,6 +35,15 @@
       "state" : {
         "revision" : "d9bcd141c3e4ad48a9500e6faeebb073f43cbcbd",
         "version" : "10.19.0"
+      }
+    },
+    {
+      "identity" : "flyingfox",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/swhitty/FlyingFox.git",
+      "state" : {
+        "revision" : "ed86fc6d68ec1467aaab3e494b581e66dd7a4512",
+        "version" : "0.12.2"
       }
     },
     {
@@ -101,12 +119,12 @@
       }
     },
     {
-      "identity" : "mockolo",
+      "identity" : "mint",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/uber/mockolo",
+      "location" : "https://github.com/yonaskolb/Mint.git",
       "state" : {
-        "revision" : "e07a778a4504ffed908ab70c83f89ceb173f41b5",
-        "version" : "2.0.1"
+        "revision" : "808c2d928552f4bac16ccc83654d3a04f328f1ae",
+        "version" : "0.17.5"
       }
     },
     {
@@ -116,6 +134,15 @@
       "state" : {
         "revision" : "819d0a2173aff699fb8c364b6fb906f7cdb1a692",
         "version" : "2.30909.0"
+      }
+    },
+    {
+      "identity" : "pathkit",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/kylef/PathKit.git",
+      "state" : {
+        "revision" : "3bfd2737b700b9a36565a8c94f4ad2b050a5e574",
+        "version" : "1.0.1"
       }
     },
     {
@@ -137,12 +164,30 @@
       }
     },
     {
-      "identity" : "swift-argument-parser",
+      "identity" : "rainbow",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/apple/swift-argument-parser.git",
+      "location" : "https://github.com/onevcat/Rainbow.git",
       "state" : {
-        "revision" : "c8ed701b513cf5177118a175d85fbbbcd707ab41",
-        "version" : "1.3.0"
+        "revision" : "e0dada9cd44e3fa7ec3b867e49a8ddbf543e3df3",
+        "version" : "4.0.1"
+      }
+    },
+    {
+      "identity" : "snapshotpreviews-ios",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/EmergeTools/SnapshotPreviews-iOS",
+      "state" : {
+        "revision" : "6c3eef438a1f8458180f7d0f3c52959594a329f7",
+        "version" : "0.8.4"
+      }
+    },
+    {
+      "identity" : "spectre",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/kylef/Spectre.git",
+      "state" : {
+        "revision" : "26cc5e9ae0947092c7139ef7ba612e34646086c7",
+        "version" : "0.10.1"
       }
     },
     {
@@ -155,12 +200,48 @@
       }
     },
     {
+      "identity" : "swift-snapshot-testing",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/pointfreeco/swift-snapshot-testing",
+      "state" : {
+        "revision" : "26ed3a2b4a2df47917ca9b790a57f91285b923fb",
+        "version" : "1.12.0"
+      }
+    },
+    {
       "identity" : "swift-syntax",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/apple/swift-syntax.git",
       "state" : {
-        "revision" : "cd793adf5680e138bf2bcbaacc292490175d0dcd",
-        "version" : "508.0.0"
+        "revision" : "64889f0c732f210a935a0ad7cda38f77f876262d",
+        "version" : "509.1.1"
+      }
+    },
+    {
+      "identity" : "swiftcli",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/jakeheis/SwiftCLI.git",
+      "state" : {
+        "revision" : "2e949055d9797c1a6bddcda0e58dada16cc8e970",
+        "version" : "6.0.3"
+      }
+    },
+    {
+      "identity" : "swiftui-preview-snapshots",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/doordash-oss/swiftui-preview-snapshots",
+      "state" : {
+        "revision" : "36cd3662a48ef75cc13eae182d468178279a0445",
+        "version" : "1.1.1"
+      }
+    },
+    {
+      "identity" : "version",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/mxcl/Version.git",
+      "state" : {
+        "revision" : "1fe824b80d89201652e7eca7c9252269a1d85e25",
+        "version" : "2.0.1"
       }
     }
   ],

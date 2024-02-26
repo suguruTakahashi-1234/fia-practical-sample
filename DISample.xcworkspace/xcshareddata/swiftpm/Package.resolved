@@ -1,5 +1,5 @@
 {
-  "originHash" : "7e423803c5b6a93a40b28b3c5d33f1b6747e0e5bd3d1605eb76314dd0a2299d9",
+  "originHash" : "950f8014a4b3afb288d84a3fe533174264112c29f18028b68a3fb00131b9155b",
   "pins" : [
     {
       "identity" : "abseil-cpp-binary",
@@ -119,12 +119,30 @@
       }
     },
     {
+      "identity" : "mint",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/yonaskolb/Mint.git",
+      "state" : {
+        "revision" : "808c2d928552f4bac16ccc83654d3a04f328f1ae",
+        "version" : "0.17.5"
+      }
+    },
+    {
       "identity" : "nanopb",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/firebase/nanopb.git",
       "state" : {
         "revision" : "819d0a2173aff699fb8c364b6fb906f7cdb1a692",
         "version" : "2.30909.0"
+      }
+    },
+    {
+      "identity" : "pathkit",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/kylef/PathKit.git",
+      "state" : {
+        "revision" : "3bfd2737b700b9a36565a8c94f4ad2b050a5e574",
+        "version" : "1.0.1"
       }
     },
     {
@@ -146,12 +164,30 @@
       }
     },
     {
+      "identity" : "rainbow",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/onevcat/Rainbow.git",
+      "state" : {
+        "revision" : "e0dada9cd44e3fa7ec3b867e49a8ddbf543e3df3",
+        "version" : "4.0.1"
+      }
+    },
+    {
       "identity" : "snapshotpreviews-ios",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/EmergeTools/SnapshotPreviews-iOS",
       "state" : {
         "revision" : "6c3eef438a1f8458180f7d0f3c52959594a329f7",
         "version" : "0.8.4"
+      }
+    },
+    {
+      "identity" : "spectre",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/kylef/Spectre.git",
+      "state" : {
+        "revision" : "26cc5e9ae0947092c7139ef7ba612e34646086c7",
+        "version" : "0.10.1"
       }
     },
     {
@@ -182,12 +218,30 @@
       }
     },
     {
+      "identity" : "swiftcli",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/jakeheis/SwiftCLI.git",
+      "state" : {
+        "revision" : "2e949055d9797c1a6bddcda0e58dada16cc8e970",
+        "version" : "6.0.3"
+      }
+    },
+    {
       "identity" : "swiftui-preview-snapshots",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/doordash-oss/swiftui-preview-snapshots",
       "state" : {
         "revision" : "36cd3662a48ef75cc13eae182d468178279a0445",
         "version" : "1.1.1"
+      }
+    },
+    {
+      "identity" : "version",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/mxcl/Version.git",
+      "state" : {
+        "revision" : "1fe824b80d89201652e7eca7c9252269a1d85e25",
+        "version" : "2.0.1"
       }
     }
   ],

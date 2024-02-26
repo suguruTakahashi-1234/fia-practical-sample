@@ -13,7 +13,7 @@ private extension String {
     }
 }
 
-struct DependencySDK {
+struct DependencyLibrary {
     let dependencies: [PackageDescription.Target.Dependency]
     let plugins: [PackageDescription.Target.PluginUsage]
     
@@ -82,9 +82,9 @@ enum TargetType: CaseIterable {
     var target: Target {
         .target(
             name: name,
-            dependencies: sdk.dependencies,
+            dependencies: dependencyLibrary.dependencies,
             path: path,
-            plugins: sdk.plugins
+            plugins: dependencyLibrary.plugins
         )
     }
 
@@ -107,8 +107,8 @@ enum TestTargetType: CaseIterable {
     var target: Target {
         .testTarget(
             name: name,
-            dependencies: sdk.dependencies,
-            plugins: sdk.plugins
+            dependencies: dependencyLibrary.dependencies,
+            plugins: dependencyLibrary.plugins
         )
     }
 }
@@ -121,8 +121,10 @@ private extension PackageDescription.Target.Dependency {
     static let previewSnapshots: Self = .product(name: "PreviewSnapshots", package: "swiftui-preview-snapshots")
     static let previewSnapshotsTesting: Self = .product(name: "PreviewSnapshotsTesting", package: "swiftui-preview-snapshots")
     static let previewGallery: Self = .product(name: "PreviewGallery", package: "SnapshotPreviews-iOS")
-    static let snapshotting: Self = .product(name: "Snapshotting", package: "SnapshotPreviews-iOS")
-    static let snapshottingTests: Self = .product(name: "SnapshottingTests", package: "SnapshotPreviews-iOS")
+
+    // TODO: "0.8.4" のバージョンでは、以下のSDKに依存したテスコードを作成しようとしてビルドに失敗したため、バージョンが上がったら再度確認する（おそらくSDK側のバグ）
+//    static let snapshotting: Self = .product(name: "Snapshotting", package: "SnapshotPreviews-iOS")
+//    static let snapshottingTests: Self = .product(name: "SnapshottingTests", package: "SnapshotPreviews-iOS")
 }
 
 private extension PackageDescription.Target.PluginUsage {
@@ -155,7 +157,7 @@ let package = Package(
 
 /// 以下を主に編集する
 extension TargetType {
-    var sdk: DependencySDK {
+    var dependencyLibrary: DependencyLibrary {
         switch self {
         case .dependencyInjector:
                 .init([
@@ -204,14 +206,12 @@ extension TargetType {
 
 /// 以下を主に編集する
 extension TestTargetType {
-    var sdk: DependencySDK {
+    var dependencyLibrary: DependencyLibrary {
         switch self {
         case .previewSnapshotTest:
             .init([
                 TargetType.presentation.dependency,
                 .previewSnapshotsTesting,
-//                .snapshotting,
-//                .snapshottingTests,
             ])
         }
     }

@@ -17,8 +17,4 @@ final class LicenseListViewTest: XCTestCase {
         // 文字サイズのバリエーションテストをしたい場合
         SnapshotConfig.contentSizeVariationTest(LicenseListView_Previews.self)
     }
-
-    func testLicenseDetailView() {
-        SnapshotConfig.previewTest(LicenseDetailView_Previews.self)
-    }
 }

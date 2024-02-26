@@ -1,18 +1,13 @@
 //
-//  Created by sugurutakahashi on 2024/02/21
+//  Created by sugurutakahashi on 2024/02/26
 //  Copyright sugurutakahashi. All rights reserved.
 //
 
 import PreviewSnapshotsTesting
-import PreviewSnapshots
 import XCTest
 @testable import PresentationLayer
 
-final class SnapshotTest: XCTestCase {
-    func testAppRootView() {
-        SnapshotConfig.previewTest(AppRootView_Previews.self)
-    }
-    
+final class LicenseListViewTest: XCTestCase {
     func testLicenseListView() {
         SnapshotConfig.previewTest(LicenseListView_Previews.self)
         

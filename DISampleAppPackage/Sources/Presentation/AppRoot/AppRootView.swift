@@ -30,7 +30,7 @@ public struct AppRootView: View {
 
 import PreviewSnapshots
 
-struct AppRootView_Previews: PreviewProvider {
+struct AppRootView_Previews: PreviewProvider, SnapshotTestable {
     static var previews: some View {
         snapshots.previews.fixedSize(horizontal: false, vertical: false)
     }

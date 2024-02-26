@@ -7,6 +7,7 @@ import Foundation
 import SwiftUI // for UIContentSizeCategory
 import PreviewSnapshotsTesting
 import PreviewSnapshots
+import PresentationLayer
 
 enum SnapshotConfig {
     static let precision: Float = 0.95

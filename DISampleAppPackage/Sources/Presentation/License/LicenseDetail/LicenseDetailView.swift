@@ -32,7 +32,7 @@ public struct LicenseDetailView: View {
 
 import PreviewSnapshots
 
-struct LicenseDetailView_Previews: PreviewProvider {
+struct LicenseDetailView_Previews: PreviewProvider, SnapshotTestable {
     static var previews: some View {
         snapshots.previews.previewLayout(.sizeThatFits)
     }

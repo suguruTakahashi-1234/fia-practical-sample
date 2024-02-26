@@ -88,7 +88,7 @@ enum TargetType: CaseIterable {
 }
 
 enum TestTargetType: CaseIterable {
-    case previewSnapshotTests
+    case previewSnapshotTest
 
     private var name: String {
         "\(self)".initialUppercased
@@ -111,6 +111,8 @@ private extension PackageDescription.Target.Dependency {
     static let previewSnapshots: Self = .product(name: "PreviewSnapshots", package: "swiftui-preview-snapshots")
     static let previewSnapshotsTesting: Self = .product(name: "PreviewSnapshotsTesting", package: "swiftui-preview-snapshots")
     static let previewGallery: Self = .product(name: "PreviewGallery", package: "SnapshotPreviews-iOS")
+    static let snapshotting: Self = .product(name: "Snapshotting", package: "SnapshotPreviews-iOS")
+    static let snapshottingTests: Self = .product(name: "SnapshottingTests", package: "SnapshotPreviews-iOS")
 }
 
 private extension PackageDescription.Target.PluginUsage {
@@ -201,10 +203,12 @@ extension TargetType {
 extension TestTargetType {
     var dependencies: [PackageDescription.Target.Dependency] {
         switch self {
-        case .previewSnapshotTests:
+        case .previewSnapshotTest:
             [
                 TargetType.presentation.dependency,
                 .previewSnapshotsTesting,
+//                .snapshotting,
+//                .snapshottingTests,
             ]
         }
     }

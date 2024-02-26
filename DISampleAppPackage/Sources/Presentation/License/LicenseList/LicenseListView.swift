@@ -41,7 +41,7 @@ public struct LicenseListView: View {
 
 import PreviewSnapshots
 
-struct LicenseListView_Previews: PreviewProvider {
+struct LicenseListView_Previews: PreviewProvider, SnapshotTestable {
     static var previews: some View {
         snapshots.previews.previewLayout(.sizeThatFits)
     }

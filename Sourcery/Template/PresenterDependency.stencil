@@ -5,6 +5,3 @@ import DomainLayer
 
 /// @mockable
 public protocol {{ argument.screenName }}PresenterDependency {}
-
-// TODO: delete after {{ argument.screenName }}Wireframe to {{ argument.routerName }}RouterDependency
-extension {{ argument.routerName }}RouterDependency: {{ argument.screenName }}PresenterDependency {}

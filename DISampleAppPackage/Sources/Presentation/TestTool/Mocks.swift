@@ -8,12 +8,6 @@ import DomainLayer
 import Foundation
 
 
-public final class HogePresenterDependencyMock: HogePresenterDependency {
-    public init() { }
-
-
-}
-
 public final class AppRootRouterDependencyMock: AppRootRouterDependency {
     public init() { }
     public init(osLogDriver: OSLogDriverProtocol = OSLogDriverProtocolMock(), libraryLicenseDriver: LibraryLicenseDriverProtocol = LibraryLicenseDriverProtocolMock(), firebaseSetupDriver: FirebaseSetupDriverProtocol = FirebaseSetupDriverProtocolMock()) {
@@ -101,12 +95,6 @@ public final class LicenseListPresenterDependencyMock: LicenseListPresenterDepen
 }
 
 public final class SettingPresenterDependencyMock: SettingPresenterDependency {
-    public init() { }
-
-
-}
-
-public final class MogePresenterDependencyMock: MogePresenterDependency {
     public init() { }
 
 

@@ -3,5 +3,8 @@
 import Foundation
 import DomainLayer
 
-// TODO: add {{ argument.screenName }}PresenterDependency to AppRootRouterDependency
+/// @mockable
 public protocol {{ argument.screenName }}PresenterDependency {}
+
+// TODO: delete after {{ argument.screenName }}Wireframe to AppRootRouter
+extension AppRootRouter: {{ argument.screenName }}Wireframe {}

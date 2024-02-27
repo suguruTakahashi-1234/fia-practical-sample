@@ -35,9 +35,9 @@ struct AppRootView_Previews: PreviewProvider, SnapshotTestable {
         snapshots.previews.fixedSize(horizontal: false, vertical: false)
     }
 
-    static var snapshots: PreviewSnapshots<AppRootRouterDependency> {
+    static var snapshots: PreviewSnapshots<AppRootRouterDependencyMock> {
         PreviewSnapshots(
-            configurations: emptyConfiguration,
+            configurations: configurationEmpty,
             configure: { state in
                 AppRootView(router: AppRootRouter.empty, dependency: state)
             }

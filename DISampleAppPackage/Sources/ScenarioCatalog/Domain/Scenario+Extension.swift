@@ -9,7 +9,7 @@ import PresentationLayer
 
 package extension Scenario {
     init<Content: View>(
-        type: UITestScenarioType,
+        type: UITestPreviewType,
         layout: ScenarioLayout,
         file: StaticString = #file,
         line: UInt = #line,

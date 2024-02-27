@@ -1,7 +1,7 @@
-// Generated using Sourcery 2.1.7 — https://github.com/krzysztofzablocki/Sourcery
-// DO NOT EDIT
-
-// TODO: update file header
+//
+//  Created by sugurutakahashi on 2024/02/27
+//  Copyright sugurutakahashi. All rights reserved.
+//
 
 import SwiftUI
 import DomainLayer
@@ -33,9 +33,9 @@ struct SettingView_Previews: PreviewProvider, SnapshotTestable {
         snapshots.previews.previewLayout(.sizeThatFits)
     }
 
-    static var snapshots: PreviewSnapshots<AppRootRouterDependency> {
+    static var snapshots: PreviewSnapshots<AppRootRouterDependencyMock> {
         .init(
-            configurations: emptyConfiguration,
+            configurations: configurationAllSizesWithEmpty,
             configure: { state in
                 SettingView(router: AppRootRouter.empty, dependency: state)
             }

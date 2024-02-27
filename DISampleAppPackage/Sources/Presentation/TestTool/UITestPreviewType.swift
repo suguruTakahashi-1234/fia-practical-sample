@@ -5,14 +5,14 @@
 
 import Foundation
 
-public enum UITestScenarioType {
+public enum UITestPreviewType {
     case small
     case medium
     case large
     case empty
 }
 
-public extension UITestScenarioType {
+public extension UITestPreviewType {
     var name: String {
         switch self {
         case .small:

@@ -1,6 +1,6 @@
 PACKAGE_NAME := ./DISampleAppPackage
-MOCKOLO_SCAN_PATH := ./$(PACKAGE_NAME)/Sources/Domain
-MOCKOLO_OUTPUT_PATH := ./$(PACKAGE_NAME)/Sources/Presentation/TestTool/DomainLayerMocks.swift
+MOCKOLO_SCAN_PATH := ./$(PACKAGE_NAME)/Sources
+MOCKOLO_OUTPUT_PATH := ./$(PACKAGE_NAME)/Sources/Presentation/TestTool/Mocks.swift
 
 .PHONY: help
 help:

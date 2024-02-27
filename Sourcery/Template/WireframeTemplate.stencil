@@ -3,7 +3,7 @@
 import Foundation
 import DomainLayer
 
-// TODO: add {{ argument.screenName }}Wireframe to AppRootRouter
 public protocol {{ argument.screenName }}Wireframe {}
 
-extension AppRootRouter: {{ argument.screenName }}Wireframe {} // TODO: delete after {{ argument.screenName }}Wireframe to AppRootRouter
+// TODO: delete after {{ argument.screenName }}Wireframe to AppRootRouter
+extension AppRootRouter: {{ argument.screenName }}Wireframe {}

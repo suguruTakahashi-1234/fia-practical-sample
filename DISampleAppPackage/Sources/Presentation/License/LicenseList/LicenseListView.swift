@@ -46,9 +46,9 @@ struct LicenseListView_Previews: PreviewProvider, SnapshotTestable {
         snapshots.previews.previewLayout(.sizeThatFits)
     }
 
-    static var snapshots: PreviewSnapshots<AppRootRouterDependency> {
+    static var snapshots: PreviewSnapshots<AppRootRouterDependencyMock> {
         .init(
-            configurations: allSizeConfigurations,
+            configurations: configurationAllSizesWithEmpty,
             configure: { state in
                 LicenseListView(router: AppRootRouter.empty, dependency: state)
             }

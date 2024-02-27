@@ -38,7 +38,7 @@ struct LicenseDetailView_Previews: PreviewProvider, SnapshotTestable {
     }
 
     static var snapshots: PreviewSnapshots<License> {
-        PreviewSnapshots(
+        .init(
             configurations: [
                 .init(type: .small, state: .sizeS),
                 .init(type: .medium, state: .sizeM),

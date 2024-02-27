@@ -8,7 +8,7 @@ import PresentationLayer
 
 @main
 struct ProductionApp: App {
-    private let router = AppRootRouter.random
+    private let router = AppRootRouter(dependency: AppRootRouterDependencyMock.random)
     
     var body: some Scene {
         WindowGroup {

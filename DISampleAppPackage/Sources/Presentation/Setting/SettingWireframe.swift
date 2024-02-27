@@ -1,12 +1,9 @@
-// Generated using Sourcery 2.1.7 — https://github.com/krzysztofzablocki/Sourcery
-// DO NOT EDIT
-
-// TODO: update file header
+//
+//  Created by sugurutakahashi on 2024/02/27
+//  Copyright sugurutakahashi. All rights reserved.
+//
 
 import Foundation
 import DomainLayer
 
-// TODO: add SettingWireframe to AppRootRouter
 public protocol SettingWireframe {}
-
-extension AppRootRouter: SettingWireframe {} // TODO: delete after SettingWireframe to AppRootRouter

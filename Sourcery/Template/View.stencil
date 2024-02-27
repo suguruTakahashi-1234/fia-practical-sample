@@ -31,11 +31,11 @@ struct {{ argument.screenName }}View_Previews: PreviewProvider, SnapshotTestable
         snapshots.previews.previewLayout(.sizeThatFits)
     }
 
-    static var snapshots: PreviewSnapshots<AppRootRouterDependencyMock> {
+    static var snapshots: PreviewSnapshots<{{ argument.routerName }}RouterDependencyMock> {
         .init(
             configurations: configurationAllSizesWithEmpty,
             configure: { state in
-                {{ argument.screenName }}View(router: AppRootRouter.empty, dependency: state)
+                {{ argument.screenName }}View(router: {{ argument.routerName }}Router.empty, dependency: state)
             }
         )
     }

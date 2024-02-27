@@ -16,7 +16,7 @@ mockolo-run:
 
 .PHONY: sourcery-presentation-code-gen
 sourcery-presentation-code-gen:
-	./Sourcery/Script/presentation_code_gen.sh $(ARG)
+	./Sourcery/Script/presentation_code_gen.sh $(VIEW) $(ROUTER)
 
 .PHONY: presentation-code-gen
 presentation-code-gen:

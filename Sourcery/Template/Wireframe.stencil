@@ -5,5 +5,5 @@ import DomainLayer
 
 public protocol {{ argument.screenName }}Wireframe {}
 
-// TODO: delete after {{ argument.screenName }}Wireframe to AppRootRouter
-extension AppRootRouter: {{ argument.screenName }}Wireframe {}
+// TODO: delete after {{ argument.screenName }}Wireframe to {{ argument.routerName }}Router
+extension {{ argument.routerName }}Router: {{ argument.screenName }}Wireframe {}

@@ -1,0 +1,4 @@
+import Foundation
+
+/// @mockable
+public protocol {{ argument.routerName }}RouterDependency: {% for protocol in protocols %}{{ protocol.name }}{% if not forloop.last %}, {% endif %}{% endfor %} {}

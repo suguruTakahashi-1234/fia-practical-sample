@@ -21,7 +21,7 @@ for COMPONENT in "PresenterDependency" "Presenter" "Wireframe" "View"
 do
     swift run --package-path "$SOURCERY_PACKAGE_PATH" mint run sourcery \
               --sources "$SOURCE_DIR" \
-              --templates "$TEMPLATE_PATH/${COMPONENT}Template.stencil" \
+              --templates "$TEMPLATE_PATH/${COMPONENT}.stencil" \
               --output "$OUTPUT_BASE_DIR/${SCREEN_NAME}${COMPONENT}.swift" \
               --args "screenName=$SCREEN_NAME"
 done
@@ -31,7 +31,7 @@ for COMPONENT in "ViewTest"
 do
     swift run --package-path "$SOURCERY_PACKAGE_PATH" mint run sourcery \
                 --sources "$SOURCE_DIR" \
-                --templates "$TEMPLATE_PATH/${COMPONENT}Template.stencil" \
+                --templates "$TEMPLATE_PATH/${COMPONENT}.stencil" \
                 --output "$OUTPUT_TEST_DIR/${SCREEN_NAME}${COMPONENT}.swift" \
                 --args "screenName=$SCREEN_NAME"
 done

@@ -1,7 +1,7 @@
 // TODO: update file header
 
-import Foundation
 import DomainLayer
+import Foundation
 
 @MainActor
 final class {{ argument.screenName }}Presenter: ObservableObject {

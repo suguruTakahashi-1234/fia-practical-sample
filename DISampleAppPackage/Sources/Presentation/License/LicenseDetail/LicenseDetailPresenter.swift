@@ -3,8 +3,8 @@
 //  Copyright sugurutakahashi. All rights reserved.
 //
 
-import Foundation
 import DomainLayer
+import Foundation
 
 @MainActor
 final class LicenseDetailPresenter: ObservableObject {

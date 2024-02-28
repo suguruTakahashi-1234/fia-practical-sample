@@ -3,8 +3,8 @@
 //  Copyright sugurutakahashi. All rights reserved.
 //
 
-import SwiftUI
 import PreviewCatalogLayer
+import SwiftUI
 
 @main
 struct PreviewCatalogApp: App {

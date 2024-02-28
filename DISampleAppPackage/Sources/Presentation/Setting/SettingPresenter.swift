@@ -3,13 +3,12 @@
 //  Copyright sugurutakahashi. All rights reserved.
 //
 
-import Foundation
 import DomainLayer
+import Foundation
 
 @MainActor
 final class SettingPresenter: ObservableObject {
-
-    init(dependency: some SettingPresenterDependency) {
+    init(dependency _: some SettingPresenterDependency) {
         LoggerContainer.initLog()
     }
 

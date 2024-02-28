@@ -3,13 +3,12 @@
 //  Copyright sugurutakahashi. All rights reserved.
 //
 
-import SwiftUI
 import PreviewGallery
+import SwiftUI
 
 public struct PreviewCatalogRootView: View {
-
     public init() {}
-    
+
     public var body: some View {
         NavigationStack {
             PreviewGallery()

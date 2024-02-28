@@ -3,17 +3,17 @@
 //  Copyright sugurutakahashi. All rights reserved.
 //
 
+@testable import PresentationLayer
 import PreviewSnapshotsTesting
 import XCTest
-@testable import PresentationLayer
 
 final class LicenseListViewTest: XCTestCase {
     func testLicenseListView() {
         SnapshotConfig.previewTest(LicenseListView_Previews.self)
-        
+
         // デバイスバリエーションテストをしたい場合
         SnapshotConfig.deviceVariationTest(LicenseListView_Previews.self)
-        
+
         // 文字サイズのバリエーションテストをしたい場合
         SnapshotConfig.contentSizeVariationTest(LicenseListView_Previews.self)
     }

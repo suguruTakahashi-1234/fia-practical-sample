@@ -3,8 +3,8 @@
 //  Copyright sugurutakahashi. All rights reserved.
 //
 
-import SwiftUI
 import ScenarioCatalogLayer
+import SwiftUI
 
 @main
 struct ScenarioCatalogApp: App {

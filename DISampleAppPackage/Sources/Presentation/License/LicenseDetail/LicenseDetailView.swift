@@ -3,16 +3,16 @@
 //  Copyright sugurutakahashi. All rights reserved.
 //
 
-import SwiftUI
 import DomainLayer
+import SwiftUI
 
 public struct LicenseDetailView: View {
     @StateObject private var presenter: LicenseDetailPresenter
-    
+
     public init(license: License) {
         _presenter = .init(wrappedValue: .init(license: license))
     }
-    
+
     public var body: some View {
         NavigationStack {
             ScrollView {

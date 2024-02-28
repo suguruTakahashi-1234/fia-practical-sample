@@ -3,9 +3,9 @@
 //  Copyright sugurutakahashi. All rights reserved.
 //
 
-import Foundation
-import FirebaseCore
 import DomainLayer
+import FirebaseCore
+import Foundation
 
 public struct FirebaseSetupDriver: FirebaseSetupDriverProtocol {
     public init() {}

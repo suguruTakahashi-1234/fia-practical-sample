@@ -3,9 +3,9 @@
 //  Copyright sugurutakahashi. All rights reserved.
 //
 
+@testable import PresentationLayer
 import PreviewSnapshotsTesting
 import XCTest
-@testable import PresentationLayer
 
 final class AppRootViewTest: XCTestCase {
     func testAppRootView() {

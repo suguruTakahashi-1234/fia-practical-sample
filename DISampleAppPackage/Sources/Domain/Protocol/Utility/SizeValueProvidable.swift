@@ -17,7 +17,7 @@ public extension Array where Element: SizeValueProvidable {
     }
 
     static var multipleSizeM: [Element] {
-        [.sizeM, .sizeM, .sizeM, .sizeM, .sizeM,]
+        [.sizeM, .sizeM, .sizeM, .sizeM, .sizeM]
     }
 
     static var multipleSizeL: [Element] {

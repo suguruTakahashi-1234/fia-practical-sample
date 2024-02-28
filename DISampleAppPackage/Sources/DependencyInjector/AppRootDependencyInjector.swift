@@ -3,17 +3,17 @@
 //  Copyright sugurutakahashi. All rights reserved.
 //
 
-import Foundation
+import CloudServiceFramework
 import DomainLayer
+import Foundation
 import LicenseFramework
 import LoggerFramework
-import CloudServiceFramework
 import PresentationLayer
 
 public struct AppRootDependencyInjector: AppRootRouterDependency {
     public let osLogDriver: OSLogDriverProtocol = OSLogger(subsystem: Bundle.main.bundleIdentifier!, category: Constants.Logger.categoryName)
     public let firebaseSetupDriver: FirebaseSetupDriverProtocol = FirebaseSetupDriver()
     public let libraryLicenseDriver: LibraryLicenseDriverProtocol = LibraryLicenseDriver()
-    
+
     public init() {}
 }

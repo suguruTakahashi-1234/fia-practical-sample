@@ -3,12 +3,12 @@
 //  Copyright © 2024 sugurutakahashi. All rights reserved.
 //
 
-import SwiftUI
 import PlaybookUI
+import SwiftUI
 
 public struct ScenarioCatalogRootView: View {
     @State private var selectedTab: ScenarioCatalogRootTab = .gallery
-    
+
     public init() {
         Playbook.default.add(AllScenarios.self)
     }

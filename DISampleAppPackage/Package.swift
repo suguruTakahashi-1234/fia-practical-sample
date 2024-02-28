@@ -1,8 +1,8 @@
 // swift-tools-version: 5.10
 // The swift-tools-version declares the minimum version of Swift required to build this package.
 
-import PackageDescription
 import CompilerPluginSupport // for Swift Macros
+import PackageDescription
 
 private extension String {
     /// ex) "dependencyInjector" -> "DependencyInjector"
@@ -17,7 +17,7 @@ private extension String {
 struct DependencyLibrary {
     let dependencies: [PackageDescription.Target.Dependency]
     let plugins: [PackageDescription.Target.PluginUsage]
-    
+
     init(_ dependencies: [PackageDescription.Target.Dependency] = [], plugins: [PackageDescription.Target.PluginUsage] = []) {
         self.dependencies = dependencies
         self.plugins = plugins
@@ -68,7 +68,7 @@ enum TargetType: CaseIterable {
             .domain,
             .presentation,
             .previewCatalog,
-            .scenarioCatalog
+            .scenarioCatalog,
         ]
     }
 
@@ -97,7 +97,6 @@ enum TargetType: CaseIterable {
         default:
             "\(folderName)Layer"
         }
-        
     }
 
     var target: PackageDescription.Target {
@@ -136,7 +135,7 @@ enum TestTargetType: CaseIterable {
 }
 
 private extension PackageDescription.Target.Dependency {
-    // Library
+    /// Library
     static let firebaseAnalytics: Self = .product(name: "FirebaseAnalytics", package: "firebase-ios-sdk")
     static let playbook: Self = .product(name: "Playbook", package: "playbook-ios")
     static let playbookUI: Self = .product(name: "PlaybookUI", package: "playbook-ios")
@@ -145,8 +144,8 @@ private extension PackageDescription.Target.Dependency {
     static let previewGallery: Self = .product(name: "PreviewGallery", package: "SnapshotPreviews-iOS")
     static let swiftSyntaxMacros: Self = .product(name: "SwiftSyntaxMacros", package: "swift-syntax")
     static let swiftCompilerPlugin: Self = .product(name: "SwiftCompilerPlugin", package: "swift-syntax")
-    
-    // Test
+
+    /// Test
     static let nimble: Self = .product(name: "Nimble", package: "Nimble")
     static let quick: Self = .product(name: "Quick", package: "Quick")
     // TODO: Swift 5.10 ではまだ動かないらしい https://swiftpackageindex.com/apple/swift-testing/main/documentation/testing/temporarygettingstarted
@@ -194,6 +193,7 @@ let package = Package(
 )
 
 // MARK: Macro
+
 extension MacroTargetType {
     var dependencyLibrary: DependencyLibrary {
         switch self {
@@ -207,67 +207,69 @@ extension MacroTargetType {
 }
 
 // MARK: Target
+
 extension TargetType {
     var dependencyLibrary: DependencyLibrary {
         switch self {
         case .dependencyInjector:
-                .init([
-                    TargetType.domain.dependency,
-                    TargetType.presentation.dependency,
-                    TargetType.framework(.cloudService).dependency,
-                    TargetType.framework(.license).dependency,
-                    TargetType.framework(.logger).dependency,
-                ])
+            .init([
+                TargetType.domain.dependency,
+                TargetType.presentation.dependency,
+                TargetType.framework(.cloudService).dependency,
+                TargetType.framework(.license).dependency,
+                TargetType.framework(.logger).dependency,
+            ])
         case .domain:
-                .init()
+            .init()
         case .framework(.cloudService):
-                .init([
-                    TargetType.domain.dependency,
-                    .firebaseAnalytics,
-                ])
+            .init([
+                TargetType.domain.dependency,
+                .firebaseAnalytics,
+            ])
         case .framework(.license):
-                .init([
-                    TargetType.domain.dependency,
-                ], plugins: [
-                    .licensesPlugin
-                ])
+            .init([
+                TargetType.domain.dependency,
+            ], plugins: [
+                .licensesPlugin,
+            ])
         case .framework(.logger):
-                .init([
-                    TargetType.domain.dependency,
-                ])
+            .init([
+                TargetType.domain.dependency,
+            ])
         case .presentation:
-                .init([
-                    TargetType.domain.dependency,
-                    .previewSnapshots,
-                ])
+            .init([
+                TargetType.domain.dependency,
+                .previewSnapshots,
+            ])
         case .previewCatalog:
-                .init([
-                    TargetType.presentation.dependency, // PreviewGallery() 行うモジュールに依存させるとその Preview が生成される
-                    .previewGallery,
-                ])
+            .init([
+                TargetType.presentation.dependency, // PreviewGallery() 行うモジュールに依存させるとその Preview が生成される
+                .previewGallery,
+            ])
         case .scenarioCatalog:
-                .init([
-                    TargetType.presentation.dependency,
-                    .playbook,
-                    .playbookUI,
-                ])
+            .init([
+                TargetType.presentation.dependency,
+                .playbook,
+                .playbookUI,
+            ])
         }
     }
 }
 
 // MARK: Test
+
 extension TestTargetType {
     var dependencyLibrary: DependencyLibrary {
         switch self {
         case .presenterTest:
-                .init([
-                    TargetType.presentation.dependency,
-                ])
+            .init([
+                TargetType.presentation.dependency,
+            ])
         case .previewSnapshotTest:
-                .init([
-                    TargetType.presentation.dependency,
-                    .previewSnapshotsTesting,
-                ])
+            .init([
+                TargetType.presentation.dependency,
+                .previewSnapshotsTesting,
+            ])
         }
     }
 }

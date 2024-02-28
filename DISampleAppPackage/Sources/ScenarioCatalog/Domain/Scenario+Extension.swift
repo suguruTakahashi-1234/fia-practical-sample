@@ -3,17 +3,17 @@
 //  Copyright sugurutakahashi. All rights reserved.
 //
 
-import SwiftUI
 import Playbook
 import PresentationLayer
+import SwiftUI
 
 package extension Scenario {
-    init<Content: View>(
+    init(
         type: UITestPreviewType,
         layout: ScenarioLayout,
         file: StaticString = #file,
         line: UInt = #line,
-        content: @escaping () -> Content
+        content: @escaping () -> some View
     ) {
         self.init(
             ScenarioName(rawValue: type.name),

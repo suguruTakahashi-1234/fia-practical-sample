@@ -3,8 +3,8 @@
 //  Copyright sugurutakahashi. All rights reserved.
 //
 
-import Playbook
 import DomainLayer
+import Playbook
 import PresentationLayer
 
 struct LicenseListScenarios: ScenarioProvider {
@@ -21,7 +21,7 @@ struct LicenseListScenarios: ScenarioProvider {
             Scenario(type: .large, layout: .fill) {
                 LicenseListView(router: AppRootRouter.empty, dependency: AppRootRouterDependencyMock.sizeL)
             }
-            
+
             Scenario(type: .empty, layout: .fill) {
                 LicenseListView(router: AppRootRouter.empty, dependency: AppRootRouterDependencyMock.empty)
             }

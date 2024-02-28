@@ -1,7 +1,7 @@
 // TODO: update file header
 
-import SwiftUI
 import DomainLayer
+import SwiftUI
 
 public struct {{ argument.screenName }}View: View {
     private let router: {{ argument.screenName }}Wireframe

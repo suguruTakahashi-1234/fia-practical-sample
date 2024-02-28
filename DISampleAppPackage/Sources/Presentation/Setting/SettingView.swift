@@ -3,8 +3,8 @@
 //  Copyright sugurutakahashi. All rights reserved.
 //
 
-import SwiftUI
 import DomainLayer
+import SwiftUI
 
 public struct SettingView: View {
     private let router: SettingWireframe
@@ -14,6 +14,7 @@ public struct SettingView: View {
         self.router = router
         _presenter = .init(wrappedValue: .init(dependency: dependency))
     }
+
     public var body: some View {
         Text("SettingView")
             .task {
@@ -26,6 +27,7 @@ public struct SettingView: View {
 }
 
 // MARK: Preview
+
 import PreviewSnapshots
 
 struct SettingView_Previews: PreviewProvider, SnapshotTestable {

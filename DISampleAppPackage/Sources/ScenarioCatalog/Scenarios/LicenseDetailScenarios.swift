@@ -3,8 +3,8 @@
 //  Copyright sugurutakahashi. All rights reserved.
 //
 
-import Playbook
 import DomainLayer
+import Playbook
 import PresentationLayer
 
 struct LicenseDetailScenarios: ScenarioProvider {
@@ -17,7 +17,7 @@ struct LicenseDetailScenarios: ScenarioProvider {
             Scenario(type: .medium, layout: .fill) {
                 LicenseDetailView(license: .sizeM)
             }
-            
+
             Scenario(type: .large, layout: .fill) {
                 LicenseDetailView(license: .sizeL)
             }

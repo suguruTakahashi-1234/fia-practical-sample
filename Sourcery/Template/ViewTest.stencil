@@ -1,6 +1,6 @@
+@testable import PresentationLayer
 import PreviewSnapshotsTesting
 import XCTest
-@testable import PresentationLayer
 
 final class {{ argument.screenName }}ViewTest: XCTestCase {
     func test{{ argument.screenName }}View() {

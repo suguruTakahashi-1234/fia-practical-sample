@@ -3,8 +3,8 @@
 //  Copyright sugurutakahashi. All rights reserved.
 //
 
-import SwiftUI
 import DomainLayer
+import SwiftUI
 
 public struct LicenseListView: View {
     private let router: LicenseListWireframe

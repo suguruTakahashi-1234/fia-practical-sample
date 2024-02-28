@@ -3,8 +3,8 @@
 //  Copyright sugurutakahashi. All rights reserved.
 //
 
-import Foundation
 import DomainLayer
+import Foundation
 import os.log
 
 // Ref: https://developer.apple.com/documentation/os/logging/generating_log_messages_from_your_code

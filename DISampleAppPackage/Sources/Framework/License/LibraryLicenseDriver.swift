@@ -3,10 +3,10 @@
 //  Copyright sugurutakahashi. All rights reserved.
 //
 
-import Foundation
 import DomainLayer
+import Foundation
 
-public struct LibraryLicenseDriver: LibraryLicenseDriverProtocol {    
+public struct LibraryLicenseDriver: LibraryLicenseDriverProtocol {
     public init() {}
 
     public var licenseList: [License] {

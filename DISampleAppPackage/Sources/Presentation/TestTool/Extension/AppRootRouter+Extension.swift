@@ -5,8 +5,8 @@
 
 import Foundation
 
-extension AppRootRouter {
-    public static var empty: Self {
+public extension AppRootRouter {
+    static var empty: Self {
         AppRootRouter(dependency: AppRootRouterDependencyMock.empty)
     }
 }

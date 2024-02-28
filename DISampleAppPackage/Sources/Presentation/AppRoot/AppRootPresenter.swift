@@ -3,19 +3,18 @@
 //  Copyright sugurutakahashi. All rights reserved.
 //
 
-import Foundation
 import DomainLayer
+import Foundation
 
 @MainActor
 final class AppRootPresenter: ObservableObject {
-
     init(dependency: some AppRootPresenterDependency) {
         // Setup Logger
         LoggerContainer.append(logger: dependency.osLogDriver)
         LoggerContainer.debugLog("completed setup LoggerContainer")
-        
+
         LoggerContainer.initLog()
-        
+
         // Setup Firebase
         dependency.firebaseSetupDriver.configure()
     }

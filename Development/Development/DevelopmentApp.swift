@@ -3,13 +3,13 @@
 //  Copyright sugurutakahashi. All rights reserved.
 //
 
-import SwiftUI
 import PresentationLayer
+import SwiftUI
 
 @main
 struct ProductionApp: App {
     private let router = AppRootRouter(dependency: AppRootRouterDependencyMock.random)
-    
+
     var body: some Scene {
         WindowGroup {
             router.createAppRootView()

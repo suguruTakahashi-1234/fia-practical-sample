@@ -3,8 +3,8 @@
 //  Copyright sugurutakahashi. All rights reserved.
 //
 
-import SwiftUI
 import PreviewSnapshots
+import SwiftUI
 
 public extension PreviewProvider {
     static var configurationEmpty: [PreviewSnapshots<AppRootRouterDependencyMock>.Configuration] {
@@ -12,7 +12,7 @@ public extension PreviewProvider {
             .init(type: .empty, state: .empty),
         ]
     }
-    
+
     static var configurationAllSizes: [PreviewSnapshots<AppRootRouterDependencyMock>.Configuration] {
         [
             .init(type: .small, state: .sizeS),
@@ -20,7 +20,7 @@ public extension PreviewProvider {
             .init(type: .large, state: .sizeL),
         ]
     }
-    
+
     static var configurationAllSizesWithEmpty: [PreviewSnapshots<AppRootRouterDependencyMock>.Configuration] {
         configurationEmpty + configurationAllSizes
     }

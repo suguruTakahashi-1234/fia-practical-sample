@@ -3,8 +3,8 @@
 //  Copyright sugurutakahashi. All rights reserved.
 //
 
-import SwiftUI
 import DomainLayer
+import SwiftUI
 
 public struct AppRootView: View {
     private let router: AppRootWireframe
@@ -14,7 +14,7 @@ public struct AppRootView: View {
         self.router = router
         _presenter = .init(wrappedValue: .init(dependency: dependency))
     }
-    
+
     public var body: some View {
         NavigationStack {
             router.createLicenseListView()

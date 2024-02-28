@@ -1,7 +1,7 @@
 
+@testable import PresentationLayer
 import PreviewSnapshotsTesting
 import XCTest
-@testable import PresentationLayer
 
 final class SettingViewTest: XCTestCase {
     func testSettingView() {

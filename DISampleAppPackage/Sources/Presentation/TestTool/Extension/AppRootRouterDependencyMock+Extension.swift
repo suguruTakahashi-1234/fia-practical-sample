@@ -3,33 +3,33 @@
 //  Copyright sugurutakahashi. All rights reserved.
 //
 
-import Foundation
 import DomainLayer
+import Foundation
 
-extension AppRootRouterDependencyMock {
-    public static var empty: Self {
+public extension AppRootRouterDependencyMock {
+    static var empty: Self {
         .init()
     }
 
-    public static var random: Self {
+    static var random: Self {
         .init(
             libraryLicenseDriver: LibraryLicenseDriverProtocolMock(licenseList: .randoms)
         )
     }
-    
-    public static var sizeS: Self {
+
+    static var sizeS: Self {
         .init(
             libraryLicenseDriver: LibraryLicenseDriverProtocolMock(licenseList: .multipleSizeS)
         )
     }
-    
-    public static var sizeM: Self {
+
+    static var sizeM: Self {
         .init(
             libraryLicenseDriver: LibraryLicenseDriverProtocolMock(licenseList: .multipleSizeM)
         )
     }
-    
-    public static var sizeL: Self {
+
+    static var sizeL: Self {
         .init(
             libraryLicenseDriver: LibraryLicenseDriverProtocolMock(licenseList: .multipleSizeL)
         )

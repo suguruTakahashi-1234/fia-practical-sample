@@ -1,13 +1,13 @@
-# Swift バージョン
+# Swift Version
 
 --swiftversion 5.10 # Xcode 15.3
 
-# file options 除外するディレクトリやファイル
+# Exclud File
 
 --exclude ./DISampleAppPackage/Sources/Presentation/TestTool/Mocks.swift
 --exclude ./DISampleAppPackage/.build
 
-# format options
+# Format Options
 
 --ranges no-space # ex) "0...9" を "0 ... 9" としないように設定
 

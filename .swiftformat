@@ -1,0 +1,118 @@
+# Swift バージョン
+
+--swiftversion 5.10 # Xcode 15.3
+
+# file options 除外するディレクトリやファイル
+
+--exclude ./DISampleAppPackage/Sources/Presentation/TestTool/Mocks.swift
+--exclude ./DISampleAppPackage/.build
+
+# format options
+
+--ranges no-space # ex) "0...9" を "0 ... 9" としないように設定
+
+# Rule List - https://github.com/nicklockwood/SwiftFormat/blob/0.53.2/Rules.md
+
+# Default Rules (enabled by default) デフォルトで有効なルール
+# コメントアウト部分が有効
+
+#--disable andOperator
+#--disable anyObjectProtocol
+#--disable assertionFailures
+#--disable applicationMain
+#--disable blankLinesAroundMark
+#--disable blankLinesAtEndOfScope
+#--disable blankLinesAtStartOfScope
+#--disable blankLinesBetweenScopes
+#--disable braces
+#--disable conditionalAssignment
+#--disable consecutiveBlankLines
+#--disable consecutiveSpaces
+#--disable duplicateImports
+#--disable elseOnSameLine
+#--disable emptyBraces
+#--disable enumNamespaces
+#--disable extensionAccessControl
+#--disable fileHeader
+#--disable genericExtensions
+#--disable headerFileName
+#--disable hoistAwait
+--disable hoistPatternLet # if case .foo(let bar): を if case let .foo(bar): に変換するため無効にする
+#--disable hoistTry
+#--disable indent
+#--disable initCoderUnavailable
+#--disable leadingDelimiters
+#--disable linebreakAtEndOfFile
+#--disable linebreaks
+#--disable modifierOrder
+#--disable numberFormatting
+#--disable opaqueGenericParameters
+--disable preferKeyPath # map { $0.toAppError } -> map(\.toAppError) としてエラーになるため無効にする
+#--disable redundantBackticks
+#--disable redundantBreak
+#--disable redundantClosure
+#--disable redundantExtensionACL
+#--disable redundantFileprivate
+#--disable redundantGet
+#--disable redundantInit
+#--disable redundantInternal
+#--disable redundantLet
+#--disable redundantLetError
+#--disable redundantNilInit
+#--disable redundantObjc
+#--disable redundantOptionalBinding
+#--disable redundantParens
+#--disable redundantPattern
+#--disable redundantRawValues
+#--disable redundantReturn
+#--disable redundantSelf
+#--disable redundantStaticSelf
+#--disable redundantType
+#--disable redundantVoidReturnType
+#--disable semicolons
+#--disable sortDeclarations
+#--disable sortImports
+#--disable sortTypealiases
+#--disable spaceAroundBraces
+#--disable spaceAroundBrackets
+#--disable spaceAroundComments
+#--disable spaceAroundGenerics
+#--disable spaceAroundOperators
+#--disable spaceAroundParens
+#--disable spaceInsideBraces
+#--disable spaceInsideBrackets
+#--disable spaceInsideComments
+#--disable spaceInsideGenerics
+#--disable spaceInsideParens
+#--disable strongOutlets
+#--disable strongifiedSelf
+#--disable todos
+#--disable trailingClosures
+#--disable trailingCommas
+#--disable trailingSpace
+#--disable typeSugar
+#--disable unusedArguments
+#--disable void
+#--disable wrap
+#--disable wrapArguments
+#--disable wrapAttributes
+#--disable wrapMultilineStatementBraces
+#--disable wrapSingleLineComments
+#--disable yodaConditions
+
+# Opt-in Rules (disabled by default) デフォルトで無効なルール
+# コメントアウト部分は無効
+
+#--enable acronyms # アクロニムを大文字にする。例：`userId` → `userID`
+--enable blankLineAfterImports # import 文の後に空行を挿入する
+--enable blankLinesBetweenChainedFunctions # 連鎖する関数の間の空行は削除する
+--enable blankLinesBetweenImports # import 文の間の空行を削除する
+--enable blockComments # `/*` または `/**` のコメントを `//` や `///` に変更する
+--enable docComments # 変数や関数宣言の直前のコメントは `///` を使用する
+--enable isEmpty # 条件文が isEmpty で書き換えらる場合は isEmpty に変更する
+#--enable markTypes # 型定義の前に MARK コメントを挿入する
+#--enable organizeDeclarations # 宣言を種類別に整理する
+#--enable sortSwitchCases # switch 文の case をアルファベット順に並び替える
+--enable wrapConditionalBodies # 条件文が長い場合に改行する。例：`guard let self else { return }` を改行する
+--enable wrapEnumCases # Enum 宣言時の case を省略させない 
+#--enable wrapSwitchCases # switch 文の case が複数ある場合はそれぞれの case で改行する

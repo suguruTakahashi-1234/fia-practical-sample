@@ -27,6 +27,12 @@ public final class AppRootRouterDependencyMock: AppRootRouterDependency {
     public var firebaseSetupDriver: FirebaseSetupDriverProtocol = FirebaseSetupDriverProtocolMock() { didSet { firebaseSetupDriverSetCallCount += 1 } }
 }
 
+public final class SettingPresenterDependencyMock: SettingPresenterDependency {
+    public init() { }
+
+
+}
+
 public final class FirebaseSetupDriverProtocolMock: FirebaseSetupDriverProtocol {
     public init() { }
 
@@ -92,11 +98,5 @@ public final class LicenseListPresenterDependencyMock: LicenseListPresenterDepen
 
     public private(set) var libraryLicenseDriverSetCallCount = 0
     public var libraryLicenseDriver: LibraryLicenseDriverProtocol = LibraryLicenseDriverProtocolMock() { didSet { libraryLicenseDriverSetCallCount += 1 } }
-}
-
-public final class SettingPresenterDependencyMock: SettingPresenterDependency {
-    public init() { }
-
-
 }
 

@@ -10,7 +10,7 @@ public struct LicenseDetailView: View {
     @StateObject private var presenter: LicenseDetailPresenter
 
     public init(license: License) {
-        _presenter = .init(wrappedValue: .init(license: license))
+        _presenter = .init(wrappedValue: LicenseDetailPresenter(license: license))
     }
 
     public var body: some View {

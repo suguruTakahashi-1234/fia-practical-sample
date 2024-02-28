@@ -5,16 +5,20 @@
 
 @testable import PresentationLayer
 import PreviewSnapshotsTesting
-import XCTest
+import Testing
 
-final class LicenseListViewTest: XCTestCase {
-    func testLicenseListView() {
+@Suite("ライセンス詳細画面 - スナップショットテスト") struct LicenseListViewSnapshotTest {
+    @Test("プレビュー") @MainActor func previewLicenseListView() {
         SnapshotConfig.previewTest(LicenseListView_Previews.self)
-
-        // デバイスバリエーションテストをしたい場合
+    }
+    
+    // デバイスバリエーションテストをしたい場合
+    @Test("プレビュー - バリエーション - デバイス") @MainActor func previewDeviceVariationLicenseListView() {
         SnapshotConfig.deviceVariationTest(LicenseListView_Previews.self)
-
-        // 文字サイズのバリエーションテストをしたい場合
+    }
+    
+    // 文字サイズのバリエーションテストをしたい場合
+    @Test("プレビュー - バリエーション - 文字サイズ") @MainActor func previewContentSizeVariationLicenseListView() {
         SnapshotConfig.contentSizeVariationTest(LicenseListView_Previews.self)
     }
 }

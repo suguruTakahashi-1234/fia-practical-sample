@@ -12,7 +12,7 @@ public struct AppRootView: View {
 
     public init(router: some AppRootWireframe, dependency: some AppRootPresenterDependency) {
         self.router = router
-        _presenter = .init(wrappedValue: .init(dependency: dependency))
+        _presenter = .init(wrappedValue: AppRootPresenter(dependency: dependency))
     }
 
     public var body: some View {

@@ -9,9 +9,9 @@ public struct {{ argument.screenName }}View: View {
 
     public init(router: some {{ argument.screenName }}Wireframe, dependency: some {{ argument.screenName }}PresenterDependency) {
         self.router = router
-        _presenter = .init(wrappedValue: .init(dependency: dependency))
+        _presenter = .init(wrappedValue: {{ argument.screenName }}Presenter(dependency: dependency))
     }
-    
+
     public var body: some View {
         Text("{{ argument.screenName }}View")
             .task {

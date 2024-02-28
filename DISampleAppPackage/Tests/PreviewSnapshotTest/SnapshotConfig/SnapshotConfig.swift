@@ -10,7 +10,8 @@ import PreviewSnapshotsTesting
 import SwiftUI // for UIContentSizeCategory
 
 enum SnapshotConfig {
-    static let precision: Float = 0.95
+    ///  一致率 ( 0.0-1.0 = 0-100% )
+    static let precision: Float = 1.0
 
     enum DeviceType: String, CaseIterable {
         case iPhoneSe = "iPhone-SE"
@@ -99,7 +100,7 @@ enum SnapshotConfig {
         previews.snapshots.assertSnapshots(
             as: .image(precision: SnapshotConfig.precision, layout: .device(config: device.viewImageConfig)),
             file: file,
-            testName: function.testRemoveNamed,
+            testName: function.replacingOccurrences(of: "preview", with: ""),
             line: UInt(line)
         )
     }
@@ -110,7 +111,7 @@ enum SnapshotConfig {
                 as: .image(precision: SnapshotConfig.precision, layout: .device(config: device.viewImageConfig)),
                 named: device.rawValue,
                 file: file,
-                testName: function.testRemoveNamed,
+                testName: function.replacingOccurrences(of: "previewDeviceVariation", with: ""),
                 line: UInt(line)
             )
         }
@@ -122,7 +123,7 @@ enum SnapshotConfig {
                 as: .image(precision: SnapshotConfig.precision, layout: .device(config: device.viewImageConfig), traits: .init(preferredContentSizeCategory: contentSizeType.size)),
                 named: "\(device.rawValue)-\(contentSizeType.rawValue)",
                 file: file,
-                testName: function.testRemoveNamed,
+                testName: function.replacingOccurrences(of: "previewContentSizeVariation", with: ""),
                 line: UInt(line)
             )
         }

@@ -45,11 +45,6 @@ public extension String {
         let components = lastPathComponent.split(separator: ".")
         return components.dropLast().joined(separator: ".")
     }
-
-    /// ex) "testAppRootView" -> "AppRootView"
-    var testRemoveNamed: String {
-        replacingOccurrences(of: "test", with: "")
-    }
 }
 
 extension String: RandomValueProvidable {

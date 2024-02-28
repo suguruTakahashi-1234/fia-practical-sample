@@ -146,10 +146,7 @@ private extension PackageDescription.Target.Dependency {
     static let swiftCompilerPlugin: Self = .product(name: "SwiftCompilerPlugin", package: "swift-syntax")
 
     /// Test
-    static let nimble: Self = .product(name: "Nimble", package: "Nimble")
-    static let quick: Self = .product(name: "Quick", package: "Quick")
-    // TODO: Swift 5.10 ではまだ動かないらしい https://swiftpackageindex.com/apple/swift-testing/main/documentation/testing/temporarygettingstarted
-    // static let testing: Self = .product(name: "Testing", package: "swift-testing")
+    static let testing: Self = .product(name: "Testing", package: "swift-testing")
 
     // TODO: "0.8.4" のバージョンでは、以下のSDKに依存したテスコードを作成しようとしたがビルドに失敗したため、バージョンが上がったら再度確認する（おそらくSDK側のバグ）
 //    static let snapshotting: Self = .product(name: "Snapshotting", package: "SnapshotPreviews-iOS")
@@ -177,10 +174,7 @@ let package = Package(
         .package(url: "https://github.com/apple/swift-syntax", from: "509.1.1"), // SwiftSyntax の競合に注意
 
         // Test
-        .package(url: "https://github.com/Quick/Nimble", from: "13.2.1"),
-        .package(url: "https://github.com/Quick/Quick", from: "7.4.0"),
-        // TODO: Swift 5.10 ではまだ動かないらしい https://swiftpackageindex.com/apple/swift-testing/main/documentation/testing/temporarygettingstarted
-        // .package(url: "https://github.com/apple/swift-testing.git", from: "0.4.2"),
+        .package(url: "https://github.com/apple/swift-testing.git", from: "0.5.0"),
 
         // Plugin
         .package(url: "https://github.com/maiyama18/LicensesPlugin", from: "0.1.6"),
@@ -264,11 +258,13 @@ extension TestTargetType {
         case .presenterTest:
             .init([
                 TargetType.presentation.dependency,
+                .testing,
             ])
         case .previewSnapshotTest:
             .init([
                 TargetType.presentation.dependency,
                 .previewSnapshotsTesting,
+                .testing,
             ])
         }
     }

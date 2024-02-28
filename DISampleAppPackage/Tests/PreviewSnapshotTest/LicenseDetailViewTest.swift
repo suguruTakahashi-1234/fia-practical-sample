@@ -5,10 +5,10 @@
 
 @testable import PresentationLayer
 import PreviewSnapshotsTesting
-import XCTest
+import Testing
 
-final class LicenseDetailViewTest: XCTestCase {
-    func testLicenseDetailView() {
+@Suite("ライセンス詳細画面 - スナップショットテスト") struct LicenseDetailViewSnapshotTest {
+    @Test("プレビュー") @MainActor func previewLicenseDetailView() {
         SnapshotConfig.previewTest(LicenseDetailView_Previews.self)
     }
 }

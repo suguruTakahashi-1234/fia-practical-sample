@@ -12,7 +12,7 @@ public struct LicenseListView: View {
 
     public init(router: some LicenseListWireframe, dependency: some LicenseListPresenterDependency) {
         self.router = router
-        _presenter = .init(wrappedValue: .init(dependency: dependency))
+        _presenter = .init(wrappedValue: LicenseListPresenter(dependency: dependency))
     }
 
     public var body: some View {

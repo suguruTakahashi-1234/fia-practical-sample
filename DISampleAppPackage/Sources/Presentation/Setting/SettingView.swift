@@ -12,7 +12,7 @@ public struct SettingView: View {
 
     public init(router: some SettingWireframe, dependency: some SettingPresenterDependency) {
         self.router = router
-        _presenter = .init(wrappedValue: .init(dependency: dependency))
+        _presenter = .init(wrappedValue: SettingPresenter(dependency: dependency))
     }
 
     public var body: some View {
@@ -27,7 +27,6 @@ public struct SettingView: View {
 }
 
 // MARK: Preview
-
 import PreviewSnapshots
 
 struct SettingView_Previews: PreviewProvider, SnapshotTestable {

@@ -7,8 +7,8 @@
 import PreviewSnapshotsTesting
 import Testing
 
-@Suite("ライセンス詳細画面 - スナップショットテスト") struct LicenseDetailViewSnapshotTest {
-    @Test("プレビュー") @MainActor func previewLicenseDetailView() {
+@Suite struct LicenseDetailViewSnapshotTest {
+    @Test @MainActor func previewLicenseDetailView() {
         SnapshotConfig.previewTest(LicenseDetailView_Previews.self)
     }
 }

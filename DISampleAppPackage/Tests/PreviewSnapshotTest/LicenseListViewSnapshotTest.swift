@@ -7,18 +7,18 @@
 import PreviewSnapshotsTesting
 import Testing
 
-@Suite("ライセンス詳細画面 - スナップショットテスト") struct LicenseListViewSnapshotTest {
-    @Test("プレビュー") @MainActor func previewLicenseListView() {
+@Suite struct LicenseListViewSnapshotTest {
+    @Test @MainActor func previewLicenseListView() {
         SnapshotConfig.previewTest(LicenseListView_Previews.self)
     }
     
     // デバイスバリエーションテストをしたい場合
-    @Test("プレビュー - バリエーション - デバイス") @MainActor func previewDeviceVariationLicenseListView() {
-        SnapshotConfig.deviceVariationTest(LicenseListView_Previews.self)
+    @Test @MainActor func previewDeviceVariationLicenseListView() {
+        SnapshotConfig.previewDeviceVariationTest(LicenseListView_Previews.self)
     }
     
     // 文字サイズのバリエーションテストをしたい場合
-    @Test("プレビュー - バリエーション - 文字サイズ") @MainActor func previewContentSizeVariationLicenseListView() {
-        SnapshotConfig.contentSizeVariationTest(LicenseListView_Previews.self)
+    @Test @MainActor func previewContentSizeVariationLicenseListView() {
+        SnapshotConfig.previewContentSizeVariationTest(LicenseListView_Previews.self)
     }
 }

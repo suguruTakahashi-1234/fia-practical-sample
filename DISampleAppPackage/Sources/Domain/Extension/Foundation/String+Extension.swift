@@ -6,6 +6,14 @@
 import Foundation
 
 public extension String {
+    /// ex) "dependencyInjector" -> "DependencyInjector"
+    var initialUppercased: String {
+        guard !isEmpty else {
+            return ""
+        }
+        return prefix(1).uppercased() + dropFirst()
+    }
+
     /// ex1) "snakeCase" -> "snake_case"
     /// ex2) "SnakeCase" -> "snake_case"
     /// ex3) "_SnakeCase" -> "_snake_case"

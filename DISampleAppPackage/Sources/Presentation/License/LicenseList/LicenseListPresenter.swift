@@ -29,7 +29,7 @@ final class LicenseListPresenter: ObservableObject {
         LoggerContainer.logOnDisappear()
     }
 
-    func licenseTapped(license: License) {
+    func onTapLicense(license: License) {
         selectedLicense = license
     }
 }

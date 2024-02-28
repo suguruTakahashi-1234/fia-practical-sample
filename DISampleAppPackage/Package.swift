@@ -119,6 +119,7 @@ enum TargetType: CaseIterable {
 }
 
 enum TestTargetType: CaseIterable {
+    case presenterTest
     case previewSnapshotTest
 
     private var name: String {
@@ -135,7 +136,7 @@ enum TestTargetType: CaseIterable {
 }
 
 private extension PackageDescription.Target.Dependency {
-    /// Third party SDK
+    // Library
     static let firebaseAnalytics: Self = .product(name: "FirebaseAnalytics", package: "firebase-ios-sdk")
     static let playbook: Self = .product(name: "Playbook", package: "playbook-ios")
     static let playbookUI: Self = .product(name: "PlaybookUI", package: "playbook-ios")
@@ -144,6 +145,12 @@ private extension PackageDescription.Target.Dependency {
     static let previewGallery: Self = .product(name: "PreviewGallery", package: "SnapshotPreviews-iOS")
     static let swiftSyntaxMacros: Self = .product(name: "SwiftSyntaxMacros", package: "swift-syntax")
     static let swiftCompilerPlugin: Self = .product(name: "SwiftCompilerPlugin", package: "swift-syntax")
+    
+    // Test
+    static let nimble: Self = .product(name: "Nimble", package: "Nimble")
+    static let quick: Self = .product(name: "Quick", package: "Quick")
+    // TODO: Swift 5.10 ではまだ動かないらしい https://swiftpackageindex.com/apple/swift-testing/main/documentation/testing/temporarygettingstarted
+    // static let testing: Self = .product(name: "Testing", package: "swift-testing")
 
     // TODO: "0.8.4" のバージョンでは、以下のSDKに依存したテスコードを作成しようとしたがビルドに失敗したため、バージョンが上がったら再度確認する（おそらくSDK側のバグ）
 //    static let snapshotting: Self = .product(name: "Snapshotting", package: "SnapshotPreviews-iOS")
@@ -168,13 +175,20 @@ let package = Package(
         .package(url: "https://github.com/playbook-ui/playbook-ios.git", from: "0.3.5"),
         .package(url: "https://github.com/doordash-oss/swiftui-preview-snapshots", from: "1.1.1"),
         .package(url: "https://github.com/EmergeTools/SnapshotPreviews-iOS", from: "0.8.4"),
-        .package(url: "https://github.com/apple/swift-syntax", from: "509.1.1"), // SwiftSyntax の競合
+        .package(url: "https://github.com/apple/swift-syntax", from: "509.1.1"), // SwiftSyntax の競合に注意
+
+        // Test
+        .package(url: "https://github.com/Quick/Nimble", from: "13.2.1"),
+        .package(url: "https://github.com/Quick/Quick", from: "7.4.0"),
+        // TODO: Swift 5.10 ではまだ動かないらしい https://swiftpackageindex.com/apple/swift-testing/main/documentation/testing/temporarygettingstarted
+        // .package(url: "https://github.com/apple/swift-testing.git", from: "0.4.2"),
 
         // Plugin
         .package(url: "https://github.com/maiyama18/LicensesPlugin", from: "0.1.6"),
 
         // for CLI
         .package(url: "https://github.com/yonaskolb/Mint.git", from: "0.17.5"),
+        .package(url: "https://github.com/nicklockwood/SwiftFormat", from: "0.53.2"),
     ],
     targets: MacroTargetType.allCases.map { $0.target } + TargetType.allCases.map { $0.target } + TestTargetType.allCases.map { $0.target }
 )
@@ -245,11 +259,15 @@ extension TargetType {
 extension TestTargetType {
     var dependencyLibrary: DependencyLibrary {
         switch self {
+        case .presenterTest:
+                .init([
+                    TargetType.presentation.dependency,
+                ])
         case .previewSnapshotTest:
-            .init([
-                TargetType.presentation.dependency,
-                .previewSnapshotsTesting,
-            ])
+                .init([
+                    TargetType.presentation.dependency,
+                    .previewSnapshotsTesting,
+                ])
         }
     }
 }

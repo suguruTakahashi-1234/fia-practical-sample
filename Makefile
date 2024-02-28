@@ -10,6 +10,14 @@ help:
 mint-bootstrap:
 	swift run --package-path $(PACKAGE_NAME) mint bootstrap
 
+.PHONY: swiftformat-run
+swiftformat-run:
+	swift run --package-path $(PACKAGE_NAME) swiftformat .
+
+.PHONY: swiftformat-lint
+swiftformat-lint:
+	swift run --package-path $(PACKAGE_NAME) swiftformat --lint .
+
 .PHONY: mockolo-run
 mockolo-run:
 	swift run --package-path $(PACKAGE_NAME) mint run mockolo -s $(MOCKOLO_SCAN_PATH) -d $(MOCKOLO_OUTPUT_PATH) --custom-imports DomainLayer -x Images Strings --mock-final

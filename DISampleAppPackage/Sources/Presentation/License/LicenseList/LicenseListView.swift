@@ -19,7 +19,7 @@ public struct LicenseListView: View {
         List {
             ForEach(presenter.licenseList) { license in
                 Button {
-                    presenter.licenseTapped(license: license)
+                    presenter.onTapLicense(license: license)
                 } label: {
                     Text(license.name)
                         .frame(maxWidth: .infinity, alignment: .leading)

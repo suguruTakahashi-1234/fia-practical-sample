@@ -111,10 +111,10 @@
 --enable docComments # 変数や関数宣言の直前のコメントは `///` を使用する
 --enable isEmpty # 条件文が isEmpty で書き換えらる場合は isEmpty に変更する
 #--enable markTypes # 型定義の前に MARK コメントを挿入する
-#--enable noExplicitOwnership
+--enable noExplicitOwnership # borrowing / consuming を修正する
 #--enable organizeDeclarations # 宣言を種類別に整理する
 #--enable sortSwitchCases # switch 文の case をアルファベット順に並び替える
 --enable wrapConditionalBodies # 条件文が長い場合に改行する。例：`guard let self else { return }` を改行する
 --enable wrapEnumCases # Enum 宣言時の case を省略させない 
-#--enable wrapMultilineConditionalAssignment
+#--enable wrapMultilineConditionalAssignment # 複数行あるときの改行時にインデントを修正する
 #--enable wrapSwitchCases # switch 文の case が複数ある場合はそれぞれの case で改行する

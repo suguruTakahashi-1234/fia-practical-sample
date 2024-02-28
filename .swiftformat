@@ -13,16 +13,17 @@
 
 # Rule List - https://github.com/nicklockwood/SwiftFormat/blob/0.53.2/Rules.md
 
-# Default Rules (enabled by default) デフォルトで有効なルール
-# コメントアウト部分が有効
+# Default Rules (enabled by default)
 
 #--disable andOperator
 #--disable anyObjectProtocol
 #--disable assertionFailures
+#--disable blankLineAfterImports
 #--disable applicationMain
 #--disable blankLinesAroundMark
 #--disable blankLinesAtEndOfScope
 #--disable blankLinesAtStartOfScope
+#--disable blankLinesBetweenChainedFunctions
 #--disable blankLinesBetweenScopes
 #--disable braces
 #--disable conditionalAssignment
@@ -47,7 +48,8 @@
 #--disable modifierOrder
 #--disable numberFormatting
 #--disable opaqueGenericParameters
---disable preferKeyPath # map { $0.toAppError } -> map(\.toAppError) としてエラーになるため無効にする
+#--disable preferForLoop
+--disable preferKeyPath # map { $0.hoge } -> map(\.hoge) に変換されて可読性が悪いので無効にする
 #--disable redundantBackticks
 #--disable redundantBreak
 #--disable redundantClosure
@@ -96,23 +98,23 @@
 #--disable wrap
 #--disable wrapArguments
 #--disable wrapAttributes
+#--disable wrapLoopBodies
 #--disable wrapMultilineStatementBraces
 #--disable wrapSingleLineComments
 #--disable yodaConditions
 
 # Opt-in Rules (disabled by default) デフォルトで無効なルール
-# コメントアウト部分は無効
 
 #--enable acronyms # アクロニムを大文字にする。例：`userId` → `userID`
---enable blankLineAfterImports # import 文の後に空行を挿入する
---enable blankLinesBetweenChainedFunctions # 連鎖する関数の間の空行は削除する
 --enable blankLinesBetweenImports # import 文の間の空行を削除する
 --enable blockComments # `/*` または `/**` のコメントを `//` や `///` に変更する
 --enable docComments # 変数や関数宣言の直前のコメントは `///` を使用する
 --enable isEmpty # 条件文が isEmpty で書き換えらる場合は isEmpty に変更する
 #--enable markTypes # 型定義の前に MARK コメントを挿入する
+#--enable noExplicitOwnership
 #--enable organizeDeclarations # 宣言を種類別に整理する
 #--enable sortSwitchCases # switch 文の case をアルファベット順に並び替える
 --enable wrapConditionalBodies # 条件文が長い場合に改行する。例：`guard let self else { return }` を改行する
 --enable wrapEnumCases # Enum 宣言時の case を省略させない 
+#--enable wrapMultilineConditionalAssignment
 #--enable wrapSwitchCases # switch 文の case が複数ある場合はそれぞれの case で改行する

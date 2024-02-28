@@ -7,8 +7,8 @@
 import PreviewSnapshotsTesting
 import Testing
 
-@Suite("アプリTop画面 - スナップショットテスト") struct AppRootViewSnapshotTest {
-    @Test("プレビュー") @MainActor func previewAppRootView() {
+@Suite struct AppRootViewSnapshotTest {
+    @Test @MainActor func previewAppRootView() {
         SnapshotConfig.previewTest(AppRootView_Previews.self)
     }
 }

@@ -1,10 +1,10 @@
 
 @testable import PresentationLayer
 import PreviewSnapshotsTesting
-import XCTest
+import Testing
 
-final class SettingViewTest: XCTestCase {
-    func testSettingView() {
+@Suite struct SettingViewSnapshotTest {
+    @Test @MainActor func previewSettingView() {
         SnapshotConfig.previewTest(SettingView_Previews.self)
     }
 }

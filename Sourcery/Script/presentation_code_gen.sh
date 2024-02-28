@@ -56,7 +56,7 @@ done
 remove_sourcery_header "$OUTPUT_ROUTER_DIR"
 
 # Test 関連
-for COMPONENT in "ViewTest"
+for COMPONENT in "ViewSnapshotTest"
 do
     swift run --package-path "$SOURCERY_PACKAGE_PATH" mint run sourcery \
                 --sources "$SOURCE_DIR" \

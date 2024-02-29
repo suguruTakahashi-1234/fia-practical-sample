@@ -15,7 +15,7 @@ struct AppRootPresenterTest {
 
     init() {
         firebaseSetupDriver = .init()
-        dependencyInjector = .init(
+        dependencyInjector = .create(
             firebaseSetupDriver: firebaseSetupDriver
         )
         presenter = .init(dependency: dependencyInjector)

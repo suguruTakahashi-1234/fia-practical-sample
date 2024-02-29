@@ -6,8 +6,11 @@
 import DomainLayer
 import Foundation
 
-/// @mockable
+/// @mockable(typealias: OSLogDriverProtocolAT = OSLogDriverProtocolMock; FirebaseSetupDriverProtocolAT = FirebaseSetupDriverProtocolMock)
 public protocol AppRootPresenterDependency {
-    var osLogDriver: OSLogDriverProtocol { get }
-    var firebaseSetupDriver: FirebaseSetupDriverProtocol { get }
+    associatedtype OSLogDriverProtocolAT: OSLogDriverProtocol
+    associatedtype FirebaseSetupDriverProtocolAT: FirebaseSetupDriverProtocol
+    
+    var osLogDriver: OSLogDriverProtocolAT { get }
+    var firebaseSetupDriver: FirebaseSetupDriverProtocolAT { get }
 }

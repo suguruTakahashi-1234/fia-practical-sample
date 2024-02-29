@@ -11,9 +11,9 @@ import LoggerFramework
 import PresentationLayer
 
 public struct AppRootDependencyInjector: AppRootRouterDependency {
-    public let osLogDriver: OSLogDriverProtocol = OSLogger(subsystem: Bundle.main.bundleIdentifier!, category: Constants.Logger.categoryName)
-    public let firebaseSetupDriver: FirebaseSetupDriverProtocol = FirebaseSetupDriver()
-    public let libraryLicenseDriver: LibraryLicenseDriverProtocol = LibraryLicenseDriver()
+    public let osLogDriver: some OSLogDriverProtocol = OSLogger(subsystem: Bundle.main.bundleIdentifier!, category: Constants.Logger.categoryName)
+    public let firebaseSetupDriver: some FirebaseSetupDriverProtocol = FirebaseSetupDriver()
+    public let libraryLicenseDriver: some LibraryLicenseDriverProtocol = LibraryLicenseDriver()
 
     public init() {}
 }

@@ -15,7 +15,7 @@ public enum LogEventType {
 }
 
 public extension LogEventType {
-    var logEvent: LoggableEntity {
+    var logEvent: any LoggableEntity {
         switch self {
         case .debug(let value):
             value

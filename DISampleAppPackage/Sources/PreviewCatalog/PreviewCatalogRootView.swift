@@ -6,6 +6,7 @@
 import PreviewGallery
 import SwiftUI
 
+@MainActor
 public struct PreviewCatalogRootView: View {
     public init() {}
 

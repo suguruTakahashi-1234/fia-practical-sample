@@ -11,9 +11,9 @@ final class LicenseListPresenter: ObservableObject {
     @Published private(set) var licenseList: [License] = []
     @Published var selectedLicense: License?
 
-    private let libraryLicenseDriver: LibraryLicenseDriverProtocol
+    private let libraryLicenseDriver: any LibraryLicenseDriverProtocol
 
-    init(dependency: some LicenseListPresenterDependency) {
+    init(dependency: any LicenseListPresenterDependency) {
         LoggerContainer.initLog()
         libraryLicenseDriver = dependency.libraryLicenseDriver
     }

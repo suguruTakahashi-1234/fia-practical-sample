@@ -6,6 +6,7 @@
 import DomainLayer
 import SwiftUI
 
+@MainActor
 public struct LicenseDetailView: View {
     @StateObject private var presenter: LicenseDetailPresenter
 

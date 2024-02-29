@@ -15,7 +15,7 @@ final class LicenseListPresenter<Dependency: LicenseListPresenterDependency>: Ob
 
     init(dependency: Dependency) {
         LoggerContainer.initLog()
-        self.libraryLicenseDriver = dependency.libraryLicenseDriver
+        libraryLicenseDriver = dependency.libraryLicenseDriver
     }
 
     deinit {

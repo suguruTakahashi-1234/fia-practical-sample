@@ -7,15 +7,15 @@ import DomainLayer
 import Foundation
 
 @MainActor
-final class LicenseListPresenter: ObservableObject {
+final class LicenseListPresenter<Dependency: LicenseListPresenterDependency>: ObservableObject {
     @Published private(set) var licenseList: [License] = []
     @Published var selectedLicense: License?
 
-    private let libraryLicenseDriver: any LibraryLicenseDriverProtocol
+    private let libraryLicenseDriver: Dependency.LibraryLicenseDriverProtocolAT
 
-    init(dependency: any LicenseListPresenterDependency) {
+    init(dependency: Dependency) {
         LoggerContainer.initLog()
-        libraryLicenseDriver = dependency.libraryLicenseDriver
+        self.libraryLicenseDriver = dependency.libraryLicenseDriver
     }
 
     deinit {

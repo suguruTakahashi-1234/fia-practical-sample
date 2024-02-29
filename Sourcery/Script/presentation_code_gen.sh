@@ -13,7 +13,7 @@ TEMPLATE_PATH="./Sourcery/Template"
 SOURCE_DIR="${SOURCERY_PACKAGE_PATH}/Sources/Presentation"
 OUTPUT_PRESENTATION_DIR="${SOURCE_DIR}/${SCREEN_NAME}"
 OUTPUT_ROUTER_DIR="${SOURCE_DIR}/${ROUTER_NAME}"
-OUTPUT_TEST_DIR="${SOURCERY_PACKAGE_PATH}/Tests/PreviewSnapshotTest"
+OUTPUT_TEST_DIR="${SOURCERY_PACKAGE_PATH}/Tests"
 
 # --force-parse のオプションが拡張子を別にしないと効かないため、それを回避するためのワークアラウンド処理
 remove_sourcery_header() {
@@ -56,12 +56,12 @@ done
 remove_sourcery_header "$OUTPUT_ROUTER_DIR"
 
 # Test 関連
-for COMPONENT in "ViewSnapshotTest"
+for COMPONENT in "ViewSnapshotTest" "PresenterTest"
 do
     swift run --package-path "$SOURCERY_PACKAGE_PATH" mint run sourcery \
                 --sources "$SOURCE_DIR" \
                 --templates "$TEMPLATE_PATH/${COMPONENT}.stencil" \
-                --output "$OUTPUT_TEST_DIR/${SCREEN_NAME}${COMPONENT}.swift" \
+                --output "$OUTPUT_TEST_DIR/${COMPONENT}/${SCREEN_NAME}${COMPONENT}.swift" \
                 --args "screenName=$SCREEN_NAME",routerName="$ROUTER_NAME"
 done
 remove_sourcery_header "$OUTPUT_TEST_DIR"

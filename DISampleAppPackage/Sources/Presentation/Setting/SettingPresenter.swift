@@ -4,7 +4,7 @@ import Foundation
 
 @MainActor
 final class SettingPresenter: ObservableObject {
-    init(dependency _: some SettingPresenterDependency) {
+    init(dependency: some SettingPresenterDependency) {
         LoggerContainer.initLog()
     }
 

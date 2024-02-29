@@ -119,7 +119,7 @@ enum TargetType: CaseIterable {
 
 enum TestTargetType: CaseIterable {
     case presenterTest
-    case previewSnapshotTest
+    case viewSnapshotTest
 
     private var name: String {
         "\(self)".initialUppercased
@@ -260,7 +260,7 @@ extension TestTargetType {
                 TargetType.presentation.dependency,
                 .testing,
             ])
-        case .previewSnapshotTest:
+        case .viewSnapshotTest:
             .init([
                 TargetType.presentation.dependency,
                 .previewSnapshotsTesting,

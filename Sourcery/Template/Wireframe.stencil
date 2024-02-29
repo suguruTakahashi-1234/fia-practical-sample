@@ -3,5 +3,17 @@ import Foundation
 
 public protocol {{ argument.screenName }}Wireframe {}
 
-// TODO: delete after {{ argument.screenName }}Wireframe to {{ argument.routerName }}Router
+// TODO: Delete after {{ argument.screenName }}Wireframe to {{ argument.routerName }}Router
 extension {{ argument.routerName }}Router: {{ argument.screenName }}Wireframe {}
+
+// TODO: Add transition source Wireframe
+//    associatedtype SettingWireframeAT: SettingWireframe
+//    associatedtype SettingPresenterDependencyAT: SettingPresenterDependency
+//
+//    func createSettingView() -> SettingView<SettingWireframeAT, SettingPresenterDependencyAT>
+
+// TODO: Add Router
+//    @MainActor
+//    public func createSettingView() -> SettingView<Self, Dependency> {
+//        SettingView(router: self, dependency: dependency)
+//    }

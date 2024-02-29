@@ -6,6 +6,7 @@
 
 --exclude ./DISampleAppPackage/Sources/Presentation/TestTool/Mocks.swift
 --exclude ./DISampleAppPackage/.build
+--exclude .DISampleAppPackage/Tests/ViewSnapshotTest/__Snapshots__
 
 # Format Options
 

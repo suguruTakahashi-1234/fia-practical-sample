@@ -3,11 +3,11 @@ import DomainLayer
 import SwiftUI
 
 @MainActor
-public struct SettingView: View {
-    private let router: any SettingWireframe
+public struct SettingView<Router: SettingWireframe>: View {
+    private let router: Router
     @StateObject private var presenter: SettingPresenter
 
-    public init(router: some SettingWireframe, dependency: some SettingPresenterDependency) {
+    public init(router: Router, dependency: some SettingPresenterDependency) {
         self.router = router
         _presenter = .init(wrappedValue: SettingPresenter(dependency: dependency))
     }
@@ -36,7 +36,7 @@ struct SettingView_Previews: PreviewProvider, SnapshotTestable {
         .init(
             configurations: configurationAllSizesWithEmpty,
             configure: { state in
-                SettingView(router: AppRootRouter<AppRootRouterDependencyMock>(dependency: AppRootRouterDependencyMock.empty), dependency: state)
+                SettingView(router: AppRootRouter(dependency: AppRootRouterDependencyMock.empty), dependency: state)
             }
         )
     }

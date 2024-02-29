@@ -7,11 +7,11 @@ import DomainLayer
 import SwiftUI
 
 @MainActor
-public struct AppRootView: View {
-    private let router: any AppRootWireframe
+public struct AppRootView<Router: AppRootWireframe>: View {
+    private let router: Router
     @StateObject private var presenter: AppRootPresenter
 
-    public init(router: any AppRootWireframe, dependency: some AppRootPresenterDependency) {
+    public init(router: Router, dependency: some AppRootPresenterDependency) {
         self.router = router
         _presenter = .init(wrappedValue: AppRootPresenter(dependency: dependency))
     }
@@ -40,7 +40,7 @@ struct AppRootView_Previews: PreviewProvider, SnapshotTestable {
         PreviewSnapshots(
             configurations: configurationEmpty,
             configure: { state in
-                AppRootView(router: AppRootRouter<AppRootRouterDependencyMock>(dependency: AppRootRouterDependencyMock.empty), dependency: state)
+                AppRootView(router: AppRootRouter(dependency: AppRootRouterDependencyMock.empty), dependency: state)
             }
         )
     }

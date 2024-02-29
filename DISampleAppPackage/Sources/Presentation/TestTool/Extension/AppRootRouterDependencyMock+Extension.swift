@@ -19,7 +19,7 @@ public extension AppRootRouterDependencyMock {
             firebaseSetupDriver: firebaseSetupDriver
         )
     }
-    
+
     static var empty: Self {
         .create(
             libraryLicenseDriver: LibraryLicenseDriverProtocolMock()
@@ -36,7 +36,6 @@ public extension AppRootRouterDependencyMock {
         .create(
             libraryLicenseDriver: LibraryLicenseDriverProtocolMock(licenseList: .multipleSizeS)
         )
-        
     }
 
     static var sizeM: Self {

@@ -10,7 +10,7 @@ import Foundation
 public protocol AppRootPresenterDependency {
     associatedtype OSLogDriverProtocolAT: OSLogDriverProtocol
     associatedtype FirebaseSetupDriverProtocolAT: FirebaseSetupDriverProtocol
-    
+
     var osLogDriver: OSLogDriverProtocolAT { get }
     var firebaseSetupDriver: FirebaseSetupDriverProtocolAT { get }
 }

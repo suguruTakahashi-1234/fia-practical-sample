@@ -14,12 +14,12 @@ public struct AppRootRouter<T: AppRootRouterDependency>: AppRootWireframe, Licen
     }
 
     @MainActor
-    public func createAppRootView() -> AppRootView {
+    public func createAppRootView() -> AppRootView<Self> {
         AppRootView(router: self, dependency: dependency)
     }
 
     @MainActor
-    public func createLicenseListView() -> LicenseListView {
+    public func createLicenseListView() -> LicenseListView<Self> {
         LicenseListView(router: self, dependency: dependency)
     }
 

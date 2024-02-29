@@ -7,11 +7,11 @@ import DomainLayer
 import SwiftUI
 
 @MainActor
-public struct LicenseListView: View {
-    private let router: any LicenseListWireframe
+public struct LicenseListView<Router: LicenseListWireframe>: View {
+    private let router: Router
     @StateObject private var presenter: LicenseListPresenter
 
-    public init(router: any LicenseListWireframe, dependency: some LicenseListPresenterDependency) {
+    public init(router: Router, dependency: some LicenseListPresenterDependency) {
         self.router = router
         _presenter = .init(wrappedValue: LicenseListPresenter(dependency: dependency))
     }
@@ -51,7 +51,7 @@ struct LicenseListView_Previews: PreviewProvider, SnapshotTestable {
         .init(
             configurations: configurationAllSizesWithEmpty,
             configure: { state in
-                LicenseListView(router: AppRootRouter<AppRootRouterDependencyMock>(dependency: AppRootRouterDependencyMock.empty), dependency: state)
+                LicenseListView(router: AppRootRouter(dependency: AppRootRouterDependencyMock.empty), dependency: state)
             }
         )
     }

@@ -9,6 +9,6 @@ import Foundation
 /// @mockable(typealias: LibraryLicenseDriverProtocolAT = LibraryLicenseDriverProtocolMock)
 public protocol LicenseListPresenterDependency {
     associatedtype LibraryLicenseDriverProtocolAT: LibraryLicenseDriverProtocol
-    
+
     var libraryLicenseDriver: LibraryLicenseDriverProtocolAT { get }
 }

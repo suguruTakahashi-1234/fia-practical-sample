@@ -35,7 +35,7 @@ struct {{ argument.screenName }}View_Previews: PreviewProvider, SnapshotTestable
         .init(
             configurations: configurationAllSizesWithEmpty,
             configure: { state in
-                {{ argument.screenName }}View(router: {{ argument.routerName }}Router.empty, dependency: state)
+                {{ argument.screenName }}View(router: {{ argument.routerName }}Router(dependency: {{ argument.routerName }}RouterDependencyMock.empty), dependency: state)
             }
         )
     }

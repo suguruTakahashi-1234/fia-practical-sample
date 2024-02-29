@@ -36,7 +36,7 @@ struct SettingView_Previews: PreviewProvider, SnapshotTestable {
         .init(
             configurations: configurationAllSizesWithEmpty,
             configure: { state in
-                SettingView(router: AppRootRouter.empty, dependency: state)
+                SettingView(router: AppRootRouter(dependency: AppRootRouterDependencyMock.empty), dependency: state)
             }
         )
     }

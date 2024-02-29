@@ -157,6 +157,8 @@ private extension PackageDescription.Target.PluginUsage {
     static let licensesPlugin: Self = .plugin(name: "LicensesPlugin", package: "LicensesPlugin")
 }
 
+// MARK: - Package
+
 let package = Package(
     name: "DISampleAppPackage",
     defaultLocalization: "ja",
@@ -186,7 +188,7 @@ let package = Package(
     targets: MacroTargetType.allCases.map { $0.target } + TargetType.allCases.map { $0.target } + TestTargetType.allCases.map { $0.target }
 )
 
-// MARK: Macro
+// MARK: - Macro
 
 extension MacroTargetType {
     var dependencyLibrary: DependencyLibrary {
@@ -200,7 +202,7 @@ extension MacroTargetType {
     }
 }
 
-// MARK: Target
+// MARK: - Target
 
 extension TargetType {
     var dependencyLibrary: DependencyLibrary {
@@ -250,7 +252,7 @@ extension TargetType {
     }
 }
 
-// MARK: Test
+// MARK: - Test
 
 extension TestTargetType {
     var dependencyLibrary: DependencyLibrary {

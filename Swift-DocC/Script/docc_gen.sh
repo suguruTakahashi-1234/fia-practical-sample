@@ -14,10 +14,9 @@ swift package --allow-writing-to-directory ../docs \
   generate-documentation --target "$TARGET" \
   --disable-indexing \
   --transform-for-static-hosting \
-  --hosting-base-path "https://github.com/suguruTakahashi-1234/DISample" \
+  --hosting-base-path "https://github.com/suguruTakahashi-1234/DISample/docs" \
   --output-path ../docs
 
-echo "Documentation for $TARGET has been generated and saved to ../docs"
 echo "Documentation for $TARGET has been generated and saved to ../docs"
 
 TARGET_LOWER=$(echo "$1" | tr '[:upper:]' '[:lower:]')

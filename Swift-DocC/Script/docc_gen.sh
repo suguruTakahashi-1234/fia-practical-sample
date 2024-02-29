@@ -10,9 +10,10 @@ PACKAGE_NAME=$2
 
 cd $PACKAGE_NAME
 
+# TODO: 今は複数ターゲットを指定することができないので、それが可能になったらそのオプションを追加する
 # Ref: https://apple.github.io/swift-docc-plugin/documentation/swiftdoccplugin/publishing-to-github-pages/#Generating-the-Documentation-Site
 swift package --allow-writing-to-directory ../docs \
-  generate-documentation --product AppDocC \
+  generate-documentation --target "$TARGET" \
   --disable-indexing \
   --transform-for-static-hosting \
   --hosting-base-path DISample \

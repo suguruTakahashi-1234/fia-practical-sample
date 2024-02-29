@@ -8,18 +8,21 @@ import DomainLayer
 @testable import PresentationLayer
 
 @MainActor
-struct LicenseDetailPresenterTest {
-    var presenter: LicenseDetailPresenter!
-    var license: License!
+struct AppRootPresenterTest {
+    var presenter: AppRootPresenter!
+    var dependencyInjector: AppRootRouterDependencyMock!
+    var firebaseSetupDriver: FirebaseSetupDriverProtocolMock!
 
     init() {
-        license = .random
-        presenter = .init(license: license)
+        firebaseSetupDriver = .init()
+        dependencyInjector = .init(
+            firebaseSetupDriver: firebaseSetupDriver
+        )
+        presenter = .init(dependency: dependencyInjector)
     }
 
     @Test("初期化したとき") func onInit() {
-        #expect(true, "")
-        
+        #expect(firebaseSetupDriver.configureCallCount == 1, "Firebaseのセットアップが行われること")
     }
 
     @Test("画面を表示したとき") func onAppear() async {

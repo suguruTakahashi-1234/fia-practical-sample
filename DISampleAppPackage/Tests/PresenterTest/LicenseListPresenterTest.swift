@@ -11,10 +11,12 @@ import DomainLayer
 @MainActor
 struct LicenseListPresenterTest {
     var presenter: LicenseListPresenter!
-    var dependencyInjector: AppRootRouterDependencyMock = .random
-    var license: License! = .random
+    var dependencyInjector: AppRootRouterDependencyMock!
+    var license: License!
 
     init() {
+        license = .random
+        dependencyInjector = .random
         presenter = .init(dependency: dependencyInjector)
     }
 

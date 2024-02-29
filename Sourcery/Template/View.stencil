@@ -4,7 +4,7 @@ import SwiftUI
 @MainActor
 public struct {{ argument.screenName }}View<Router: {{ argument.screenName }}Wireframe, Dependency: {{ argument.screenName }}PresenterDependency>: View {
     private let router: Router
-    @StateObject private var presenter: {{ argument.screenName }}Presenter
+    @StateObject private var presenter: {{ argument.screenName }}Presenter<Dependency>
 
     public init(router: Router, dependency: Dependency) {
         self.router = router

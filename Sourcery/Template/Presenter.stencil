@@ -2,7 +2,7 @@ import DomainLayer
 import Foundation
 
 @MainActor
-final class {{ argument.screenName }}Presenter: ObservableObject {
+final class {{ argument.screenName }}Presenter<Dependency: {{ argument.screenName }}PresenterDependency>: ObservableObject {
     init(dependency _: some {{ argument.screenName }}PresenterDependency) {
         LoggerContainer.initLog()
     }

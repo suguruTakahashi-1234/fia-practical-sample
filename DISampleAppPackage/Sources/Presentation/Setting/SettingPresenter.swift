@@ -3,7 +3,7 @@ import DomainLayer
 import Foundation
 
 @MainActor
-final class SettingPresenter: ObservableObject {
+final class SettingPresenter<Dependency: SettingPresenterDependency>: ObservableObject {
     init(dependency _: some SettingPresenterDependency) {
         LoggerContainer.initLog()
     }

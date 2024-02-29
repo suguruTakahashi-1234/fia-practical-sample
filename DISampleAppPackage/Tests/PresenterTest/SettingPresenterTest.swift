@@ -5,7 +5,7 @@ import Testing
 
 @MainActor
 struct SettingPresenterTest {
-    var presenter: SettingPresenter!
+    var presenter: SettingPresenter<AppRootRouterDependencyMock>!
     var dependencyInjector: AppRootRouterDependencyMock!
 
     init() {

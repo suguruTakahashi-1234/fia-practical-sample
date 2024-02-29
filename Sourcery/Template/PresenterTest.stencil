@@ -4,7 +4,7 @@ import Testing
 
 @MainActor
 struct {{ argument.screenName }}PresenterTest {
-    var presenter: {{ argument.screenName }}Presenter!
+    var presenter: {{ argument.screenName }}Presenter<{{ argument.routerName }}RouterDependencyMock>!
     var dependencyInjector: {{ argument.routerName }}RouterDependencyMock!
 
     init() {

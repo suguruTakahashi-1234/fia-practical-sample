@@ -1,0 +1,27 @@
+import Testing
+import DomainLayer
+@testable import PresentationLayer
+
+@MainActor
+struct {{ argument.screenName }}PresenterTest {
+    var presenter: {{ argument.screenName }}Presenter!
+    var dependencyInjector: {{ argument.routerName }}RouterDependencyMock = .random
+
+    init() {
+        presenter = .init(dependency: dependencyInjector)
+    }
+
+    @Test("初期化したとき") func onInit() {
+        #expect(true, "")
+    }
+
+    @Test("画面を表示したとき") func onAppear() async {
+        await presenter.onAppear()
+        #expect(true, "")
+    }
+
+    @Test("画面を閉じたとき") func onDisappear() {
+        presenter.onDisappear()
+        #expect(true, "")
+    }
+}

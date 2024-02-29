@@ -8,13 +8,14 @@ import Foundation
 
 @MainActor
 final class LicenseListPresenter: ObservableObject {
-    @Published private(set) var licenseList: [License]
+    @Published private(set) var licenseList: [License] = []
     @Published var selectedLicense: License?
+    
+    private let libraryLicenseDriver: LibraryLicenseDriverProtocol
 
     init(dependency: some LicenseListPresenterDependency) {
         LoggerContainer.initLog()
-
-        licenseList = dependency.libraryLicenseDriver.licenseList
+        libraryLicenseDriver = dependency.libraryLicenseDriver
     }
 
     deinit {
@@ -23,6 +24,7 @@ final class LicenseListPresenter: ObservableObject {
 
     func onAppear() async {
         LoggerContainer.logOnAppear()
+        licenseList = libraryLicenseDriver.licenseList
     }
 
     func onDisappear() {

@@ -7,13 +7,13 @@ public protocol {{ argument.screenName }}Wireframe {}
 extension {{ argument.routerName }}Router: {{ argument.screenName }}Wireframe {}
 
 // TODO: Add transition source Wireframe
-//    associatedtype SettingWireframeAT: SettingWireframe
-//    associatedtype SettingPresenterDependencyAT: SettingPresenterDependency
+//    associatedtype {{ argument.screenName }}WireframeAT: {{ argument.screenName }}Wireframe
+//    associatedtype {{ argument.screenName }}PresenterDependencyAT: {{ argument.screenName }}PresenterDependency
 //
-//    func createSettingView() -> SettingView<SettingWireframeAT, SettingPresenterDependencyAT>
+//    func create{{ argument.screenName }}View() -> {{ argument.screenName }}View<{{ argument.screenName }}WireframeAT, {{ argument.screenName }}PresenterDependencyAT>
 
 // TODO: Add Router
 //    @MainActor
-//    public func createSettingView() -> SettingView<Self, Dependency> {
-//        SettingView(router: self, dependency: dependency)
+//    public func create{{ argument.screenName }}View() -> {{ argument.screenName }}View<Self, Dependency> {
+//        {{ argument.screenName }}View(router: self, dependency: dependency)
 //    }

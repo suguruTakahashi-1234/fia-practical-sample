@@ -26,6 +26,10 @@ mockolo-run:
 sourcery-presentation-code-gen:
 	./Sourcery/Script/presentation_code_gen.sh $(VIEW) $(ROUTER)
 
+.PHONY: swift-docc-gen
+swift-docc-gen:
+	./Swift-DocC/Script/docc_gen.sh $(TARGET)
+
 .PHONY: presentation-code-gen
 presentation-code-gen:
 	$(MAKE) sourcery-presentation-code-gen

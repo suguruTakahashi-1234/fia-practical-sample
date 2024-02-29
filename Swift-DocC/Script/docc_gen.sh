@@ -12,8 +12,7 @@ cd $PACKAGE_NAME
 
 # Ref: https://apple.github.io/swift-docc-plugin/documentation/swiftdoccplugin/publishing-to-github-pages/#Generating-the-Documentation-Site
 swift package --allow-writing-to-directory ../docs \
-  generate-documentation --target "$TARGET" \
-  #generate-documentation --product AppDocC \
+  generate-documentation --product AppDocC \
   --disable-indexing \
   --transform-for-static-hosting \
   --hosting-base-path DISample \

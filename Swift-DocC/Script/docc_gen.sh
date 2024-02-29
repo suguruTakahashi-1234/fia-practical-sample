@@ -1,13 +1,14 @@
 #!/bin/bash
 
-if [ "$#" -ne 1 ]; then
-    echo "Usage: $0 <Target>"
+if [ "$#" -ne 2 ]; then
+    echo "Usage: $0 <Target> <Packge Name>"
     exit 1
 fi
 
 TARGET=$1
+PACKAGE_NAME=$2
 
-cd ./DISampleAppPackage
+cd $PACKAGE_NAME
 
 # Ref: https://apple.github.io/swift-docc-plugin/documentation/swiftdoccplugin/publishing-to-github-pages/#Generating-the-Documentation-Site
 swift package --allow-writing-to-directory ../docs \

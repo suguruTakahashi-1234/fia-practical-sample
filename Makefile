@@ -28,7 +28,7 @@ sourcery-presentation-code-gen:
 
 .PHONY: swift-docc-gen
 swift-docc-gen:
-	./Swift-DocC/Script/docc_gen.sh $(TARGET)
+	./Swift-DocC/Script/docc_gen.sh $(TARGET) $(PACKAGE_NAME)
 
 .PHONY: presentation-code-gen
 presentation-code-gen:

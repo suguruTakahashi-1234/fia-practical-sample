@@ -19,7 +19,7 @@ public struct AppRootView: View {
         NavigationStack {
             router.createLicenseListView()
                 .task {
-                    presenter.onAppear()
+                    await presenter.onAppear()
                 }
                 .onDisappear {
                     presenter.onDisappear()

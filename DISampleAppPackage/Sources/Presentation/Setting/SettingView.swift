@@ -18,7 +18,7 @@ public struct SettingView: View {
     public var body: some View {
         Text("SettingView")
             .task {
-                presenter.onAppear()
+                await presenter.onAppear()
             }
             .onDisappear {
                 presenter.onDisappear()

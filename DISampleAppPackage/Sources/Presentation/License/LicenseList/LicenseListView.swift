@@ -31,7 +31,7 @@ public struct LicenseListView: View {
         }
         .navigationTitle("ライセンス")
         .task {
-            presenter.onAppear()
+            await presenter.onAppear()
         }
         .onDisappear {
             presenter.onDisappear()

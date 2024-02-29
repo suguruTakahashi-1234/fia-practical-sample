@@ -22,7 +22,7 @@ public struct LicenseDetailView: View {
             .navigationTitle(presenter.license.name)
         }
         .task {
-            presenter.onAppear()
+            await presenter.onAppear()
         }
         .onDisappear {
             presenter.onDisappear()

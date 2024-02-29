@@ -17,7 +17,7 @@ final class SettingPresenter: ObservableObject {
         LoggerContainer.deinitLog()
     }
 
-    func onAppear() {
+    func onAppear() async {
         LoggerContainer.logOnAppear()
     }
 

@@ -21,7 +21,7 @@ final class LicenseListPresenter: ObservableObject {
         LoggerContainer.deinitLog()
     }
 
-    func onAppear() {
+    func onAppear() async {
         LoggerContainer.logOnAppear()
     }
 

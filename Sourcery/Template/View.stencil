@@ -3,7 +3,7 @@ import SwiftUI
 
 @MainActor
 public struct {{ argument.screenName }}View<Router: {{ argument.screenName }}Wireframe, Dependency: {{ argument.screenName }}PresenterDependency>: View {
-    private let router: {{ argument.screenName }}Wireframe
+    private let router: Router
     @StateObject private var presenter: {{ argument.screenName }}Presenter
 
     public init(router: Router, dependency: Dependency) {

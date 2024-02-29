@@ -7,8 +7,6 @@ fi
 
 TARGET=$1
 
-cd ./DISampleAppPackage
-
 # Ref: https://apple.github.io/swift-docc-plugin/documentation/swiftdoccplugin/publishing-to-github-pages/#Generating-the-Documentation-Site
 swift package --allow-writing-to-directory ./docs \
   generate-documentation --target "$TARGET" \

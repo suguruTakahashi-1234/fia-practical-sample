@@ -9,7 +9,7 @@ import Testing
 
 @MainActor
 struct AppRootPresenterTest {
-    var presenter: AppRootPresenter!
+    var presenter: AppRootPresenter<AppRootRouterDependencyMock>!
     var dependencyInjector: AppRootRouterDependencyMock!
     var firebaseSetupDriver: FirebaseSetupDriverProtocolMock!
 

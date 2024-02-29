@@ -7,8 +7,8 @@ import DomainLayer
 import Foundation
 
 @MainActor
-final class AppRootPresenter: ObservableObject {
-    init(dependency: some AppRootPresenterDependency) {
+final class AppRootPresenter<Dependency: AppRootPresenterDependency>: ObservableObject {
+    init(dependency: Dependency) {
         // Setup Logger
         LoggerContainer.append(logger: dependency.osLogDriver)
         LoggerContainer.debugLog("completed setup LoggerContainer")

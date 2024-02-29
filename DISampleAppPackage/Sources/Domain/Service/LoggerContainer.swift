@@ -5,7 +5,7 @@
 
 import Foundation
 
-public enum LoggerContainer {
+public actor LoggerContainer {
     private static var loggers: [any LoggerContainable] = []
 
     public static func append(logger: some LoggerContainable) {

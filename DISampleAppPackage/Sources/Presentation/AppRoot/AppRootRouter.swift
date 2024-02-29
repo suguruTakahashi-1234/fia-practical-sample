@@ -14,7 +14,7 @@ public struct AppRootRouter<Dependency: AppRootRouterDependency>: AppRootWirefra
     }
 
     @MainActor
-    public func createAppRootView() -> AppRootView<Self> {
+    public func createAppRootView() -> AppRootView<Self, Dependency> {
         AppRootView(router: self, dependency: dependency)
     }
 

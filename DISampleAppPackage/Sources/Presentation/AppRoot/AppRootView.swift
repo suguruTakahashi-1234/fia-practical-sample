@@ -7,11 +7,11 @@ import DomainLayer
 import SwiftUI
 
 @MainActor
-public struct AppRootView<Router: AppRootWireframe>: View {
+public struct AppRootView<Router: AppRootWireframe, Dependency: AppRootPresenterDependency>: View {
     private let router: Router
-    @StateObject private var presenter: AppRootPresenter
+    @StateObject private var presenter: AppRootPresenter<Dependency>
 
-    public init(router: Router, dependency: some AppRootPresenterDependency) {
+    public init(router: Router, dependency: Dependency) {
         self.router = router
         _presenter = .init(wrappedValue: AppRootPresenter(dependency: dependency))
     }

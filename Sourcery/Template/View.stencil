@@ -1,11 +1,12 @@
 import DomainLayer
 import SwiftUI
 
-public struct {{ argument.screenName }}View: View {
+@MainActor
+public struct {{ argument.screenName }}View<Router: {{ argument.screenName }}Wireframe, Dependency: {{ argument.screenName }}PresenterDependency>: View {
     private let router: {{ argument.screenName }}Wireframe
     @StateObject private var presenter: {{ argument.screenName }}Presenter
 
-    public init(router: some {{ argument.screenName }}Wireframe, dependency: some {{ argument.screenName }}PresenterDependency) {
+    public init(router: Router, dependency: Dependency) {
         self.router = router
         _presenter = .init(wrappedValue: {{ argument.screenName }}Presenter(dependency: dependency))
     }

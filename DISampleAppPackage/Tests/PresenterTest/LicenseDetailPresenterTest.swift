@@ -3,9 +3,9 @@
 //  Copyright sugurutakahashi. All rights reserved.
 //
 
-import Testing
 import DomainLayer
 @testable import PresentationLayer
+import Testing
 
 @MainActor
 struct LicenseDetailPresenterTest {
@@ -19,7 +19,6 @@ struct LicenseDetailPresenterTest {
 
     @Test("初期化したとき") func onInit() {
         #expect(true, "")
-        
     }
 
     @Test("画面を表示したとき") func onAppear() async {

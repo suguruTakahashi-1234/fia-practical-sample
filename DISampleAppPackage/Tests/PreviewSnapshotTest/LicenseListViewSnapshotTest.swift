@@ -11,13 +11,13 @@ import Testing
     @Test @MainActor func previewLicenseListView() {
         SnapshotConfig.previewTest(LicenseListView_Previews.self)
     }
-    
-    // デバイスバリエーションテストをしたい場合
+
+    /// デバイスバリエーションテストをしたい場合
     @Test @MainActor func previewDeviceVariationLicenseListView() {
         SnapshotConfig.previewDeviceVariationTest(LicenseListView_Previews.self)
     }
-    
-    // 文字サイズのバリエーションテストをしたい場合
+
+    /// 文字サイズのバリエーションテストをしたい場合
     @Test @MainActor func previewContentSizeVariationLicenseListView() {
         SnapshotConfig.previewContentSizeVariationTest(LicenseListView_Previews.self)
     }

@@ -13,7 +13,7 @@ public struct {{ argument.screenName }}View: View {
     public var body: some View {
         Text("{{ argument.screenName }}View")
             .task {
-                presenter.onAppear()
+                await presenter.onAppear()
             }
             .onDisappear {
                 presenter.onDisappear()
@@ -21,7 +21,8 @@ public struct {{ argument.screenName }}View: View {
     }
 }
 
-// MARK: Preview
+// MARK: - Preview
+
 import PreviewSnapshots
 
 struct {{ argument.screenName }}View_Previews: PreviewProvider, SnapshotTestable {

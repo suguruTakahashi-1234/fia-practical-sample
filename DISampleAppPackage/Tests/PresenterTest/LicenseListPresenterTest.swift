@@ -4,9 +4,9 @@
 //
 //
 
-import Testing
 import DomainLayer
 @testable import PresentationLayer
+import Testing
 
 @MainActor
 struct LicenseListPresenterTest {
@@ -23,7 +23,6 @@ struct LicenseListPresenterTest {
     @Test("初期化したとき") func onInit() {
         #expect(presenter.licenseList.isEmpty, "ライセンス一覧は未取得であること")
         #expect(presenter.selectedLicense.isNil, "ライセンスは選択されていないこと")
-        
     }
 
     @Test("画面を表示したとき") func onAppear() async {

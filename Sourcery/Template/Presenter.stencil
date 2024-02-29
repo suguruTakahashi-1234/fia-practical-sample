@@ -3,7 +3,6 @@ import Foundation
 
 @MainActor
 final class {{ argument.screenName }}Presenter: ObservableObject {
-
     init(dependency: some {{ argument.screenName }}PresenterDependency) {
         LoggerContainer.initLog()
     }
@@ -12,7 +11,7 @@ final class {{ argument.screenName }}Presenter: ObservableObject {
         LoggerContainer.deinitLog()
     }
 
-    func onAppear() {
+    func onAppear() async {
         LoggerContainer.logOnAppear()
     }
 

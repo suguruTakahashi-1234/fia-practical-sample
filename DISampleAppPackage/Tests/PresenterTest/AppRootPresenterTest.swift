@@ -3,9 +3,9 @@
 //  Copyright sugurutakahashi. All rights reserved.
 //
 
-import Testing
 import DomainLayer
 @testable import PresentationLayer
+import Testing
 
 @MainActor
 struct AppRootPresenterTest {

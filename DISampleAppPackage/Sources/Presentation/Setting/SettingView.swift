@@ -1,7 +1,3 @@
-//
-//  Created by sugurutakahashi on 2024/02/27
-//  Copyright sugurutakahashi. All rights reserved.
-//
 
 import DomainLayer
 import SwiftUI
@@ -26,7 +22,8 @@ public struct SettingView: View {
     }
 }
 
-// MARK: Preview
+// MARK: - Preview
+
 import PreviewSnapshots
 
 struct SettingView_Previews: PreviewProvider, SnapshotTestable {

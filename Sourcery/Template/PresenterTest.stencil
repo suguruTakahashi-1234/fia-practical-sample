@@ -1,13 +1,14 @@
-import Testing
 import DomainLayer
 @testable import PresentationLayer
+import Testing
 
 @MainActor
 struct {{ argument.screenName }}PresenterTest {
     var presenter: {{ argument.screenName }}Presenter!
-    var dependencyInjector: {{ argument.routerName }}RouterDependencyMock = .random
+    var dependencyInjector: {{ argument.routerName }}RouterDependencyMock!
 
     init() {
+        dependencyInjector = .random
         presenter = .init(dependency: dependencyInjector)
     }
 

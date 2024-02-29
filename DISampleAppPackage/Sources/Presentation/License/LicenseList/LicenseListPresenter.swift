@@ -10,7 +10,7 @@ import Foundation
 final class LicenseListPresenter: ObservableObject {
     @Published private(set) var licenseList: [License] = []
     @Published var selectedLicense: License?
-    
+
     private let libraryLicenseDriver: LibraryLicenseDriverProtocol
 
     init(dependency: some LicenseListPresenterDependency) {

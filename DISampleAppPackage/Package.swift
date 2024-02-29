@@ -196,9 +196,7 @@ let package = Package(
         .iOS(.v17),
         .macOS(.v14),
     ],
-    products: TargetType.allCases.map { $0.product } + [
-        .library(name: "AppDocC", targets: [TargetType.domain.name, TargetType.presentation.name])
-    ],
+    products: TargetType.allCases.map { $0.product },
     dependencies: [
         // Library
         .package(url: "https://github.com/firebase/firebase-ios-sdk.git", exact: "10.19.0"), // TODO: 10.22 以上がリリースされたらアップデートする（直らないかもしれないが） https://github.com/firebase/firebase-ios-sdk/issues/12390

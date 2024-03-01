@@ -34,7 +34,7 @@ mkdir -p "$OUTPUT_ROUTER_DIR"
 mkdir -p "$OUTPUT_TEST_DIR"
 
 # View 関連
-for COMPONENT in "PresenterDependency" "Presenter" "Wireframe" "View"
+for COMPONENT in "PresenterDependency" "Presenter" "View"
 do
     swift run --package-path "$SOURCERY_PACKAGE_PATH" mint run sourcery \
               --sources "$SOURCE_DIR" \

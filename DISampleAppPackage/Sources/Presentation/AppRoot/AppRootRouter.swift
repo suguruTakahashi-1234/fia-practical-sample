@@ -41,10 +41,10 @@ public struct AppRootRouter<Dependency: AppRootRouterDependency>: AppRootWirefra
 
 extension AppRootRouter where Dependency == AppRootRouterDependencyMock {
     static var empty: AppRootRouter<AppRootRouterDependencyMock> {
-        return AppRootRouter<AppRootRouterDependencyMock>(dependency: .empty)
+        AppRootRouter<AppRootRouterDependencyMock>(dependency: .empty)
     }
 
     static var random: AppRootRouter<AppRootRouterDependencyMock> {
-        return AppRootRouter<AppRootRouterDependencyMock>(dependency: .random)
+        AppRootRouter<AppRootRouterDependencyMock>(dependency: .random)
     }
 }

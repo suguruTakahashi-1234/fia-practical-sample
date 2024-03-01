@@ -6,11 +6,11 @@ import SwiftUI
 public struct HomeTabView<Router: AppRootWireframe>: View {
     private let router: Router
     @State private var selectedTab: HomeTab = .setting
-    
+
     public init(router: Router) {
         self.router = router
     }
-    
+
     public var body: some View {
         TabView(selection: $selectedTab) {
             ForEach(HomeTab.allCases) { tab in

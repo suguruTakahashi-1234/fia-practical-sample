@@ -1,8 +1,20 @@
 import DomainLayer
 import SwiftUI
 
+// TODO: Add transition source {{ argument.routerName }}Wireframe
+//    associatedtype {{ argument.screenName }}WireframeAT: {{ argument.screenName }}Wireframe
+//    associatedtype {{ argument.screenName }}PresenterDependencyAT: {{ argument.screenName }}PresenterDependency
+//
+//    func create{{ argument.screenName }}View() -> {{ argument.screenName }}View<{{ argument.screenName }}WireframeAT, {{ argument.screenName }}PresenterDependencyAT>
+
+// TODO: Add Router
+//    @MainActor
+//    public func create{{ argument.screenName }}View() -> {{ argument.screenName }}View<Self, Dependency> {
+//        {{ argument.screenName }}View(router: self, dependency: dependency)
+//    }
+
 @MainActor
-public struct {{ argument.screenName }}View<Router: {{ argument.screenName }}Wireframe, Dependency: {{ argument.screenName }}PresenterDependency>: View {
+public struct {{ argument.screenName }}View<Router: {{ argument.routerName }}Wireframe, Dependency: {{ argument.screenName }}PresenterDependency>: View {
     private let router: Router
     @StateObject private var presenter: {{ argument.screenName }}Presenter<Dependency>
 
@@ -35,7 +47,7 @@ struct {{ argument.screenName }}View_Previews: PreviewProvider, SnapshotTestable
         .init(
             configurations: configurationAllSizesWithEmpty,
             configure: { state in
-                {{ argument.screenName }}View(router: {{ argument.routerName }}Router(dependency: {{ argument.routerName }}RouterDependencyMock.empty), dependency: state)
+                {{ argument.screenName }}View(router: {{ argument.routerName }}Router.empty, dependency: state)
             }
         )
     }

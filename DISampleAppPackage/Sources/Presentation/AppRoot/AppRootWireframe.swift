@@ -6,7 +6,7 @@
 import Foundation
 
 public protocol AppRootWireframe {    
-    associatedtype AppRootTabWireframeAT: AppRootTabWireframe
+    associatedtype HomeTabWireframeAT: HomeTabWireframe
     
-    func createAppRootTabView() -> AppRootTabView<AppRootTabWireframeAT>
+    func createHomeTabView() -> HomeTabView<HomeTabWireframeAT>
 }

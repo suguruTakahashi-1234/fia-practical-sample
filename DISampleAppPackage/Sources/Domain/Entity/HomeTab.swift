@@ -5,17 +5,17 @@
 
 import Foundation
 
-public enum AppRootTab {
+public enum HomeTab {
     case home
     case setting
 }
 
 /// for TabView
-extension AppRootTab: Identifiable {
+extension HomeTab: Identifiable {
     public var id: String {
         "\(self)"
     }
 }
 
 /// for TabView
-extension AppRootTab: CaseIterable {}
+extension HomeTab: CaseIterable {}

@@ -17,7 +17,7 @@ public struct AppRootView<Router: AppRootWireframe, Dependency: AppRootPresenter
     }
 
     public var body: some View {
-        router.createAppRootTabView()
+        router.createHomeTabView()
             .task {
                 await presenter.onAppear()
             }

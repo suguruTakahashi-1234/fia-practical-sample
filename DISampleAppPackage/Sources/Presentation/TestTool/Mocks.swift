@@ -42,7 +42,7 @@ public final class AppRootRouterDependencyMock: AppRootRouterDependency {
     }
 }
 
-public final class AppRootTabPresenterDependencyMock: AppRootTabPresenterDependency {
+public final class HomeTabPresenterDependencyMock: HomeTabPresenterDependency {
     public init() { }
 
 

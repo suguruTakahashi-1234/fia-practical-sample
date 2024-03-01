@@ -2,7 +2,7 @@
 import DomainLayer
 import Foundation
 
-public protocol AppRootTabWireframe {
+public protocol HomeTabWireframe {
     associatedtype SettingWireframeAT: SettingWireframe
     associatedtype SettingPresenterDependencyAT: SettingPresenterDependency
     

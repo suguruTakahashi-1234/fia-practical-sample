@@ -6,7 +6,7 @@
 import DomainLayer
 
 /// Note: Wireframeをまとめたプロトコルは今のところ作成する必要はなさそう。AppRootRouterがPresentation層にあるため、それぞれのWireframeのMockも必要なく、スタブもAppRootRouter.emptyで間に合っている
-public struct AppRootRouter<Dependency: AppRootRouterDependency>: AppRootWireframe, AppRootTabWireframe, LicenseListWireframe, SettingWireframe {
+public struct AppRootRouter<Dependency: AppRootRouterDependency>: AppRootWireframe, HomeTabWireframe, LicenseListWireframe, SettingWireframe {
     private let dependency: Dependency
 
     public init(dependency: Dependency) {
@@ -19,8 +19,8 @@ public struct AppRootRouter<Dependency: AppRootRouterDependency>: AppRootWirefra
     }
 
     @MainActor
-    public func createAppRootTabView() -> AppRootTabView<Self> {
-        AppRootTabView(router: self)
+    public func createHomeTabView() -> HomeTabView<Self> {
+        HomeTabView(router: self)
     }
 
     @MainActor

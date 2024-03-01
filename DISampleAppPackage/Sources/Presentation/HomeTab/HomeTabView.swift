@@ -3,9 +3,9 @@ import DomainLayer
 import SwiftUI
 
 @MainActor
-public struct AppRootTabView<Router: AppRootTabWireframe>: View {
+public struct HomeTabView<Router: HomeTabWireframe>: View {
     private let router: Router
-    @State private var selectedTab: AppRootTab = .home
+    @State private var selectedTab: HomeTab = .home
     
     public init(router: Router) {
         self.router = router
@@ -13,7 +13,7 @@ public struct AppRootTabView<Router: AppRootTabWireframe>: View {
 
     public var body: some View {
         TabView(selection: $selectedTab) {
-            ForEach(AppRootTab.allCases) { tab in
+            ForEach(HomeTab.allCases) { tab in
                 tab.contentView(router: router)
                     .tabItem {
                         tab.label
@@ -28,7 +28,7 @@ public struct AppRootTabView<Router: AppRootTabWireframe>: View {
 
 import PreviewSnapshots
 
-struct AppRootTabView_Previews: PreviewProvider, SnapshotTestable {
+struct HomeTabView_Previews: PreviewProvider, SnapshotTestable {
     static var previews: some View {
         snapshots.previews.previewLayout(.sizeThatFits)
     }
@@ -37,14 +37,14 @@ struct AppRootTabView_Previews: PreviewProvider, SnapshotTestable {
         .init(
             configurations: configurationAllSizesWithEmpty,
             configure: { state in
-                AppRootTabView(router: AppRootRouter(dependency: AppRootRouterDependencyMock.empty))
+                HomeTabView(router: AppRootRouter(dependency: AppRootRouterDependencyMock.empty))
             }
         )
     }
 }
 
                 
-private extension AppRootTab {
+private extension HomeTab {
     @ViewBuilder
     var label: some View {
         switch self {
@@ -56,7 +56,7 @@ private extension AppRootTab {
     }
 
     @ViewBuilder
-    func contentView(router: some AppRootTabWireframe) -> some View {
+    func contentView(router: some HomeTabWireframe) -> some View {
         switch self {
         case .home:
             router.createSettingView()

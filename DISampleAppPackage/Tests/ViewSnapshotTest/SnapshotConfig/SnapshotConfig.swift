@@ -96,7 +96,7 @@ enum SnapshotConfig {
         }
     }
 
-    static func previewTest(_ previews: (some SnapshotTestable).Type, device: SnapshotConfig.DeviceType = .defaultDevice, file: StaticString = #file, function: String = #function, line: Int = #line) {
+    static func previewTest(_ previews: (some SnapshotTestable).Type, device: SnapshotConfig.DeviceType = .defaultDevice, file: StaticString = #filePath, function: String = #function, line: Int = #line) {
         previews.snapshots.assertSnapshots(
             as: .image(precision: SnapshotConfig.precision, layout: .device(config: device.viewImageConfig)),
             file: file,
@@ -105,7 +105,7 @@ enum SnapshotConfig {
         )
     }
 
-    static func previewDeviceVariationTest(_ previews: (some SnapshotTestable).Type, file: StaticString = #file, function: String = #function, line: Int = #line) {
+    static func previewDeviceVariationTest(_ previews: (some SnapshotTestable).Type, file: StaticString = #filePath, function: String = #function, line: Int = #line) {
         for device in SnapshotConfig.DeviceType.allCases {
             previews.snapshots.assertSnapshots(
                 as: .image(precision: SnapshotConfig.precision, layout: .device(config: device.viewImageConfig)),
@@ -117,7 +117,7 @@ enum SnapshotConfig {
         }
     }
 
-    static func previewContentSizeVariationTest(_ previews: (some SnapshotTestable).Type, device: SnapshotConfig.DeviceType = .defaultDevice, file: StaticString = #file, function: String = #function, line: Int = #line) {
+    static func previewContentSizeVariationTest(_ previews: (some SnapshotTestable).Type, device: SnapshotConfig.DeviceType = .defaultDevice, file: StaticString = #filePath, function: String = #function, line: Int = #line) {
         for contentSizeType in SnapshotConfig.ContentSizeType.allCases {
             previews.snapshots.assertSnapshots(
                 as: .image(precision: SnapshotConfig.precision, layout: .device(config: device.viewImageConfig), traits: .init(preferredContentSizeCategory: contentSizeType.size)),

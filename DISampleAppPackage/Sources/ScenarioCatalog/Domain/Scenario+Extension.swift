@@ -11,7 +11,7 @@ package extension Scenario {
     init(
         type: UITestPreviewType,
         layout: ScenarioLayout,
-        file: StaticString = #file,
+        file: StaticString = #filePath,
         line: UInt = #line,
         content: @escaping () -> some View
     ) {

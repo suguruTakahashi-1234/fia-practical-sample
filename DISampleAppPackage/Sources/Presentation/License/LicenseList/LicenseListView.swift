@@ -17,20 +17,22 @@ public struct LicenseListView<Router: LicenseListWireframe, Dependency: LicenseL
     }
 
     public var body: some View {
-        List {
-            ForEach(presenter.licenseList) { license in
-                Button {
-                    presenter.onTapLicense(license: license)
-                } label: {
-                    Text(license.name)
-                        .frame(maxWidth: .infinity, alignment: .leading)
+        NavigationStack {
+            List {
+                ForEach(presenter.licenseList) { license in
+                    Button {
+                        presenter.onTapLicense(license: license)
+                    } label: {
+                        Text(license.name)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                    }
                 }
             }
+            .sheet(item: $presenter.selectedLicense, content: { license in
+                router.createLicenseDetailView(license: license)
+            })
+            .navigationTitle("ライセンス")
         }
-        .sheet(item: $presenter.selectedLicense, content: { license in
-            router.createLicenseDetailView(license: license)
-        })
-        .navigationTitle("ライセンス")
         .task {
             await presenter.onAppear()
         }
@@ -49,7 +51,7 @@ struct LicenseListView_Previews: PreviewProvider, SnapshotTestable {
 
     static var snapshots: PreviewSnapshots<AppRootRouterDependencyMock> {
         .init(
-            configurations: configurationAllSizesWithEmpty,
+            configurations: configurationAllSizes,
             configure: { state in
                 LicenseListView(router: AppRootRouter(dependency: AppRootRouterDependencyMock.empty), dependency: state)
             }

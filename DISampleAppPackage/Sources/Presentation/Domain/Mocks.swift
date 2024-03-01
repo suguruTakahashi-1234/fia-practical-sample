@@ -42,6 +42,12 @@ public final class AppRootRouterDependencyMock: AppRootRouterDependency {
     }
 }
 
+public final class DeviceInfoPresenterDependencyMock: DeviceInfoPresenterDependency {
+    public init() { }
+
+
+}
+
 public final class HomeTabPresenterDependencyMock: HomeTabPresenterDependency {
     public init() { }
 

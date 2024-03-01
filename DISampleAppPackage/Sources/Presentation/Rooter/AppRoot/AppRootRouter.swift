@@ -37,6 +37,11 @@ public struct AppRootRouter<Dependency: AppRootRouterDependency>: AppRootWirefra
     public func createSettingView() -> SettingView<Self, Dependency> {
         SettingView(router: self, dependency: dependency)
     }
+    
+    @MainActor
+    public func createDeviceInfoView() -> DeviceInfoView<Self, Dependency> {
+        DeviceInfoView(router: self, dependency: dependency)
+    }
 }
 
 extension AppRootRouter where Dependency == AppRootRouterDependencyMock {

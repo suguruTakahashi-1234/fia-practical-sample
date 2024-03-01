@@ -26,7 +26,7 @@ public struct SettingView<Router: AppRootWireframe, Dependency: SettingPresenter
                     }
 
                     NavigationLink {
-                        router.createLicenseListView()
+                        router.createDeviceInfoView()
                     } label: {
                         Label(
                             title: { Text("デバイス情報") },

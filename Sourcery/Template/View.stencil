@@ -2,10 +2,9 @@ import DomainLayer
 import SwiftUI
 
 // TODO: Add transition source {{ argument.routerName }}Wireframe
-//    associatedtype {{ argument.screenName }}WireframeAT: {{ argument.screenName }}Wireframe
 //    associatedtype {{ argument.screenName }}PresenterDependencyAT: {{ argument.screenName }}PresenterDependency
 //
-//    func create{{ argument.screenName }}View() -> {{ argument.screenName }}View<{{ argument.screenName }}WireframeAT, {{ argument.screenName }}PresenterDependencyAT>
+//    func create{{ argument.screenName }}View() -> {{ argument.screenName }}View<{{ argument.routerName }}WireframeAT, {{ argument.screenName }}PresenterDependencyAT>
 
 // TODO: Add Router
 //    @MainActor
@@ -24,13 +23,16 @@ public struct {{ argument.screenName }}View<Router: {{ argument.routerName }}Wir
     }
 
     public var body: some View {
-        Text("{{ argument.screenName }}View")
-            .task {
-                await presenter.onAppear()
-            }
-            .onDisappear {
-                presenter.onDisappear()
-            }
+        NavigationStack {
+            Text("{{ argument.screenName }}View")
+                .navigationTitle("{{ argument.screenName }}")
+                .task {
+                    await presenter.onAppear()
+                }
+                .onDisappear {
+                    presenter.onDisappear()
+                }
+        }
     }
 }
 

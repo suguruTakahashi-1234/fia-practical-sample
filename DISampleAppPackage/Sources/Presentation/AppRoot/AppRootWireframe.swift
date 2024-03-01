@@ -5,9 +5,8 @@
 
 import Foundation
 
-public protocol AppRootWireframe {
-    associatedtype Wireframe: LicenseListWireframe
-    associatedtype PresenterDependency: LicenseListPresenterDependency
-
-    func createLicenseListView() -> LicenseListView<Wireframe, PresenterDependency>
+public protocol AppRootWireframe {    
+    associatedtype AppRootTabWireframeAT: AppRootTabWireframe
+    
+    func createAppRootTabView() -> AppRootTabView<AppRootTabWireframeAT>
 }

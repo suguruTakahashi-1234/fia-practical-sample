@@ -6,7 +6,7 @@
 import Foundation
 
 public enum AppRootTab {
-    case update
+    case home
     case setting
 }
 

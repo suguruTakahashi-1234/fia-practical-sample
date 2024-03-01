@@ -13,13 +13,36 @@ public struct SettingView<Router: SettingWireframe, Dependency: SettingPresenter
     }
 
     public var body: some View {
-        Text("SettingView")
-            .task {
-                await presenter.onAppear()
+        NavigationStack {
+            List {
+                Section {
+                    NavigationLink {
+                        router.createLicenseListView()
+                    } label: {
+                        Label(
+                            title: { Text("ライセンス") },
+                            icon: { Image(systemName: "licenseplate") }
+                        )
+                    }
+                    
+                    NavigationLink {
+                        router.createLicenseListView()
+                    } label: {
+                        Label(
+                            title: { Text("デバイス情報") },
+                            icon: { Image(systemName: "iphone.gen3") }
+                        )
+                    }
+                }
             }
-            .onDisappear {
-                presenter.onDisappear()
-            }
+            .navigationTitle("設定")
+        }
+        .task {
+            await presenter.onAppear()
+        }
+        .onDisappear {
+            presenter.onDisappear()
+        }
     }
 }
 

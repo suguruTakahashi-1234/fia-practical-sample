@@ -2,16 +2,9 @@
 import DomainLayer
 import Foundation
 
-public protocol SettingWireframe {}
+public protocol SettingWireframe {
+    associatedtype Wireframe: LicenseListWireframe
+    associatedtype PresenterDependency: LicenseListPresenterDependency
 
-// TODO: Add transition source Wireframe
-//    associatedtype SettingWireframeAT: SettingWireframe
-//    associatedtype SettingPresenterDependencyAT: SettingPresenterDependency
-//
-//    func createSettingView() -> SettingView<SettingWireframeAT, SettingPresenterDependencyAT>
-
-// TODO: Add Router
-//    @MainActor
-//    public func createSettingView() -> SettingView<Self, Dependency> {
-//        SettingView(router: self, dependency: dependency)
-//    }
+    func createLicenseListView() -> LicenseListView<Wireframe, PresenterDependency>
+}

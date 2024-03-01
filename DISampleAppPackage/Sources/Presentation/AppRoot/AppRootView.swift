@@ -17,15 +17,13 @@ public struct AppRootView<Router: AppRootWireframe, Dependency: AppRootPresenter
     }
 
     public var body: some View {
-        NavigationStack {
-            router.createLicenseListView()
-                .task {
-                    await presenter.onAppear()
-                }
-                .onDisappear {
-                    presenter.onDisappear()
-                }
-        }
+        router.createAppRootTabView()
+            .task {
+                await presenter.onAppear()
+            }
+            .onDisappear {
+                presenter.onDisappear()
+            }
     }
 }
 

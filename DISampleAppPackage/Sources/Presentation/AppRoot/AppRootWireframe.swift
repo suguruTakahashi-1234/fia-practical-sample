@@ -3,10 +3,15 @@
 //  Copyright sugurutakahashi. All rights reserved.
 //
 
-import Foundation
+import DomainLayer
 
-public protocol AppRootWireframe {    
-    associatedtype HomeTabWireframeAT: HomeTabWireframe
-    
-    func createHomeTabView() -> HomeTabView<HomeTabWireframeAT>
+public protocol AppRootWireframe {
+    associatedtype AppRootWireframeAT: AppRootWireframe
+    associatedtype SettingPresenterDependencyAT: SettingPresenterDependency
+    associatedtype LicenseListPresenterDependencyAT: LicenseListPresenterDependency
+
+    func createHomeTabView() -> HomeTabView<AppRootWireframeAT>
+    func createSettingView() -> SettingView<AppRootWireframeAT, SettingPresenterDependencyAT>
+    func createLicenseListView() -> LicenseListView<AppRootWireframeAT, LicenseListPresenterDependencyAT>
+    func createLicenseDetailView(license: License) -> LicenseDetailView
 }

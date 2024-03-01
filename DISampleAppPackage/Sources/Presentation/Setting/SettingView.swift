@@ -3,7 +3,7 @@ import DomainLayer
 import SwiftUI
 
 @MainActor
-public struct SettingView<Router: SettingWireframe, Dependency: SettingPresenterDependency>: View {
+public struct SettingView<Router: AppRootWireframe, Dependency: SettingPresenterDependency>: View {
     private let router: Router
     @StateObject private var presenter: SettingPresenter<Dependency>
 
@@ -24,7 +24,7 @@ public struct SettingView<Router: SettingWireframe, Dependency: SettingPresenter
                             icon: { Image(systemName: "licenseplate") }
                         )
                     }
-                    
+
                     NavigationLink {
                         router.createLicenseListView()
                     } label: {
@@ -59,7 +59,7 @@ struct SettingView_Previews: PreviewProvider, SnapshotTestable {
         .init(
             configurations: configurationAllSizesWithEmpty,
             configure: { state in
-                SettingView(router: AppRootRouter(dependency: AppRootRouterDependencyMock.empty), dependency: state)
+                SettingView(router: AppRootRouter.empty, dependency: state)
             }
         )
     }

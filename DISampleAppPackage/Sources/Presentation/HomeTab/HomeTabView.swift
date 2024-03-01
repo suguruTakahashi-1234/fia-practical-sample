@@ -3,14 +3,14 @@ import DomainLayer
 import SwiftUI
 
 @MainActor
-public struct HomeTabView<Router: HomeTabWireframe>: View {
+public struct HomeTabView<Router: AppRootWireframe>: View {
     private let router: Router
-    @State private var selectedTab: HomeTab = .home
+    @State private var selectedTab: HomeTab = .setting
     
     public init(router: Router) {
         self.router = router
     }
-
+    
     public var body: some View {
         TabView(selection: $selectedTab) {
             ForEach(HomeTab.allCases) { tab in
@@ -20,6 +20,30 @@ public struct HomeTabView<Router: HomeTabWireframe>: View {
                     }
                     .tag(tab)
             }
+        }
+    }
+}
+
+// MARK: - HomeTab
+
+private extension HomeTab {
+    @ViewBuilder
+    var label: some View {
+        switch self {
+        case .home:
+            Label(title: { Text("ホーム") }, icon: { Image(systemName: "house.fill") })
+        case .setting:
+            Label(title: { Text("設定") }, icon: { Image(systemName: "gearshape.fill") })
+        }
+    }
+
+    @ViewBuilder
+    func contentView(router: some AppRootWireframe) -> some View {
+        switch self {
+        case .home:
+            router.createSettingView()
+        case .setting:
+            router.createSettingView()
         }
     }
 }
@@ -36,33 +60,9 @@ struct HomeTabView_Previews: PreviewProvider, SnapshotTestable {
     static var snapshots: PreviewSnapshots<AppRootRouterDependencyMock> {
         .init(
             configurations: configurationAllSizesWithEmpty,
-            configure: { state in
-                HomeTabView(router: AppRootRouter(dependency: AppRootRouterDependencyMock.empty))
+            configure: { _ in
+                HomeTabView(router: AppRootRouter.empty)
             }
         )
     }
 }
-
-                
-private extension HomeTab {
-    @ViewBuilder
-    var label: some View {
-        switch self {
-        case.home:
-            Label(title: { Text("ホーム") }, icon: { Image(systemName: "house.fill") })
-        case .setting:
-            Label(title: { Text("設定") }, icon: { Image(systemName: "gearshape.fill") })
-        }
-    }
-
-    @ViewBuilder
-    func contentView(router: some HomeTabWireframe) -> some View {
-        switch self {
-        case .home:
-            router.createSettingView()
-        case .setting:
-            router.createSettingView()
-        }
-    }
-}
-

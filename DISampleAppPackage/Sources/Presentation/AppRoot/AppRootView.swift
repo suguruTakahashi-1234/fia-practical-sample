@@ -38,7 +38,7 @@ struct AppRootView_Previews: PreviewProvider, SnapshotTestable {
         PreviewSnapshots(
             configurations: configurationEmpty,
             configure: { state in
-                AppRootView(router: AppRootRouter(dependency: AppRootRouterDependencyMock.empty), dependency: state)
+                AppRootView(router: AppRootRouter.empty, dependency: state)
             }
         )
     }

@@ -7,7 +7,7 @@ import DomainLayer
 import SwiftUI
 
 @MainActor
-public struct LicenseListView<Router: LicenseListWireframe, Dependency: LicenseListPresenterDependency>: View {
+public struct LicenseListView<Router: AppRootWireframe, Dependency: LicenseListPresenterDependency>: View {
     private let router: Router
     @StateObject private var presenter: LicenseListPresenter<Dependency>
 
@@ -53,7 +53,7 @@ struct LicenseListView_Previews: PreviewProvider, SnapshotTestable {
         .init(
             configurations: configurationAllSizes,
             configure: { state in
-                LicenseListView(router: AppRootRouter(dependency: AppRootRouterDependencyMock.empty), dependency: state)
+                LicenseListView(router: AppRootRouter.empty, dependency: state)
             }
         )
     }

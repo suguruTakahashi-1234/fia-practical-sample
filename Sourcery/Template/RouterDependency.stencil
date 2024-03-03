@@ -1,4 +1,3 @@
 import Foundation
 
-/// @mockable
 public protocol {{ argument.routerName }}RouterDependency: {% for type in types.protocols where type.name|hasSuffix:"PresenterDependency" %}{{ type.name }}{% if not forloop.last %}, {% endif %}{% endfor %} {}

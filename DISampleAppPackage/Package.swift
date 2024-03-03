@@ -76,6 +76,7 @@ enum MacroTargetType: CaseIterable {
 
 enum FrameworkTargetType: CaseIterable {
     case cloudService
+    case device
     case license
     case logger
 
@@ -174,6 +175,7 @@ private extension PackageDescription.Target.Dependency {
     static let previewGallery: Self = .product(name: "PreviewGallery", package: "SnapshotPreviews-iOS")
     static let swiftSyntaxMacros: Self = .product(name: "SwiftSyntaxMacros", package: "swift-syntax")
     static let swiftCompilerPlugin: Self = .product(name: "SwiftCompilerPlugin", package: "swift-syntax")
+    static let deviceKit: Self = .product(name: "DeviceKit", package: "DeviceKit")
 
     /// Test
     static let testing: Self = .product(name: "Testing", package: "swift-testing")
@@ -204,6 +206,7 @@ let package = Package(
         .package(url: "https://github.com/doordash-oss/swiftui-preview-snapshots", from: "1.1.1"),
         .package(url: "https://github.com/EmergeTools/SnapshotPreviews-iOS", from: "0.8.4"),
         .package(url: "https://github.com/apple/swift-syntax", from: "509.1.1"), // SwiftSyntax の競合に注意
+        .package(url: "https://github.com/devicekit/DeviceKit.git", from: "5.2.2"),
 
         // Test
         .package(url: "https://github.com/apple/swift-testing.git", from: "0.5.0"),
@@ -244,12 +247,9 @@ extension TargetType {
     var dependencyLibrary: DependencyLibrary {
         switch self {
         case .dependencyInjector:
-            .init([
+            .init(FrameworkTargetType.allCases.map { TargetType.framework($0).dependency } + [
                 TargetType.domain.dependency,
                 TargetType.presentation.dependency,
-                TargetType.framework(.cloudService).dependency,
-                TargetType.framework(.license).dependency,
-                TargetType.framework(.logger).dependency,
             ])
         case .domain:
             .init()
@@ -257,6 +257,11 @@ extension TargetType {
             .init([
                 TargetType.domain.dependency,
                 .firebaseAnalytics,
+            ])
+        case .framework(.device):
+            .init([
+                TargetType.domain.dependency,
+                .deviceKit,
             ])
         case .framework(.license):
             .init([

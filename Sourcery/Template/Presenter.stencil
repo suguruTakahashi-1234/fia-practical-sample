@@ -3,7 +3,7 @@ import Foundation
 
 @MainActor
 final class {{ argument.screenName }}Presenter<Dependency: {{ argument.screenName }}PresenterDependency>: ObservableObject {
-    init(dependency _: some {{ argument.screenName }}PresenterDependency) {
+    init(dependency _: Dependency) {
         LoggerContainer.initLog()
     }
 

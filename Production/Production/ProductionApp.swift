@@ -9,7 +9,7 @@ import SwiftUI
 
 @main
 struct ProductionApp: App {
-    private let router = AppRootRouter(dependency: AppRootDependencyInjector())
+    private let router = AppRootRouter(dependency: AppRootDependencyInjector(buildScheme: .production))
 
     var body: some Scene {
         WindowGroup {

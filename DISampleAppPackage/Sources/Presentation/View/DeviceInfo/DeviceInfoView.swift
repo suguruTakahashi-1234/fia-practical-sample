@@ -2,6 +2,27 @@
 import DomainLayer
 import SwiftUI
 
+extension DeviceInfoType: Identifiable {
+    public var id: String {
+        name
+    }
+
+    var name: String {
+        switch self {
+        case .osVersion:
+            "OS Version"
+        case .isSimulator:
+            "Simulator"
+        case .uiUserInterfaceStyle:
+            "Interface Style"
+        case .uiContentSize:
+            "Content Size"
+        default:
+            "\(self)".camelCaseToSpaces.initialUppercased
+        }
+    }
+}
+
 @MainActor
 public struct DeviceInfoView<Router: AppRootWireframe, Dependency: DeviceInfoPresenterDependency>: View {
     private let router: Router
@@ -14,14 +35,34 @@ public struct DeviceInfoView<Router: AppRootWireframe, Dependency: DeviceInfoPre
 
     public var body: some View {
         NavigationStack {
-            Text("DeviceInfoView")
-                .navigationTitle("DeviceInfo")
-                .task {
-                    await presenter.onAppear()
+            List {
+                Section("Device Info") {
+                    ForEach(DeviceInfoType.allCases) { deviceInfoType in
+                        Button {
+                            presenter.onTapDeviceInfo(deviceInfoType)
+                        } label: {
+                            HStack {
+                                Text(deviceInfoType.name)
+                                Spacer()
+                                Text(presenter.getDeviceInfoValue(deviceInfoType))
+                                    .lineLimit(1)
+                                    .truncationMode(.middle)
+                            }
+                        }
+                    }
                 }
-                .onDisappear {
-                    presenter.onDisappear()
-                }
+                .textCase(nil)
+            }
+            .navigationTitle("Device Info")
+            .alert(presenter.copiedAlertTitle, isPresented: $presenter.shouldShowCopyAlert) {
+                Button("OK", action: {})
+            }
+            .task {
+                await presenter.onAppear()
+            }
+            .onDisappear {
+                presenter.onDisappear()
+            }
         }
     }
 }

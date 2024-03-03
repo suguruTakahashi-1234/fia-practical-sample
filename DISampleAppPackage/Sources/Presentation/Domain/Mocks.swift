@@ -6,17 +6,22 @@
 
 import DomainLayer
 import Foundation
+import SwiftUI
 
 
 public final class AppRootRouterDependencyMock: AppRootRouterDependency {
     public init() { }
-    public init(libraryLicenseDriver: LibraryLicenseDriverProtocolAT, osLogDriver: OSLogDriverProtocolAT, firebaseSetupDriver: FirebaseSetupDriverProtocolAT) {
+    public init(libraryLicenseDriver: LibraryLicenseDriverProtocolAT, deviceInfoDriver: DeviceInfoDriverProtocolAT, buildEnvRepository: BuildEnvRepositoryProtocolAT, osLogDriver: OSLogDriverProtocolAT, firebaseSetupDriver: FirebaseSetupDriverProtocolAT) {
         self._libraryLicenseDriver = libraryLicenseDriver
+        self._deviceInfoDriver = deviceInfoDriver
+        self._buildEnvRepository = buildEnvRepository
         self._osLogDriver = osLogDriver
         self._firebaseSetupDriver = firebaseSetupDriver
     }
 
+    public typealias DeviceInfoDriverProtocolAT = DeviceInfoDriverProtocolMock
     public typealias LibraryLicenseDriverProtocolAT = LibraryLicenseDriverProtocolMock
+    public typealias BuildEnvRepositoryProtocolAT = BuildEnvRepositoryProtocolMock
     public typealias OSLogDriverProtocolAT = OSLogDriverProtocolMock
 
     public private(set) var libraryLicenseDriverSetCallCount = 0
@@ -26,6 +31,20 @@ public final class AppRootRouterDependencyMock: AppRootRouterDependency {
         set { _libraryLicenseDriver = newValue }
     }
     public typealias FirebaseSetupDriverProtocolAT = FirebaseSetupDriverProtocolMock
+
+    public private(set) var deviceInfoDriverSetCallCount = 0
+    private var _deviceInfoDriver: DeviceInfoDriverProtocolAT!  { didSet { deviceInfoDriverSetCallCount += 1 } }
+    public var deviceInfoDriver: DeviceInfoDriverProtocolAT {
+        get { return _deviceInfoDriver }
+        set { _deviceInfoDriver = newValue }
+    }
+
+    public private(set) var buildEnvRepositorySetCallCount = 0
+    private var _buildEnvRepository: BuildEnvRepositoryProtocolAT!  { didSet { buildEnvRepositorySetCallCount += 1 } }
+    public var buildEnvRepository: BuildEnvRepositoryProtocolAT {
+        get { return _buildEnvRepository }
+        set { _buildEnvRepository = newValue }
+    }
 
     public private(set) var osLogDriverSetCallCount = 0
     private var _osLogDriver: OSLogDriverProtocolAT!  { didSet { osLogDriverSetCallCount += 1 } }
@@ -44,8 +63,27 @@ public final class AppRootRouterDependencyMock: AppRootRouterDependency {
 
 public final class DeviceInfoPresenterDependencyMock: DeviceInfoPresenterDependency {
     public init() { }
+    public init(deviceInfoDriver: DeviceInfoDriverProtocolAT, buildEnvRepository: BuildEnvRepositoryProtocolAT) {
+        self._deviceInfoDriver = deviceInfoDriver
+        self._buildEnvRepository = buildEnvRepository
+    }
 
+    public typealias DeviceInfoDriverProtocolAT = DeviceInfoDriverProtocolMock
+    public typealias BuildEnvRepositoryProtocolAT = BuildEnvRepositoryProtocolMock
 
+    public private(set) var deviceInfoDriverSetCallCount = 0
+    private var _deviceInfoDriver: DeviceInfoDriverProtocolAT!  { didSet { deviceInfoDriverSetCallCount += 1 } }
+    public var deviceInfoDriver: DeviceInfoDriverProtocolAT {
+        get { return _deviceInfoDriver }
+        set { _deviceInfoDriver = newValue }
+    }
+
+    public private(set) var buildEnvRepositorySetCallCount = 0
+    private var _buildEnvRepository: BuildEnvRepositoryProtocolAT!  { didSet { buildEnvRepositorySetCallCount += 1 } }
+    public var buildEnvRepository: BuildEnvRepositoryProtocolAT {
+        get { return _buildEnvRepository }
+        set { _buildEnvRepository = newValue }
+    }
 }
 
 public final class HomeTabPresenterDependencyMock: HomeTabPresenterDependency {
@@ -58,6 +96,40 @@ public final class SettingPresenterDependencyMock: SettingPresenterDependency {
     public init() { }
 
 
+}
+
+public final class BuildEnvRepositoryProtocolMock: BuildEnvRepositoryProtocol {
+    public init() { }
+    public init(buildScheme: BuildScheme, buildConfiguration: BuildConfiguration) {
+        self._buildScheme = buildScheme
+        self._buildConfiguration = buildConfiguration
+    }
+
+
+    public private(set) var buildSchemeSetCallCount = 0
+    private var _buildScheme: BuildScheme!  { didSet { buildSchemeSetCallCount += 1 } }
+    public var buildScheme: BuildScheme {
+        get { return _buildScheme }
+        set { _buildScheme = newValue }
+    }
+
+    public private(set) var buildConfigurationSetCallCount = 0
+    private var _buildConfiguration: BuildConfiguration!  { didSet { buildConfigurationSetCallCount += 1 } }
+    public var buildConfiguration: BuildConfiguration {
+        get { return _buildConfiguration }
+        set { _buildConfiguration = newValue }
+    }
+}
+
+public final class DeviceNameDriverProtocolMock: DeviceNameDriverProtocol {
+    public init() { }
+    public init(deviceName: String = "") {
+        self.deviceName = deviceName
+    }
+
+
+    public private(set) var deviceNameSetCallCount = 0
+    public var deviceName: String = "" { didSet { deviceNameSetCallCount += 1 } }
 }
 
 public final class FirebaseSetupDriverProtocolMock: FirebaseSetupDriverProtocol {
@@ -139,6 +211,65 @@ public final class LicenseListPresenterDependencyMock: LicenseListPresenterDepen
     public var libraryLicenseDriver: LibraryLicenseDriverProtocolAT {
         get { return _libraryLicenseDriver }
         set { _libraryLicenseDriver = newValue }
+    }
+}
+
+public final class DeviceInfoDriverProtocolMock: DeviceInfoDriverProtocol {
+    public init() { }
+    public init(appVersion: String = "", appBuildNumber: String = "", deviceName: String = "", deviceIdentifier: String = "", isSimulator: Bool = false, osType: String = "", osVersion: String = "", timezone: String = "", language: String = "", uiContentSizeCategory: UIContentSizeCategory, uiUserInterfaceStyle: UIUserInterfaceStyle) {
+        self.appVersion = appVersion
+        self.appBuildNumber = appBuildNumber
+        self.deviceName = deviceName
+        self.deviceIdentifier = deviceIdentifier
+        self.isSimulator = isSimulator
+        self.osType = osType
+        self.osVersion = osVersion
+        self.timezone = timezone
+        self.language = language
+        self._uiContentSizeCategory = uiContentSizeCategory
+        self._uiUserInterfaceStyle = uiUserInterfaceStyle
+    }
+
+
+    public private(set) var appVersionSetCallCount = 0
+    public var appVersion: String = "" { didSet { appVersionSetCallCount += 1 } }
+
+    public private(set) var appBuildNumberSetCallCount = 0
+    public var appBuildNumber: String = "" { didSet { appBuildNumberSetCallCount += 1 } }
+
+    public private(set) var deviceNameSetCallCount = 0
+    public var deviceName: String = "" { didSet { deviceNameSetCallCount += 1 } }
+
+    public private(set) var deviceIdentifierSetCallCount = 0
+    public var deviceIdentifier: String = "" { didSet { deviceIdentifierSetCallCount += 1 } }
+
+    public private(set) var isSimulatorSetCallCount = 0
+    public var isSimulator: Bool = false { didSet { isSimulatorSetCallCount += 1 } }
+
+    public private(set) var osTypeSetCallCount = 0
+    public var osType: String = "" { didSet { osTypeSetCallCount += 1 } }
+
+    public private(set) var osVersionSetCallCount = 0
+    public var osVersion: String = "" { didSet { osVersionSetCallCount += 1 } }
+
+    public private(set) var timezoneSetCallCount = 0
+    public var timezone: String = "" { didSet { timezoneSetCallCount += 1 } }
+
+    public private(set) var languageSetCallCount = 0
+    public var language: String = "" { didSet { languageSetCallCount += 1 } }
+
+    public private(set) var uiContentSizeCategorySetCallCount = 0
+    private var _uiContentSizeCategory: UIContentSizeCategory!  { didSet { uiContentSizeCategorySetCallCount += 1 } }
+    public var uiContentSizeCategory: UIContentSizeCategory {
+        get { return _uiContentSizeCategory }
+        set { _uiContentSizeCategory = newValue }
+    }
+
+    public private(set) var uiUserInterfaceStyleSetCallCount = 0
+    private var _uiUserInterfaceStyle: UIUserInterfaceStyle!  { didSet { uiUserInterfaceStyleSetCallCount += 1 } }
+    public var uiUserInterfaceStyle: UIUserInterfaceStyle {
+        get { return _uiUserInterfaceStyle }
+        set { _uiUserInterfaceStyle = newValue }
     }
 }
 

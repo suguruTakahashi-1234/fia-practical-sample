@@ -5,5 +5,4 @@
 
 import Foundation
 
-// TODO: Structのスネークケース名への変換などのプロトコルの適応（いつか必要になるはず）
-public protocol LoggableEntity {}
+public protocol LoggableEntity: SnakeCasedStructNameProvidable, ConvertibleToDictionary {}

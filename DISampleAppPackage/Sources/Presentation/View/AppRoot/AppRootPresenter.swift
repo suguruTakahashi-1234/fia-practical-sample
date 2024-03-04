@@ -10,7 +10,8 @@ import Foundation
 final class AppRootPresenter<Dependency: AppRootPresenterDependency>: ObservableObject {
     init(dependency: Dependency) {
         // Setup Logger
-        LoggerContainer.append(logger: dependency.osLogDriver)
+        LogDriver.setDriver(firebaseLogDriver: dependency.firebaseLogDriver)
+        // LoggerContainer.append(osLogDriver: dependency.firebaseLogDriver)
         LoggerContainer.debugLog("completed setup LoggerContainer")
 
         LoggerContainer.initLog()

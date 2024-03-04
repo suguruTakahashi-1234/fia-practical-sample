@@ -24,14 +24,14 @@ public extension AppRootRouterDependencyMock {
         libraryLicenseDriver: LibraryLicenseDriverProtocolMock = LibraryLicenseDriverProtocolMock(),
         deviceInfoDriver: DeviceInfoDriverProtocolMock = DeviceInfoDriverProtocolMock(deviceInfoDriver: AppRootRouterDependencyMock.deviceInfoDriver),
         buildEnvRepository: BuildEnvRepositoryProtocolMock = BuildEnvRepositoryProtocolMock(buildScheme: .mock, buildConfiguration: AppRootRouterDependencyMock.buildConfiguration),
-        osLogDriver: OSLogDriverProtocolMock = OSLogDriverProtocolMock(),
+        firebaseLogDriver: FirebaseLogDriverProtocolMock = FirebaseLogDriverProtocolMock(),
         firebaseSetupDriver: FirebaseSetupDriverProtocolMock = FirebaseSetupDriverProtocolMock()
     ) -> Self {
         .init(
             libraryLicenseDriver: libraryLicenseDriver,
             deviceInfoDriver: deviceInfoDriver,
             buildEnvRepository: buildEnvRepository,
-            osLogDriver: osLogDriver,
+            firebaseLogDriver: firebaseLogDriver,
             firebaseSetupDriver: firebaseSetupDriver
         )
     }

@@ -6,4 +6,4 @@
 import Foundation
 
 /// @mockable
-public protocol OSLogDriverProtocol: LoggerContainable {}
+public protocol OSLogDriverProtocol: LogDriverProtocol {}

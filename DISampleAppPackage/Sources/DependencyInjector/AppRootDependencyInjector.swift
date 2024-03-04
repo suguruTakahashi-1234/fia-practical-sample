@@ -7,7 +7,6 @@ import CloudServiceFramework
 import DomainLayer
 import Foundation
 import LicenseFramework
-import LoggerFramework
 import PresentationLayer
 import DeviceFramework
 
@@ -17,17 +16,17 @@ public struct AppRootDependencyInjector: AppRootRouterDependency {
     public init(buildScheme: BuildScheme) {
         buildEnvRepository = BuildEnvRepository(buildScheme: buildScheme)
     }
+
+    public var firebaseSetupDriver: some FirebaseSetupDriverProtocol {
+        FirebaseSetupDriver()
+    }
+
+    public var firebaseLogDriver: some FirebaseLogDriverProtocol {
+        FirebaseLogDriver()
+    }
     
     public var deviceInfoDriver: some DeviceInfoDriverProtocol {
         DeviceInfoDriver(deviceNameDriver: DeviceNameDriver())
-    }
-    
-    public var osLogDriver: some OSLogDriverProtocol {
-        OSLogDriver(subsystem: Bundle.main.bundleIdentifier!, category: Constants.Logger.categoryName)
-    }
-    
-    public var firebaseSetupDriver: some FirebaseSetupDriverProtocol {
-        FirebaseSetupDriver()
     }
     
     public var libraryLicenseDriver: some LibraryLicenseDriverProtocol {

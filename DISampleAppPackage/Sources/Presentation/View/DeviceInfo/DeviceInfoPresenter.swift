@@ -19,22 +19,22 @@ final class DeviceInfoPresenter<Dependency: DeviceInfoPresenterDependency>: Obse
     }
 
     init(dependency: Dependency) {
-        LoggerContainer.initLog()
+        LogDriver.initLog()
         
         deviceInfoDriver = dependency.deviceInfoDriver
         buildEnvRepository = dependency.buildEnvRepository
     }
 
     deinit {
-        LoggerContainer.deinitLog()
+        LogDriver.deinitLog()
     }
 
     func onAppear() async {
-        LoggerContainer.logOnAppear()
+        LogDriver.logOnAppear()
     }
 
     func onDisappear() {
-        LoggerContainer.logOnDisappear()
+        LogDriver.logOnDisappear()
     }
     
     func onTapDeviceInfo(_ debugInfoType: DeviceInfoType) {

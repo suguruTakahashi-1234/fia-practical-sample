@@ -9,7 +9,7 @@ import Foundation
 
 public struct FirebaseSetupDriver: FirebaseSetupDriverProtocol {
     public init() {
-        LoggerContainer.initLog()
+        LogDriver.initLog()
     }
 
     public func configure() {

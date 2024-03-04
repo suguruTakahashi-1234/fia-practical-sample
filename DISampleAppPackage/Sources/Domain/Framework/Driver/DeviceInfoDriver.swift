@@ -11,7 +11,7 @@ public struct DeviceInfoDriver<T: DeviceNameDriverProtocol>: DeviceInfoDriverPro
     private let deviceNameDriver: T
     
     public init(deviceNameDriver: T) {
-        LoggerContainer.initLog()
+        LogDriver.initLog()
 
         self.deviceNameDriver = deviceNameDriver
     }
@@ -58,10 +58,12 @@ public struct DeviceInfoDriver<T: DeviceNameDriverProtocol>: DeviceInfoDriverPro
         UIDevice.current.systemVersion
     }
     
+    /// ex) Asia/Tokyo
     public var timezone: String {
         TimeZone.current.identifier
     }
     
+    /// ex) en
     public var language: String {
         Locale.current.language.languageCode?.identifier ?? "unknown"
     }

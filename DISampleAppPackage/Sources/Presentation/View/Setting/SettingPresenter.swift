@@ -5,18 +5,18 @@ import Foundation
 @MainActor
 final class SettingPresenter<Dependency: SettingPresenterDependency>: ObservableObject {
     init(dependency _: some SettingPresenterDependency) {
-        LoggerContainer.initLog()
+        LogDriver.initLog()
     }
 
     deinit {
-        LoggerContainer.deinitLog()
+        LogDriver.deinitLog()
     }
 
     func onAppear() async {
-        LoggerContainer.logOnAppear()
+        LogDriver.logOnAppear()
     }
 
     func onDisappear() {
-        LoggerContainer.logOnDisappear()
+        LogDriver.logOnDisappear()
     }
 }

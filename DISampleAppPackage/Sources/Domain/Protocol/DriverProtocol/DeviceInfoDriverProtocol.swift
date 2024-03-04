@@ -38,7 +38,7 @@ public protocol DeviceInfoDriverProtocol {
     var osVersion: String { get }
 
     /// TimeZone.current.identifier
-    /// Asia/Tokyo
+    /// ex) Asia/Tokyo
     var timezone: String { get }
 
     /// Locale.current.language.languageCode?.identifier

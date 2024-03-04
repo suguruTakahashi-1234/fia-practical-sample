@@ -7,7 +7,9 @@ import DomainLayer
 import FirebaseAnalytics
 
 public struct FirebaseLogDriver: FirebaseLogDriverProtocol {
-    public init() {}
+    public init() {
+        LogDriver.initLog()
+    }
 
     public func log(_ event: LogEventType, level: LogLevel, file: String, function: String, line: Int) {
         // TODO: event を辞書型に変換する

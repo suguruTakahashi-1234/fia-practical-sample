@@ -5,18 +5,18 @@ import Foundation
 @MainActor
 final class HomeTabPresenter<Dependency: HomeTabPresenterDependency>: ObservableObject {
     init(dependency _: some HomeTabPresenterDependency) {
-        LoggerContainer.initLog()
+        LogDriver.initLog()
     }
 
     deinit {
-        LoggerContainer.deinitLog()
+        LogDriver.deinitLog()
     }
 
     func onAppear() async {
-        LoggerContainer.logOnAppear()
+        LogDriver.logOnAppear()
     }
 
     func onDisappear() {
-        LoggerContainer.logOnDisappear()
+        LogDriver.logOnDisappear()
     }
 }

@@ -10,6 +10,8 @@ public struct AppRootRouter<Dependency: AppRootRouterDependency>: AppRootWirefra
     private let dependency: Dependency
 
     public init(dependency: Dependency) {
+        LogDriver.initLog()
+
         self.dependency = dependency
     }
 

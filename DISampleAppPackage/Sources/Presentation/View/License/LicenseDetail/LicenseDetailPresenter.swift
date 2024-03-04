@@ -11,20 +11,20 @@ final class LicenseDetailPresenter: ObservableObject {
     let license: License
 
     init(license: License) {
-        LoggerContainer.initLog()
+        LogDriver.initLog()
 
         self.license = license
     }
 
     deinit {
-        LoggerContainer.deinitLog()
+        LogDriver.deinitLog()
     }
 
     func onAppear() async {
-        LoggerContainer.logOnAppear()
+        LogDriver.logOnAppear()
     }
 
     func onDisappear() {
-        LoggerContainer.logOnDisappear()
+        LogDriver.logOnDisappear()
     }
 }

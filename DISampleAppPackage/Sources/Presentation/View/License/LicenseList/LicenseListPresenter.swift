@@ -14,21 +14,21 @@ final class LicenseListPresenter<Dependency: LicenseListPresenterDependency>: Ob
     private let libraryLicenseDriver: Dependency.LibraryLicenseDriverProtocolAT
 
     init(dependency: Dependency) {
-        LoggerContainer.initLog()
+        LogDriver.initLog()
         libraryLicenseDriver = dependency.libraryLicenseDriver
     }
 
     deinit {
-        LoggerContainer.deinitLog()
+        LogDriver.deinitLog()
     }
 
     func onAppear() async {
-        LoggerContainer.logOnAppear()
+        LogDriver.logOnAppear()
         licenseList = libraryLicenseDriver.licenseList
     }
 
     func onDisappear() {
-        LoggerContainer.logOnDisappear()
+        LogDriver.logOnDisappear()
     }
 
     func onTapLicense(license: License) {

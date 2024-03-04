@@ -8,7 +8,7 @@ import DomainLayer
 
 public struct DeviceNameDriver: DeviceNameDriverProtocol {
     public init() {
-        LoggerContainer.initLog()
+        LogDriver.initLog()
     }
 
     public var deviceName: String {

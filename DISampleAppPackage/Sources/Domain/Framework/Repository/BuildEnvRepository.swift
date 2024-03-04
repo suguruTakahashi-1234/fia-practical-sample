@@ -10,6 +10,8 @@ public struct BuildEnvRepository: BuildEnvRepositoryProtocol {
     public let buildConfiguration: BuildConfiguration
     
     public init(buildScheme: BuildScheme) {
+        LogDriver.initLog()
+
         self.buildScheme = buildScheme
 
         #if DEBUG

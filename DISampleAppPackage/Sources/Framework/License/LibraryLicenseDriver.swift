@@ -8,7 +8,7 @@ import Foundation
 
 public struct LibraryLicenseDriver: LibraryLicenseDriverProtocol {
     public init() {
-        LoggerContainer.initLog()
+        LogDriver.initLog()
     }
 
     public var licenseList: [License] {

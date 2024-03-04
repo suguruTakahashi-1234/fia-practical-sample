@@ -9,26 +9,25 @@ import Foundation
 @MainActor
 final class AppRootPresenter<Dependency: AppRootPresenterDependency>: ObservableObject {
     init(dependency: Dependency) {
-        // Setup Logger
-        LogDriver.setDriver(firebaseLogDriver: dependency.firebaseLogDriver)
-        // LoggerContainer.append(osLogDriver: dependency.firebaseLogDriver)
-        LoggerContainer.debugLog("completed setup LoggerContainer")
-
-        LoggerContainer.initLog()
-
         // Setup Firebase
         dependency.firebaseSetupDriver.configure()
+
+        // Setup Logger
+        LogDriver.setDriver(firebaseLogDriver: dependency.firebaseLogDriver)
+        LogDriver.debugLog("completed setup LogDriver")
+
+        LogDriver.initLog()
     }
 
     deinit {
-        LoggerContainer.deinitLog()
+        LogDriver.deinitLog()
     }
 
     func onAppear() async {
-        LoggerContainer.logOnAppear()
+        LogDriver.logOnAppear()
     }
 
     func onDisappear() {
-        LoggerContainer.logOnDisappear()
+        LogDriver.logOnDisappear()
     }
 }

@@ -14,6 +14,8 @@ public struct AppRootDependencyInjector: AppRootRouterDependency {
     public let buildEnvRepository: BuildEnvRepository
 
     public init(buildScheme: BuildScheme) {
+        LogDriver.initLog()
+
         buildEnvRepository = BuildEnvRepository(buildScheme: buildScheme)
     }
 

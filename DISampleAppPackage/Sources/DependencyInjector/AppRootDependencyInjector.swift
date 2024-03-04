@@ -19,19 +19,28 @@ public struct AppRootDependencyInjector: AppRootRouterDependency {
         buildEnvRepository = BuildEnvRepository(buildScheme: buildScheme)
     }
 
-    public var firebaseSetupDriver: some FirebaseSetupDriverProtocol {
+    public var firebaseSetupDriver: FirebaseSetupDriver {
         FirebaseSetupDriver()
     }
 
-    public var firebaseLogDriver: some FirebaseLogDriverProtocol {
+    public var firebaseLogDriver: FirebaseLogDriver {
         FirebaseLogDriver()
     }
     
-    public var deviceInfoDriver: some DeviceInfoDriverProtocol {
-        DeviceInfoDriver(deviceNameDriver: DeviceNameDriver())
+    // for DeviceInfoDriver
+    public var deviceNameDriver: DeviceNameDriver {
+        DeviceNameDriver()
+    }
+
+    public var deviceInfoDriver: DeviceInfoDriver<DeviceNameDriver> {
+        DeviceInfoDriver(deviceNameDriver: deviceNameDriver)
     }
     
-    public var libraryLicenseDriver: some LibraryLicenseDriverProtocol {
+    public var clipboardDriver: ClipboardDriver {
+        ClipboardDriver()
+    }
+    
+    public var libraryLicenseDriver: LibraryLicenseDriver {
         LibraryLicenseDriver()
     }
 }

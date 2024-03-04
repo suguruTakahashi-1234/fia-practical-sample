@@ -9,3 +9,5 @@ public enum BuildConfiguration {
     case debug
     case release
 }
+
+extension BuildConfiguration: RandomValueProvidableForEnum {}

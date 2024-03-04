@@ -10,7 +10,8 @@ final class DeviceInfoPresenter<Dependency: DeviceInfoPresenterDependency>: Obse
 
     private let deviceInfoDriver: Dependency.DeviceInfoDriverProtocolAT
     private let buildEnvRepository: Dependency.BuildEnvRepositoryProtocolAT
-    
+    private let clipboardDriver: Dependency.ClipboardDriverProtocolAT
+
     var copiedAlertTitle: String {
         guard let selectedDeviceInfoType else {
             return ""
@@ -20,9 +21,9 @@ final class DeviceInfoPresenter<Dependency: DeviceInfoPresenterDependency>: Obse
 
     init(dependency: Dependency) {
         LogDriver.initLog()
-        
         deviceInfoDriver = dependency.deviceInfoDriver
         buildEnvRepository = dependency.buildEnvRepository
+        clipboardDriver = dependency.clipboardDriver
     }
 
     deinit {
@@ -39,7 +40,7 @@ final class DeviceInfoPresenter<Dependency: DeviceInfoPresenterDependency>: Obse
     
     func onTapDeviceInfo(_ debugInfoType: DeviceInfoType) {
         selectedDeviceInfoType = debugInfoType
-        UIPasteboard.general.string = getDeviceInfoValue(debugInfoType)
+        clipboardDriver.copy(getDeviceInfoValue(debugInfoType))
         shouldShowCopyAlert = true
     }
     

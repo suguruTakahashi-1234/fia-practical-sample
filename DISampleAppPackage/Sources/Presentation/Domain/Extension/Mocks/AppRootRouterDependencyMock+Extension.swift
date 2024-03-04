@@ -14,7 +14,8 @@ public extension AppRootRouterDependencyMock {
             .release
         #endif
     }
-
+    
+    // DeviceNameDriver のみを Mock に差し替える（ライブラリ依存部分のみを Mock を使うようにしている）
     static var deviceInfoDriver: DeviceInfoDriver<DeviceNameDriverProtocolMock> {
         DeviceInfoDriver(deviceNameDriver: DeviceNameDriverProtocolMock(deviceName: "Mock"))
     }
@@ -25,14 +26,16 @@ public extension AppRootRouterDependencyMock {
         deviceInfoDriver: DeviceInfoDriverProtocolMock = DeviceInfoDriverProtocolMock(deviceInfoDriver: AppRootRouterDependencyMock.deviceInfoDriver),
         buildEnvRepository: BuildEnvRepositoryProtocolMock = BuildEnvRepositoryProtocolMock(buildScheme: .mock, buildConfiguration: AppRootRouterDependencyMock.buildConfiguration),
         firebaseLogDriver: FirebaseLogDriverProtocolMock = FirebaseLogDriverProtocolMock(),
-        firebaseSetupDriver: FirebaseSetupDriverProtocolMock = FirebaseSetupDriverProtocolMock()
+        firebaseSetupDriver: FirebaseSetupDriverProtocolMock = FirebaseSetupDriverProtocolMock(),
+        clipboardDriver: ClipboardDriver = ClipboardDriver() // テスト時に本物の ClipboardDriver を使ってしまうとペースト許諾のアラートが表示されてテストが実行されないため、Mock に差し替えてますが通常は本物を使う
     ) -> Self {
         .init(
             libraryLicenseDriver: libraryLicenseDriver,
-            deviceInfoDriver: deviceInfoDriver,
-            buildEnvRepository: buildEnvRepository,
             firebaseLogDriver: firebaseLogDriver,
-            firebaseSetupDriver: firebaseSetupDriver
+            deviceInfoDriver: deviceInfoDriver,
+            firebaseSetupDriver: firebaseSetupDriver,
+            buildEnvRepository: buildEnvRepository,
+            clipboardDriver: clipboardDriver
         )
     }
 

@@ -10,3 +10,5 @@ public enum BuildScheme {
     case staging
     case production
 }
+
+extension BuildScheme: RandomValueProvidableForEnum {}

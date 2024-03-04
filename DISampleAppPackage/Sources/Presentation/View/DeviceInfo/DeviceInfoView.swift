@@ -2,21 +2,6 @@
 import DomainLayer
 import SwiftUI
 
-extension DeviceInfoType: Identifiable {
-    public var id: String {
-        name
-    }
-
-    var name: String {
-        switch self {
-        case .osVersion:
-            "OS Version"
-        default:
-            "\(self)".camelCaseToSpaces.initialUppercased
-        }
-    }
-}
-
 @MainActor
 public struct DeviceInfoView<Router: AppRootWireframe, Dependency: DeviceInfoPresenterDependency>: View {
     private let router: Router
@@ -57,6 +42,21 @@ public struct DeviceInfoView<Router: AppRootWireframe, Dependency: DeviceInfoPre
             .onDisappear {
                 presenter.onDisappear()
             }
+        }
+    }
+}
+
+extension DeviceInfoType: Identifiable {
+    public var id: String {
+        name
+    }
+
+    var name: String {
+        switch self {
+        case .osVersion:
+            "OS Version"
+        default:
+            "\(self)".camelCaseToSpaces.initialUppercased
         }
     }
 }

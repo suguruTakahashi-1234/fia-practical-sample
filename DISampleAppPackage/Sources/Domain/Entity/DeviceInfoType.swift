@@ -19,3 +19,5 @@ public enum DeviceInfoType {
 }
 
 extension DeviceInfoType: CaseIterable {}
+
+extension DeviceInfoType: RandomValueProvidableForEnum {}

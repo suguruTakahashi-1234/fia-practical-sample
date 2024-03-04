@@ -8,7 +8,7 @@ import Foundation
 public struct BuildEnvRepository: BuildEnvRepositoryProtocol {
     public let buildScheme: BuildScheme
     public let buildConfiguration: BuildConfiguration
-    
+
     public init(buildScheme: BuildScheme) {
         LogDriver.initLog()
 

@@ -37,35 +37,35 @@ final class DeviceInfoPresenter<Dependency: DeviceInfoPresenterDependency>: Obse
     func onDisappear() {
         LogDriver.logOnDisappear()
     }
-    
+
     func onTapDeviceInfo(_ debugInfoType: DeviceInfoType) {
         selectedDeviceInfoType = debugInfoType
         clipboardDriver.copy(getDeviceInfoValue(debugInfoType))
         shouldShowCopyAlert = true
     }
-    
+
     func getDeviceInfoValue(_ deviceInfoType: DeviceInfoType) -> String {
         switch deviceInfoType {
         case .appVersion:
-            return "\(deviceInfoDriver.appVersion) (\(deviceInfoDriver.appBuildNumber))"
+            "\(deviceInfoDriver.appVersion) (\(deviceInfoDriver.appBuildNumber))"
         case .buildScheme:
-            return buildEnvRepository.buildScheme.name
+            buildEnvRepository.buildScheme.name
         case .buildConfiguration:
-            return buildEnvRepository.buildConfiguration.name
+            buildEnvRepository.buildConfiguration.name
         case .deviceIdentifier:
-            return deviceInfoDriver.deviceIdentifier
+            deviceInfoDriver.deviceIdentifier
         case .deviceName:
-            return deviceInfoDriver.deviceName
+            deviceInfoDriver.deviceName
         case .isSimulator:
-            return "\(deviceInfoDriver.isSimulator)"
+            "\(deviceInfoDriver.isSimulator)"
         case .isPreview:
-            return "\(deviceInfoDriver.isPreview)"
+            "\(deviceInfoDriver.isPreview)"
         case .osVersion:
-            return "\(deviceInfoDriver.osType) \(deviceInfoDriver.osVersion)"
+            "\(deviceInfoDriver.osType) \(deviceInfoDriver.osVersion)"
         case .timezone:
-            return deviceInfoDriver.timezone
+            deviceInfoDriver.timezone
         case .language:
-            return deviceInfoDriver.language
+            deviceInfoDriver.language
         }
     }
 }

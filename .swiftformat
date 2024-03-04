@@ -49,7 +49,7 @@
 #--disable modifierOrder
 #--disable numberFormatting
 #--disable opaqueGenericParameters
-#--disable preferForLoop
+--disable preferForLoop # forEach -> for in に変換されて Swift らしくないので無効にする
 --disable preferKeyPath # map { $0.hoge } -> map(\.hoge) に変換されて可読性が悪いので無効にする
 #--disable redundantBackticks
 #--disable redundantBreak

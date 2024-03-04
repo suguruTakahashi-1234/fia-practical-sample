@@ -9,7 +9,7 @@ import SwiftUI // for UIDevice
 /// Development ビルドでも正しい値を用いたいので Domain 層の Driver でとして定義して、DeviceKit 依存の DeviceNameDriver のみを注入するようにしている
 public struct DeviceInfoDriver<T: DeviceNameDriverProtocol>: DeviceInfoDriverProtocol {
     private let deviceNameDriver: T
-    
+
     public init(deviceNameDriver: T) {
         LogDriver.initLog()
 
@@ -35,7 +35,7 @@ public struct DeviceInfoDriver<T: DeviceNameDriverProtocol>: DeviceInfoDriverPro
     public var deviceIdentifier: String {
         UIDevice.current.deviceIdentifier
     }
-    
+
     /// ex) "iOS", "iPadOS"
     public var osType: String {
         UIDevice.current.systemName
@@ -43,12 +43,12 @@ public struct DeviceInfoDriver<T: DeviceNameDriverProtocol>: DeviceInfoDriverPro
 
     public var isSimulator: Bool {
         #if targetEnvironment(simulator)
-          true
+            true
         #else
-          false
+            false
         #endif
     }
-    
+
     public var isPreview: Bool {
         ProcessInfo.processInfo.environment["XCODE_RUNNING_FOR_PREVIEWS"] == "1"
     }
@@ -57,12 +57,12 @@ public struct DeviceInfoDriver<T: DeviceNameDriverProtocol>: DeviceInfoDriverPro
     public var osVersion: String {
         UIDevice.current.systemVersion
     }
-    
+
     /// ex) Asia/Tokyo
     public var timezone: String {
         TimeZone.current.identifier
     }
-    
+
     /// ex) en
     public var language: String {
         Locale.current.language.languageCode?.identifier ?? "unknown"

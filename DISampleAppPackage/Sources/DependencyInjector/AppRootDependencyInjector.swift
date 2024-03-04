@@ -4,11 +4,11 @@
 //
 
 import CloudServiceFramework
+import DeviceFramework
 import DomainLayer
 import Foundation
 import LicenseFramework
 import PresentationLayer
-import DeviceFramework
 
 public struct AppRootDependencyInjector: AppRootRouterDependency {
     public let buildEnvRepository: BuildEnvRepository
@@ -26,8 +26,8 @@ public struct AppRootDependencyInjector: AppRootRouterDependency {
     public var firebaseLogDriver: FirebaseLogDriver {
         FirebaseLogDriver()
     }
-    
-    // for DeviceInfoDriver
+
+    /// for DeviceInfoDriver
     public var deviceNameDriver: DeviceNameDriver {
         DeviceNameDriver()
     }
@@ -35,11 +35,11 @@ public struct AppRootDependencyInjector: AppRootRouterDependency {
     public var deviceInfoDriver: DeviceInfoDriver<DeviceNameDriver> {
         DeviceInfoDriver(deviceNameDriver: deviceNameDriver)
     }
-    
+
     public var clipboardDriver: ClipboardDriver {
         ClipboardDriver()
     }
-    
+
     public var libraryLicenseDriver: LibraryLicenseDriver {
         LibraryLicenseDriver()
     }

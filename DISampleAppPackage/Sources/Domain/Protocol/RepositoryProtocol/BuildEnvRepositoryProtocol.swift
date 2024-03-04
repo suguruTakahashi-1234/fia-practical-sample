@@ -27,7 +27,7 @@ public extension BuildEnvRepositoryProtocol {
     var isRelease: Bool {
         buildConfiguration == .release
     }
-    
+
     var isStagingDebug: Bool {
         buildScheme == .staging && buildConfiguration == .debug
     }

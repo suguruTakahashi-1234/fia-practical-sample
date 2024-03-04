@@ -8,7 +8,7 @@ public protocol DeviceInfoPresenterDependency {
     associatedtype DeviceInfoDriverProtocolAT: DeviceInfoDriverProtocol
     associatedtype BuildEnvRepositoryProtocolAT: BuildEnvRepositoryProtocol
     associatedtype ClipboardDriverProtocolAT: ClipboardDriverProtocol
-    
+
     var deviceInfoDriver: DeviceInfoDriverProtocolAT { get }
     var buildEnvRepository: BuildEnvRepositoryProtocolAT { get }
     var clipboardDriver: ClipboardDriverProtocolAT { get }

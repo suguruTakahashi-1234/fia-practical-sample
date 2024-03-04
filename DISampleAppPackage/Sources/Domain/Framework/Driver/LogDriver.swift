@@ -8,9 +8,9 @@ import Foundation
 /// 各Presenterだけではなく、Driver などでも独立して用いたいため、シングルトンのような使い方をしている
 public actor LogDriver {
     private static var osLogDriver: some OSLogDriverProtocol = OSLogDriver(subsystem: Bundle.main.bundleIdentifier!, category: Constants.Logger.categoryName)
-    // ジェネリクスとシングルトンは両立できないため、例外的に any を許容している
+    /// ジェネリクスとシングルトンは両立できないため、例外的に any を許容している
     private static var firebaseLogDriver: (any FirebaseLogDriverProtocol)?
-    
+
     public static func setDriver(firebaseLogDriver: any FirebaseLogDriverProtocol) {
         LogDriver.firebaseLogDriver = firebaseLogDriver
     }

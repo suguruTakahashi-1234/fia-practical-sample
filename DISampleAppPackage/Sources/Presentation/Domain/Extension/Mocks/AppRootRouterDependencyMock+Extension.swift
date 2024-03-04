@@ -14,8 +14,8 @@ public extension AppRootRouterDependencyMock {
             .release
         #endif
     }
-    
-    // DeviceNameDriver のみを Mock に差し替える（ライブラリ依存部分のみを Mock を使うようにしている）
+
+    /// DeviceNameDriver のみを Mock に差し替える（ライブラリ依存部分のみを Mock を使うようにしている）
     static var deviceInfoDriver: DeviceInfoDriver<DeviceNameDriverProtocolMock> {
         DeviceInfoDriver(deviceNameDriver: DeviceNameDriverProtocolMock(deviceName: "Mock"))
     }

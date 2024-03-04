@@ -13,7 +13,7 @@ public extension String {
         }
         return prefix(1).uppercased() + dropFirst()
     }
-    
+
     /// ex) "thisIsCamelCase" -> "this Is Camel Case"
     var camelCaseToSpaces: String {
         reduce("") { result, character in

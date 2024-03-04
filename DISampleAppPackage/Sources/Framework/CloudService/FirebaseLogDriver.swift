@@ -30,7 +30,7 @@ extension LoggableEntity {
         return toAnalyticsProperties.merging(metadata, uniquingKeysWith: { _, new in new })
     }
 
-    // AWS, Protocol Buffers を考慮の IF を考慮して String, Int, Double, Bool のみを許容してる
+    /// AWS, Protocol Buffers を考慮の IF を考慮して String, Int, Double, Bool のみを許容してる
     private var toAnalyticsProperties: [String: Any] {
         toDictionary(caseFormat: .snakeCase).mapValues { value in
             switch value {

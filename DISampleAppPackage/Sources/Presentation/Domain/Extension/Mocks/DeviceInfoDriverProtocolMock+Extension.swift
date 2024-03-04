@@ -3,10 +3,10 @@
 //  Copyright sugurutakahashi. All rights reserved.
 //
 
-import Foundation
 import DomainLayer
+import Foundation
 
-/// TODO: DeviceInfoDriverProtocol に新しい変数が追加されるときに更新する仕組みがほしい（なくてもそこまで問題ではないが）
+// TODO: DeviceInfoDriverProtocol に新しい変数が追加されるときに更新する仕組みがほしい（なくてもそこまで問題ではないが）
 public extension DeviceInfoDriverProtocolMock {
     convenience init(deviceInfoDriver: DeviceInfoDriver<DeviceNameDriverProtocolMock>) {
         self.init(

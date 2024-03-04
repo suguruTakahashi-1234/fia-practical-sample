@@ -148,11 +148,19 @@ enum TargetType: CaseIterable {
 }
 
 enum TestTargetType: CaseIterable {
+    case domainTest
+    case frameworkTest
     case presenterTest
+    case uiTest
     case viewSnapshotTest
 
     private var name: String {
-        "\(self)".initialUppercased
+        switch self {
+        case .uiTest:
+            "UITest"
+        default:
+            "\(self)".initialUppercased
+        }
     }
 
     var target: PackageDescription.Target {
@@ -293,7 +301,21 @@ extension TargetType {
 extension TestTargetType {
     var dependencyLibrary: DependencyLibrary {
         switch self {
+        case .domainTest:
+            .init([
+                TargetType.domain.dependency,
+                .testing,
+            ])
+        case .frameworkTest:
+            .init(FrameworkTargetType.allCases.map { TargetType.framework($0).dependency } + [
+                .testing,
+            ])
         case .presenterTest:
+            .init([
+                TargetType.presentation.dependency,
+                .testing,
+            ])
+        case .uiTest:
             .init([
                 TargetType.presentation.dependency,
                 .testing,

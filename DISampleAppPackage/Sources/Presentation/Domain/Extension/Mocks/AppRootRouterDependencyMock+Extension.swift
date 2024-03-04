@@ -15,10 +15,14 @@ public extension AppRootRouterDependencyMock {
         #endif
     }
 
+    static var deviceInfoDriver: DeviceInfoDriver<DeviceNameDriverProtocolMock> {
+        DeviceInfoDriver(deviceNameDriver: DeviceNameDriverProtocolMock(deviceName: "Mock"))
+    }
+
     /// 生成された init() だと nil が代入されてしまうため、デフォルト引数を設定した create を用意する
     static func create(
         libraryLicenseDriver: LibraryLicenseDriverProtocolMock = LibraryLicenseDriverProtocolMock(),
-        deviceInfoDriver: DeviceInfoDriverProtocolMock = DeviceInfoDriverProtocolMock(),
+        deviceInfoDriver: DeviceInfoDriverProtocolMock = DeviceInfoDriverProtocolMock(deviceInfoDriver: AppRootRouterDependencyMock.deviceInfoDriver),
         buildEnvRepository: BuildEnvRepositoryProtocolMock = BuildEnvRepositoryProtocolMock(buildScheme: .mock, buildConfiguration: AppRootRouterDependencyMock.buildConfiguration),
         osLogDriver: OSLogDriverProtocolMock = OSLogDriverProtocolMock(),
         firebaseSetupDriver: FirebaseSetupDriverProtocolMock = FirebaseSetupDriverProtocolMock()

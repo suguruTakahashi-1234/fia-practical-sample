@@ -11,12 +11,11 @@ public enum DeviceInfoType {
     case buildScheme
     case buildConfiguration
     case isSimulator
+    case isPreview
     case deviceName
     case deviceIdentifier
     case timezone
     case language
-    case uiUserInterfaceStyle
-    case uiContentSize
 }
 
 extension DeviceInfoType: CaseIterable {}

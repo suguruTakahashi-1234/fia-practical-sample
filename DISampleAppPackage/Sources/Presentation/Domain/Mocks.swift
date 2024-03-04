@@ -216,18 +216,17 @@ public final class LicenseListPresenterDependencyMock: LicenseListPresenterDepen
 
 public final class DeviceInfoDriverProtocolMock: DeviceInfoDriverProtocol {
     public init() { }
-    public init(appVersion: String = "", appBuildNumber: String = "", deviceName: String = "", deviceIdentifier: String = "", isSimulator: Bool = false, osType: String = "", osVersion: String = "", timezone: String = "", language: String = "", uiContentSizeCategory: UIContentSizeCategory, uiUserInterfaceStyle: UIUserInterfaceStyle) {
+    public init(appVersion: String = "", appBuildNumber: String = "", deviceName: String = "", deviceIdentifier: String = "", isSimulator: Bool = false, isPreview: Bool = false, osType: String = "", osVersion: String = "", timezone: String = "", language: String = "") {
         self.appVersion = appVersion
         self.appBuildNumber = appBuildNumber
         self.deviceName = deviceName
         self.deviceIdentifier = deviceIdentifier
         self.isSimulator = isSimulator
+        self.isPreview = isPreview
         self.osType = osType
         self.osVersion = osVersion
         self.timezone = timezone
         self.language = language
-        self._uiContentSizeCategory = uiContentSizeCategory
-        self._uiUserInterfaceStyle = uiUserInterfaceStyle
     }
 
 
@@ -246,6 +245,9 @@ public final class DeviceInfoDriverProtocolMock: DeviceInfoDriverProtocol {
     public private(set) var isSimulatorSetCallCount = 0
     public var isSimulator: Bool = false { didSet { isSimulatorSetCallCount += 1 } }
 
+    public private(set) var isPreviewSetCallCount = 0
+    public var isPreview: Bool = false { didSet { isPreviewSetCallCount += 1 } }
+
     public private(set) var osTypeSetCallCount = 0
     public var osType: String = "" { didSet { osTypeSetCallCount += 1 } }
 
@@ -257,19 +259,5 @@ public final class DeviceInfoDriverProtocolMock: DeviceInfoDriverProtocol {
 
     public private(set) var languageSetCallCount = 0
     public var language: String = "" { didSet { languageSetCallCount += 1 } }
-
-    public private(set) var uiContentSizeCategorySetCallCount = 0
-    private var _uiContentSizeCategory: UIContentSizeCategory!  { didSet { uiContentSizeCategorySetCallCount += 1 } }
-    public var uiContentSizeCategory: UIContentSizeCategory {
-        get { return _uiContentSizeCategory }
-        set { _uiContentSizeCategory = newValue }
-    }
-
-    public private(set) var uiUserInterfaceStyleSetCallCount = 0
-    private var _uiUserInterfaceStyle: UIUserInterfaceStyle!  { didSet { uiUserInterfaceStyleSetCallCount += 1 } }
-    public var uiUserInterfaceStyle: UIUserInterfaceStyle {
-        get { return _uiUserInterfaceStyle }
-        set { _uiUserInterfaceStyle = newValue }
-    }
 }
 

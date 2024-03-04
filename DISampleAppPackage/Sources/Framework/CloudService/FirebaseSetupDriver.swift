@@ -8,7 +8,9 @@ import FirebaseCore
 import Foundation
 
 public struct FirebaseSetupDriver: FirebaseSetupDriverProtocol {
-    public init() {}
+    public init() {
+        LoggerContainer.initLog()
+    }
 
     public func configure() {
         FirebaseApp.configure()

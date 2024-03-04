@@ -11,12 +11,6 @@ extension DeviceInfoType: Identifiable {
         switch self {
         case .osVersion:
             "OS Version"
-        case .isSimulator:
-            "Simulator"
-        case .uiUserInterfaceStyle:
-            "Interface Style"
-        case .uiContentSize:
-            "Content Size"
         default:
             "\(self)".camelCaseToSpaces.initialUppercased
         }
@@ -78,7 +72,7 @@ struct DeviceInfoView_Previews: PreviewProvider, SnapshotTestable {
 
     static var snapshots: PreviewSnapshots<AppRootRouterDependencyMock> {
         .init(
-            configurations: configurationAllSizesWithEmpty,
+            configurations: configurationEmpty,
             configure: { state in
                 DeviceInfoView(router: AppRootRouter.empty, dependency: state)
             }

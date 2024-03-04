@@ -78,7 +78,6 @@ enum FrameworkTargetType: CaseIterable {
     case cloudService
     case device
     case license
-    case logger
 
     var folderName: String {
         "\(self)".initialUppercased
@@ -268,10 +267,6 @@ extension TargetType {
                 TargetType.domain.dependency,
             ], plugins: [
                 .licensesPlugin,
-            ])
-        case .framework(.logger):
-            .init([
-                TargetType.domain.dependency,
             ])
         case .presentation:
             .init([

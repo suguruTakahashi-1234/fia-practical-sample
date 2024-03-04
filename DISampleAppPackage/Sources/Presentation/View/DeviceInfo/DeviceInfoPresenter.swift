@@ -3,62 +3,6 @@ import DomainLayer
 import Foundation
 import SwiftUI // for UIPasteboard
 
-/// @mockable
-public protocol BuildEnvRepositoryProtocol: AnyObject {
-    var buildScheme: BuildScheme { get }
-    var buildConfiguration: BuildConfiguration { get }
-}
-
-public final class BuildEnvRepository: BuildEnvRepositoryProtocol {
-    public let buildScheme: BuildScheme
-    public let buildConfiguration: BuildConfiguration
-    
-    public init(buildScheme: BuildScheme) {
-        self.buildScheme = buildScheme
-
-        #if DEBUG
-            buildConfiguration = .debug
-        #else
-            buildConfiguration = .release
-        #endif
-    }
-}
-
-public extension BuildEnvRepositoryProtocol {
-    var isStaging: Bool {
-        buildScheme == .staging
-    }
-
-    var isProduction: Bool {
-        buildScheme == .production
-    }
-
-    var isDebug: Bool {
-        buildConfiguration == .debug
-    }
-
-    var isRelease: Bool {
-        buildConfiguration == .release
-    }
-    
-    var isStagingDebug: Bool {
-        buildScheme == .staging && buildConfiguration == .debug
-    }
-
-    var isStagingRelease: Bool {
-        buildScheme == .staging && buildConfiguration == .release
-    }
-
-    var isProductionDebug: Bool {
-        buildScheme == .production && buildConfiguration == .debug
-    }
-
-    var isProductionRelease: Bool {
-        buildScheme == .production && buildConfiguration == .release
-    }
-}
-
-
 @MainActor
 final class DeviceInfoPresenter<Dependency: DeviceInfoPresenterDependency>: ObservableObject {
     @Published var shouldShowCopyAlert: Bool = false
@@ -113,16 +57,14 @@ final class DeviceInfoPresenter<Dependency: DeviceInfoPresenterDependency>: Obse
             return deviceInfoDriver.deviceName
         case .isSimulator:
             return "\(deviceInfoDriver.isSimulator)"
+        case .isPreview:
+            return "\(deviceInfoDriver.isPreview)"
         case .osVersion:
             return "\(deviceInfoDriver.osType) \(deviceInfoDriver.osVersion)"
         case .timezone:
-            return TimeZone.current.identifier
+            return deviceInfoDriver.timezone
         case .language:
-            return Locale.current.language.languageCode?.identifier ?? "unknown"
-        case .uiUserInterfaceStyle:
-            return "\(deviceInfoDriver.uiUserInterfaceStyle.rawValue)"
-        case .uiContentSize:
-            return "\(deviceInfoDriver.uiContentSizeCategory.rawValue)"
+            return deviceInfoDriver.language
         }
     }
 }

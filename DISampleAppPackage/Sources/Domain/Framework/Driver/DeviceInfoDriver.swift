@@ -11,6 +11,8 @@ public struct DeviceInfoDriver<T: DeviceNameDriverProtocol>: DeviceInfoDriverPro
     private let deviceNameDriver: T
     
     public init(deviceNameDriver: T) {
+        LoggerContainer.initLog()
+
         self.deviceNameDriver = deviceNameDriver
     }
 
@@ -46,6 +48,10 @@ public struct DeviceInfoDriver<T: DeviceNameDriverProtocol>: DeviceInfoDriverPro
           false
         #endif
     }
+    
+    public var isPreview: Bool {
+        ProcessInfo.processInfo.environment["XCODE_RUNNING_FOR_PREVIEWS"] == "1"
+    }
 
     /// ex) "16.2, "16.6"
     public var osVersion: String {
@@ -58,13 +64,5 @@ public struct DeviceInfoDriver<T: DeviceNameDriverProtocol>: DeviceInfoDriverPro
     
     public var language: String {
         Locale.current.language.languageCode?.identifier ?? "unknown"
-    }
-    
-    public var uiContentSizeCategory: UIContentSizeCategory {
-        UIApplication.shared.preferredContentSizeCategory
-    }
-    
-    public var uiUserInterfaceStyle: UIUserInterfaceStyle {
-        UITraitCollection.current.userInterfaceStyle
     }
 }

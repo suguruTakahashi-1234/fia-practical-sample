@@ -7,7 +7,9 @@ import DeviceKit
 import DomainLayer
 
 public struct DeviceNameDriver: DeviceNameDriverProtocol {
-    public init() {}
+    public init() {
+        LoggerContainer.initLog()
+    }
 
     public var deviceName: String {
         DeviceKit.Device.current.safeDescription

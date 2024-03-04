@@ -7,7 +7,9 @@ import DomainLayer
 import Foundation
 
 public struct LibraryLicenseDriver: LibraryLicenseDriverProtocol {
-    public init() {}
+    public init() {
+        LoggerContainer.initLog()
+    }
 
     public var licenseList: [License] {
         LicensesPlugin.licenses.map { License(from: $0) }.filter { !$0.text.isEmpty }

@@ -193,7 +193,11 @@ private extension PackageDescription.Target.Dependency {
 }
 
 private extension PackageDescription.Target.PluginUsage {
+    /// from Library
     static let licensesPlugin: Self = .plugin(name: "LicensesPlugin", package: "LicensesPlugin")
+    
+    /// from Original
+    static let mockoloRunPlugin: Self = .plugin(name: "MockoloRunPlugin")
 }
 
 // MARK: - Package
@@ -228,7 +232,12 @@ let package = Package(
         // DocC
         .package(url: "https://github.com/apple/swift-docc-plugin", from: "1.3.0"),
     ],
-    targets: MacroTargetType.allCases.map { $0.target } + TargetType.allCases.map { $0.target } + TestTargetType.allCases.map { $0.target }
+    targets: MacroTargetType.allCases.map { $0.target } + TargetType.allCases.map { $0.target } + TestTargetType.allCases.map { $0.target } + [
+        .plugin(
+            name: "MockoloRunPlugin",
+            capability: .buildTool()
+        ),
+    ]
 )
 
 /// Ref: https://github.com/treastrain/swift-upcomingfeatureflags-cheatsheet
@@ -259,7 +268,9 @@ extension TargetType {
                 TargetType.presentation.dependency,
             ])
         case .domain:
-            .init()
+            .init([], plugins: [
+                .mockoloRunPlugin,
+            ])
         case .framework(.cloudService):
             .init([
                 TargetType.domain.dependency,

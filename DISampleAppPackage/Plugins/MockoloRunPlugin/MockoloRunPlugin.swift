@@ -5,8 +5,6 @@
 
 import PackagePlugin
 
-
-
 @main
 struct MockoloRunPlugin: BuildToolPlugin {
     func createBuildCommands(context: PluginContext, target: Target) async throws -> [Command] {

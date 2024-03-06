@@ -1,0 +1,60 @@
+#!/bin/bash
+
+# Ref: SwiftFormatを導入してコード記法を統一化 - https://tech.mirrativ.stream/entry/2022/06/27/060850
+
+tools_package="./DISampleAppPackage"
+
+run_swiftformat() {
+  command="swift run --package-path $tools_package swiftformat"
+  command -v $command >/dev/null 2>&1
+  if [ $? -gt 0 ]; then
+    echo "not found swiftformat "
+    exit 1
+  fi
+  $command "$@"
+}
+
+should_fail=false
+staged_swift_files=$(git diff --diff-filter=d --staged --name-only | grep -e '\(.*\).swift$')
+
+if [ -z "$staged_swift_files" ]; then
+  # 変更された Swift ファイルが見つからない場合
+  exit 0
+fi
+
+while read file; do
+  # ステージングされていない変更のパッチを作成
+  unstaged_patch=$(git diff "$file")
+  if [ ! -z "$unstaged_patch" ]; then
+    # ステージングされていない変更がある場合は削除
+    git restore $file
+  fi
+
+  # SwiftFormat でステージングされた変更のみをチェック
+  echo "SwiftFormat: search... $file"
+  run_swiftformat --lint $file
+  if [ $? -eq 0 ]; then
+    if [ ! -z "$unstaged_patch" ]; then
+      # パッチがある場合は適用して未ステージの変更を復元
+      echo "$unstaged_patch" | git apply --whitespace=nowarn
+    fi
+    printf "\n"
+    continue
+  fi
+
+  should_fail=true
+  if [ ! -z "$unstaged_patch" ]; then
+    # パッチがある場合は適用して未ステージの変更を復元
+    echo "$unstaged_patch" | git apply --whitespace=nowarn
+  fi
+
+  # ファイルにSwiftFormatを適用（変更が適用されます）
+  echo "SwiftFormat: run... $file"
+  run_swiftformat $file
+  printf "\n"
+done <<< "$staged_swift_files"
+
+if $should_fail; then
+  echo "⛔️ Change Code By SwiftFormat !!!"
+  exit 1
+fi

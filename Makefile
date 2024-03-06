@@ -10,12 +10,20 @@ help:
 mint-bootstrap:
 	swift run --package-path $(PACKAGE_NAME) mint bootstrap
 
+.PHONY: githooks-setup
+githooks-setup:
+	git config --local core.hooksPath .githooks
+
+.PHONY: githooks-cleanup
+githooks-cleanup:
+	git config --local --unset core.hooksPath .githooks
+
 .PHONY: swiftformat-run
 swiftformat-run:
 	swift run --package-path $(PACKAGE_NAME) swiftformat .
 
-.PHONY: swiftformat-lint
-swiftformat-lint:
+.PHONY: swiftformat-dry-run
+swiftformat-dry-run:
 	swift run --package-path $(PACKAGE_NAME) swiftformat --lint .
 
 .PHONY: mockolo-run
@@ -38,4 +46,9 @@ presentation-code-gen:
 .PHONY: setup
 setup:
 	$(MAKE) mint-bootstrap
+	$(MAKE) githooks-setup
 	$(MAKE) open
+
+.PHONY: cleanup
+cleanup:
+	$(MAKE) githooks-cleanup

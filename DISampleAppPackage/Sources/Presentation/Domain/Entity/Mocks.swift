@@ -37,7 +37,6 @@ public final class AppRootRouterDependencyMock: AppRootRouterDependency {
         get { return _firebaseLogDriver }
         set { _firebaseLogDriver = newValue }
     }
-    public typealias BuildEnvRepositoryProtocolAT = BuildEnvRepositoryProtocolMock
 
     public private(set) var firebaseSetupDriverSetCallCount = 0
     private var _firebaseSetupDriver: FirebaseSetupDriverProtocolAT!  { didSet { firebaseSetupDriverSetCallCount += 1 } }
@@ -45,7 +44,8 @@ public final class AppRootRouterDependencyMock: AppRootRouterDependency {
         get { return _firebaseSetupDriver }
         set { _firebaseSetupDriver = newValue }
     }
-    public typealias DeviceInfoDriverProtocolAT = DeviceInfoDriverProtocolMock
+    public typealias BuildEnvRepositoryProtocolAT = BuildEnvRepositoryProtocolMock
+    public typealias DeviceInfoDriverProtocolAT = DeviceInfoDriver<DeviceNameDriverProtocolMock>
     public typealias ClipboardDriverProtocolAT = ClipboardDriver
 
     public private(set) var buildEnvRepositorySetCallCount = 0
@@ -79,7 +79,7 @@ public final class DeviceInfoPresenterDependencyMock: DeviceInfoPresenterDepende
     }
 
     public typealias BuildEnvRepositoryProtocolAT = BuildEnvRepositoryProtocolMock
-    public typealias DeviceInfoDriverProtocolAT = DeviceInfoDriverProtocolMock
+    public typealias DeviceInfoDriverProtocolAT = DeviceInfoDriver<DeviceNameDriverProtocolMock>
     public typealias ClipboardDriverProtocolAT = ClipboardDriver
 
     public private(set) var buildEnvRepositorySetCallCount = 0
@@ -157,6 +157,21 @@ public final class ClipboardDriverProtocolMock: ClipboardDriverProtocol {
             copyHandler(string)
         }
         
+    }
+}
+
+public final class DeviceInfoUseCaseMock: DeviceInfoUseCase {
+    public init() { }
+
+
+    public private(set) var getDeviceInfoValueCallCount = 0
+    public var getDeviceInfoValueHandler: ((DeviceInfoType) -> (String))?
+    public func getDeviceInfoValue(_ deviceInfoType: DeviceInfoType) -> String {
+        getDeviceInfoValueCallCount += 1
+        if let getDeviceInfoValueHandler = getDeviceInfoValueHandler {
+            return getDeviceInfoValueHandler(deviceInfoType)
+        }
+        return ""
     }
 }
 

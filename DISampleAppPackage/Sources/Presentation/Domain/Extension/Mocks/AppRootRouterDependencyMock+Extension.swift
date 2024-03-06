@@ -15,6 +15,7 @@ public extension AppRootRouterDependencyMock {
         #endif
     }
     
+    
 
     /// 生成された init() だと nil が代入されてしまうため、デフォルト引数を設定した create を用意する
     static func create(

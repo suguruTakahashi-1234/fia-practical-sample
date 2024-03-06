@@ -167,6 +167,7 @@ enum TestTargetType: CaseIterable {
         .testTarget(
             name: name,
             dependencies: dependencyLibrary.dependencies,
+            exclude: ["__Snapshots__"],
             plugins: dependencyLibrary.plugins
         )
     }

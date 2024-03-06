@@ -6,14 +6,14 @@
 import DomainLayer
 import Foundation
 
-public struct DeviceInfoInteractor<BuildEnvRepository: BuildEnvRepositoryProtocol, DeviceInfoDriver: DeviceInfoDriverProtocol>: DeviceInfoUseCase {
-    private let buildEnvRepository: BuildEnvRepository
+public struct DeviceInfoInteractor<BuildEnvDriver: BuildEnvDriverProtocol, DeviceInfoDriver: DeviceInfoDriverProtocol>: DeviceInfoUseCase {
+    private let buildEnvDriver: BuildEnvDriver
     private let deviceInfoDriver: DeviceInfoDriver
 
-    public init(buildEnvRepository: BuildEnvRepository, deviceInfoDriver: DeviceInfoDriver) {
+    public init(buildEnvDriver: BuildEnvDriver, deviceInfoDriver: DeviceInfoDriver) {
         LogDriver.initLog()
 
-        self.buildEnvRepository = buildEnvRepository
+        self.buildEnvDriver = buildEnvDriver
         self.deviceInfoDriver = deviceInfoDriver
     }
 
@@ -22,9 +22,9 @@ public struct DeviceInfoInteractor<BuildEnvRepository: BuildEnvRepositoryProtoco
         case .appVersion:
             "\(deviceInfoDriver.appVersion) (\(deviceInfoDriver.appBuildNumber))"
         case .buildScheme:
-            buildEnvRepository.buildScheme.name
+            buildEnvDriver.buildScheme.name
         case .buildConfiguration:
-            buildEnvRepository.buildConfiguration.name
+            buildEnvDriver.buildConfiguration.name
         case .deviceIdentifier:
             deviceInfoDriver.deviceIdentifier
         case .deviceName:

@@ -6,12 +6,12 @@
 import Foundation
 
 /// @mockable
-public protocol BuildEnvRepositoryProtocol {
+public protocol BuildEnvDriverProtocol {
     var buildScheme: BuildScheme { get }
     var buildConfiguration: BuildConfiguration { get }
 }
 
-public extension BuildEnvRepositoryProtocol {
+public extension BuildEnvDriverProtocol {
     var isStaging: Bool {
         buildScheme == .staging
     }

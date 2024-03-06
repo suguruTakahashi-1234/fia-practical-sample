@@ -11,12 +11,16 @@ import LicenseFramework
 import PresentationLayer
 
 public struct AppRootDependencyInjector: AppRootRouterDependency {
-    public let buildEnvRepository: BuildEnvRepository
-
+    private let buildScheme: BuildScheme
+    
     public init(buildScheme: BuildScheme) {
         LogDriver.initLog()
 
-        buildEnvRepository = BuildEnvRepository(buildScheme: buildScheme)
+        self.buildScheme = buildScheme
+    }
+
+    public var buildEnvDriver: BuildEnvDriver {
+        BuildEnvDriver(buildScheme: buildScheme)
     }
 
     public var firebaseSetupDriver: FirebaseSetupDriver {

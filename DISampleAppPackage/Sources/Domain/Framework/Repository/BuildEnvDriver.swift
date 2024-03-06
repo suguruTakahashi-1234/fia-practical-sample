@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct BuildEnvRepository: BuildEnvRepositoryProtocol {
+public struct BuildEnvDriver: BuildEnvDriverProtocol {
     public let buildScheme: BuildScheme
     public let buildConfiguration: BuildConfiguration
 

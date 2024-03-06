@@ -19,7 +19,7 @@ public extension AppRootRouterDependencyMock {
     static func create(
         libraryLicenseDriver: LibraryLicenseDriverProtocolMock = .init(),
         deviceInfoDriver: DeviceInfoDriver<DeviceNameDriverProtocolMock> = .init(deviceNameDriver: .init(deviceName: "Mock")),
-        buildEnvRepository: BuildEnvRepositoryProtocolMock = .init(buildScheme: .mock, buildConfiguration: AppRootRouterDependencyMock.buildConfiguration),
+        buildEnvDriver: BuildEnvDriverProtocolMock = .init(buildScheme: .mock, buildConfiguration: AppRootRouterDependencyMock.buildConfiguration),
         firebaseLogDriver: FirebaseLogDriverProtocolMock = .init(),
         firebaseSetupDriver: FirebaseSetupDriverProtocolMock = .init(),
         clipboardDriver: ClipboardDriver = .init() // テスト時に本物の ClipboardDriver を使ってしまうとペースト許諾のアラートが表示されてテストが実行されないため、Mock に差し替え可能にしているが通常は本物を使う
@@ -28,7 +28,7 @@ public extension AppRootRouterDependencyMock {
             libraryLicenseDriver: libraryLicenseDriver,
             firebaseLogDriver: firebaseLogDriver,
             firebaseSetupDriver: firebaseSetupDriver,
-            buildEnvRepository: buildEnvRepository,
+            buildEnvDriver: buildEnvDriver,
             deviceInfoDriver: deviceInfoDriver,
             clipboardDriver: clipboardDriver
         )

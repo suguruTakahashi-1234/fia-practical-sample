@@ -15,19 +15,14 @@ public extension AppRootRouterDependencyMock {
         #endif
     }
 
-    /// DeviceNameDriver のみを Mock に差し替える（ライブラリ依存部分のみを Mock を使うようにしている）
-    static var deviceInfoDriver: DeviceInfoDriver<DeviceNameDriverProtocolMock> {
-        DeviceInfoDriver(deviceNameDriver: DeviceNameDriverProtocolMock(deviceName: "Mock"))
-    }
-
     /// 生成された init() だと nil が代入されてしまうため、デフォルト引数を設定した create を用意する
     static func create(
         libraryLicenseDriver: LibraryLicenseDriverProtocolMock = .init(),
-        deviceInfoDriver: DeviceInfoDriverProtocolMock = .init(deviceInfoDriver: AppRootRouterDependencyMock.deviceInfoDriver),
+        deviceInfoDriver: DeviceInfoDriver<DeviceNameDriverProtocolMock> = .init(deviceNameDriver: .init(deviceName: "Mock")),
         buildEnvRepository: BuildEnvRepositoryProtocolMock = .init(buildScheme: .mock, buildConfiguration: AppRootRouterDependencyMock.buildConfiguration),
         firebaseLogDriver: FirebaseLogDriverProtocolMock = .init(),
         firebaseSetupDriver: FirebaseSetupDriverProtocolMock = .init(),
-        clipboardDriver: ClipboardDriver = .init() // テスト時に本物の ClipboardDriver を使ってしまうとペースト許諾のアラートが表示されてテストが実行されないため、Mock に差し替えてますが通常は本物を使う
+        clipboardDriver: ClipboardDriver = .init() // テスト時に本物の ClipboardDriver を使ってしまうとペースト許諾のアラートが表示されてテストが実行されないため、Mock に差し替え可能にしているが通常は本物を使う
     ) -> Self {
         .init(
             libraryLicenseDriver: libraryLicenseDriver,

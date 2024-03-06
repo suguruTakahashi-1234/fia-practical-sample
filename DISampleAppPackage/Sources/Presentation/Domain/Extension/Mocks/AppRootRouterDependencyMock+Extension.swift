@@ -22,19 +22,19 @@ public extension AppRootRouterDependencyMock {
 
     /// 生成された init() だと nil が代入されてしまうため、デフォルト引数を設定した create を用意する
     static func create(
-        libraryLicenseDriver: LibraryLicenseDriverProtocolMock = LibraryLicenseDriverProtocolMock(),
-        deviceInfoDriver: DeviceInfoDriverProtocolMock = DeviceInfoDriverProtocolMock(deviceInfoDriver: AppRootRouterDependencyMock.deviceInfoDriver),
-        buildEnvRepository: BuildEnvRepositoryProtocolMock = BuildEnvRepositoryProtocolMock(buildScheme: .mock, buildConfiguration: AppRootRouterDependencyMock.buildConfiguration),
-        firebaseLogDriver: FirebaseLogDriverProtocolMock = FirebaseLogDriverProtocolMock(),
-        firebaseSetupDriver: FirebaseSetupDriverProtocolMock = FirebaseSetupDriverProtocolMock(),
-        clipboardDriver: ClipboardDriver = ClipboardDriver() // テスト時に本物の ClipboardDriver を使ってしまうとペースト許諾のアラートが表示されてテストが実行されないため、Mock に差し替えてますが通常は本物を使う
+        libraryLicenseDriver: LibraryLicenseDriverProtocolMock = .init(),
+        deviceInfoDriver: DeviceInfoDriverProtocolMock = .init(deviceInfoDriver: AppRootRouterDependencyMock.deviceInfoDriver),
+        buildEnvRepository: BuildEnvRepositoryProtocolMock = .init(buildScheme: .mock, buildConfiguration: AppRootRouterDependencyMock.buildConfiguration),
+        firebaseLogDriver: FirebaseLogDriverProtocolMock = .init(),
+        firebaseSetupDriver: FirebaseSetupDriverProtocolMock = .init(),
+        clipboardDriver: ClipboardDriver = .init() // テスト時に本物の ClipboardDriver を使ってしまうとペースト許諾のアラートが表示されてテストが実行されないため、Mock に差し替えてますが通常は本物を使う
     ) -> Self {
         .init(
             libraryLicenseDriver: libraryLicenseDriver,
             firebaseLogDriver: firebaseLogDriver,
-            deviceInfoDriver: deviceInfoDriver,
             firebaseSetupDriver: firebaseSetupDriver,
             buildEnvRepository: buildEnvRepository,
+            deviceInfoDriver: deviceInfoDriver,
             clipboardDriver: clipboardDriver
         )
     }

@@ -163,11 +163,20 @@ enum TestTargetType: CaseIterable {
         }
     }
 
+    private var exclude: [String] {
+        switch self {
+        case .viewSnapshotTest:
+            ["__Snapshots__"]
+        default:
+            []
+        }
+    }
+
     var target: PackageDescription.Target {
         .testTarget(
             name: name,
             dependencies: dependencyLibrary.dependencies,
-            exclude: ["__Snapshots__"],
+            exclude: exclude,
             plugins: dependencyLibrary.plugins
         )
     }

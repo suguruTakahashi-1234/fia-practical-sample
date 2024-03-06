@@ -36,10 +36,6 @@ public struct AppRootDependencyInjector: AppRootRouterDependency {
         DeviceInfoDriver(deviceNameDriver: deviceNameDriver)
     }
 
-    public var deviceInfoUseCase: DeviceInfoInteractor<BuildEnvRepository, DeviceInfoDriver<DeviceNameDriver>> {
-        DeviceInfoInteractor(buildEnvRepository: buildEnvRepository, deviceInfoDriver: deviceInfoDriver)
-    }
-
     public var clipboardDriver: ClipboardDriver {
         ClipboardDriver()
     }

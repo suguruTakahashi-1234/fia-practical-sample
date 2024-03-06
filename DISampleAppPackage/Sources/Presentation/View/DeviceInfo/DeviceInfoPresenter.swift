@@ -8,8 +8,9 @@ final class DeviceInfoPresenter<Dependency: DeviceInfoPresenterDependency>: Obse
     @Published var shouldShowCopyAlert: Bool = false
     private(set) var selectedDeviceInfoType: DeviceInfoType?
 
+    /// UseCase の Mock を使用する場合はここを書き換える（DI のコードは書き換えず Presenter で直接指定する）
+    private let deviceInfoUseCase: DeviceInfoInteractor<Dependency.BuildEnvRepositoryProtocolAT, Dependency.DeviceInfoDriverProtocolAT>
     private let clipboardDriver: Dependency.ClipboardDriverProtocolAT
-    private let deviceInfoUseCase: Dependency.DeviceInfoUseCaseAT
 
     var copiedAlertTitle: String {
         guard let selectedDeviceInfoType else {
@@ -21,8 +22,8 @@ final class DeviceInfoPresenter<Dependency: DeviceInfoPresenterDependency>: Obse
     init(dependency: Dependency) {
         LogDriver.initLog()
 
+        deviceInfoUseCase = DeviceInfoInteractor(buildEnvRepository: dependency.buildEnvRepository, deviceInfoDriver: dependency.deviceInfoDriver)
         clipboardDriver = dependency.clipboardDriver
-        deviceInfoUseCase = dependency.deviceInfoUseCase
     }
 
     deinit {

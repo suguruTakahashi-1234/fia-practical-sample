@@ -7,6 +7,6 @@ import Foundation
 import DomainLayer
 
 // Usecase はモックの差し替えをしないので mockable には適応させない
-public protocol DeviceInfoUsecase {
+public protocol DeviceInfoUseCase {
     func getDeviceInfoValue(_ deviceInfoType: DeviceInfoType) -> String
 }

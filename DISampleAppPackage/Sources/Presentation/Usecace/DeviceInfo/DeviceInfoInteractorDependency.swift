@@ -6,13 +6,13 @@
 import Foundation
 import DomainLayer
 
-/// @mockable(typealias: BuildEnvRepositoryProtocolAT = BuildEnvRepositoryProtocolMock; DeviceInfoDriverProtocolAT = DeviceInfoDriverProtocolMock; DeviceInfoUsecaseAT = DeviceInfoInteractor<BuildEnvRepositoryProtocolMock, DeviceInfoDriverProtocolMock>)
+/// @mockable(typealias: BuildEnvRepositoryProtocolAT = BuildEnvRepositoryProtocolMock; DeviceInfoDriverProtocolAT = DeviceInfoDriverProtocolMock; DeviceInfoUseCaseAT = DeviceInfoInteractor<BuildEnvRepositoryProtocolMock, DeviceInfoDriverProtocolMock>)
 public protocol DeviceInfoInteractorDependency {
     associatedtype BuildEnvRepositoryProtocolAT: BuildEnvRepositoryProtocol
     associatedtype DeviceInfoDriverProtocolAT: DeviceInfoDriverProtocol
-    associatedtype DeviceInfoUsecaseAT: DeviceInfoUsecase
+    associatedtype DeviceInfoUseCaseAT: DeviceInfoUseCase
     
     var buildEnvRepository: BuildEnvRepositoryProtocolAT { get }
     var deviceInfoDriver: DeviceInfoDriverProtocolAT { get }
-    var deviceInfoUsecase: DeviceInfoUsecaseAT { get }
+    var deviceInfoUseCase: DeviceInfoUseCaseAT { get }
 }

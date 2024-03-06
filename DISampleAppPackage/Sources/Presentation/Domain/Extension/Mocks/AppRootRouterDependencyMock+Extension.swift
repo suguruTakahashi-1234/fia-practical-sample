@@ -36,7 +36,7 @@ public extension AppRootRouterDependencyMock {
             firebaseSetupDriver: firebaseSetupDriver,
             buildEnvRepository: buildEnvRepository,
             deviceInfoDriver: deviceInfoDriver,
-            deviceInfoUsecase: .init(buildEnvRepository: buildEnvRepository, deviceInfoDriver: deviceInfoDriver)
+            deviceInfoUseCase: .init(buildEnvRepository: buildEnvRepository, deviceInfoDriver: deviceInfoDriver)
         )
     }
 

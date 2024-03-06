@@ -36,7 +36,7 @@ public struct AppRootDependencyInjector: AppRootRouterDependency {
         DeviceInfoDriver(deviceNameDriver: deviceNameDriver)
     }
 
-    public var deviceInfoUsecase: DeviceInfoInteractor<BuildEnvRepository, DeviceInfoDriver<DeviceNameDriver>> {
+    public var deviceInfoUseCase: DeviceInfoInteractor<BuildEnvRepository, DeviceInfoDriver<DeviceNameDriver>> {
         DeviceInfoInteractor(buildEnvRepository: buildEnvRepository, deviceInfoDriver: deviceInfoDriver)
     }
     

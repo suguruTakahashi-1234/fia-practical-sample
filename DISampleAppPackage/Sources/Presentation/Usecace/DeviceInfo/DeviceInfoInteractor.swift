@@ -6,7 +6,7 @@
 import Foundation
 import DomainLayer
 
-public struct DeviceInfoInteractor<BuildEnvRepository: BuildEnvRepositoryProtocol, DeviceInfoDriver: DeviceInfoDriverProtocol>: DeviceInfoUsecase {
+public struct DeviceInfoInteractor<BuildEnvRepository: BuildEnvRepositoryProtocol, DeviceInfoDriver: DeviceInfoDriverProtocol>: DeviceInfoUseCase {
     private let buildEnvRepository: BuildEnvRepository
     private let deviceInfoDriver: DeviceInfoDriver
     

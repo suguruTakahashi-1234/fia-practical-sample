@@ -11,14 +11,14 @@ import SwiftUI
 
 public final class AppRootRouterDependencyMock: AppRootRouterDependency {
     public init() { }
-    public init(libraryLicenseDriver: LibraryLicenseDriverProtocolAT, firebaseLogDriver: FirebaseLogDriverProtocolAT, clipboardDriver: ClipboardDriverProtocolAT, firebaseSetupDriver: FirebaseSetupDriverProtocolAT, buildEnvRepository: BuildEnvRepositoryProtocolAT, deviceInfoDriver: DeviceInfoDriverProtocolAT, deviceInfoUsecase: DeviceInfoUsecaseAT) {
+    public init(libraryLicenseDriver: LibraryLicenseDriverProtocolAT, firebaseLogDriver: FirebaseLogDriverProtocolAT, clipboardDriver: ClipboardDriverProtocolAT, firebaseSetupDriver: FirebaseSetupDriverProtocolAT, buildEnvRepository: BuildEnvRepositoryProtocolAT, deviceInfoDriver: DeviceInfoDriverProtocolAT, deviceInfoUseCase: DeviceInfoUseCaseAT) {
         self._libraryLicenseDriver = libraryLicenseDriver
         self._firebaseLogDriver = firebaseLogDriver
         self._clipboardDriver = clipboardDriver
         self._firebaseSetupDriver = firebaseSetupDriver
         self._buildEnvRepository = buildEnvRepository
         self._deviceInfoDriver = deviceInfoDriver
-        self._deviceInfoUsecase = deviceInfoUsecase
+        self._deviceInfoUseCase = deviceInfoUseCase
     }
 
     public typealias LibraryLicenseDriverProtocolAT = LibraryLicenseDriverProtocolMock
@@ -55,7 +55,7 @@ public final class AppRootRouterDependencyMock: AppRootRouterDependency {
         get { return _firebaseSetupDriver }
         set { _firebaseSetupDriver = newValue }
     }
-    public typealias DeviceInfoUsecaseAT = DeviceInfoInteractor<BuildEnvRepositoryProtocolMock, DeviceInfoDriverProtocolMock>
+    public typealias DeviceInfoUseCaseAT = DeviceInfoInteractor<BuildEnvRepositoryProtocolMock, DeviceInfoDriverProtocolMock>
 
     public private(set) var buildEnvRepositorySetCallCount = 0
     private var _buildEnvRepository: BuildEnvRepositoryProtocolAT!  { didSet { buildEnvRepositorySetCallCount += 1 } }
@@ -71,21 +71,21 @@ public final class AppRootRouterDependencyMock: AppRootRouterDependency {
         set { _deviceInfoDriver = newValue }
     }
 
-    public private(set) var deviceInfoUsecaseSetCallCount = 0
-    private var _deviceInfoUsecase: DeviceInfoUsecaseAT!  { didSet { deviceInfoUsecaseSetCallCount += 1 } }
-    public var deviceInfoUsecase: DeviceInfoUsecaseAT {
-        get { return _deviceInfoUsecase }
-        set { _deviceInfoUsecase = newValue }
+    public private(set) var deviceInfoUseCaseSetCallCount = 0
+    private var _deviceInfoUseCase: DeviceInfoUseCaseAT!  { didSet { deviceInfoUseCaseSetCallCount += 1 } }
+    public var deviceInfoUseCase: DeviceInfoUseCaseAT {
+        get { return _deviceInfoUseCase }
+        set { _deviceInfoUseCase = newValue }
     }
 }
 
 public final class DeviceInfoPresenterDependencyMock: DeviceInfoPresenterDependency {
     public init() { }
-    public init(clipboardDriver: ClipboardDriverProtocolAT, buildEnvRepository: BuildEnvRepositoryProtocolAT, deviceInfoDriver: DeviceInfoDriverProtocolAT, deviceInfoUsecase: DeviceInfoUsecaseAT) {
+    public init(clipboardDriver: ClipboardDriverProtocolAT, buildEnvRepository: BuildEnvRepositoryProtocolAT, deviceInfoDriver: DeviceInfoDriverProtocolAT, deviceInfoUseCase: DeviceInfoUseCaseAT) {
         self._clipboardDriver = clipboardDriver
         self._buildEnvRepository = buildEnvRepository
         self._deviceInfoDriver = deviceInfoDriver
-        self._deviceInfoUsecase = deviceInfoUsecase
+        self._deviceInfoUseCase = deviceInfoUseCase
     }
 
     public typealias BuildEnvRepositoryProtocolAT = BuildEnvRepositoryProtocolMock
@@ -98,7 +98,7 @@ public final class DeviceInfoPresenterDependencyMock: DeviceInfoPresenterDepende
         get { return _clipboardDriver }
         set { _clipboardDriver = newValue }
     }
-    public typealias DeviceInfoUsecaseAT = DeviceInfoInteractor<BuildEnvRepositoryProtocolMock, DeviceInfoDriverProtocolMock>
+    public typealias DeviceInfoUseCaseAT = DeviceInfoInteractor<BuildEnvRepositoryProtocolMock, DeviceInfoDriverProtocolMock>
 
     public private(set) var buildEnvRepositorySetCallCount = 0
     private var _buildEnvRepository: BuildEnvRepositoryProtocolAT!  { didSet { buildEnvRepositorySetCallCount += 1 } }
@@ -114,11 +114,11 @@ public final class DeviceInfoPresenterDependencyMock: DeviceInfoPresenterDepende
         set { _deviceInfoDriver = newValue }
     }
 
-    public private(set) var deviceInfoUsecaseSetCallCount = 0
-    private var _deviceInfoUsecase: DeviceInfoUsecaseAT!  { didSet { deviceInfoUsecaseSetCallCount += 1 } }
-    public var deviceInfoUsecase: DeviceInfoUsecaseAT {
-        get { return _deviceInfoUsecase }
-        set { _deviceInfoUsecase = newValue }
+    public private(set) var deviceInfoUseCaseSetCallCount = 0
+    private var _deviceInfoUseCase: DeviceInfoUseCaseAT!  { didSet { deviceInfoUseCaseSetCallCount += 1 } }
+    public var deviceInfoUseCase: DeviceInfoUseCaseAT {
+        get { return _deviceInfoUseCase }
+        set { _deviceInfoUseCase = newValue }
     }
 }
 
@@ -287,15 +287,15 @@ public final class AppRootPresenterDependencyMock: AppRootPresenterDependency {
 
 public final class DeviceInfoInteractorDependencyMock: DeviceInfoInteractorDependency {
     public init() { }
-    public init(buildEnvRepository: BuildEnvRepositoryProtocolAT, deviceInfoDriver: DeviceInfoDriverProtocolAT, deviceInfoUsecase: DeviceInfoUsecaseAT) {
+    public init(buildEnvRepository: BuildEnvRepositoryProtocolAT, deviceInfoDriver: DeviceInfoDriverProtocolAT, deviceInfoUseCase: DeviceInfoUseCaseAT) {
         self._buildEnvRepository = buildEnvRepository
         self._deviceInfoDriver = deviceInfoDriver
-        self._deviceInfoUsecase = deviceInfoUsecase
+        self._deviceInfoUseCase = deviceInfoUseCase
     }
 
     public typealias BuildEnvRepositoryProtocolAT = BuildEnvRepositoryProtocolMock
     public typealias DeviceInfoDriverProtocolAT = DeviceInfoDriverProtocolMock
-    public typealias DeviceInfoUsecaseAT = DeviceInfoInteractor<BuildEnvRepositoryProtocolMock, DeviceInfoDriverProtocolMock>
+    public typealias DeviceInfoUseCaseAT = DeviceInfoInteractor<BuildEnvRepositoryProtocolMock, DeviceInfoDriverProtocolMock>
 
     public private(set) var buildEnvRepositorySetCallCount = 0
     private var _buildEnvRepository: BuildEnvRepositoryProtocolAT!  { didSet { buildEnvRepositorySetCallCount += 1 } }
@@ -311,11 +311,11 @@ public final class DeviceInfoInteractorDependencyMock: DeviceInfoInteractorDepen
         set { _deviceInfoDriver = newValue }
     }
 
-    public private(set) var deviceInfoUsecaseSetCallCount = 0
-    private var _deviceInfoUsecase: DeviceInfoUsecaseAT!  { didSet { deviceInfoUsecaseSetCallCount += 1 } }
-    public var deviceInfoUsecase: DeviceInfoUsecaseAT {
-        get { return _deviceInfoUsecase }
-        set { _deviceInfoUsecase = newValue }
+    public private(set) var deviceInfoUseCaseSetCallCount = 0
+    private var _deviceInfoUseCase: DeviceInfoUseCaseAT!  { didSet { deviceInfoUseCaseSetCallCount += 1 } }
+    public var deviceInfoUseCase: DeviceInfoUseCaseAT {
+        get { return _deviceInfoUseCase }
+        set { _deviceInfoUseCase = newValue }
     }
 }
 

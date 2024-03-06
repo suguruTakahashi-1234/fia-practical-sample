@@ -3,20 +3,20 @@
 //  Copyright sugurutakahashi. All rights reserved.
 //
 
-import Foundation
 import DomainLayer
+import Foundation
 
 public struct DeviceInfoInteractor<BuildEnvRepository: BuildEnvRepositoryProtocol, DeviceInfoDriver: DeviceInfoDriverProtocol>: DeviceInfoUseCase {
     private let buildEnvRepository: BuildEnvRepository
     private let deviceInfoDriver: DeviceInfoDriver
-    
+
     public init(buildEnvRepository: BuildEnvRepository, deviceInfoDriver: DeviceInfoDriver) {
         LogDriver.initLog()
 
         self.buildEnvRepository = buildEnvRepository
         self.deviceInfoDriver = deviceInfoDriver
     }
-    
+
     public func getDeviceInfoValue(_ deviceInfoType: DeviceInfoType) -> String {
         switch deviceInfoType {
         case .appVersion:

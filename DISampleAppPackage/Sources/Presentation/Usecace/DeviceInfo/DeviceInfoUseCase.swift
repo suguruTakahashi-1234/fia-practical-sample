@@ -3,10 +3,10 @@
 //  Copyright sugurutakahashi. All rights reserved.
 //
 
-import Foundation
 import DomainLayer
+import Foundation
 
-// Usecase はモックの差し替えをしないので mockable には適応させない
+/// Usecase はモックの差し替えをしないので mockable には適応させない
 public protocol DeviceInfoUseCase {
     func getDeviceInfoValue(_ deviceInfoType: DeviceInfoType) -> String
 }

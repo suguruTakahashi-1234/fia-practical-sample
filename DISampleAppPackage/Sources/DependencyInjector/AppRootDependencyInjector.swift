@@ -10,7 +10,7 @@ import Foundation
 import LicenseFramework
 import PresentationLayer
 
-public struct AppRootDependencyInjector: AppRootRouterDependency {
+public struct AppRootDependencyInjector: AppRootRouterDependency {    
     public let buildEnvRepository: BuildEnvRepository
 
     public init(buildScheme: BuildScheme) {
@@ -36,6 +36,10 @@ public struct AppRootDependencyInjector: AppRootRouterDependency {
         DeviceInfoDriver(deviceNameDriver: deviceNameDriver)
     }
 
+    public var deviceInfoUsecase: DeviceInfoInteractor<BuildEnvRepository, DeviceInfoDriver<DeviceNameDriver>> {
+        DeviceInfoInteractor(buildEnvRepository: buildEnvRepository, deviceInfoDriver: deviceInfoDriver)
+    }
+    
     public var clipboardDriver: ClipboardDriver {
         ClipboardDriver()
     }

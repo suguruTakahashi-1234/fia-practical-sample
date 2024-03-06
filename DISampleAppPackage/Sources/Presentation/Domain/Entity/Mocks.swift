@@ -11,19 +11,18 @@ import SwiftUI
 
 public final class AppRootRouterDependencyMock: AppRootRouterDependency {
     public init() { }
-    public init(libraryLicenseDriver: LibraryLicenseDriverProtocolAT, firebaseLogDriver: FirebaseLogDriverProtocolAT, deviceInfoDriver: DeviceInfoDriverProtocolAT, firebaseSetupDriver: FirebaseSetupDriverProtocolAT, buildEnvRepository: BuildEnvRepositoryProtocolAT, clipboardDriver: ClipboardDriverProtocolAT) {
+    public init(libraryLicenseDriver: LibraryLicenseDriverProtocolAT, firebaseLogDriver: FirebaseLogDriverProtocolAT, clipboardDriver: ClipboardDriverProtocolAT, firebaseSetupDriver: FirebaseSetupDriverProtocolAT, buildEnvRepository: BuildEnvRepositoryProtocolAT, deviceInfoDriver: DeviceInfoDriverProtocolAT, deviceInfoUsecase: DeviceInfoUsecaseAT) {
         self._libraryLicenseDriver = libraryLicenseDriver
         self._firebaseLogDriver = firebaseLogDriver
-        self._deviceInfoDriver = deviceInfoDriver
+        self._clipboardDriver = clipboardDriver
         self._firebaseSetupDriver = firebaseSetupDriver
         self._buildEnvRepository = buildEnvRepository
-        self._clipboardDriver = clipboardDriver
+        self._deviceInfoDriver = deviceInfoDriver
+        self._deviceInfoUsecase = deviceInfoUsecase
     }
 
-    public typealias DeviceInfoDriverProtocolAT = DeviceInfoDriverProtocolMock
     public typealias LibraryLicenseDriverProtocolAT = LibraryLicenseDriverProtocolMock
     public typealias FirebaseLogDriverProtocolAT = FirebaseLogDriverProtocolMock
-    public typealias BuildEnvRepositoryProtocolAT = BuildEnvRepositoryProtocolMock
 
     public private(set) var libraryLicenseDriverSetCallCount = 0
     private var _libraryLicenseDriver: LibraryLicenseDriverProtocolAT!  { didSet { libraryLicenseDriverSetCallCount += 1 } }
@@ -32,6 +31,7 @@ public final class AppRootRouterDependencyMock: AppRootRouterDependency {
         set { _libraryLicenseDriver = newValue }
     }
     public typealias FirebaseSetupDriverProtocolAT = FirebaseSetupDriverProtocolMock
+    public typealias BuildEnvRepositoryProtocolAT = BuildEnvRepositoryProtocolMock
     public typealias ClipboardDriverProtocolAT = ClipboardDriver
 
     public private(set) var firebaseLogDriverSetCallCount = 0
@@ -40,12 +40,13 @@ public final class AppRootRouterDependencyMock: AppRootRouterDependency {
         get { return _firebaseLogDriver }
         set { _firebaseLogDriver = newValue }
     }
+    public typealias DeviceInfoDriverProtocolAT = DeviceInfoDriverProtocolMock
 
-    public private(set) var deviceInfoDriverSetCallCount = 0
-    private var _deviceInfoDriver: DeviceInfoDriverProtocolAT!  { didSet { deviceInfoDriverSetCallCount += 1 } }
-    public var deviceInfoDriver: DeviceInfoDriverProtocolAT {
-        get { return _deviceInfoDriver }
-        set { _deviceInfoDriver = newValue }
+    public private(set) var clipboardDriverSetCallCount = 0
+    private var _clipboardDriver: ClipboardDriverProtocolAT!  { didSet { clipboardDriverSetCallCount += 1 } }
+    public var clipboardDriver: ClipboardDriverProtocolAT {
+        get { return _clipboardDriver }
+        set { _clipboardDriver = newValue }
     }
 
     public private(set) var firebaseSetupDriverSetCallCount = 0
@@ -54,6 +55,7 @@ public final class AppRootRouterDependencyMock: AppRootRouterDependency {
         get { return _firebaseSetupDriver }
         set { _firebaseSetupDriver = newValue }
     }
+    public typealias DeviceInfoUsecaseAT = DeviceInfoInteractor<BuildEnvRepositoryProtocolMock, DeviceInfoDriverProtocolMock>
 
     public private(set) var buildEnvRepositorySetCallCount = 0
     private var _buildEnvRepository: BuildEnvRepositoryProtocolAT!  { didSet { buildEnvRepositorySetCallCount += 1 } }
@@ -61,26 +63,6 @@ public final class AppRootRouterDependencyMock: AppRootRouterDependency {
         get { return _buildEnvRepository }
         set { _buildEnvRepository = newValue }
     }
-
-    public private(set) var clipboardDriverSetCallCount = 0
-    private var _clipboardDriver: ClipboardDriverProtocolAT!  { didSet { clipboardDriverSetCallCount += 1 } }
-    public var clipboardDriver: ClipboardDriverProtocolAT {
-        get { return _clipboardDriver }
-        set { _clipboardDriver = newValue }
-    }
-}
-
-public final class DeviceInfoPresenterDependencyMock: DeviceInfoPresenterDependency {
-    public init() { }
-    public init(deviceInfoDriver: DeviceInfoDriverProtocolAT, buildEnvRepository: BuildEnvRepositoryProtocolAT, clipboardDriver: ClipboardDriverProtocolAT) {
-        self._deviceInfoDriver = deviceInfoDriver
-        self._buildEnvRepository = buildEnvRepository
-        self._clipboardDriver = clipboardDriver
-    }
-
-    public typealias DeviceInfoDriverProtocolAT = DeviceInfoDriverProtocolMock
-    public typealias BuildEnvRepositoryProtocolAT = BuildEnvRepositoryProtocolMock
-    public typealias ClipboardDriverProtocolAT = ClipboardDriver
 
     public private(set) var deviceInfoDriverSetCallCount = 0
     private var _deviceInfoDriver: DeviceInfoDriverProtocolAT!  { didSet { deviceInfoDriverSetCallCount += 1 } }
@@ -89,6 +71,35 @@ public final class DeviceInfoPresenterDependencyMock: DeviceInfoPresenterDepende
         set { _deviceInfoDriver = newValue }
     }
 
+    public private(set) var deviceInfoUsecaseSetCallCount = 0
+    private var _deviceInfoUsecase: DeviceInfoUsecaseAT!  { didSet { deviceInfoUsecaseSetCallCount += 1 } }
+    public var deviceInfoUsecase: DeviceInfoUsecaseAT {
+        get { return _deviceInfoUsecase }
+        set { _deviceInfoUsecase = newValue }
+    }
+}
+
+public final class DeviceInfoPresenterDependencyMock: DeviceInfoPresenterDependency {
+    public init() { }
+    public init(clipboardDriver: ClipboardDriverProtocolAT, buildEnvRepository: BuildEnvRepositoryProtocolAT, deviceInfoDriver: DeviceInfoDriverProtocolAT, deviceInfoUsecase: DeviceInfoUsecaseAT) {
+        self._clipboardDriver = clipboardDriver
+        self._buildEnvRepository = buildEnvRepository
+        self._deviceInfoDriver = deviceInfoDriver
+        self._deviceInfoUsecase = deviceInfoUsecase
+    }
+
+    public typealias BuildEnvRepositoryProtocolAT = BuildEnvRepositoryProtocolMock
+    public typealias ClipboardDriverProtocolAT = ClipboardDriver
+    public typealias DeviceInfoDriverProtocolAT = DeviceInfoDriverProtocolMock
+
+    public private(set) var clipboardDriverSetCallCount = 0
+    private var _clipboardDriver: ClipboardDriverProtocolAT!  { didSet { clipboardDriverSetCallCount += 1 } }
+    public var clipboardDriver: ClipboardDriverProtocolAT {
+        get { return _clipboardDriver }
+        set { _clipboardDriver = newValue }
+    }
+    public typealias DeviceInfoUsecaseAT = DeviceInfoInteractor<BuildEnvRepositoryProtocolMock, DeviceInfoDriverProtocolMock>
+
     public private(set) var buildEnvRepositorySetCallCount = 0
     private var _buildEnvRepository: BuildEnvRepositoryProtocolAT!  { didSet { buildEnvRepositorySetCallCount += 1 } }
     public var buildEnvRepository: BuildEnvRepositoryProtocolAT {
@@ -96,11 +107,18 @@ public final class DeviceInfoPresenterDependencyMock: DeviceInfoPresenterDepende
         set { _buildEnvRepository = newValue }
     }
 
-    public private(set) var clipboardDriverSetCallCount = 0
-    private var _clipboardDriver: ClipboardDriverProtocolAT!  { didSet { clipboardDriverSetCallCount += 1 } }
-    public var clipboardDriver: ClipboardDriverProtocolAT {
-        get { return _clipboardDriver }
-        set { _clipboardDriver = newValue }
+    public private(set) var deviceInfoDriverSetCallCount = 0
+    private var _deviceInfoDriver: DeviceInfoDriverProtocolAT!  { didSet { deviceInfoDriverSetCallCount += 1 } }
+    public var deviceInfoDriver: DeviceInfoDriverProtocolAT {
+        get { return _deviceInfoDriver }
+        set { _deviceInfoDriver = newValue }
+    }
+
+    public private(set) var deviceInfoUsecaseSetCallCount = 0
+    private var _deviceInfoUsecase: DeviceInfoUsecaseAT!  { didSet { deviceInfoUsecaseSetCallCount += 1 } }
+    public var deviceInfoUsecase: DeviceInfoUsecaseAT {
+        get { return _deviceInfoUsecase }
+        set { _deviceInfoUsecase = newValue }
     }
 }
 
@@ -136,6 +154,27 @@ public final class BuildEnvRepositoryProtocolMock: BuildEnvRepositoryProtocol {
     public var buildConfiguration: BuildConfiguration {
         get { return _buildConfiguration }
         set { _buildConfiguration = newValue }
+    }
+}
+
+public final class ClipboardDriverProtocolMock: ClipboardDriverProtocol {
+    public init() { }
+    public init(copiedValue: String? = nil) {
+        self.copiedValue = copiedValue
+    }
+
+
+    public private(set) var copiedValueSetCallCount = 0
+    public var copiedValue: String? = nil { didSet { copiedValueSetCallCount += 1 } }
+
+    public private(set) var copyCallCount = 0
+    public var copyHandler: ((String) -> ())?
+    public func copy(_ string: String)  {
+        copyCallCount += 1
+        if let copyHandler = copyHandler {
+            copyHandler(string)
+        }
+        
     }
 }
 
@@ -246,6 +285,40 @@ public final class AppRootPresenterDependencyMock: AppRootPresenterDependency {
     }
 }
 
+public final class DeviceInfoInteractorDependencyMock: DeviceInfoInteractorDependency {
+    public init() { }
+    public init(buildEnvRepository: BuildEnvRepositoryProtocolAT, deviceInfoDriver: DeviceInfoDriverProtocolAT, deviceInfoUsecase: DeviceInfoUsecaseAT) {
+        self._buildEnvRepository = buildEnvRepository
+        self._deviceInfoDriver = deviceInfoDriver
+        self._deviceInfoUsecase = deviceInfoUsecase
+    }
+
+    public typealias BuildEnvRepositoryProtocolAT = BuildEnvRepositoryProtocolMock
+    public typealias DeviceInfoDriverProtocolAT = DeviceInfoDriverProtocolMock
+    public typealias DeviceInfoUsecaseAT = DeviceInfoInteractor<BuildEnvRepositoryProtocolMock, DeviceInfoDriverProtocolMock>
+
+    public private(set) var buildEnvRepositorySetCallCount = 0
+    private var _buildEnvRepository: BuildEnvRepositoryProtocolAT!  { didSet { buildEnvRepositorySetCallCount += 1 } }
+    public var buildEnvRepository: BuildEnvRepositoryProtocolAT {
+        get { return _buildEnvRepository }
+        set { _buildEnvRepository = newValue }
+    }
+
+    public private(set) var deviceInfoDriverSetCallCount = 0
+    private var _deviceInfoDriver: DeviceInfoDriverProtocolAT!  { didSet { deviceInfoDriverSetCallCount += 1 } }
+    public var deviceInfoDriver: DeviceInfoDriverProtocolAT {
+        get { return _deviceInfoDriver }
+        set { _deviceInfoDriver = newValue }
+    }
+
+    public private(set) var deviceInfoUsecaseSetCallCount = 0
+    private var _deviceInfoUsecase: DeviceInfoUsecaseAT!  { didSet { deviceInfoUsecaseSetCallCount += 1 } }
+    public var deviceInfoUsecase: DeviceInfoUsecaseAT {
+        get { return _deviceInfoUsecase }
+        set { _deviceInfoUsecase = newValue }
+    }
+}
+
 public final class LicenseListPresenterDependencyMock: LicenseListPresenterDependency {
     public init() { }
     public init(libraryLicenseDriver: LibraryLicenseDriverProtocolAT) {
@@ -307,26 +380,5 @@ public final class DeviceInfoDriverProtocolMock: DeviceInfoDriverProtocol {
 
     public private(set) var languageSetCallCount = 0
     public var language: String = "" { didSet { languageSetCallCount += 1 } }
-}
-
-public final class ClipboardDriverProtocolMock: ClipboardDriverProtocol {
-    public init() { }
-    public init(copiedValue: String? = nil) {
-        self.copiedValue = copiedValue
-    }
-
-
-    public private(set) var copyCallCount = 0
-    public var copyHandler: ((String) -> ())?
-    public func copy(_ string: String)  {
-        copyCallCount += 1
-        if let copyHandler = copyHandler {
-            copyHandler(string)
-        }
-        
-    }
-
-    public private(set) var copiedValueSetCallCount = 0
-    public var copiedValue: String? = nil { didSet { copiedValueSetCallCount += 1 } }
 }
 

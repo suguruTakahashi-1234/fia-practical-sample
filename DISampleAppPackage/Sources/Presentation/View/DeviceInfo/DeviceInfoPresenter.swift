@@ -8,9 +8,8 @@ final class DeviceInfoPresenter<Dependency: DeviceInfoPresenterDependency>: Obse
     @Published var shouldShowCopyAlert: Bool = false
     private(set) var selectedDeviceInfoType: DeviceInfoType?
 
-    private let deviceInfoDriver: Dependency.DeviceInfoDriverProtocolAT
-    private let buildEnvRepository: Dependency.BuildEnvRepositoryProtocolAT
     private let clipboardDriver: Dependency.ClipboardDriverProtocolAT
+    private let deviceInfoUsecase: Dependency.DeviceInfoUsecaseAT
 
     var copiedAlertTitle: String {
         guard let selectedDeviceInfoType else {
@@ -21,9 +20,9 @@ final class DeviceInfoPresenter<Dependency: DeviceInfoPresenterDependency>: Obse
 
     init(dependency: Dependency) {
         LogDriver.initLog()
-        deviceInfoDriver = dependency.deviceInfoDriver
-        buildEnvRepository = dependency.buildEnvRepository
+
         clipboardDriver = dependency.clipboardDriver
+        deviceInfoUsecase = dependency.deviceInfoUsecase
     }
 
     deinit {
@@ -38,35 +37,14 @@ final class DeviceInfoPresenter<Dependency: DeviceInfoPresenterDependency>: Obse
         LogDriver.logOnDisappear()
     }
 
-    func onTapDeviceInfo(_ debugInfoType: DeviceInfoType) {
-        selectedDeviceInfoType = debugInfoType
-        clipboardDriver.copy(getDeviceInfoValue(debugInfoType))
+    func onTapDeviceInfo(_ deviceInfoType: DeviceInfoType) {
+        selectedDeviceInfoType = deviceInfoType
+        clipboardDriver.copy(deviceInfoUsecase.getDeviceInfoValue(deviceInfoType))
         shouldShowCopyAlert = true
     }
 
     func getDeviceInfoValue(_ deviceInfoType: DeviceInfoType) -> String {
-        switch deviceInfoType {
-        case .appVersion:
-            "\(deviceInfoDriver.appVersion) (\(deviceInfoDriver.appBuildNumber))"
-        case .buildScheme:
-            buildEnvRepository.buildScheme.name
-        case .buildConfiguration:
-            buildEnvRepository.buildConfiguration.name
-        case .deviceIdentifier:
-            deviceInfoDriver.deviceIdentifier
-        case .deviceName:
-            deviceInfoDriver.deviceName
-        case .isSimulator:
-            "\(deviceInfoDriver.isSimulator)"
-        case .isPreview:
-            "\(deviceInfoDriver.isPreview)"
-        case .osVersion:
-            "\(deviceInfoDriver.osType) \(deviceInfoDriver.osVersion)"
-        case .timezone:
-            deviceInfoDriver.timezone
-        case .language:
-            deviceInfoDriver.language
-        }
+        deviceInfoUsecase.getDeviceInfoValue(deviceInfoType)
     }
 }
 

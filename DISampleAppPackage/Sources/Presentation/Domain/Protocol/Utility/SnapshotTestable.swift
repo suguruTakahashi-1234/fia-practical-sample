@@ -10,3 +10,5 @@ public protocol SnapshotTestable {
 
     static var snapshots: PreviewSnapshots<State> { get }
 }
+
+

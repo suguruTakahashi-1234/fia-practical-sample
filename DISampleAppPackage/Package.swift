@@ -222,7 +222,7 @@ let package = Package(
         .package(url: "https://github.com/playbook-ui/playbook-ios.git", from: "0.3.5"),
         .package(url: "https://github.com/doordash-oss/swiftui-preview-snapshots", from: "1.1.1"),
         .package(url: "https://github.com/EmergeTools/SnapshotPreviews-iOS", from: "0.8.5"),
-        .package(url: "https://github.com/apple/swift-syntax", from: "509.1.1"), // SwiftSyntax の競合に注意
+        .package(url: "https://github.com/apple/swift-syntax", from: "509.1.1"), // SwiftSyntax の競合に注意(510.0.0がリリースされているがswift-testingと競合してあげられない)
         .package(url: "https://github.com/devicekit/DeviceKit.git", from: "5.2.2"),
 
         // Test

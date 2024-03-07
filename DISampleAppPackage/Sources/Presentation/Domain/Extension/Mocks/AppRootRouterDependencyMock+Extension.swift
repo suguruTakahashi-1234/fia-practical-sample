@@ -26,11 +26,11 @@ public extension AppRootRouterDependencyMock {
     ) -> Self {
         .init(
             libraryLicenseDriver: libraryLicenseDriver,
-            firebaseLogDriver: firebaseLogDriver,
-            firebaseSetupDriver: firebaseSetupDriver,
             buildEnvDriver: buildEnvDriver,
+            firebaseLogDriver: firebaseLogDriver,
             deviceInfoDriver: deviceInfoDriver,
-            clipboardDriver: clipboardDriver
+            clipboardDriver: clipboardDriver,
+            firebaseSetupDriver: firebaseSetupDriver
         )
     }
 

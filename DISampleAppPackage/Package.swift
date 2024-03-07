@@ -1,7 +1,7 @@
 // swift-tools-version: 5.10
 // The swift-tools-version declares the minimum version of Swift required to build this package.
 
-import CompilerPluginSupport // for Swift Macros
+import CompilerPluginSupport
 import PackageDescription
 
 private extension String {
@@ -218,22 +218,22 @@ let package = Package(
     products: TargetType.allCases.map { $0.product },
     dependencies: [
         // Library
-        .package(url: "https://github.com/firebase/firebase-ios-sdk.git", exact: "10.19.0"), // TODO: 10.22 以上がリリースされたらアップデートする（直らないかもしれないが） https://github.com/firebase/firebase-ios-sdk/issues/12390
+        .package(url: "https://github.com/firebase/firebase-ios-sdk.git", exact: "10.22.0"), // TODO: 10.22 以上がリリースされたらアップデートする（直らないかもしれないが） https://github.com/firebase/firebase-ios-sdk/issues/12390
         .package(url: "https://github.com/playbook-ui/playbook-ios.git", from: "0.3.5"),
         .package(url: "https://github.com/doordash-oss/swiftui-preview-snapshots", from: "1.1.1"),
-        .package(url: "https://github.com/EmergeTools/SnapshotPreviews-iOS", from: "0.8.4"),
+        .package(url: "https://github.com/EmergeTools/SnapshotPreviews-iOS", from: "0.8.5"),
         .package(url: "https://github.com/apple/swift-syntax", from: "509.1.1"), // SwiftSyntax の競合に注意
         .package(url: "https://github.com/devicekit/DeviceKit.git", from: "5.2.2"),
 
         // Test
-        .package(url: "https://github.com/apple/swift-testing.git", from: "0.5.0"),
+        .package(url: "https://github.com/apple/swift-testing.git", from: "0.5.1"),
 
         // Plugin
         .package(url: "https://github.com/maiyama18/LicensesPlugin", from: "0.1.6"),
 
         // for CLI
         .package(url: "https://github.com/yonaskolb/Mint.git", from: "0.17.5"),
-        .package(url: "https://github.com/nicklockwood/SwiftFormat", exact: "0.53.2"), // バージョンを変更した場合は .swiftformat ファイルを修正する
+        .package(url: "https://github.com/nicklockwood/SwiftFormat", exact: "0.53.3"), // バージョンを変更した場合は .swiftformat ファイルを修正する
 
         // DocC
         .package(url: "https://github.com/apple/swift-docc-plugin", from: "1.3.0"),

@@ -1,5 +1,5 @@
 {
-  "originHash" : "97519818af14775061d25bcbc98881f569e39361ad4c86f6499a9ea9613fef21",
+  "originHash" : "ec418cfdf145ee4d61cd1775ca4626d8b8b4594a1e0d4341393743ede2027059",
   "pins" : [
     {
       "identity" : "abseil-cpp-binary",
@@ -42,8 +42,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/firebase/firebase-ios-sdk.git",
       "state" : {
-        "revision" : "d9bcd141c3e4ad48a9500e6faeebb073f43cbcbd",
-        "version" : "10.19.0"
+        "revision" : "fe09d61a539e11fdbe24f269bba10144b6145fe2",
+        "version" : "10.22.0"
       }
     },
     {
@@ -60,8 +60,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/google/GoogleAppMeasurement.git",
       "state" : {
-        "revision" : "6b332152355c372ace9966d8ee76ed191f97025e",
-        "version" : "10.17.0"
+        "revision" : "bf3bb24f6b60a7acedaef504e9ce97154203217a",
+        "version" : "10.22.0"
       }
     },
     {
@@ -186,8 +186,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/EmergeTools/SnapshotPreviews-iOS",
       "state" : {
-        "revision" : "6c3eef438a1f8458180f7d0f3c52959594a329f7",
-        "version" : "0.8.4"
+        "revision" : "d594889af9039d06cbc0340c09f6c838bda6e1c8",
+        "version" : "0.8.5"
       }
     },
     {
@@ -249,8 +249,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/apple/swift-testing.git",
       "state" : {
-        "revision" : "0c1f164b2d4272a3afce622a9e3eb0163d931fb4",
-        "version" : "0.5.0"
+        "revision" : "3ed2f90058afe4437369aee4880890e7fa65d1ec",
+        "version" : "0.5.1"
       }
     },
     {
@@ -267,8 +267,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/nicklockwood/SwiftFormat",
       "state" : {
-        "revision" : "607c7057e55cf008e3841696ea7083622e36164f",
-        "version" : "0.53.2"
+        "revision" : "dbc9a4406d21cc52f16caf1e299172b097145e5e",
+        "version" : "0.53.3"
       }
     },
     {

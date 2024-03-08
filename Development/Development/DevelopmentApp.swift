@@ -7,8 +7,12 @@ import PresentationLayer
 import SwiftUI
 
 @main
-struct ProductionApp: App {
-    private let router = AppRootRouter(dependency: AppRootRouterDependencyMock.random)
+struct DevelopmentApp: App {
+    private let router: AppRootRouter<AppRootRouterDependencyMock>
+
+    init() {
+        router = AppRootRouter(dependency: AppRootRouterDependencyMock.random)
+    }
 
     var body: some Scene {
         WindowGroup {

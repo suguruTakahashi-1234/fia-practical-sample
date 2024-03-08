@@ -8,8 +8,12 @@ import PresentationLayer
 import SwiftUI
 
 @main
-struct ProductionApp: App {
-    private let router = AppRootRouter(dependency: AppRootDependencyInjector(buildScheme: .staging))
+struct StagingApp: App {
+    private let router: AppRootRouter<AppRootDependencyInjector>
+
+    init() {
+        router = AppRootRouter(dependency: AppRootDependencyInjector(buildScheme: .staging))
+    }
 
     var body: some Scene {
         WindowGroup {

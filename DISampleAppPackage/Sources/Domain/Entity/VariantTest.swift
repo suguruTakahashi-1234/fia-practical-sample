@@ -7,6 +7,10 @@ import Foundation
 
 public struct VariantTest: RemoteConfigurable {
     public let isEnabledNewFeature: Bool
+
+    public init(isEnabledNewFeature: Bool) {
+        self.isEnabledNewFeature = isEnabledNewFeature
+    }
 }
 
 public extension VariantTest {

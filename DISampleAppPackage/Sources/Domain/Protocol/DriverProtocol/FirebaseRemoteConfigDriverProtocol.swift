@@ -7,7 +7,5 @@ import Foundation
 
 /// @mockable
 public protocol FirebaseRemoteConfigDriverProtocol: AnyObject {
-    func fetchAndActivate() async throws
-
-    func getValue<T: RemoteConfigurable>(remoteConfigType: RemoteConfigType) throws -> T
+    func setUp() async throws
 }

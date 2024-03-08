@@ -42,9 +42,9 @@ public class FirebaseRemoteConfigDriver<T: CacheDataStoreProtocol>: FirebaseRemo
                         try await self.remoteConfig.activate() // activate しないと最新の Remote Config 上の値を取得できない（fetchでは更新されない）
                         switch updatedRemoteConfigType {
                         case .appInfo:
-                            try self.cacheDataStore.appInfoSubject.send(self.getValue(remoteConfigType: updatedRemoteConfigType))
+                            try self.cacheDataStore.appInfoSubjecter.send(self.getValue(remoteConfigType: updatedRemoteConfigType))
                         case .variantTest:
-                            try self.cacheDataStore.variantTestSubject.send(self.getValue(remoteConfigType: updatedRemoteConfigType))
+                            try self.cacheDataStore.variantTestSubjecter.send(self.getValue(remoteConfigType: updatedRemoteConfigType))
                         }
                     } catch {
                         LogDriver.errorLog(error.toAppError)
@@ -58,7 +58,7 @@ public class FirebaseRemoteConfigDriver<T: CacheDataStoreProtocol>: FirebaseRemo
         LogDriver.deinitLog()
     }
 
-    public func fetchAndActivate() async throws {
+    public func setUp() async throws {
         do {
             try setDefaults()
             try await remoteConfig.fetchAndActivate()
@@ -74,14 +74,14 @@ public class FirebaseRemoteConfigDriver<T: CacheDataStoreProtocol>: FirebaseRemo
             }
 
             if let error {
-                cacheDataStore.remoteConfigUpdateErrorSubject.send(AppError.customError("\(error)"))
+                cacheDataStore.remoteConfigUpdateErrorSubjecter.send(AppError.customError("\(error)"))
                 LogDriver.errorLog(error.toAppError)
                 return
             }
 
             guard let updatedRemoteConfig else {
                 LogDriver.debugLog("Unexpected")
-                cacheDataStore.remoteConfigUpdateErrorSubject.send(AppError.customError("Unexpected"))
+                cacheDataStore.remoteConfigUpdateErrorSubjecter.send(AppError.customError("Unexpected"))
                 assertionFailure("Unexpected")
                 return
             }
@@ -93,12 +93,12 @@ public class FirebaseRemoteConfigDriver<T: CacheDataStoreProtocol>: FirebaseRemo
                 updatedRemoteConfigTypesSubject.send(remoteConfigTypes)
             } catch {
                 LogDriver.errorLog(error.toAppError)
-                cacheDataStore.remoteConfigUpdateErrorSubject.send(AppError.customError("\(error)"))
+                cacheDataStore.remoteConfigUpdateErrorSubjecter.send(AppError.customError("\(error)"))
             }
         }
     }
 
-    public func getValue<RemoteConfigurableItem: RemoteConfigurable>(remoteConfigType: RemoteConfigType) throws -> RemoteConfigurableItem {
+    private func getValue<RemoteConfigurableItem: RemoteConfigurable>(remoteConfigType: RemoteConfigType) throws -> RemoteConfigurableItem {
         do {
             let data = remoteConfig.configValue(forKey: remoteConfigType.keyName).dataValue
             let decoded = try JSONDecoder().decode(RemoteConfigurableItem.self, from: data)
@@ -115,9 +115,9 @@ public class FirebaseRemoteConfigDriver<T: CacheDataStoreProtocol>: FirebaseRemo
             try RemoteConfigType.allCases.forEach { remoteConfigType in
                 switch remoteConfigType {
                 case .appInfo:
-                    try cacheDataStore.appInfoSubject.send(getValue(remoteConfigType: remoteConfigType))
+                    try cacheDataStore.appInfoSubjecter.send(getValue(remoteConfigType: remoteConfigType))
                 case .variantTest:
-                    try cacheDataStore.variantTestSubject.send(getValue(remoteConfigType: remoteConfigType))
+                    try cacheDataStore.variantTestSubjecter.send(getValue(remoteConfigType: remoteConfigType))
                 }
             }
         } catch {

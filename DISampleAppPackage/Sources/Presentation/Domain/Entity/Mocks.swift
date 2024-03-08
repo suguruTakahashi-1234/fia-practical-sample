@@ -153,27 +153,32 @@ public final class TaskListPresenterDependencyMock: TaskListPresenterDependency 
 
 public final class CacheDataStoreProtocolMock: CacheDataStoreProtocol {
     public init() { }
-
-
-    public private(set) var remoteConfigUpdateErrorSubjectSetCallCount = 0
-    private var _remoteConfigUpdateErrorSubject: PassthroughSubject<AppError, Never>!  { didSet { remoteConfigUpdateErrorSubjectSetCallCount += 1 } }
-    public var remoteConfigUpdateErrorSubject: PassthroughSubject<AppError, Never> {
-        get { return _remoteConfigUpdateErrorSubject }
-        set { _remoteConfigUpdateErrorSubject = newValue }
+    public init(remoteConfigUpdateErrorSubjecter: PassthroughSubject<AppError, Never>, appInfoSubjecter: CurrentValueSubject<AppInfo, Never>, variantTestSubjecter: CurrentValueSubject<VariantTest, Never>) {
+        self._remoteConfigUpdateErrorSubjecter = remoteConfigUpdateErrorSubjecter
+        self._appInfoSubjecter = appInfoSubjecter
+        self._variantTestSubjecter = variantTestSubjecter
     }
 
-    public private(set) var appInfoSubjectSetCallCount = 0
-    private var _appInfoSubject: CurrentValueSubject<AppInfo, Never>!  { didSet { appInfoSubjectSetCallCount += 1 } }
-    public var appInfoSubject: CurrentValueSubject<AppInfo, Never> {
-        get { return _appInfoSubject }
-        set { _appInfoSubject = newValue }
+
+    public private(set) var remoteConfigUpdateErrorSubjecterSetCallCount = 0
+    private var _remoteConfigUpdateErrorSubjecter: PassthroughSubject<AppError, Never>!  { didSet { remoteConfigUpdateErrorSubjecterSetCallCount += 1 } }
+    public var remoteConfigUpdateErrorSubjecter: PassthroughSubject<AppError, Never> {
+        get { return _remoteConfigUpdateErrorSubjecter }
+        set { _remoteConfigUpdateErrorSubjecter = newValue }
     }
 
-    public private(set) var variantTestSubjectSetCallCount = 0
-    private var _variantTestSubject: CurrentValueSubject<VariantTest, Never>!  { didSet { variantTestSubjectSetCallCount += 1 } }
-    public var variantTestSubject: CurrentValueSubject<VariantTest, Never> {
-        get { return _variantTestSubject }
-        set { _variantTestSubject = newValue }
+    public private(set) var appInfoSubjecterSetCallCount = 0
+    private var _appInfoSubjecter: CurrentValueSubject<AppInfo, Never>!  { didSet { appInfoSubjecterSetCallCount += 1 } }
+    public var appInfoSubjecter: CurrentValueSubject<AppInfo, Never> {
+        get { return _appInfoSubjecter }
+        set { _appInfoSubjecter = newValue }
+    }
+
+    public private(set) var variantTestSubjecterSetCallCount = 0
+    private var _variantTestSubjecter: CurrentValueSubject<VariantTest, Never>!  { didSet { variantTestSubjecterSetCallCount += 1 } }
+    public var variantTestSubjecter: CurrentValueSubject<VariantTest, Never> {
+        get { return _variantTestSubjecter }
+        set { _variantTestSubjecter = newValue }
     }
 }
 
@@ -291,24 +296,14 @@ public final class FirebaseRemoteConfigDriverProtocolMock: FirebaseRemoteConfigD
     public init() { }
 
 
-    public private(set) var fetchAndActivateCallCount = 0
-    public var fetchAndActivateHandler: (() async throws -> ())?
-    public func fetchAndActivate() async throws  {
-        fetchAndActivateCallCount += 1
-        if let fetchAndActivateHandler = fetchAndActivateHandler {
-            try await fetchAndActivateHandler()
+    public private(set) var setUpCallCount = 0
+    public var setUpHandler: (() async throws -> ())?
+    public func setUp() async throws  {
+        setUpCallCount += 1
+        if let setUpHandler = setUpHandler {
+            try await setUpHandler()
         }
         
-    }
-
-    public private(set) var getValueCallCount = 0
-    public var getValueHandler: ((RemoteConfigType) throws -> (Any))?
-    public func getValue<T: RemoteConfigurable>(remoteConfigType: RemoteConfigType) throws -> T {
-        getValueCallCount += 1
-        if let getValueHandler = getValueHandler {
-            return try getValueHandler(remoteConfigType) as! T
-        }
-        fatalError("getValueHandler returns can't have a default value thus its handler must be set")
     }
 }
 

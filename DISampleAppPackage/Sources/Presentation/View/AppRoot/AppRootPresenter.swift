@@ -31,7 +31,7 @@ final class AppRootPresenter<Dependency: AppRootPresenterDependency>: Observable
         LogDriver.onAppearLog()
 
         do {
-            try await firebaseRemoteConfigDriver.fetchAndActivate()
+            try await firebaseRemoteConfigDriver.setUp()
         } catch {
             LogDriver.errorLog(error.toAppError)
         }

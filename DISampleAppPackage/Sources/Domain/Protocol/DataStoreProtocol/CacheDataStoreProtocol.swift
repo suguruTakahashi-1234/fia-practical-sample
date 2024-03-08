@@ -5,9 +5,10 @@
 
 import Combine
 
+/// xxxSubject と命名すると mockolo のバグでどうやら mock のイニシャライザが生成されないので xxxSubjecter に統一している
 /// @mockable
 public protocol CacheDataStoreProtocol: AnyObject {
-    var remoteConfigUpdateErrorSubject: PassthroughSubject<AppError, Never> { get }
-    var appInfoSubject: CurrentValueSubject<AppInfo, Never> { get }
-    var variantTestSubject: CurrentValueSubject<VariantTest, Never> { get }
+    var remoteConfigUpdateErrorSubjecter: PassthroughSubject<AppError, Never> { get }
+    var appInfoSubjecter: CurrentValueSubject<AppInfo, Never> { get }
+    var variantTestSubjecter: CurrentValueSubject<VariantTest, Never> { get }
 }

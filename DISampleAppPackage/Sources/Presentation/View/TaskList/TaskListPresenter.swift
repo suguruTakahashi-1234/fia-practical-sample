@@ -13,7 +13,7 @@ final class TaskListPresenter<Dependency: TaskListPresenterDependency>: Observab
 
         cacheDataStore = dependency.cacheDataStore
 
-        cacheDataStore.variantTestSubject
+        cacheDataStore.variantTestSubjecter
             .receive(on: RunLoop.main)
             .map { $0.isEnabledNewFeature }
             .assign(to: &$isEnabledNewFeature)

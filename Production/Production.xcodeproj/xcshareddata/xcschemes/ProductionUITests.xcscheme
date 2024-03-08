@@ -6,22 +6,6 @@
       parallelizeBuildables = "YES"
       buildImplicitDependencies = "YES"
       buildArchitectures = "Automatic">
-      <BuildActionEntries>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "4471BCB12B81F08800218534"
-               BuildableName = "Staging.app"
-               BlueprintName = "Staging"
-               ReferencedContainer = "container:Staging.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-      </BuildActionEntries>
    </BuildAction>
    <TestAction
       buildConfiguration = "Debug"
@@ -35,10 +19,10 @@
             parallelizable = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "44ABAB2F2B9B61240039ECF7"
-               BuildableName = "StagingUITests.xctest"
-               BlueprintName = "StagingUITests"
-               ReferencedContainer = "container:Staging.xcodeproj">
+               BlueprintIdentifier = "44ABAB112B9B5B760039ECF7"
+               BuildableName = "ProductionUITests.xctest"
+               BlueprintName = "ProductionUITests"
+               ReferencedContainer = "container:Production.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -53,16 +37,6 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "4471BCB12B81F08800218534"
-            BuildableName = "Staging.app"
-            BlueprintName = "Staging"
-            ReferencedContainer = "container:Staging.xcodeproj">
-         </BuildableReference>
-      </BuildableProductRunnable>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
@@ -70,16 +44,6 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "4471BCB12B81F08800218534"
-            BuildableName = "Staging.app"
-            BlueprintName = "Staging"
-            ReferencedContainer = "container:Staging.xcodeproj">
-         </BuildableReference>
-      </BuildableProductRunnable>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

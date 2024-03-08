@@ -7,9 +7,13 @@ import DomainLayer
 import FirebaseCore
 import Foundation
 
-public struct FirebaseSetupDriver: FirebaseSetupDriverProtocol {
+public class FirebaseSetupDriver: FirebaseSetupDriverProtocol {
     public init() {
         LogDriver.initLog()
+    }
+
+    deinit {
+        LogDriver.deinitLog()
     }
 
     public func configure() {

@@ -75,7 +75,7 @@ enum MacroTargetType: CaseIterable {
 }
 
 enum FrameworkTargetType: CaseIterable {
-    case cloudService
+    case firebase
     case device
     case license
 
@@ -185,6 +185,7 @@ enum TestTargetType: CaseIterable {
 private extension PackageDescription.Target.Dependency {
     /// Library
     static let firebaseAnalytics: Self = .product(name: "FirebaseAnalytics", package: "firebase-ios-sdk")
+    static let firebaseRemoteConfig: Self = .product(name: "FirebaseRemoteConfig", package: "firebase-ios-sdk")
     static let playbook: Self = .product(name: "Playbook", package: "playbook-ios")
     static let playbookUI: Self = .product(name: "PlaybookUI", package: "playbook-ios")
     static let previewSnapshots: Self = .product(name: "PreviewSnapshots", package: "swiftui-preview-snapshots")
@@ -270,10 +271,11 @@ extension TargetType {
             ])
         case .domain:
             .init()
-        case .framework(.cloudService):
+        case .framework(.firebase):
             .init([
                 TargetType.domain.dependency,
                 .firebaseAnalytics,
+                .firebaseRemoteConfig,
             ])
         case .framework(.device):
             .init([

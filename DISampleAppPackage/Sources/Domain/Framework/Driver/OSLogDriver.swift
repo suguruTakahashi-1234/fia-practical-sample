@@ -8,11 +8,15 @@ import os.log
 
 // Ref: https://developer.apple.com/documentation/os/logging/generating_log_messages_from_your_code
 // Ref: https://qiita.com/Nick_paper/items/3a6f7d41bc80773b90bf
-public struct OSLogDriver: OSLogDriverProtocol {
+public class OSLogDriver: OSLogDriverProtocol {
     private let logger: Logger
 
     public init(subsystem: String, category: String) {
         logger = Logger(subsystem: subsystem, category: category)
+    }
+
+    deinit {
+        LogDriver.deinitLog()
     }
 
     public func log(_ event: LogEventType, level: LogLevel, file: String, function: String, line: Int) {

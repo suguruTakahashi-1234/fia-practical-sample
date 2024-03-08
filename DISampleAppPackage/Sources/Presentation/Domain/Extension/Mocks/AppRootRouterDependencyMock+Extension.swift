@@ -17,6 +17,7 @@ public extension AppRootRouterDependencyMock {
 
     /// 生成された init() だと nil が代入されてしまうため、デフォルト引数を設定した create を用意する
     static func create(
+        firebaseRemoteConfigDriver: FirebaseRemoteConfigDriverProtocolMock = .init(),
         libraryLicenseDriver: LibraryLicenseDriverProtocolMock = .init(),
         deviceInfoDriver: DeviceInfoDriver<DeviceNameDriverProtocolMock> = .init(deviceNameDriver: .init(deviceName: "Mock")),
         buildEnvDriver: BuildEnvDriverProtocolMock = .init(buildScheme: .mock, buildConfiguration: AppRootRouterDependencyMock.buildConfiguration),
@@ -27,10 +28,11 @@ public extension AppRootRouterDependencyMock {
         .init(
             libraryLicenseDriver: libraryLicenseDriver,
             buildEnvDriver: buildEnvDriver,
-            firebaseLogDriver: firebaseLogDriver,
             deviceInfoDriver: deviceInfoDriver,
             clipboardDriver: clipboardDriver,
-            firebaseSetupDriver: firebaseSetupDriver
+            firebaseLogDriver: firebaseLogDriver,
+            firebaseSetupDriver: firebaseSetupDriver,
+            firebaseRemoteConfigDriver: firebaseRemoteConfigDriver
         )
     }
 

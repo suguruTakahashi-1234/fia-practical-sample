@@ -6,9 +6,13 @@
 import DomainLayer
 import Foundation
 
-public struct LibraryLicenseDriver: LibraryLicenseDriverProtocol {
+public class LibraryLicenseDriver: LibraryLicenseDriverProtocol {
     public init() {
         LogDriver.initLog()
+    }
+
+    deinit {
+        LogDriver.deinitLog()
     }
 
     public var licenseList: [License] {

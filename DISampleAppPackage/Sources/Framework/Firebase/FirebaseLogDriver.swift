@@ -6,9 +6,13 @@
 import DomainLayer
 import FirebaseAnalytics
 
-public struct FirebaseLogDriver: FirebaseLogDriverProtocol {
+public class FirebaseLogDriver: FirebaseLogDriverProtocol {
     public init() {
         LogDriver.initLog()
+    }
+
+    deinit {
+        LogDriver.deinitLog()
     }
 
     public func log(_ event: LogEventType, level: LogLevel, file: String, function: String, line: Int) {

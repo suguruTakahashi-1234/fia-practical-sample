@@ -6,9 +6,13 @@
 import DeviceKit
 import DomainLayer
 
-public struct DeviceNameDriver: DeviceNameDriverProtocol {
+public class DeviceNameDriver: DeviceNameDriverProtocol {
     public init() {
         LogDriver.initLog()
+    }
+
+    deinit {
+        LogDriver.deinitLog()
     }
 
     public var deviceName: String {

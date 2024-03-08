@@ -7,6 +7,8 @@ import Foundation
 
 /// 各Presenterだけではなく、Driver などでも独立して用いたいため、シングルトンのような使い方をしている
 public actor LogDriver {
+    private init() {}
+
     private static var osLogDriver: some OSLogDriverProtocol = OSLogDriver(subsystem: Bundle.main.bundleIdentifier!, category: Constants.Logger.categoryName)
     /// ジェネリクスとシングルトンは両立できないため、例外的に any を許容している
     private static var firebaseLogDriver: (any FirebaseLogDriverProtocol)?
@@ -23,23 +25,23 @@ public actor LogDriver {
 
 /// よく使う記述は以下の Extension で定義している
 public extension LogDriver {
-    static func debugLog(_ message: String = "", level: LogLevel = .notice, file: String = #filePath, function: String = #function, line: Int = #line) {
+    static func debugLog(_ message: String = "", level: LogLevel = .info, file: String = #filePath, function: String = #function, line: Int = #line) {
         log(.debug(.init(message: message)), level: level, file: file, function: function, line: line)
     }
 
-    static func initLog(level: LogLevel = .notice, file: String = #filePath, function: String = #function, line: Int = #line) {
+    static func initLog(level: LogLevel = .info, file: String = #filePath, function: String = #function, line: Int = #line) {
         log(.`init`(.init(instanceName: file.fileNameWithoutExtension)), level: level, file: file, function: function, line: line)
     }
 
-    static func deinitLog(level: LogLevel = .notice, file: String = #filePath, function: String = #function, line: Int = #line) {
+    static func deinitLog(level: LogLevel = .info, file: String = #filePath, function: String = #function, line: Int = #line) {
         log(.deinit(.init(instanceName: file.fileNameWithoutExtension)), level: level, file: file, function: function, line: line)
     }
 
-    static func logOnAppear(level: LogLevel = .notice, file: String = #filePath, function: String = #function, line: Int = #line) {
+    static func logOnAppear(level: LogLevel = .info, file: String = #filePath, function: String = #function, line: Int = #line) {
         log(.appearScreen(.init(screenName: file.lastPathComponent.replacingOccurrences(of: "Presenter.swift", with: "").toSnakeCase)), level: level, file: file, function: function, line: line)
     }
 
-    static func logOnDisappear(level: LogLevel = .notice, file: String = #filePath, function: String = #function, line: Int = #line) {
+    static func logOnDisappear(level: LogLevel = .info, file: String = #filePath, function: String = #function, line: Int = #line) {
         log(.disappearScreen(.init(screenName: file.lastPathComponent.replacingOccurrences(of: "Presenter.swift", with: "").toSnakeCase)), level: level, file: file, function: function, line: line)
     }
 }

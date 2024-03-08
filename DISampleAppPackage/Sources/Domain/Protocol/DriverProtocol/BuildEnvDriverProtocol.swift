@@ -6,7 +6,7 @@
 import Foundation
 
 /// @mockable
-public protocol BuildEnvDriverProtocol {
+public protocol BuildEnvDriverProtocol: AnyObject {
     var buildScheme: BuildScheme { get }
     var buildConfiguration: BuildConfiguration { get }
 }

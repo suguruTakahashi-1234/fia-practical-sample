@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct BuildEnvDriver: BuildEnvDriverProtocol {
+public class BuildEnvDriver: BuildEnvDriverProtocol {
     public let buildScheme: BuildScheme
     public let buildConfiguration: BuildConfiguration
 
@@ -19,5 +19,9 @@ public struct BuildEnvDriver: BuildEnvDriverProtocol {
         #else
             buildConfiguration = .release
         #endif
+    }
+
+    deinit {
+        LogDriver.deinitLog()
     }
 }

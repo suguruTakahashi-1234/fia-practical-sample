@@ -37,14 +37,19 @@ public class FirebaseRemoteConfigDriver<T: CacheDataStoreProtocol>: FirebaseRemo
                 guard let self else {
                     return
                 }
-                do {
-                    switch updatedRemoteConfigType {
-                    case .appInfo:
-                        try cacheDataStore.appInfoSubject.send(getValue(remoteConfigType: updatedRemoteConfigType))
-                    case .variantTest:
-                        try cacheDataStore.variantTestSubject.send(getValue(remoteConfigType: updatedRemoteConfigType))
+                Task {
+                    do {
+                        try await self.remoteConfig.activate() // activate しないと最新の Remote Config 上の値を取得できない（fetchでは更新されない）
+                        switch updatedRemoteConfigType {
+                        case .appInfo:
+                            try self.cacheDataStore.appInfoSubject.send(self.getValue(remoteConfigType: updatedRemoteConfigType))
+                        case .variantTest:
+                            try self.cacheDataStore.variantTestSubject.send(self.getValue(remoteConfigType: updatedRemoteConfigType))
+                        }
+                    } catch {
+                        LogDriver.errorLog(error.toAppError)
                     }
-                } catch {}
+                }
             }
             .store(in: &cancellables)
     }
@@ -57,8 +62,9 @@ public class FirebaseRemoteConfigDriver<T: CacheDataStoreProtocol>: FirebaseRemo
         do {
             try setDefaults()
             try await remoteConfig.fetchAndActivate()
+            try updateDataStore()
         } catch {
-            LogDriver.log(.debug(.init(message: "\(error)")))
+            LogDriver.errorLog(error.toAppError)
             throw error
         }
 
@@ -69,12 +75,12 @@ public class FirebaseRemoteConfigDriver<T: CacheDataStoreProtocol>: FirebaseRemo
 
             if let error {
                 cacheDataStore.remoteConfigUpdateErrorSubject.send(AppError.customError("\(error)"))
-                LogDriver.log(.debug(.init(message: "\(error)")))
+                LogDriver.errorLog(error.toAppError)
                 return
             }
 
             guard let updatedRemoteConfig else {
-                LogDriver.log(.debug(.init(message: "Unexpected")))
+                LogDriver.debugLog("Unexpected")
                 cacheDataStore.remoteConfigUpdateErrorSubject.send(AppError.customError("Unexpected"))
                 assertionFailure("Unexpected")
                 return
@@ -86,7 +92,7 @@ public class FirebaseRemoteConfigDriver<T: CacheDataStoreProtocol>: FirebaseRemo
                 }
                 updatedRemoteConfigTypesSubject.send(remoteConfigTypes)
             } catch {
-                LogDriver.log(.debug(.init(message: "\(error)")))
+                LogDriver.errorLog(error.toAppError)
                 cacheDataStore.remoteConfigUpdateErrorSubject.send(AppError.customError("\(error)"))
             }
         }
@@ -96,23 +102,37 @@ public class FirebaseRemoteConfigDriver<T: CacheDataStoreProtocol>: FirebaseRemo
         do {
             let data = remoteConfig.configValue(forKey: remoteConfigType.keyName).dataValue
             let decoded = try JSONDecoder().decode(RemoteConfigurableItem.self, from: data)
-            LogDriver.log(.debug(.init(message: "\(decoded)")))
+            LogDriver.debugLog("\(decoded)")
             return decoded
         } catch {
-            LogDriver.log(.debug(.init(message: "\(error)")))
+            LogDriver.errorLog(error.toAppError)
             throw error
         }
     }
-}
 
-extension FirebaseRemoteConfigDriver {
+    private func updateDataStore() throws {
+        do {
+            try RemoteConfigType.allCases.forEach { remoteConfigType in
+                switch remoteConfigType {
+                case .appInfo:
+                    try cacheDataStore.appInfoSubject.send(getValue(remoteConfigType: remoteConfigType))
+                case .variantTest:
+                    try cacheDataStore.variantTestSubject.send(getValue(remoteConfigType: remoteConfigType))
+                }
+            }
+        } catch {
+            LogDriver.errorLog(error.toAppError)
+            throw error
+        }
+    }
+
     private func setDefaults() throws {
         do {
             try RemoteConfigType.allCases.forEach { remoteConfigType in
                 try remoteConfig.setDefaults(from: remoteConfigType.defaultValue)
             }
         } catch {
-            LogDriver.log(.debug(.init(message: "\(error)")))
+            LogDriver.errorLog(error.toAppError)
             throw error
         }
     }

@@ -17,6 +17,7 @@ public extension AppRootRouterDependencyMock {
 
     /// 生成された init() だと nil が代入されてしまうため、デフォルト引数を設定した create を用意する
     static func create(
+        cacheDataStore: CacheDataStoreProtocolMock = .init(),
         firebaseRemoteConfigDriver: FirebaseRemoteConfigDriverProtocolMock = .init(),
         libraryLicenseDriver: LibraryLicenseDriverProtocolMock = .init(),
         deviceInfoDriver: DeviceInfoDriver<DeviceNameDriverProtocolMock> = .init(deviceNameDriver: .init(deviceName: "Mock")),
@@ -26,6 +27,7 @@ public extension AppRootRouterDependencyMock {
         clipboardDriver: ClipboardDriver = .init() // テスト時に本物の ClipboardDriver を使ってしまうとペースト許諾のアラートが表示されてテストが実行されないため、Mock に差し替え可能にしているが通常は本物を使う
     ) -> Self {
         .init(
+            cacheDataStore: cacheDataStore,
             libraryLicenseDriver: libraryLicenseDriver,
             buildEnvDriver: buildEnvDriver,
             deviceInfoDriver: deviceInfoDriver,

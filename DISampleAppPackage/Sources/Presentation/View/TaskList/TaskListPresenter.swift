@@ -4,8 +4,19 @@ import Foundation
 
 @MainActor
 final class TaskListPresenter<Dependency: TaskListPresenterDependency>: ObservableObject {
-    init(dependency _: Dependency) {
+    @Published private(set) var isEnabledNewFeature: Bool = false
+
+    private let cacheDataStore: Dependency.CacheDataStoreProtocolAT
+
+    init(dependency: Dependency) {
         LogDriver.initLog()
+
+        cacheDataStore = dependency.cacheDataStore
+
+        cacheDataStore.variantTestSubject
+            .receive(on: RunLoop.main)
+            .map { $0.isEnabledNewFeature }
+            .assign(to: &$isEnabledNewFeature)
     }
 
     deinit {
@@ -13,10 +24,10 @@ final class TaskListPresenter<Dependency: TaskListPresenterDependency>: Observab
     }
 
     func onAppear() async {
-        LogDriver.logOnAppear()
+        LogDriver.onAppearLog()
     }
 
     func onDisappear() {
-        LogDriver.logOnDisappear()
+        LogDriver.onDisappearLog()
     }
 }

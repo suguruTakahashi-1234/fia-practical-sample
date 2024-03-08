@@ -4,6 +4,7 @@
 
 
 
+import Combine
 import DomainLayer
 import Foundation
 import SwiftUI
@@ -11,7 +12,8 @@ import SwiftUI
 
 public final class AppRootRouterDependencyMock: AppRootRouterDependency {
     public init() { }
-    public init(libraryLicenseDriver: LibraryLicenseDriverProtocolAT, buildEnvDriver: BuildEnvDriverProtocolAT, deviceInfoDriver: DeviceInfoDriverProtocolAT, clipboardDriver: ClipboardDriverProtocolAT, firebaseLogDriver: FirebaseLogDriverProtocolAT, firebaseSetupDriver: FirebaseSetupDriverProtocolAT, firebaseRemoteConfigDriver: FirebaseRemoteConfigDriverProtocolAT) {
+    public init(cacheDataStore: CacheDataStoreProtocolAT, libraryLicenseDriver: LibraryLicenseDriverProtocolAT, buildEnvDriver: BuildEnvDriverProtocolAT, deviceInfoDriver: DeviceInfoDriverProtocolAT, clipboardDriver: ClipboardDriverProtocolAT, firebaseLogDriver: FirebaseLogDriverProtocolAT, firebaseSetupDriver: FirebaseSetupDriverProtocolAT, firebaseRemoteConfigDriver: FirebaseRemoteConfigDriverProtocolAT) {
+        self._cacheDataStore = cacheDataStore
         self._libraryLicenseDriver = libraryLicenseDriver
         self._buildEnvDriver = buildEnvDriver
         self._deviceInfoDriver = deviceInfoDriver
@@ -21,6 +23,14 @@ public final class AppRootRouterDependencyMock: AppRootRouterDependency {
         self._firebaseRemoteConfigDriver = firebaseRemoteConfigDriver
     }
 
+    public typealias CacheDataStoreProtocolAT = CacheDataStoreProtocolMock
+
+    public private(set) var cacheDataStoreSetCallCount = 0
+    private var _cacheDataStore: CacheDataStoreProtocolAT!  { didSet { cacheDataStoreSetCallCount += 1 } }
+    public var cacheDataStore: CacheDataStoreProtocolAT {
+        get { return _cacheDataStore }
+        set { _cacheDataStore = newValue }
+    }
     public typealias LibraryLicenseDriverProtocolAT = LibraryLicenseDriverProtocolMock
     public typealias BuildEnvDriverProtocolAT = BuildEnvDriverProtocolMock
 
@@ -127,8 +137,44 @@ public final class SettingPresenterDependencyMock: SettingPresenterDependency {
 
 public final class TaskListPresenterDependencyMock: TaskListPresenterDependency {
     public init() { }
+    public init(cacheDataStore: CacheDataStoreProtocolAT) {
+        self._cacheDataStore = cacheDataStore
+    }
+
+    public typealias CacheDataStoreProtocolAT = CacheDataStoreProtocolMock
+
+    public private(set) var cacheDataStoreSetCallCount = 0
+    private var _cacheDataStore: CacheDataStoreProtocolAT!  { didSet { cacheDataStoreSetCallCount += 1 } }
+    public var cacheDataStore: CacheDataStoreProtocolAT {
+        get { return _cacheDataStore }
+        set { _cacheDataStore = newValue }
+    }
+}
+
+public final class CacheDataStoreProtocolMock: CacheDataStoreProtocol {
+    public init() { }
 
 
+    public private(set) var remoteConfigUpdateErrorSubjectSetCallCount = 0
+    private var _remoteConfigUpdateErrorSubject: PassthroughSubject<AppError, Never>!  { didSet { remoteConfigUpdateErrorSubjectSetCallCount += 1 } }
+    public var remoteConfigUpdateErrorSubject: PassthroughSubject<AppError, Never> {
+        get { return _remoteConfigUpdateErrorSubject }
+        set { _remoteConfigUpdateErrorSubject = newValue }
+    }
+
+    public private(set) var appInfoSubjectSetCallCount = 0
+    private var _appInfoSubject: CurrentValueSubject<AppInfo, Never>!  { didSet { appInfoSubjectSetCallCount += 1 } }
+    public var appInfoSubject: CurrentValueSubject<AppInfo, Never> {
+        get { return _appInfoSubject }
+        set { _appInfoSubject = newValue }
+    }
+
+    public private(set) var variantTestSubjectSetCallCount = 0
+    private var _variantTestSubject: CurrentValueSubject<VariantTest, Never>!  { didSet { variantTestSubjectSetCallCount += 1 } }
+    public var variantTestSubject: CurrentValueSubject<VariantTest, Never> {
+        get { return _variantTestSubject }
+        set { _variantTestSubject = newValue }
+    }
 }
 
 public final class BuildEnvDriverProtocolMock: BuildEnvDriverProtocol {

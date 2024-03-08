@@ -219,7 +219,7 @@ let package = Package(
     products: TargetType.allCases.map { $0.product },
     dependencies: [
         // Library
-        .package(url: "https://github.com/firebase/firebase-ios-sdk.git", exact: "10.22.0"), // TODO: 10.22 以上がリリースされたらアップデートする（直らないかもしれないが） https://github.com/firebase/firebase-ios-sdk/issues/12390
+        .package(url: "https://github.com/firebase/firebase-ios-sdk.git", from: "10.22.1"),
         .package(url: "https://github.com/playbook-ui/playbook-ios.git", from: "0.3.5"),
         .package(url: "https://github.com/doordash-oss/swiftui-preview-snapshots", from: "1.1.1"),
         .package(url: "https://github.com/EmergeTools/SnapshotPreviews-iOS", from: "0.8.5"),

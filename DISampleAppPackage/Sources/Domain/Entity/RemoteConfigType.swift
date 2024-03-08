@@ -20,7 +20,7 @@ public enum RemoteConfigType: CaseIterable {
         "\(self)".toSnakeCase
     }
 
-    public var type: any RemoteConfigurable.Type {
+    public var entityType: any RemoteConfigurable.Type {
         switch self {
         case .appInfo:
             AppInfo.self
@@ -30,6 +30,6 @@ public enum RemoteConfigType: CaseIterable {
     }
 
     public var defaultValue: any RemoteConfigurable {
-        type.defaultValue
+        entityType.defaultValue
     }
 }

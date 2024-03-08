@@ -18,7 +18,7 @@ public class FirebaseLogDriver: FirebaseLogDriverProtocol {
     public func log(_ event: LogEventType, level: LogLevel, file: String, function: String, line: Int) {
         Analytics.logEvent(
             event.logEvent.instanceSnakeCasedStructName,
-            parameters: event.logEvent.toAnalyticsPropertiesWithMetadata(level: level, file: file, function: function, line: line)
+            parameters: event.logEvent.toAnalyticsPropertiesWithMetadata(level: level, file: file, function: function, line: line).trimmingValuesToMaxLength(100) // Firebase は 100 文字以上はログ送信に失敗する
         )
     }
 }
@@ -34,7 +34,7 @@ extension LoggableEntity {
         return toAnalyticsProperties.merging(metadata, uniquingKeysWith: { _, new in new })
     }
 
-    /// AWS, Protocol Buffers を考慮の IF を考慮して String, Int, Double, Bool のみを許容してる
+    /// AWS や Protocol Buffers を考慮の IF を考慮して String, Int, Double, Bool のみを許容してる
     private var toAnalyticsProperties: [String: Any] {
         toDictionary(caseFormat: .snakeCase).mapValues { value in
             switch value {

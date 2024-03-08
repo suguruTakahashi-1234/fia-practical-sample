@@ -37,11 +37,23 @@ public extension LogDriver {
         log(.deinit(.init(instanceName: file.fileNameWithoutExtension)), level: level, file: file, function: function, line: line)
     }
 
-    static func logOnAppear(level: LogLevel = .info, file: String = #filePath, function: String = #function, line: Int = #line) {
+    static func onAppearLog(level: LogLevel = .info, file: String = #filePath, function: String = #function, line: Int = #line) {
         log(.appearScreen(.init(screenName: file.lastPathComponent.replacingOccurrences(of: "Presenter.swift", with: "").toSnakeCase)), level: level, file: file, function: function, line: line)
     }
 
-    static func logOnDisappear(level: LogLevel = .info, file: String = #filePath, function: String = #function, line: Int = #line) {
+    static func onDisappearLog(level: LogLevel = .info, file: String = #filePath, function: String = #function, line: Int = #line) {
         log(.disappearScreen(.init(screenName: file.lastPathComponent.replacingOccurrences(of: "Presenter.swift", with: "").toSnakeCase)), level: level, file: file, function: function, line: line)
+    }
+
+    static func errorLog(_ appError: AppError?, level: LogLevel = .error, file: String = #filePath, function: String = #function, line: Int = #line) {
+        guard let appError else {
+            return
+        }
+        log(.error(.init(appError: appError, errorName: appError.name)), level: level, file: file, function: function, line: line)
+    }
+
+    static func errorLog(_ message: String, level: LogLevel = .error, file: String = #filePath, function: String = #function, line: Int = #line) {
+        let appError: AppError = .customError(message)
+        log(.error(.init(appError: appError, errorName: appError.name)), level: level, file: file, function: function, line: line)
     }
 }

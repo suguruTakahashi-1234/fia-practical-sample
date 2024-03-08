@@ -5,8 +5,9 @@
 
 import Combine
 
+/// @mockable
 public protocol CacheDataStoreProtocol: AnyObject {
     var remoteConfigUpdateErrorSubject: PassthroughSubject<AppError, Never> { get }
-    var appInfoSubject: PassthroughSubject<AppInfo, Never> { get }
-    var variantTestSubject: PassthroughSubject<VariantTest, Never> { get }
+    var appInfoSubject: CurrentValueSubject<AppInfo, Never> { get }
+    var variantTestSubject: CurrentValueSubject<VariantTest, Never> { get }
 }

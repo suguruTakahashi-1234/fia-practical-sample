@@ -7,8 +7,8 @@ import Combine
 
 public actor CacheDataStore: CacheDataStoreProtocol {
     public let remoteConfigUpdateErrorSubject = PassthroughSubject<AppError, Never>()
-    public let appInfoSubject = PassthroughSubject<AppInfo, Never>()
-    public let variantTestSubject = PassthroughSubject<VariantTest, Never>()
+    public let appInfoSubject = CurrentValueSubject<AppInfo, Never>(AppInfo.defaultValue)
+    public let variantTestSubject = CurrentValueSubject<VariantTest, Never>(VariantTest.defaultValue)
 
     public init() {
         LogDriver.initLog()

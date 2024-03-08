@@ -28,16 +28,16 @@ final class AppRootPresenter<Dependency: AppRootPresenterDependency>: Observable
     }
 
     func onAppear() async {
-        LogDriver.logOnAppear()
+        LogDriver.onAppearLog()
 
         do {
             try await firebaseRemoteConfigDriver.fetchAndActivate()
         } catch {
-            LogDriver.log(.debug(.init(message: "\(error)")))
+            LogDriver.errorLog(error.toAppError)
         }
     }
 
     func onDisappear() {
-        LogDriver.logOnDisappear()
+        LogDriver.onDisappearLog()
     }
 }

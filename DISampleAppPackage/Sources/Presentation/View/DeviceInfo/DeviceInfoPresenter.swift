@@ -31,11 +31,11 @@ final class DeviceInfoPresenter<Dependency: DeviceInfoPresenterDependency>: Obse
     }
 
     func onAppear() async {
-        LogDriver.logOnAppear()
+        LogDriver.onAppearLog()
     }
 
     func onDisappear() {
-        LogDriver.logOnDisappear()
+        LogDriver.onDisappearLog()
     }
 
     func onTapDeviceInfo(_ deviceInfoType: DeviceInfoType) {

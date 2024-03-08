@@ -23,12 +23,12 @@ final class LicenseListPresenter<Dependency: LicenseListPresenterDependency>: Ob
     }
 
     func onAppear() async {
-        LogDriver.logOnAppear()
+        LogDriver.onAppearLog()
         licenseList = libraryLicenseDriver.licenseList
     }
 
     func onDisappear() {
-        LogDriver.logOnDisappear()
+        LogDriver.onDisappearLog()
     }
 
     func onTapLicense(license: License) {

@@ -6,7 +6,7 @@
 import Foundation
 
 /// @mockable
-public protocol ClipboardDriverProtocol {
+public protocol ClipboardDriverProtocol: AnyObject {
     var copiedValue: String? { get }
 
     func copy(_ string: String)

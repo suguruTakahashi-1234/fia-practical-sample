@@ -28,7 +28,7 @@ swiftformat-dry-run:
 
 .PHONY: mockolo-run
 mockolo-run:
-	swift run --package-path $(PACKAGE_NAME) mint run mockolo -s $(MOCKOLO_SCAN_PATH) -d $(MOCKOLO_OUTPUT_PATH) --custom-imports DomainLayer -x Images Strings --mock-final
+	swift run --package-path $(PACKAGE_NAME) mint run mockolo -s $(MOCKOLO_SCAN_PATH) -d $(MOCKOLO_OUTPUT_PATH) --custom-imports DomainLayer Combine -x Images Strings --mock-final
 
 .PHONY: sourcery-presentation-code-gen
 sourcery-presentation-code-gen:

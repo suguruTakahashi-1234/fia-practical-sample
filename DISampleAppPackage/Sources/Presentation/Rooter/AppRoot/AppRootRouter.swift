@@ -26,6 +26,11 @@ public struct AppRootRouter<Dependency: AppRootRouterDependency>: AppRootWirefra
     }
 
     @MainActor
+    public func createTaskListView() -> TaskListView<Self, Dependency> {
+        TaskListView(router: self, dependency: dependency)
+    }
+
+    @MainActor
     public func createLicenseListView() -> LicenseListView<Self, Dependency> {
         LicenseListView(router: self, dependency: dependency)
     }

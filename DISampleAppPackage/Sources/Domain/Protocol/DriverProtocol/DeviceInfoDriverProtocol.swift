@@ -7,7 +7,7 @@ import Foundation
 import SwiftUI // for UIXXX
 
 /// @mockable
-public protocol DeviceInfoDriverProtocol {
+public protocol DeviceInfoDriverProtocol: AnyObject {
     /// Bundle.main.infoDictionary["CFBundleShortVersionString"]
     /// ex) 1.2.3
     var appVersion: String { get }

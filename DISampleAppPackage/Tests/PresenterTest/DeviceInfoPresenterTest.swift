@@ -7,7 +7,7 @@ import Testing
 /// テストモックは Computed property にするとインスタンスが保持されず、Mock のカウントによるテストがうまく動作しないので注意
 struct DeviceInfoPresenterDependencyTestMock: DeviceInfoPresenterDependency {
     var deviceInfoDriver: DeviceInfoDriverProtocolMock = .init()
-    var buildEnvRepository: BuildEnvRepositoryProtocolMock = .init(buildScheme: .random, buildConfiguration: .random)
+    var buildEnvDriver: BuildEnvDriverProtocolMock = .init(buildScheme: .random, buildConfiguration: .random)
 
     /// テスト時に本物の ClipboardDriver を使ってしまうとペースト許諾のアラートが表示されてテストが実行されないため、Mockに差し替えています
     var clipboardDriver: ClipboardDriverProtocolMock = .init()

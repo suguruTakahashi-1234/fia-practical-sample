@@ -6,7 +6,7 @@
 import Foundation
 
 public enum HomeTab {
-    case home
+    case task
     case setting
 }
 

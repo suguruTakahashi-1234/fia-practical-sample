@@ -13,10 +13,10 @@ final class HomeTabPresenter<Dependency: HomeTabPresenterDependency>: Observable
     }
 
     func onAppear() async {
-        LogDriver.logOnAppear()
+        LogDriver.onAppearLog()
     }
 
     func onDisappear() {
-        LogDriver.logOnDisappear()
+        LogDriver.onDisappearLog()
     }
 }

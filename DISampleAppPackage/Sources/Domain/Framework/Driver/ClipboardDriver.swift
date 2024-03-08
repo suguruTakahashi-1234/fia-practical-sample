@@ -5,8 +5,14 @@
 
 import SwiftUI // for UI
 
-public struct ClipboardDriver: ClipboardDriverProtocol {
-    public init() {}
+public class ClipboardDriver: ClipboardDriverProtocol {
+    public init() {
+        LogDriver.initLog()
+    }
+
+    deinit {
+        LogDriver.deinitLog()
+    }
 
     public var copiedValue: String? {
         UIPasteboard.general.string

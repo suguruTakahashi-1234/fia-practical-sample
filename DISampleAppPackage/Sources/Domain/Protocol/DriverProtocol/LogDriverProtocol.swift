@@ -6,6 +6,6 @@
 import Foundation
 
 /// @mockable
-public protocol LogDriverProtocol {
+public protocol LogDriverProtocol: AnyObject {
     func log(_: LogEventType, level: LogLevel, file: String, function: String, line: Int)
 }

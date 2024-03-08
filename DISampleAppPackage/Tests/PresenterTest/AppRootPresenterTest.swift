@@ -11,23 +11,20 @@ import Testing
 struct AppRootPresenterTest {
     var presenter: AppRootPresenter<AppRootRouterDependencyMock>!
     var dependencyInjector: AppRootRouterDependencyMock!
-    var firebaseSetupDriver: FirebaseSetupDriverProtocolMock!
 
     init() {
-        firebaseSetupDriver = .init()
-        dependencyInjector = .create(
-            firebaseSetupDriver: firebaseSetupDriver
-        )
+        dependencyInjector = .random
         presenter = .init(dependency: dependencyInjector)
     }
 
     @Test("初期化したとき") func onInit() {
-        #expect(firebaseSetupDriver.configureCallCount == 1, "Firebaseのセットアップが行われること")
+        #expect(dependencyInjector.firebaseSetupDriver.configureCallCount == 1, "Firebaseのセットアップが行われること")
     }
 
     @Test("画面を表示したとき") func onAppear() async {
+        #expect(dependencyInjector.firebaseRemoteConfigDriver.setUpCallCount == 0, "RemoteConfigのセットアップが行われること（前提条件の確認）")
         await presenter.onAppear()
-        #expect(true, "")
+        #expect(dependencyInjector.firebaseRemoteConfigDriver.setUpCallCount == 1, "RemoteConfigのセットアップが行われること")
     }
 
     @Test("画面を閉じたとき") func onDisappear() {

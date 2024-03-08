@@ -3,44 +3,49 @@
 //  Copyright sugurutakahashi. All rights reserved.
 //
 
-import CloudServiceFramework
 import DeviceFramework
 import DomainLayer
+import FirebaseFramework
 import Foundation
 import LicenseFramework
 import PresentationLayer
 
-public struct AppRootDependencyInjector: AppRootRouterDependency {
-    public let buildEnvRepository: BuildEnvRepository
+public class AppRootDependencyInjector: AppRootRouterDependency {
+    /// private
+    private let deviceNameDriver: DeviceNameDriver
+
+    /// DataStore
+    public let cacheDataStore: CacheDataStore
+
+    /// Driver
+    public let buildEnvDriver: BuildEnvDriver
+    public let deviceInfoDriver: DeviceInfoDriver<DeviceNameDriver>
+    public let clipboardDriver: ClipboardDriver
+    public let libraryLicenseDriver: LibraryLicenseDriver
+
+    /// Firenbase Driver
+    public let firebaseSetupDriver: FirebaseSetupDriver
+    public let firebaseLogDriver: FirebaseLogDriver
+    public let firebaseRemoteConfigDriver: FirebaseRemoteConfigDriver<CacheDataStore>
 
     public init(buildScheme: BuildScheme) {
         LogDriver.initLog()
 
-        buildEnvRepository = BuildEnvRepository(buildScheme: buildScheme)
-    }
+        // private
+        deviceNameDriver = DeviceNameDriver()
 
-    public var firebaseSetupDriver: FirebaseSetupDriver {
-        FirebaseSetupDriver()
-    }
+        // DataStore
+        cacheDataStore = CacheDataStore()
 
-    public var firebaseLogDriver: FirebaseLogDriver {
-        FirebaseLogDriver()
-    }
+        // Driver
+        buildEnvDriver = BuildEnvDriver(buildScheme: buildScheme)
+        deviceInfoDriver = DeviceInfoDriver(deviceNameDriver: deviceNameDriver)
+        clipboardDriver = ClipboardDriver()
+        libraryLicenseDriver = LibraryLicenseDriver()
 
-    /// for DeviceInfoDriver
-    public var deviceNameDriver: DeviceNameDriver {
-        DeviceNameDriver()
-    }
-
-    public var deviceInfoDriver: DeviceInfoDriver<DeviceNameDriver> {
-        DeviceInfoDriver(deviceNameDriver: deviceNameDriver)
-    }
-
-    public var clipboardDriver: ClipboardDriver {
-        ClipboardDriver()
-    }
-
-    public var libraryLicenseDriver: LibraryLicenseDriver {
-        LibraryLicenseDriver()
+        // Firenbase Driver
+        firebaseSetupDriver = FirebaseSetupDriver()
+        firebaseLogDriver = FirebaseLogDriver()
+        firebaseRemoteConfigDriver = FirebaseRemoteConfigDriver(cacheDataStore: cacheDataStore)
     }
 }

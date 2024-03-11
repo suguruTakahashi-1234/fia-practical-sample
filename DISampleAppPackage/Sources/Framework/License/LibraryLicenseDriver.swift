@@ -8,11 +8,11 @@ import Foundation
 
 public class LibraryLicenseDriver: LibraryLicenseDriverProtocol {
     public init() {
-        LogDriver.initLog()
+        OSLogDriver.initLog()
     }
 
     deinit {
-        LogDriver.deinitLog()
+        OSLogDriver.deinitLog()
     }
 
     public var licenseList: [License] {

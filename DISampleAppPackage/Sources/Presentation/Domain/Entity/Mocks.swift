@@ -12,18 +12,17 @@ import SwiftUI
 
 public final class AppRootRouterDependencyMock: AppRootRouterDependency {
     public init() { }
-    public init(cacheDataStore: CacheDataStoreProtocolAT, libraryLicenseDriver: LibraryLicenseDriverProtocolAT, buildEnvDriver: BuildEnvDriverProtocolAT, deviceInfoDriver: DeviceInfoDriverProtocolAT, clipboardDriver: ClipboardDriverProtocolAT, firebaseLogDriver: FirebaseLogDriverProtocolAT, firebaseSetupDriver: FirebaseSetupDriverProtocolAT, firebaseRemoteConfigDriver: FirebaseRemoteConfigDriverProtocolAT) {
+    public init(cacheDataStore: CacheDataStoreProtocolAT, logDriver: LogDriverProtocolAT, libraryLicenseDriver: LibraryLicenseDriverProtocolAT, buildEnvDriver: BuildEnvDriverProtocolAT, deviceInfoDriver: DeviceInfoDriverProtocolAT, clipboardDriver: ClipboardDriverProtocolAT) {
         self._cacheDataStore = cacheDataStore
+        self._logDriver = logDriver
         self._libraryLicenseDriver = libraryLicenseDriver
         self._buildEnvDriver = buildEnvDriver
         self._deviceInfoDriver = deviceInfoDriver
         self._clipboardDriver = clipboardDriver
-        self._firebaseLogDriver = firebaseLogDriver
-        self._firebaseSetupDriver = firebaseSetupDriver
-        self._firebaseRemoteConfigDriver = firebaseRemoteConfigDriver
     }
 
     public typealias CacheDataStoreProtocolAT = CacheDataStoreProtocolMock
+    public typealias LogDriverProtocolAT = LogDriver<OSLogDriver, FirebaseLogDriverProtocolMock>
 
     public private(set) var cacheDataStoreSetCallCount = 0
     private var _cacheDataStore: CacheDataStoreProtocolAT!  { didSet { cacheDataStoreSetCallCount += 1 } }
@@ -32,6 +31,13 @@ public final class AppRootRouterDependencyMock: AppRootRouterDependency {
         set { _cacheDataStore = newValue }
     }
     public typealias LibraryLicenseDriverProtocolAT = LibraryLicenseDriverProtocolMock
+
+    public private(set) var logDriverSetCallCount = 0
+    private var _logDriver: LogDriverProtocolAT!  { didSet { logDriverSetCallCount += 1 } }
+    public var logDriver: LogDriverProtocolAT {
+        get { return _logDriver }
+        set { _logDriver = newValue }
+    }
     public typealias BuildEnvDriverProtocolAT = BuildEnvDriverProtocolMock
 
     public private(set) var libraryLicenseDriverSetCallCount = 0
@@ -41,7 +47,6 @@ public final class AppRootRouterDependencyMock: AppRootRouterDependency {
         set { _libraryLicenseDriver = newValue }
     }
     public typealias DeviceInfoDriverProtocolAT = DeviceInfoDriver<DeviceNameDriverProtocolMock>
-    public typealias FirebaseLogDriverProtocolAT = FirebaseLogDriverProtocolMock
     public typealias ClipboardDriverProtocolAT = ClipboardDriver
 
     public private(set) var buildEnvDriverSetCallCount = 0
@@ -50,7 +55,6 @@ public final class AppRootRouterDependencyMock: AppRootRouterDependency {
         get { return _buildEnvDriver }
         set { _buildEnvDriver = newValue }
     }
-    public typealias FirebaseSetupDriverProtocolAT = FirebaseSetupDriverProtocolMock
 
     public private(set) var deviceInfoDriverSetCallCount = 0
     private var _deviceInfoDriver: DeviceInfoDriverProtocolAT!  { didSet { deviceInfoDriverSetCallCount += 1 } }
@@ -65,38 +69,25 @@ public final class AppRootRouterDependencyMock: AppRootRouterDependency {
         get { return _clipboardDriver }
         set { _clipboardDriver = newValue }
     }
-    public typealias FirebaseRemoteConfigDriverProtocolAT = FirebaseRemoteConfigDriverProtocolMock
-
-    public private(set) var firebaseLogDriverSetCallCount = 0
-    private var _firebaseLogDriver: FirebaseLogDriverProtocolAT!  { didSet { firebaseLogDriverSetCallCount += 1 } }
-    public var firebaseLogDriver: FirebaseLogDriverProtocolAT {
-        get { return _firebaseLogDriver }
-        set { _firebaseLogDriver = newValue }
-    }
-
-    public private(set) var firebaseSetupDriverSetCallCount = 0
-    private var _firebaseSetupDriver: FirebaseSetupDriverProtocolAT!  { didSet { firebaseSetupDriverSetCallCount += 1 } }
-    public var firebaseSetupDriver: FirebaseSetupDriverProtocolAT {
-        get { return _firebaseSetupDriver }
-        set { _firebaseSetupDriver = newValue }
-    }
-
-    public private(set) var firebaseRemoteConfigDriverSetCallCount = 0
-    private var _firebaseRemoteConfigDriver: FirebaseRemoteConfigDriverProtocolAT!  { didSet { firebaseRemoteConfigDriverSetCallCount += 1 } }
-    public var firebaseRemoteConfigDriver: FirebaseRemoteConfigDriverProtocolAT {
-        get { return _firebaseRemoteConfigDriver }
-        set { _firebaseRemoteConfigDriver = newValue }
-    }
 }
 
 public final class DeviceInfoPresenterDependencyMock: DeviceInfoPresenterDependency {
     public init() { }
-    public init(buildEnvDriver: BuildEnvDriverProtocolAT, deviceInfoDriver: DeviceInfoDriverProtocolAT, clipboardDriver: ClipboardDriverProtocolAT) {
+    public init(logDriver: LogDriverProtocolAT, buildEnvDriver: BuildEnvDriverProtocolAT, deviceInfoDriver: DeviceInfoDriverProtocolAT, clipboardDriver: ClipboardDriverProtocolAT) {
+        self._logDriver = logDriver
         self._buildEnvDriver = buildEnvDriver
         self._deviceInfoDriver = deviceInfoDriver
         self._clipboardDriver = clipboardDriver
     }
 
+    public typealias LogDriverProtocolAT = LogDriver<OSLogDriver, FirebaseLogDriverProtocolMock>
+
+    public private(set) var logDriverSetCallCount = 0
+    private var _logDriver: LogDriverProtocolAT!  { didSet { logDriverSetCallCount += 1 } }
+    public var logDriver: LogDriverProtocolAT {
+        get { return _logDriver }
+        set { _logDriver = newValue }
+    }
     public typealias BuildEnvDriverProtocolAT = BuildEnvDriverProtocolMock
     public typealias DeviceInfoDriverProtocolAT = DeviceInfoDriver<DeviceNameDriverProtocolMock>
     public typealias ClipboardDriverProtocolAT = ClipboardDriver
@@ -125,29 +116,58 @@ public final class DeviceInfoPresenterDependencyMock: DeviceInfoPresenterDepende
 
 public final class HomeTabPresenterDependencyMock: HomeTabPresenterDependency {
     public init() { }
+    public init(logDriver: LogDriverProtocolAT) {
+        self._logDriver = logDriver
+    }
 
+    public typealias LogDriverProtocolAT = LogDriver<OSLogDriver, FirebaseLogDriverProtocolMock>
 
+    public private(set) var logDriverSetCallCount = 0
+    private var _logDriver: LogDriverProtocolAT!  { didSet { logDriverSetCallCount += 1 } }
+    public var logDriver: LogDriverProtocolAT {
+        get { return _logDriver }
+        set { _logDriver = newValue }
+    }
 }
 
 public final class SettingPresenterDependencyMock: SettingPresenterDependency {
     public init() { }
+    public init(logDriver: LogDriverProtocolAT) {
+        self._logDriver = logDriver
+    }
 
+    public typealias LogDriverProtocolAT = LogDriver<OSLogDriver, FirebaseLogDriverProtocolMock>
 
+    public private(set) var logDriverSetCallCount = 0
+    private var _logDriver: LogDriverProtocolAT!  { didSet { logDriverSetCallCount += 1 } }
+    public var logDriver: LogDriverProtocolAT {
+        get { return _logDriver }
+        set { _logDriver = newValue }
+    }
 }
 
 public final class TaskListPresenterDependencyMock: TaskListPresenterDependency {
     public init() { }
-    public init(cacheDataStore: CacheDataStoreProtocolAT) {
+    public init(cacheDataStore: CacheDataStoreProtocolAT, logDriver: LogDriverProtocolAT) {
         self._cacheDataStore = cacheDataStore
+        self._logDriver = logDriver
     }
 
     public typealias CacheDataStoreProtocolAT = CacheDataStoreProtocolMock
+    public typealias LogDriverProtocolAT = LogDriver<OSLogDriver, FirebaseLogDriverProtocolMock>
 
     public private(set) var cacheDataStoreSetCallCount = 0
     private var _cacheDataStore: CacheDataStoreProtocolAT!  { didSet { cacheDataStoreSetCallCount += 1 } }
     public var cacheDataStore: CacheDataStoreProtocolAT {
         get { return _cacheDataStore }
         set { _cacheDataStore = newValue }
+    }
+
+    public private(set) var logDriverSetCallCount = 0
+    private var _logDriver: LogDriverProtocolAT!  { didSet { logDriverSetCallCount += 1 } }
+    public var logDriver: LogDriverProtocolAT {
+        get { return _logDriver }
+        set { _logDriver = newValue }
     }
 }
 
@@ -226,13 +246,38 @@ public final class ClipboardDriverProtocolMock: ClipboardDriverProtocol {
     }
 }
 
+public final class CommonPresenterDependencyMock: CommonPresenterDependency {
+    public init() { }
+    public init(logDriver: LogDriverProtocolAT) {
+        self._logDriver = logDriver
+    }
+
+    public typealias LogDriverProtocolAT = LogDriver<OSLogDriver, FirebaseLogDriverProtocolMock>
+
+    public private(set) var logDriverSetCallCount = 0
+    private var _logDriver: LogDriverProtocolAT!  { didSet { logDriverSetCallCount += 1 } }
+    public var logDriver: LogDriverProtocolAT {
+        get { return _logDriver }
+        set { _logDriver = newValue }
+    }
+}
+
 public final class DeviceInfoUseCaseDependencyMock: DeviceInfoUseCaseDependency {
     public init() { }
-    public init(buildEnvDriver: BuildEnvDriverProtocolAT, deviceInfoDriver: DeviceInfoDriverProtocolAT) {
+    public init(logDriver: LogDriverProtocolAT, buildEnvDriver: BuildEnvDriverProtocolAT, deviceInfoDriver: DeviceInfoDriverProtocolAT) {
+        self._logDriver = logDriver
         self._buildEnvDriver = buildEnvDriver
         self._deviceInfoDriver = deviceInfoDriver
     }
 
+    public typealias LogDriverProtocolAT = LogDriver<OSLogDriver, FirebaseLogDriverProtocolMock>
+
+    public private(set) var logDriverSetCallCount = 0
+    private var _logDriver: LogDriverProtocolAT!  { didSet { logDriverSetCallCount += 1 } }
+    public var logDriver: LogDriverProtocolAT {
+        get { return _logDriver }
+        set { _logDriver = newValue }
+    }
     public typealias BuildEnvDriverProtocolAT = BuildEnvDriverProtocolMock
     public typealias DeviceInfoDriverProtocolAT = DeviceInfoDriver<DeviceNameDriverProtocolMock>
 
@@ -296,30 +341,12 @@ public final class FirebaseRemoteConfigDriverProtocolMock: FirebaseRemoteConfigD
     public init() { }
 
 
-    public private(set) var setUpCallCount = 0
-    public var setUpHandler: (() async throws -> ())?
-    public func setUp() async throws  {
-        setUpCallCount += 1
-        if let setUpHandler = setUpHandler {
-            try await setUpHandler()
-        }
-        
-    }
 }
 
 public final class FirebaseSetupDriverProtocolMock: FirebaseSetupDriverProtocol {
     public init() { }
 
 
-    public private(set) var configureCallCount = 0
-    public var configureHandler: (() -> ())?
-    public func configure()  {
-        configureCallCount += 1
-        if let configureHandler = configureHandler {
-            configureHandler()
-        }
-        
-    }
 }
 
 public final class LibraryLicenseDriverProtocolMock: LibraryLicenseDriverProtocol {
@@ -331,6 +358,31 @@ public final class LibraryLicenseDriverProtocolMock: LibraryLicenseDriverProtoco
 
     public private(set) var licenseListSetCallCount = 0
     public var licenseList: [License] = [License]() { didSet { licenseListSetCallCount += 1 } }
+}
+
+public final class LogDriverDependencyMock: LogDriverDependency {
+    public init() { }
+    public init(osLogDriver: OSLogDriverProtocolAT, firebaseLogDriver: FirebaseLogDriverProtocolAT) {
+        self._osLogDriver = osLogDriver
+        self._firebaseLogDriver = firebaseLogDriver
+    }
+
+    public typealias OSLogDriverProtocolAT = OSLogDriver
+    public typealias FirebaseLogDriverProtocolAT = FirebaseLogDriverProtocolMock
+
+    public private(set) var osLogDriverSetCallCount = 0
+    private var _osLogDriver: OSLogDriverProtocolAT!  { didSet { osLogDriverSetCallCount += 1 } }
+    public var osLogDriver: OSLogDriverProtocolAT {
+        get { return _osLogDriver }
+        set { _osLogDriver = newValue }
+    }
+
+    public private(set) var firebaseLogDriverSetCallCount = 0
+    private var _firebaseLogDriver: FirebaseLogDriverProtocolAT!  { didSet { firebaseLogDriverSetCallCount += 1 } }
+    public var firebaseLogDriver: FirebaseLogDriverProtocolAT {
+        get { return _firebaseLogDriver }
+        set { _firebaseLogDriver = newValue }
+    }
 }
 
 public final class LogDriverProtocolMock: LogDriverProtocol {
@@ -348,62 +400,70 @@ public final class LogDriverProtocolMock: LogDriverProtocol {
     }
 }
 
-public final class OSLogDriverProtocolMock: OSLogDriverProtocol {
+public final class LogDriverProviderMock: LogDriverProvider {
     public init() { }
+    public init(logDriver: LogDriverProtocolAT) {
+        self._logDriver = logDriver
+    }
 
+    public typealias LogDriverProtocolAT = LogDriver<OSLogDriver, FirebaseLogDriverProtocolMock>
 
-    public private(set) var logCallCount = 0
-    public var logHandler: ((LogEventType, LogLevel, String, String, Int) -> ())?
-    public func log(_ _arg: LogEventType, level: LogLevel, file: String, function: String, line: Int)  {
-        logCallCount += 1
-        if let logHandler = logHandler {
-            logHandler(_arg, level, file, function, line)
-        }
-        
+    public private(set) var logDriverSetCallCount = 0
+    private var _logDriver: LogDriverProtocolAT!  { didSet { logDriverSetCallCount += 1 } }
+    public var logDriver: LogDriverProtocolAT {
+        get { return _logDriver }
+        set { _logDriver = newValue }
     }
 }
 
 public final class AppRootPresenterDependencyMock: AppRootPresenterDependency {
     public init() { }
-    public init(firebaseLogDriver: FirebaseLogDriverProtocolAT, firebaseSetupDriver: FirebaseSetupDriverProtocolAT, firebaseRemoteConfigDriver: FirebaseRemoteConfigDriverProtocolAT) {
-        self._firebaseLogDriver = firebaseLogDriver
-        self._firebaseSetupDriver = firebaseSetupDriver
-        self._firebaseRemoteConfigDriver = firebaseRemoteConfigDriver
+    public init(logDriver: LogDriverProtocolAT) {
+        self._logDriver = logDriver
     }
 
-    public typealias FirebaseLogDriverProtocolAT = FirebaseLogDriverProtocolMock
-    public typealias FirebaseSetupDriverProtocolAT = FirebaseSetupDriverProtocolMock
-    public typealias FirebaseRemoteConfigDriverProtocolAT = FirebaseRemoteConfigDriverProtocolMock
+    public typealias LogDriverProtocolAT = LogDriver<OSLogDriver, FirebaseLogDriverProtocolMock>
 
-    public private(set) var firebaseLogDriverSetCallCount = 0
-    private var _firebaseLogDriver: FirebaseLogDriverProtocolAT!  { didSet { firebaseLogDriverSetCallCount += 1 } }
-    public var firebaseLogDriver: FirebaseLogDriverProtocolAT {
-        get { return _firebaseLogDriver }
-        set { _firebaseLogDriver = newValue }
+    public private(set) var logDriverSetCallCount = 0
+    private var _logDriver: LogDriverProtocolAT!  { didSet { logDriverSetCallCount += 1 } }
+    public var logDriver: LogDriverProtocolAT {
+        get { return _logDriver }
+        set { _logDriver = newValue }
+    }
+}
+
+public final class LicenseDetailPresenterDependencyMock: LicenseDetailPresenterDependency {
+    public init() { }
+    public init(logDriver: LogDriverProtocolAT) {
+        self._logDriver = logDriver
     }
 
-    public private(set) var firebaseSetupDriverSetCallCount = 0
-    private var _firebaseSetupDriver: FirebaseSetupDriverProtocolAT!  { didSet { firebaseSetupDriverSetCallCount += 1 } }
-    public var firebaseSetupDriver: FirebaseSetupDriverProtocolAT {
-        get { return _firebaseSetupDriver }
-        set { _firebaseSetupDriver = newValue }
-    }
+    public typealias LogDriverProtocolAT = LogDriver<OSLogDriver, FirebaseLogDriverProtocolMock>
 
-    public private(set) var firebaseRemoteConfigDriverSetCallCount = 0
-    private var _firebaseRemoteConfigDriver: FirebaseRemoteConfigDriverProtocolAT!  { didSet { firebaseRemoteConfigDriverSetCallCount += 1 } }
-    public var firebaseRemoteConfigDriver: FirebaseRemoteConfigDriverProtocolAT {
-        get { return _firebaseRemoteConfigDriver }
-        set { _firebaseRemoteConfigDriver = newValue }
+    public private(set) var logDriverSetCallCount = 0
+    private var _logDriver: LogDriverProtocolAT!  { didSet { logDriverSetCallCount += 1 } }
+    public var logDriver: LogDriverProtocolAT {
+        get { return _logDriver }
+        set { _logDriver = newValue }
     }
 }
 
 public final class LicenseListPresenterDependencyMock: LicenseListPresenterDependency {
     public init() { }
-    public init(libraryLicenseDriver: LibraryLicenseDriverProtocolAT) {
+    public init(logDriver: LogDriverProtocolAT, libraryLicenseDriver: LibraryLicenseDriverProtocolAT) {
+        self._logDriver = logDriver
         self._libraryLicenseDriver = libraryLicenseDriver
     }
 
+    public typealias LogDriverProtocolAT = LogDriver<OSLogDriver, FirebaseLogDriverProtocolMock>
     public typealias LibraryLicenseDriverProtocolAT = LibraryLicenseDriverProtocolMock
+
+    public private(set) var logDriverSetCallCount = 0
+    private var _logDriver: LogDriverProtocolAT!  { didSet { logDriverSetCallCount += 1 } }
+    public var logDriver: LogDriverProtocolAT {
+        get { return _logDriver }
+        set { _logDriver = newValue }
+    }
 
     public private(set) var libraryLicenseDriverSetCallCount = 0
     private var _libraryLicenseDriver: LibraryLicenseDriverProtocolAT!  { didSet { libraryLicenseDriverSetCallCount += 1 } }

@@ -4,19 +4,23 @@ import Foundation
 
 @MainActor
 final class SettingPresenter<Dependency: SettingPresenterDependency>: ObservableObject {
-    init(dependency _: some SettingPresenterDependency) {
-        LogDriver.initLog()
+    private let dependency: Dependency
+
+    init(dependency: Dependency) {
+        dependency.logDriver.initLog()
+
+        self.dependency = dependency
     }
 
     deinit {
-        LogDriver.deinitLog()
+        dependency.logDriver.deinitLog()
     }
 
     func onAppear() async {
-        LogDriver.onAppearLog()
+        dependency.logDriver.onAppearLog()
     }
 
     func onDisappear() {
-        LogDriver.onDisappearLog()
+        dependency.logDriver.onDisappearLog()
     }
 }

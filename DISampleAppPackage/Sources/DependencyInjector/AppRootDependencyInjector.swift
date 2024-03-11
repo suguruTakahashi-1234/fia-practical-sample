@@ -10,34 +10,41 @@ import Foundation
 import LicenseFramework
 import PresentationLayer
 
-public class AppRootDependencyInjector: AppRootRouterDependency {
-    /// private
-    private let deviceNameDriver: DeviceNameDriver
-
-    /// DataStore
+public class AppRootDependencyInjector: AppRootRouterDependency, AppRootDependencyInjectorDependency, LogDriverDependency {
+    /// Data Store
     public let cacheDataStore: CacheDataStore
 
-    /// Driver
+    /// Internal Driver
+    let deviceNameDriver: DeviceNameDriver
+
+    /// Public Driver
+    public let osLogDriver: OSLogDriver
     public let buildEnvDriver: BuildEnvDriver
     public let deviceInfoDriver: DeviceInfoDriver<DeviceNameDriver>
     public let clipboardDriver: ClipboardDriver
     public let libraryLicenseDriver: LibraryLicenseDriver
 
     /// Firenbase Driver
-    public let firebaseSetupDriver: FirebaseSetupDriver
+    let firebaseSetupDriver: FirebaseSetupDriver
+    let firebaseRemoteConfigDriver: FirebaseRemoteConfigDriver<CacheDataStore>
     public let firebaseLogDriver: FirebaseLogDriver
-    public let firebaseRemoteConfigDriver: FirebaseRemoteConfigDriver<CacheDataStore>
+
+    /// Log Driver
+    public let logDriver: LogDriver<OSLogDriver, FirebaseLogDriver>
+
+    // ※ UseCase は Presenter の拡張のため DI 層では保持しない
 
     public init(buildScheme: BuildScheme) {
-        LogDriver.initLog()
-
-        // private
-        deviceNameDriver = DeviceNameDriver()
+        OSLogDriver.initLog()
 
         // DataStore
         cacheDataStore = CacheDataStore()
 
-        // Driver
+        // Internal Driver
+        deviceNameDriver = DeviceNameDriver()
+
+        // Public Driver
+        osLogDriver = OSLogDriver()
         buildEnvDriver = BuildEnvDriver(buildScheme: buildScheme)
         deviceInfoDriver = DeviceInfoDriver(deviceNameDriver: deviceNameDriver)
         clipboardDriver = ClipboardDriver()
@@ -47,5 +54,9 @@ public class AppRootDependencyInjector: AppRootRouterDependency {
         firebaseSetupDriver = FirebaseSetupDriver()
         firebaseLogDriver = FirebaseLogDriver()
         firebaseRemoteConfigDriver = FirebaseRemoteConfigDriver(cacheDataStore: cacheDataStore)
+
+        // Setup LogDriver
+        logDriver = LogDriver(osLogDriver: osLogDriver, firebaseLogDriver: firebaseLogDriver)
+        logDriver.debugLog("Completed setup LogDriver")
     }
 }

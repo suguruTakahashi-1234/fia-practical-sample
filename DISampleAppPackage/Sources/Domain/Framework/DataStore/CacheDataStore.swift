@@ -11,6 +11,10 @@ public actor CacheDataStore: CacheDataStoreProtocol {
     public let variantTestSubjecter = CurrentValueSubject<VariantTest, Never>(VariantTest.defaultValue)
 
     public init() {
-        LogDriver.initLog()
+        OSLogDriver.initLog()
+    }
+
+    deinit {
+        OSLogDriver.deinitLog()
     }
 }

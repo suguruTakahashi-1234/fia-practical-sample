@@ -7,11 +7,11 @@ import DomainLayer
 import SwiftUI
 
 @MainActor
-public struct LicenseDetailView: View {
-    @StateObject private var presenter: LicenseDetailPresenter
+public struct LicenseDetailView<Dependency: LicenseDetailPresenterDependency>: View {
+    @StateObject private var presenter: LicenseDetailPresenter<Dependency>
 
-    public init(license: License) {
-        _presenter = .init(wrappedValue: LicenseDetailPresenter(license: license))
+    public init(dependency: Dependency, license: License) {
+        _presenter = .init(wrappedValue: LicenseDetailPresenter(dependency: dependency, license: license))
     }
 
     public var body: some View {
@@ -46,7 +46,7 @@ struct LicenseDetailView_Previews: PreviewProvider, SnapshotTestable {
                 .init(type: .large, state: .sizeL),
             ],
             configure: { state in
-                LicenseDetailView(license: state)
+                LicenseDetailView(dependency: AppRootRouterDependencyMock.random, license: state)
             }
         )
     }

@@ -5,7 +5,7 @@
 
 import Combine
 
-/// xxxSubject と命名すると mockolo のバグでどうやら mock のイニシャライザが生成されないので xxxSubjecter に統一している
+/// Subject な変数について xxxSubject と命名すると mockolo のバグでどうやら mock のイニシャライザが生成されないので xxxSubjecter に統一している（本当は xxxSubject と命名したい）
 /// @mockable
 public protocol CacheDataStoreProtocol: AnyObject {
     var remoteConfigUpdateErrorSubjecter: PassthroughSubject<AppError, Never> { get }

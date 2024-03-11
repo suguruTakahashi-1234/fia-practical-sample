@@ -9,8 +9,8 @@ final class DeviceInfoPresenter<Dependency: DeviceInfoPresenterDependency>: Obse
     private(set) var selectedDeviceInfoType: DeviceInfoType?
 
     /// UseCase の Mock を使用する場合はここを書き換える（DI のコードは書き換えず Presenter で直接指定する）
-    private let deviceInfoUseCase: DeviceInfoInteractor<Dependency.BuildEnvDriverProtocolAT, Dependency.DeviceInfoDriverProtocolAT>
-    private let clipboardDriver: Dependency.ClipboardDriverProtocolAT
+    private let deviceInfoUseCase: DeviceInfoInteractor<Dependency>
+    private let dependency: Dependency
 
     var copiedAlertTitle: String {
         guard let selectedDeviceInfoType else {
@@ -20,27 +20,27 @@ final class DeviceInfoPresenter<Dependency: DeviceInfoPresenterDependency>: Obse
     }
 
     init(dependency: Dependency) {
-        LogDriver.initLog()
+        dependency.logDriver.initLog()
 
-        deviceInfoUseCase = DeviceInfoInteractor(buildEnvDriver: dependency.buildEnvDriver, deviceInfoDriver: dependency.deviceInfoDriver)
-        clipboardDriver = dependency.clipboardDriver
+        self.dependency = dependency
+        deviceInfoUseCase = DeviceInfoInteractor(dependency: dependency)
     }
 
     deinit {
-        LogDriver.deinitLog()
+        dependency.logDriver.deinitLog()
     }
 
     func onAppear() async {
-        LogDriver.onAppearLog()
+        dependency.logDriver.onAppearLog()
     }
 
     func onDisappear() {
-        LogDriver.onDisappearLog()
+        dependency.logDriver.onDisappearLog()
     }
 
     func onTapDeviceInfo(_ deviceInfoType: DeviceInfoType) {
         selectedDeviceInfoType = deviceInfoType
-        clipboardDriver.copy(deviceInfoUseCase.getDeviceInfoValue(deviceInfoType))
+        dependency.clipboardDriver.copy(deviceInfoUseCase.getDeviceInfoValue(deviceInfoType))
         shouldShowCopyAlert = true
     }
 

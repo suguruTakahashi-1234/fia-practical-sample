@@ -1,5 +1,5 @@
 {
-  "originHash" : "de12ad21fa8034e8658efbb60637d8d8c4dc7dfcad1f0c2ad4e994be718c4746",
+  "originHash" : "ac179952453bd0028c391db1f8c027e1b9dee726209aae4960352e5e64e34570",
   "pins" : [
     {
       "identity" : "abseil-cpp-binary",
@@ -186,8 +186,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/EmergeTools/SnapshotPreviews-iOS",
       "state" : {
-        "revision" : "d594889af9039d06cbc0340c09f6c838bda6e1c8",
-        "version" : "0.8.5"
+        "revision" : "b5ecd861360c7f8a886e6f8b6c1deab15695cbc5",
+        "version" : "0.8.6"
       }
     },
     {

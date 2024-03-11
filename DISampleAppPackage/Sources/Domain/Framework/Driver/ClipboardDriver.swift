@@ -3,7 +3,7 @@
 //  Copyright sugurutakahashi. All rights reserved.
 //
 
-import SwiftUI // for UI
+import SwiftUI // for UIPasteboard
 
 public final class ClipboardDriver: ClipboardDriverProtocol {
     public init() {

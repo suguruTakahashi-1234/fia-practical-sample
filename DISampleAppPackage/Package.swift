@@ -210,7 +210,7 @@ let package = Package(
     dependencies: [
         // Library
         .package(url: "https://github.com/firebase/firebase-ios-sdk.git", from: "10.22.1"),
-        .package(url: "https://github.com/playbook-ui/playbook-ios.git", from: "0.3.5"),
+        .package(url: "https://github.com/playbook-ui/playbook-ios.git", from: "0.3.5"), // TODO: 不要なのでいつでも削除可能
         .package(url: "https://github.com/doordash-oss/swiftui-preview-snapshots", from: "1.1.1"),
         .package(url: "https://github.com/EmergeTools/SnapshotPreviews-iOS", from: "0.8.6"),
         .package(url: "https://github.com/apple/swift-syntax", from: "509.1.1"), // SwiftSyntax の競合に注意(510.0.0がリリースされているがswift-testingと競合してあげられない)
@@ -224,7 +224,7 @@ let package = Package(
 
         // for CLI
         .package(url: "https://github.com/yonaskolb/Mint.git", from: "0.17.5"),
-        .package(url: "https://github.com/nicklockwood/SwiftFormat", exact: "0.53.3"), // バージョンを変更した場合は .swiftformat ファイルを修正する
+        .package(url: "https://github.com/nicklockwood/SwiftFormat", exact: "0.53.4"), // バージョンを変更した場合は .swiftformat ファイルを修正する
 
         // DocC
         .package(url: "https://github.com/apple/swift-docc-plugin", from: "1.3.0"),

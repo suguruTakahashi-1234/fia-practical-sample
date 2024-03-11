@@ -5,7 +5,7 @@
 
 import Foundation
 
-public class LogDriver<OSLogDriver: OSLogDriverProtocol, FirebaseLogDriver: FirebaseLogDriverProtocol>: LogDriverProtocol {
+public final class LogDriver<OSLogDriver: OSLogDriverProtocol, FirebaseLogDriver: FirebaseLogDriverProtocol>: LogDriverProtocol {
     private let osLogDriver: OSLogDriver
     private let firebaseLogDriver: FirebaseLogDriver
 

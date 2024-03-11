@@ -151,16 +151,10 @@ enum TestTargetType: CaseIterable {
     case domainTest
     case frameworkTest
     case presenterTest
-    case uiTest
     case viewSnapshotTest
 
     private var name: String {
-        switch self {
-        case .uiTest:
-            "UITest"
-        default:
-            "\(self)".initialUppercased
-        }
+        "\(self)".initialUppercased
     }
 
     private var exclude: [String] {
@@ -310,6 +304,7 @@ extension TargetType {
 
 // MARK: - Test
 
+// TODO: swift-testing が Xcode のコンソール上で細かくテスト対象が選択できるようになったらテストターゲット分割を見直す
 extension TestTargetType {
     var dependencyLibrary: DependencyLibrary {
         switch self {
@@ -323,11 +318,6 @@ extension TestTargetType {
                 .testing,
             ])
         case .presenterTest:
-            .init([
-                TargetType.presentation.dependency,
-                .testing,
-            ])
-        case .uiTest:
             .init([
                 TargetType.presentation.dependency,
                 .testing,

@@ -5,7 +5,7 @@
 
 import SwiftUI // for UI
 
-public class ClipboardDriver: ClipboardDriverProtocol {
+public final class ClipboardDriver: ClipboardDriverProtocol {
     public init() {
         OSLogDriver.initLog()
     }

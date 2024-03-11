@@ -246,22 +246,6 @@ public final class ClipboardDriverProtocolMock: ClipboardDriverProtocol {
     }
 }
 
-public final class CommonPresenterDependencyMock: CommonPresenterDependency {
-    public init() { }
-    public init(logDriver: LogDriverProtocolAT) {
-        self._logDriver = logDriver
-    }
-
-    public typealias LogDriverProtocolAT = LogDriver<OSLogDriver, FirebaseLogDriverProtocolMock>
-
-    public private(set) var logDriverSetCallCount = 0
-    private var _logDriver: LogDriverProtocolAT!  { didSet { logDriverSetCallCount += 1 } }
-    public var logDriver: LogDriverProtocolAT {
-        get { return _logDriver }
-        set { _logDriver = newValue }
-    }
-}
-
 public final class DeviceInfoUseCaseDependencyMock: DeviceInfoUseCaseDependency {
     public init() { }
     public init(logDriver: LogDriverProtocolAT, buildEnvDriver: BuildEnvDriverProtocolAT, deviceInfoDriver: DeviceInfoDriverProtocolAT) {
@@ -417,6 +401,22 @@ public final class LogDriverProviderMock: LogDriverProvider {
 }
 
 public final class AppRootPresenterDependencyMock: AppRootPresenterDependency {
+    public init() { }
+    public init(logDriver: LogDriverProtocolAT) {
+        self._logDriver = logDriver
+    }
+
+    public typealias LogDriverProtocolAT = LogDriver<OSLogDriver, FirebaseLogDriverProtocolMock>
+
+    public private(set) var logDriverSetCallCount = 0
+    private var _logDriver: LogDriverProtocolAT!  { didSet { logDriverSetCallCount += 1 } }
+    public var logDriver: LogDriverProtocolAT {
+        get { return _logDriver }
+        set { _logDriver = newValue }
+    }
+}
+
+public final class CommonPresenterDependencyMock: CommonPresenterDependency {
     public init() { }
     public init(logDriver: LogDriverProtocolAT) {
         self._logDriver = logDriver

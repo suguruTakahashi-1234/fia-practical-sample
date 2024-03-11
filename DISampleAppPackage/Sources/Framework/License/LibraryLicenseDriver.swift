@@ -6,7 +6,7 @@
 import DomainLayer
 import Foundation
 
-public class LibraryLicenseDriver: LibraryLicenseDriverProtocol {
+public final class LibraryLicenseDriver: LibraryLicenseDriverProtocol {
     public init() {
         OSLogDriver.initLog()
     }

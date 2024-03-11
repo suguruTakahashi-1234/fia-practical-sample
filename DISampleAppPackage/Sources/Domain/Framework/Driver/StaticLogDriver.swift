@@ -8,7 +8,7 @@ import Foundation
 /// 各Presenterだけではなく、Driver などでも独立して用いたいため、シングルトンのような使い方をしている
 /// 現状この actor は使用していないが、今のままだと Driver 中の処理をログ送信する場合は、OSLogDriver のみになり、Firebase や他の Cloud サービスに連携できないため、そのときは any を許容してしまうがこちらの Driver を用いる
 /// 現状、Swift の言語仕様上、static な変数と generics は共存できない
-public actor StaticLogDriver {
+public final actor StaticLogDriver {
     private init() {}
 
     private static var firebaseLogDriver: (any FirebaseLogDriverProtocol)?

@@ -8,7 +8,7 @@ import os.log
 
 // Ref: https://developer.apple.com/documentation/os/logging/generating_log_messages_from_your_code
 // Ref: https://qiita.com/Nick_paper/items/3a6f7d41bc80773b90bf
-public actor OSLogDriver: OSLogDriverProtocol {
+public final actor OSLogDriver: OSLogDriverProtocol {
     private static let _logger = Logger(subsystem: Bundle.main.bundleIdentifier!, category: Constants.LogCategory.staticOSLogger)
     private let logger = Logger(subsystem: Bundle.main.bundleIdentifier!, category: Constants.LogCategory.osLogger)
 

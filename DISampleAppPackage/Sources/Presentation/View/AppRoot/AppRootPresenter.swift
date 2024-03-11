@@ -8,18 +8,7 @@ import Foundation
 
 @MainActor
 final class AppRootPresenter<Dependency: AppRootPresenterDependency>: ObservableObject {
-    private let firebaseRemoteConfigDriver: Dependency.FirebaseRemoteConfigDriverProtocolAT
-
-    init(dependency: Dependency) {
-        // Setup Firebase
-        dependency.firebaseSetupDriver.configure()
-
-        firebaseRemoteConfigDriver = dependency.firebaseRemoteConfigDriver
-
-        // Setup Logger
-        LogDriver.setDriver(firebaseLogDriver: dependency.firebaseLogDriver)
-        LogDriver.debugLog("completed setup LogDriver")
-
+    init(dependency _: Dependency) {
         LogDriver.initLog()
     }
 
@@ -29,12 +18,6 @@ final class AppRootPresenter<Dependency: AppRootPresenterDependency>: Observable
 
     func onAppear() async {
         LogDriver.onAppearLog()
-
-        do {
-            try await firebaseRemoteConfigDriver.setUp()
-        } catch {
-            LogDriver.errorLog(error.toAppError)
-        }
     }
 
     func onDisappear() {

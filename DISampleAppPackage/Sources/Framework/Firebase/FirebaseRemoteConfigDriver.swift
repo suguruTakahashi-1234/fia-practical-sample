@@ -52,13 +52,23 @@ public class FirebaseRemoteConfigDriver<T: CacheDataStoreProtocol>: FirebaseRemo
                 }
             }
             .store(in: &cancellables)
+
+        Task {
+            do {
+                try await setUp()
+                LogDriver.debugLog("Completed setup FirebaseRemoteConfigDriver")
+            } catch {
+                LogDriver.errorLog(error.toAppError)
+                assertionFailure("\(error.toAppError))")
+            }
+        }
     }
 
     deinit {
         LogDriver.deinitLog()
     }
 
-    public func setUp() async throws {
+    private func setUp() async throws {
         do {
             try setDefaults()
             try await remoteConfig.fetchAndActivate()

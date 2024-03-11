@@ -9,12 +9,12 @@ import Foundation
 public actor LogDriver {
     private init() {}
 
-    private static var osLogDriver: some OSLogDriverProtocol = OSLogDriver(subsystem: Bundle.main.bundleIdentifier!, category: Constants.Logger.categoryName)
-    /// ジェネリクスとシングルトンは両立できないため、例外的に any を許容している
+    private static let osLogDriver: some OSLogDriverProtocol = OSLogDriver(subsystem: Bundle.main.bundleIdentifier!, category: Constants.Logger.categoryName)
+    /// ジェネリクスとシングルトンは両立できないため（static な変数とジェネリクスは Swift の言語仕様で共存できない）、例外的に any を許容している
     private static var firebaseLogDriver: (any FirebaseLogDriverProtocol)?
 
     public static func setDriver(firebaseLogDriver: any FirebaseLogDriverProtocol) {
-        LogDriver.firebaseLogDriver = firebaseLogDriver
+        Self.firebaseLogDriver = firebaseLogDriver
     }
 
     public static func log(_ event: LogEventType, level: LogLevel = .notice, file: String = #filePath, function: String = #function, line: Int = #line) {

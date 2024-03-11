@@ -10,11 +10,11 @@ import Foundation
 import LicenseFramework
 import PresentationLayer
 
-public class AppRootDependencyInjector: AppRootRouterDependency {
-    /// private
-    private let deviceNameDriver: DeviceNameDriver
+public class AppRootDependencyInjector: AppRootRouterDependency, AppRootDependencyInjectorDependency {
+    /// Internal Driver
+    let deviceNameDriver: DeviceNameDriver
 
-    /// DataStore
+    /// Data Store
     public let cacheDataStore: CacheDataStore
 
     /// Driver
@@ -23,15 +23,15 @@ public class AppRootDependencyInjector: AppRootRouterDependency {
     public let clipboardDriver: ClipboardDriver
     public let libraryLicenseDriver: LibraryLicenseDriver
 
-    /// Firenbase Driver
-    public let firebaseSetupDriver: FirebaseSetupDriver
-    public let firebaseLogDriver: FirebaseLogDriver
-    public let firebaseRemoteConfigDriver: FirebaseRemoteConfigDriver<CacheDataStore>
+    /// Firenbase Driver（今のところ、internal Driver しかないが、今後 Preseter で直接使うケースがあれば public とする Driver も追加される）
+    let firebaseSetupDriver: FirebaseSetupDriver
+    let firebaseLogDriver: FirebaseLogDriver
+    let firebaseRemoteConfigDriver: FirebaseRemoteConfigDriver<CacheDataStore>
 
     public init(buildScheme: BuildScheme) {
         LogDriver.initLog()
 
-        // private
+        // Internal Driver
         deviceNameDriver = DeviceNameDriver()
 
         // DataStore
@@ -47,5 +47,9 @@ public class AppRootDependencyInjector: AppRootRouterDependency {
         firebaseSetupDriver = FirebaseSetupDriver()
         firebaseLogDriver = FirebaseLogDriver()
         firebaseRemoteConfigDriver = FirebaseRemoteConfigDriver(cacheDataStore: cacheDataStore)
+
+        // Setup LogDriver
+        LogDriver.setDriver(firebaseLogDriver: firebaseLogDriver)
+        LogDriver.debugLog("Completed setup LogDriver")
     }
 }

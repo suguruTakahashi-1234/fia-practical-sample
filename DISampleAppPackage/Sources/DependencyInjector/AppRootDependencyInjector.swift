@@ -10,7 +10,7 @@ import Foundation
 import LicenseFramework
 import PresentationLayer
 
-public class AppRootDependencyInjector: AppRootRouterDependency, AppRootDependencyInjectorDependency, LogDriverDependency {
+public final class AppRootDependencyInjector: AppRootRouterDependency, AppRootDependencyInjectorDependency, LogDriverDependency {
     /// Data Store
     public let cacheDataStore: CacheDataStore
 

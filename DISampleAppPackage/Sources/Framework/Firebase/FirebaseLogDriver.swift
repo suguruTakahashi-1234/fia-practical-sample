@@ -6,7 +6,7 @@
 import DomainLayer
 import FirebaseAnalytics
 
-public class FirebaseLogDriver: FirebaseLogDriverProtocol {
+public final class FirebaseLogDriver: FirebaseLogDriverProtocol {
     public init() {
         OSLogDriver.initLog()
     }

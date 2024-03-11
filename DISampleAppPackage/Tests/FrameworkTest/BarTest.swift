@@ -3,7 +3,11 @@
 //  Copyright sugurutakahashi. All rights reserved.
 //
 
-@testable import DomainLayer
 import Testing
 
 // TODO: テストコード
+@Suite struct BarTest {
+    @Test func foo() {
+        #expect(true, "")
+    }
+}

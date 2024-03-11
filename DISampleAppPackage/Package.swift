@@ -304,6 +304,7 @@ extension TargetType {
 
 // MARK: - Test
 
+// TODO: swift-testing が Xcode のコンソール上で細かくテスト対象が選択できるようになったらテストターゲット分割を見直す
 extension TestTargetType {
     var dependencyLibrary: DependencyLibrary {
         switch self {

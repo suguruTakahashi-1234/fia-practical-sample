@@ -5,7 +5,7 @@
 
 import Foundation
 
-public class BuildEnvDriver: BuildEnvDriverProtocol {
+public final class BuildEnvDriver: BuildEnvDriverProtocol {
     public let buildScheme: BuildScheme
     public let buildConfiguration: BuildConfiguration
 

@@ -7,7 +7,7 @@ import DomainLayer
 import FirebaseCore
 import Foundation
 
-public class FirebaseSetupDriver: FirebaseSetupDriverProtocol {
+public final class FirebaseSetupDriver: FirebaseSetupDriverProtocol {
     public init() {
         OSLogDriver.initLog()
 

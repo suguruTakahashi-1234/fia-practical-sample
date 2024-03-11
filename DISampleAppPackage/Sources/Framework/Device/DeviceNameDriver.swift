@@ -6,7 +6,7 @@
 import DeviceKit
 import DomainLayer
 
-public class DeviceNameDriver: DeviceNameDriverProtocol {
+public final class DeviceNameDriver: DeviceNameDriverProtocol {
     public init() {
         OSLogDriver.initLog()
     }

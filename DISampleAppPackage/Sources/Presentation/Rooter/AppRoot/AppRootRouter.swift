@@ -6,7 +6,7 @@
 import DomainLayer
 
 /// Note: Wireframeをまとめたプロトコルは今のところ作成する必要はなさそう。AppRootRouterがPresentation層にあるため、それぞれのWireframeのMockも必要なく、スタブもAppRootRouter.emptyで間に合っている
-public struct AppRootRouter<Dependency: AppRootRouterDependency>: AppRootWireframe {
+public final class AppRootRouter<Dependency: AppRootRouterDependency>: AppRootWireframe {
     private let dependency: Dependency
 
     public init(dependency: Dependency) {
@@ -16,22 +16,22 @@ public struct AppRootRouter<Dependency: AppRootRouterDependency>: AppRootWirefra
     }
 
     @MainActor
-    public func createAppRootView() -> AppRootView<Self, Dependency> {
+    public func createAppRootView() -> AppRootView<AppRootRouter, Dependency> {
         AppRootView(router: self, dependency: dependency)
     }
 
     @MainActor
-    public func createHomeTabView() -> HomeTabView<Self> {
+    public func createHomeTabView() -> HomeTabView<AppRootRouter> {
         HomeTabView(router: self)
     }
 
     @MainActor
-    public func createTaskListView() -> TaskListView<Self, Dependency> {
+    public func createTaskListView() -> TaskListView<AppRootRouter, Dependency> {
         TaskListView(router: self, dependency: dependency)
     }
 
     @MainActor
-    public func createLicenseListView() -> LicenseListView<Self, Dependency> {
+    public func createLicenseListView() -> LicenseListView<AppRootRouter, Dependency> {
         LicenseListView(router: self, dependency: dependency)
     }
 
@@ -41,12 +41,12 @@ public struct AppRootRouter<Dependency: AppRootRouterDependency>: AppRootWirefra
     }
 
     @MainActor
-    public func createSettingView() -> SettingView<Self, Dependency> {
+    public func createSettingView() -> SettingView<AppRootRouter, Dependency> {
         SettingView(router: self, dependency: dependency)
     }
 
     @MainActor
-    public func createDeviceInfoView() -> DeviceInfoView<Self, Dependency> {
+    public func createDeviceInfoView() -> DeviceInfoView<AppRootRouter, Dependency> {
         DeviceInfoView(router: self, dependency: dependency)
     }
 }

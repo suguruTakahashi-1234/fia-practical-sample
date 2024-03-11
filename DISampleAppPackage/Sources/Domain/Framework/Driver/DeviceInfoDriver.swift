@@ -7,7 +7,7 @@ import Foundation
 import SwiftUI // for UIDevice
 
 /// Development ビルドでも正しい値を用いたいので Domain 層の Driver でとして定義して、DeviceKit 依存の DeviceNameDriver のみを注入するようにしている
-public class DeviceInfoDriver<T: DeviceNameDriverProtocol>: DeviceInfoDriverProtocol {
+public final class DeviceInfoDriver<T: DeviceNameDriverProtocol>: DeviceInfoDriverProtocol {
     private let deviceNameDriver: T
 
     public init(deviceNameDriver: T) {

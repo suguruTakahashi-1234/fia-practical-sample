@@ -6,7 +6,7 @@
 import DomainLayer
 import Foundation
 
-public struct DeviceInfoInteractor<Dependency: DeviceInfoUseCaseDependency>: DeviceInfoUseCase {
+public final class DeviceInfoInteractor<Dependency: DeviceInfoUseCaseDependency>: DeviceInfoUseCase {
     private let dependency: Dependency
 
     public init(dependency: Dependency) {

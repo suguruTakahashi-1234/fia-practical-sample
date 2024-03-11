@@ -1,5 +1,5 @@
 import DomainLayer
 import Foundation
 
-/// @mockable(typealias: AT = Mock;)
-public protocol {{ argument.screenName }}PresenterDependency {}
+/// @mockable(typealias: xxxAT = xxxMock;)
+public protocol {{ argument.screenName }}PresenterDependency: CommonPresenterDependency {}

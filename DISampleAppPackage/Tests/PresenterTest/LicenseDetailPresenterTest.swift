@@ -9,12 +9,14 @@ import Testing
 
 @MainActor
 struct LicenseDetailPresenterTest {
-    var presenter: LicenseDetailPresenter!
+    var presenter: LicenseDetailPresenter<AppRootRouterDependencyMock>!
+    var dependencyInjector: AppRootRouterDependencyMock!
     var license: License!
 
     init() {
         license = .random
-        presenter = .init(license: license)
+        dependencyInjector = .random
+        presenter = .init(dependency: dependencyInjector, license: license)
     }
 
     @Test("初期化したとき") func onInit() {

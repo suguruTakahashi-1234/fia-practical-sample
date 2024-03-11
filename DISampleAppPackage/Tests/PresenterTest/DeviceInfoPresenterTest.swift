@@ -6,6 +6,7 @@ import Testing
 
 /// テストモックは Computed property にするとインスタンスが保持されず、Mock のカウントによるテストがうまく動作しないので注意
 struct DeviceInfoPresenterDependencyTestMock: DeviceInfoPresenterDependency {
+    var logDriver: LogDriverProtocolMock = .init()
     var deviceInfoDriver: DeviceInfoDriverProtocolMock = .init()
     var buildEnvDriver: BuildEnvDriverProtocolMock = .init(buildScheme: .random, buildConfiguration: .random)
 

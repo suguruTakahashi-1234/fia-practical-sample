@@ -151,16 +151,10 @@ enum TestTargetType: CaseIterable {
     case domainTest
     case frameworkTest
     case presenterTest
-    case uiTest
     case viewSnapshotTest
 
     private var name: String {
-        switch self {
-        case .uiTest:
-            "UITest"
-        default:
-            "\(self)".initialUppercased
-        }
+        "\(self)".initialUppercased
     }
 
     private var exclude: [String] {
@@ -323,11 +317,6 @@ extension TestTargetType {
                 .testing,
             ])
         case .presenterTest:
-            .init([
-                TargetType.presentation.dependency,
-                .testing,
-            ])
-        case .uiTest:
             .init([
                 TargetType.presentation.dependency,
                 .testing,

@@ -191,10 +191,6 @@ private extension PackageDescription.Target.Dependency {
 
     /// Test
     static let testing: Self = .product(name: "Testing", package: "swift-testing")
-
-    // TODO: "0.8.4" のバージョンでは、以下のSDKに依存したテスコードを作成しようとしたがビルドに失敗したため、バージョンが上がったら再度確認する（おそらくSDK側のバグ）
-//    static let snapshotting: Self = .product(name: "Snapshotting", package: "SnapshotPreviews-iOS")
-//    static let snapshottingTests: Self = .product(name: "SnapshottingTests", package: "SnapshotPreviews-iOS")
 }
 
 private extension PackageDescription.Target.PluginUsage {
@@ -216,7 +212,7 @@ let package = Package(
         .package(url: "https://github.com/firebase/firebase-ios-sdk.git", from: "10.22.1"),
         .package(url: "https://github.com/playbook-ui/playbook-ios.git", from: "0.3.5"),
         .package(url: "https://github.com/doordash-oss/swiftui-preview-snapshots", from: "1.1.1"),
-        .package(url: "https://github.com/EmergeTools/SnapshotPreviews-iOS", from: "0.8.5"),
+        .package(url: "https://github.com/EmergeTools/SnapshotPreviews-iOS", from: "0.8.6"),
         .package(url: "https://github.com/apple/swift-syntax", from: "509.1.1"), // SwiftSyntax の競合に注意(510.0.0がリリースされているがswift-testingと競合してあげられない)
         .package(url: "https://github.com/devicekit/DeviceKit.git", from: "5.2.2"),
 

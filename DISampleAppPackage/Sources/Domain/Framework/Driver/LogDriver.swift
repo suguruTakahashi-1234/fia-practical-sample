@@ -10,7 +10,7 @@ public class LogDriver<OSLogDriver: OSLogDriverProtocol, FirebaseLogDriver: Fire
     private let firebaseLogDriver: FirebaseLogDriver
 
     public init(osLogDriver: OSLogDriver, firebaseLogDriver: FirebaseLogDriver) {
-        OSLogDriver.deinitLog()
+        OSLogDriver.initLog()
 
         self.osLogDriver = osLogDriver
         self.firebaseLogDriver = firebaseLogDriver

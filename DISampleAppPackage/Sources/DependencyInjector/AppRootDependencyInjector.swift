@@ -10,6 +10,7 @@ import Foundation
 import LicenseFramework
 import PresentationLayer
 
+/// ※ UseCase は Presenter の拡張のため DI 層では保持しない
 public final class AppRootDependencyInjector: AppRootRouterDependency, AppRootDependencyInjectorDependency, LogDriverDependency {
     /// Data Store
     public let cacheDataStore: CacheDataStore
@@ -31,8 +32,6 @@ public final class AppRootDependencyInjector: AppRootRouterDependency, AppRootDe
 
     /// Log Driver
     public let logDriver: LogDriver<OSLogDriver, FirebaseLogDriver>
-
-    // ※ UseCase は Presenter の拡張のため DI 層では保持しない
 
     public init(buildScheme: BuildScheme) {
         OSLogDriver.initLog()

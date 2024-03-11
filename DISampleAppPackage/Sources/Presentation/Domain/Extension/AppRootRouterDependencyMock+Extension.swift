@@ -22,10 +22,12 @@ public extension AppRootRouterDependencyMock {
         libraryLicenseDriver: LibraryLicenseDriverProtocolMock = .init(),
         deviceInfoDriver: DeviceInfoDriver<DeviceNameDriverProtocolMock> = .init(deviceNameDriver: .init(deviceName: "Mock")),
         buildEnvDriver: BuildEnvDriverProtocolMock = .init(buildScheme: .mock, buildConfiguration: AppRootRouterDependencyMock.buildConfiguration),
+        logDriver: LogDriver<OSLogDriver, FirebaseLogDriverProtocolMock> = .init(osLogDriver: .init(), firebaseLogDriver: .init()),
         clipboardDriver: ClipboardDriver = .init() // テスト時に本物の ClipboardDriver を使ってしまうとペースト許諾のアラートが表示されてテストが実行されないため、Mock に差し替え可能にしているが通常は本物を使う
     ) -> Self {
         .init(
             cacheDataStore: cacheDataStore,
+            logDriver: logDriver,
             libraryLicenseDriver: libraryLicenseDriver,
             buildEnvDriver: buildEnvDriver,
             deviceInfoDriver: deviceInfoDriver,

@@ -11,13 +11,13 @@ public class DeviceInfoDriver<T: DeviceNameDriverProtocol>: DeviceInfoDriverProt
     private let deviceNameDriver: T
 
     public init(deviceNameDriver: T) {
-        LogDriver.initLog()
+        OSLogDriver.initLog()
 
         self.deviceNameDriver = deviceNameDriver
     }
 
     deinit {
-        LogDriver.deinitLog()
+        OSLogDriver.deinitLog()
     }
 
     /// ex) 1.2.3

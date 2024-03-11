@@ -11,24 +11,25 @@ final class LicenseListPresenter<Dependency: LicenseListPresenterDependency>: Ob
     @Published private(set) var licenseList: [License] = []
     @Published var selectedLicense: License?
 
-    private let libraryLicenseDriver: Dependency.LibraryLicenseDriverProtocolAT
+    private let dependency: Dependency
 
     init(dependency: Dependency) {
-        LogDriver.initLog()
-        libraryLicenseDriver = dependency.libraryLicenseDriver
+        self.dependency = dependency
+
+        dependency.logDriver.initLog()
     }
 
     deinit {
-        LogDriver.deinitLog()
+        dependency.logDriver.deinitLog()
     }
 
     func onAppear() async {
-        LogDriver.onAppearLog()
-        licenseList = libraryLicenseDriver.licenseList
+        dependency.logDriver.onAppearLog()
+        licenseList = dependency.libraryLicenseDriver.licenseList
     }
 
     func onDisappear() {
-        LogDriver.onDisappearLog()
+        dependency.logDriver.onDisappearLog()
     }
 
     func onTapLicense(license: License) {

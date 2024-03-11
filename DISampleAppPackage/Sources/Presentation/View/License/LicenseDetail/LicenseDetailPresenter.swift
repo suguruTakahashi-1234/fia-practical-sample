@@ -7,24 +7,26 @@ import DomainLayer
 import Foundation
 
 @MainActor
-final class LicenseDetailPresenter: ObservableObject {
+final class LicenseDetailPresenter<Dependency: LicenseDetailPresenterDependency>: ObservableObject {
     let license: License
+    private let dependency: Dependency
 
-    init(license: License) {
-        LogDriver.initLog()
+    init(dependency: Dependency, license: License) {
+        dependency.logDriver.initLog()
 
         self.license = license
+        self.dependency = dependency
     }
 
     deinit {
-        LogDriver.deinitLog()
+        dependency.logDriver.deinitLog()
     }
 
     func onAppear() async {
-        LogDriver.onAppearLog()
+        dependency.logDriver.onAppearLog()
     }
 
     func onDisappear() {
-        LogDriver.onDisappearLog()
+        dependency.logDriver.onDisappearLog()
     }
 }

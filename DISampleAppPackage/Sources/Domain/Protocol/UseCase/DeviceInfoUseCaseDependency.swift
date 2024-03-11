@@ -6,7 +6,7 @@
 import Foundation
 
 /// @mockable(typealias: BuildEnvDriverProtocolAT = BuildEnvDriverProtocolMock; DeviceInfoDriverProtocolAT = DeviceInfoDriver<DeviceNameDriverProtocolMock>)
-public protocol DeviceInfoUseCaseDependency {
+public protocol DeviceInfoUseCaseDependency: LogDriverProvider {
     associatedtype BuildEnvDriverProtocolAT: BuildEnvDriverProtocol
     associatedtype DeviceInfoDriverProtocolAT: DeviceInfoDriverProtocol
 

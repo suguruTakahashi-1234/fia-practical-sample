@@ -8,11 +8,11 @@ import FirebaseAnalytics
 
 public class FirebaseLogDriver: FirebaseLogDriverProtocol {
     public init() {
-        LogDriver.initLog()
+        OSLogDriver.initLog()
     }
 
     deinit {
-        LogDriver.deinitLog()
+        OSLogDriver.deinitLog()
     }
 
     public func log(_ event: LogEventType, level: LogLevel, file: String, function: String, line: Int) {

@@ -27,7 +27,7 @@ public class FirebaseRemoteConfigDriver<T: CacheDataStoreProtocol>: FirebaseRemo
     private var cancellables = Set<AnyCancellable>()
 
     public init(cacheDataStore: T) {
-        LogDriver.initLog()
+        OSLogDriver.initLog()
 
         self.cacheDataStore = cacheDataStore
 
@@ -47,7 +47,7 @@ public class FirebaseRemoteConfigDriver<T: CacheDataStoreProtocol>: FirebaseRemo
                             try self.cacheDataStore.variantTestSubjecter.send(self.getValue(remoteConfigType: updatedRemoteConfigType))
                         }
                     } catch {
-                        LogDriver.errorLog(error.toAppError)
+                        OSLogDriver.errorLog(error.toAppError)
                     }
                 }
             }
@@ -56,16 +56,16 @@ public class FirebaseRemoteConfigDriver<T: CacheDataStoreProtocol>: FirebaseRemo
         Task {
             do {
                 try await setUp()
-                LogDriver.debugLog("Completed setup FirebaseRemoteConfigDriver")
+                OSLogDriver.debugLog("Completed setup FirebaseRemoteConfigDriver")
             } catch {
-                LogDriver.errorLog(error.toAppError)
+                OSLogDriver.errorLog(error.toAppError)
                 assertionFailure("\(error.toAppError))")
             }
         }
     }
 
     deinit {
-        LogDriver.deinitLog()
+        OSLogDriver.deinitLog()
     }
 
     private func setUp() async throws {
@@ -74,7 +74,7 @@ public class FirebaseRemoteConfigDriver<T: CacheDataStoreProtocol>: FirebaseRemo
             try await remoteConfig.fetchAndActivate()
             try updateDataStore()
         } catch {
-            LogDriver.errorLog(error.toAppError)
+            OSLogDriver.errorLog(error.toAppError)
             throw error
         }
 
@@ -85,12 +85,12 @@ public class FirebaseRemoteConfigDriver<T: CacheDataStoreProtocol>: FirebaseRemo
 
             if let error {
                 cacheDataStore.remoteConfigUpdateErrorSubjecter.send(AppError.customError("\(error)"))
-                LogDriver.errorLog(error.toAppError)
+                OSLogDriver.errorLog(error.toAppError)
                 return
             }
 
             guard let updatedRemoteConfig else {
-                LogDriver.debugLog("Unexpected")
+                OSLogDriver.debugLog("Unexpected")
                 cacheDataStore.remoteConfigUpdateErrorSubjecter.send(AppError.customError("Unexpected"))
                 assertionFailure("Unexpected")
                 return
@@ -102,7 +102,7 @@ public class FirebaseRemoteConfigDriver<T: CacheDataStoreProtocol>: FirebaseRemo
                 }
                 updatedRemoteConfigTypesSubject.send(remoteConfigTypes)
             } catch {
-                LogDriver.errorLog(error.toAppError)
+                OSLogDriver.errorLog(error.toAppError)
                 cacheDataStore.remoteConfigUpdateErrorSubjecter.send(AppError.customError("\(error)"))
             }
         }
@@ -112,10 +112,10 @@ public class FirebaseRemoteConfigDriver<T: CacheDataStoreProtocol>: FirebaseRemo
         do {
             let data = remoteConfig.configValue(forKey: remoteConfigType.keyName).dataValue
             let decoded = try JSONDecoder().decode(RemoteConfigurableItem.self, from: data)
-            LogDriver.debugLog("\(decoded)")
+            OSLogDriver.debugLog("\(decoded)")
             return decoded
         } catch {
-            LogDriver.errorLog(error.toAppError)
+            OSLogDriver.errorLog(error.toAppError)
             throw error
         }
     }
@@ -131,7 +131,7 @@ public class FirebaseRemoteConfigDriver<T: CacheDataStoreProtocol>: FirebaseRemo
                 }
             }
         } catch {
-            LogDriver.errorLog(error.toAppError)
+            OSLogDriver.errorLog(error.toAppError)
             throw error
         }
     }
@@ -142,7 +142,7 @@ public class FirebaseRemoteConfigDriver<T: CacheDataStoreProtocol>: FirebaseRemo
                 try remoteConfig.setDefaults(from: remoteConfigType.defaultValue)
             }
         } catch {
-            LogDriver.errorLog(error.toAppError)
+            OSLogDriver.errorLog(error.toAppError)
             throw error
         }
     }

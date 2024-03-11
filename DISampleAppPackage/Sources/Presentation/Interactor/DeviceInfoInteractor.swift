@@ -6,39 +6,37 @@
 import DomainLayer
 import Foundation
 
-public struct DeviceInfoInteractor<BuildEnvDriver: BuildEnvDriverProtocol, DeviceInfoDriver: DeviceInfoDriverProtocol>: DeviceInfoUseCase {
-    private let buildEnvDriver: BuildEnvDriver
-    private let deviceInfoDriver: DeviceInfoDriver
+public struct DeviceInfoInteractor<Dependency: DeviceInfoUseCaseDependency>: DeviceInfoUseCase {
+    private let dependency: Dependency
 
-    public init(buildEnvDriver: BuildEnvDriver, deviceInfoDriver: DeviceInfoDriver) {
-        LogDriver.initLog()
+    public init(dependency: Dependency) {
+        dependency.logDriver.initLog()
 
-        self.buildEnvDriver = buildEnvDriver
-        self.deviceInfoDriver = deviceInfoDriver
+        self.dependency = dependency
     }
 
     public func getDeviceInfoValue(_ deviceInfoType: DeviceInfoType) -> String {
         switch deviceInfoType {
         case .appVersion:
-            "\(deviceInfoDriver.appVersion) (\(deviceInfoDriver.appBuildNumber))"
+            "\(dependency.deviceInfoDriver.appVersion) (\(dependency.deviceInfoDriver.appBuildNumber))"
         case .buildScheme:
-            buildEnvDriver.buildScheme.name
+            dependency.buildEnvDriver.buildScheme.name
         case .buildConfiguration:
-            buildEnvDriver.buildConfiguration.name
+            dependency.buildEnvDriver.buildConfiguration.name
         case .deviceIdentifier:
-            deviceInfoDriver.deviceIdentifier
+            dependency.deviceInfoDriver.deviceIdentifier
         case .deviceName:
-            deviceInfoDriver.deviceName
+            dependency.deviceInfoDriver.deviceName
         case .isSimulator:
-            "\(deviceInfoDriver.isSimulator)"
+            "\(dependency.deviceInfoDriver.isSimulator)"
         case .isPreview:
-            "\(deviceInfoDriver.isPreview)"
+            "\(dependency.deviceInfoDriver.isPreview)"
         case .osVersion:
-            "\(deviceInfoDriver.osType) \(deviceInfoDriver.osVersion)"
+            "\(dependency.deviceInfoDriver.osType) \(dependency.deviceInfoDriver.osVersion)"
         case .timezone:
-            deviceInfoDriver.timezone
+            dependency.deviceInfoDriver.timezone
         case .language:
-            deviceInfoDriver.language
+            dependency.deviceInfoDriver.language
         }
     }
 }

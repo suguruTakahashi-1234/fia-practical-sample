@@ -7,11 +7,11 @@ import SwiftUI // for UI
 
 public class ClipboardDriver: ClipboardDriverProtocol {
     public init() {
-        LogDriver.initLog()
+        OSLogDriver.initLog()
     }
 
     deinit {
-        LogDriver.deinitLog()
+        OSLogDriver.deinitLog()
     }
 
     public var copiedValue: String? {

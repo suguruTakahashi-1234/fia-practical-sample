@@ -8,11 +8,11 @@ import DomainLayer
 
 public class DeviceNameDriver: DeviceNameDriverProtocol {
     public init() {
-        LogDriver.initLog()
+        OSLogDriver.initLog()
     }
 
     deinit {
-        LogDriver.deinitLog()
+        OSLogDriver.deinitLog()
     }
 
     public var deviceName: String {

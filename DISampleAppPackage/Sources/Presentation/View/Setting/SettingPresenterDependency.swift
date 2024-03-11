@@ -3,4 +3,4 @@ import DomainLayer
 import Foundation
 
 /// @mockable
-public protocol SettingPresenterDependency {}
+public protocol SettingPresenterDependency: CommonPresenterDependency {}

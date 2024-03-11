@@ -6,28 +6,28 @@ import Foundation
 final class TaskListPresenter<Dependency: TaskListPresenterDependency>: ObservableObject {
     @Published private(set) var isEnabledNewFeature: Bool = false
 
-    private let cacheDataStore: Dependency.CacheDataStoreProtocolAT
+    private let dependency: Dependency
 
     init(dependency: Dependency) {
-        LogDriver.initLog()
+        dependency.logDriver.initLog()
 
-        cacheDataStore = dependency.cacheDataStore
+        self.dependency = dependency
 
-        cacheDataStore.variantTestSubjecter
+        dependency.cacheDataStore.variantTestSubjecter
             .receive(on: RunLoop.main)
             .map { $0.isEnabledNewFeature }
             .assign(to: &$isEnabledNewFeature)
     }
 
     deinit {
-        LogDriver.deinitLog()
+        dependency.logDriver.deinitLog()
     }
 
     func onAppear() async {
-        LogDriver.onAppearLog()
+        dependency.logDriver.onAppearLog()
     }
 
     func onDisappear() {
-        LogDriver.onDisappearLog()
+        dependency.logDriver.onDisappearLog()
     }
 }

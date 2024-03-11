@@ -7,7 +7,7 @@ import DomainLayer
 import Foundation
 
 /// @mockable(typealias: LibraryLicenseDriverProtocolAT = LibraryLicenseDriverProtocolMock)
-public protocol LicenseListPresenterDependency {
+public protocol LicenseListPresenterDependency: CommonPresenterDependency {
     associatedtype LibraryLicenseDriverProtocolAT: LibraryLicenseDriverProtocol
 
     var libraryLicenseDriver: LibraryLicenseDriverProtocolAT { get }

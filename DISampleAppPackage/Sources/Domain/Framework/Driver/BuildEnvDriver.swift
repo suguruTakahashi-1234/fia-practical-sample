@@ -10,7 +10,7 @@ public class BuildEnvDriver: BuildEnvDriverProtocol {
     public let buildConfiguration: BuildConfiguration
 
     public init(buildScheme: BuildScheme) {
-        LogDriver.initLog()
+        OSLogDriver.initLog()
 
         self.buildScheme = buildScheme
 
@@ -22,6 +22,6 @@ public class BuildEnvDriver: BuildEnvDriverProtocol {
     }
 
     deinit {
-        LogDriver.deinitLog()
+        OSLogDriver.deinitLog()
     }
 }

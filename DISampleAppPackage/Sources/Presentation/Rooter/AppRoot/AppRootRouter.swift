@@ -10,7 +10,7 @@ public struct AppRootRouter<Dependency: AppRootRouterDependency>: AppRootWirefra
     private let dependency: Dependency
 
     public init(dependency: Dependency) {
-        LogDriver.initLog()
+        dependency.logDriver.initLog()
 
         self.dependency = dependency
     }
@@ -36,8 +36,8 @@ public struct AppRootRouter<Dependency: AppRootRouterDependency>: AppRootWirefra
     }
 
     @MainActor
-    public func createLicenseDetailView(license: License) -> LicenseDetailView {
-        LicenseDetailView(license: license)
+    public func createLicenseDetailView(license: License) -> LicenseDetailView<Dependency> {
+        LicenseDetailView(dependency: dependency, license: license)
     }
 
     @MainActor

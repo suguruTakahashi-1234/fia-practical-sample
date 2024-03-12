@@ -38,6 +38,10 @@ sourcery-presentation-code-gen:
 swift-docc-gen:
 	./Swift-DocC/Script/docc_gen.sh $(TARGET) $(PACKAGE_NAME)
 
+.PHONY: periphery-scan
+periphery-scan:
+	./Periphery/Script/periphery_scan.sh $(CURDIR)
+
 .PHONY: presentation-code-gen
 presentation-code-gen:
 	$(MAKE) sourcery-presentation-code-gen

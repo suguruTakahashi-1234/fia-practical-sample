@@ -12,15 +12,15 @@ struct LicenseDetailScenarios: ScenarioProvider {
     static func addScenarios(into playbook: Playbook) {
         playbook.addScenarios(of: "LicenseDetail") {
             Scenario(type: .small, layout: .fill) {
-                LicenseDetailView(license: .sizeS)
+                LicenseDetailView(dependency: AppRootRouterDependencyMock.sizeS, license: .sizeS)
             }
 
             Scenario(type: .medium, layout: .fill) {
-                LicenseDetailView(license: .sizeM)
+                LicenseDetailView(dependency: AppRootRouterDependencyMock.sizeM, license: .sizeM)
             }
 
             Scenario(type: .large, layout: .fill) {
-                LicenseDetailView(license: .sizeL)
+                LicenseDetailView(dependency: AppRootRouterDependencyMock.sizeL, license: .sizeL)
             }
         }
     }

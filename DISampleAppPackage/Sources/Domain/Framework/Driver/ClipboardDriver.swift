@@ -3,7 +3,11 @@
 //  Copyright sugurutakahashi. All rights reserved.
 //
 
-import SwiftUI // for UIPasteboard
+#if os(iOS)
+    import SwiftUI // for UIPasteboard
+#elseif os(macOS)
+    import AppKit // NSPasteboard
+#endif
 
 public final class ClipboardDriver: ClipboardDriverProtocol {
     public init() {
@@ -15,10 +19,19 @@ public final class ClipboardDriver: ClipboardDriverProtocol {
     }
 
     public var copiedValue: String? {
-        UIPasteboard.general.string
+        #if os(iOS)
+            UIPasteboard.general.string
+        #else
+            OSLogDriver.errorLog("Unsupported by iOS Only")
+            return nil
+        #endif
     }
 
-    public func copy(_ string: String) {
-        UIPasteboard.general.string = string
+    public func copy(_ text: String) {
+        #if os(iOS)
+            UIPasteboard.general.string = text
+        #else
+            OSLogDriver.errorLog("Unsupported by iOS Only")
+        #endif
     }
 }

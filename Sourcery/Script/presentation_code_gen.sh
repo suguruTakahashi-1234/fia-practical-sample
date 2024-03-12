@@ -2,18 +2,18 @@
 
 # 引数の数の確認
 if [ "$#" -ne 2 ]; then
-    echo "Need args: $0 <VIEW=XXX> <ROUTER=YYY>"
+    echo "Need args: $0 <View> <Router>"
     exit 1
 fi
 
-SOURCERY_PACKAGE_PATH="./DISampleAppPackage"
-SCREEN_NAME="$1"
-ROUTER_NAME="$2"
-TEMPLATE_PATH="./Sourcery/Template"
-SOURCE_DIR="${SOURCERY_PACKAGE_PATH}/Sources/Presentation"
-OUTPUT_PRESENTATION_DIR="${SOURCE_DIR}/View/${SCREEN_NAME}"
-OUTPUT_ROUTER_DIR="${SOURCE_DIR}/Rooter/${ROUTER_NAME}"
-OUTPUT_TEST_DIR="${SOURCERY_PACKAGE_PATH}/Tests"
+sourcery_package_path="./DISampleAppPackage"
+screen_name="$1"
+router_name="$2"
+template_path="./Sourcery/Template"
+source_dir="${sourcery_package_path}/Sources/Presentation"
+output_presentation_dir="${source_dir}/View/${screen_name}"
+output_router_dir="${source_dir}/Rooter/${router_name}"
+output_test_dir="${sourcery_package_path}/Tests"
 
 # --force-parse のオプションが拡張子を別にしないと効かないため、それを回避するためのワークアラウンド処理
 remove_sourcery_header() {
@@ -29,41 +29,41 @@ remove_sourcery_header() {
 }
 
 # 出力ディレクトリが存在しない場合は作成
-mkdir -p "$OUTPUT_PRESENTATION_DIR"
-mkdir -p "$OUTPUT_ROUTER_DIR"
-mkdir -p "$OUTPUT_TEST_DIR"
+mkdir -p "$output_presentation_dir"
+mkdir -p "$output_router_dir"
+mkdir -p "$output_test_dir"
 
 # View 関連
-for COMPONENT in "PresenterDependency" "Presenter" "View"
+for component in "PresenterDependency" "Presenter" "View"
 do
-    swift run --package-path "$SOURCERY_PACKAGE_PATH" mint run sourcery \
-              --sources "$SOURCE_DIR" \
-              --templates "$TEMPLATE_PATH/${COMPONENT}.stencil" \
-              --output "$OUTPUT_PRESENTATION_DIR/${SCREEN_NAME}${COMPONENT}.swift" \
-              --args "screenName=$SCREEN_NAME",routerName="$ROUTER_NAME"
+    swift run --package-path "$sourcery_package_path" mint run sourcery \
+              --sources "$source_dir" \
+              --templates "$template_path/${component}.stencil" \
+              --output "$output_presentation_dir/${screen_name}${component}.swift" \
+              --args "screenName=$screen_name",routerName="$router_name"
 done
-remove_sourcery_header "$OUTPUT_PRESENTATION_DIR"
+remove_sourcery_header "$output_presentation_dir"
 
 # Router 関連
-for COMPONENT in "RouterDependency"
+for component in "RouterDependency"
 do
-swift run --package-path "$SOURCERY_PACKAGE_PATH" mint run sourcery --disableCache \
-          --sources "$SOURCE_DIR" \
-          --templates "$TEMPLATE_PATH/${COMPONENT}.stencil" \
-          --output "$OUTPUT_ROUTER_DIR/${ROUTER_NAME}${COMPONENT}.swift" \
-          --args screenName="$SCREEN_NAME",routerName="$ROUTER_NAME"
+swift run --package-path "$sourcery_package_path" mint run sourcery --disableCache \
+          --sources "$source_dir" \
+          --templates "$template_path/${component}.stencil" \
+          --output "$output_router_dir/${router_name}${component}.swift" \
+          --args screenName="$screen_name",routerName="$router_name"
 done
-remove_sourcery_header "$OUTPUT_ROUTER_DIR"
+remove_sourcery_header "$output_router_dir"
 
 # Test 関連
-for COMPONENT in "ViewSnapshotTest" "PresenterTest"
+for component in "ViewSnapshotTest" "PresenterTest"
 do
-    swift run --package-path "$SOURCERY_PACKAGE_PATH" mint run sourcery \
-                --sources "$SOURCE_DIR" \
-                --templates "$TEMPLATE_PATH/${COMPONENT}.stencil" \
-                --output "$OUTPUT_TEST_DIR/${COMPONENT}/${SCREEN_NAME}${COMPONENT}.swift" \
-                --args "screenName=$SCREEN_NAME",routerName="$ROUTER_NAME"
+    swift run --package-path "$sourcery_package_path" mint run sourcery \
+                --sources "$source_dir" \
+                --templates "$template_path/${component}.stencil" \
+                --output "$output_test_dir/${component}/${screen_name}${component}.swift" \
+                --args "screenName=$screen_name",routerName="$router_name"
 done
-remove_sourcery_header "$OUTPUT_TEST_DIR"
+remove_sourcery_header "$output_test_dir"
 
 echo "Sourcery DONE!!"

@@ -37,12 +37,20 @@ public final class DeviceInfoDriver<T: DeviceNameDriverProtocol>: DeviceInfoDriv
 
     /// ex) iPhone15,2, "iPad14,1"
     public var deviceIdentifier: String {
-        UIDevice.current.deviceIdentifier
+        #if os(iOS)
+            UIDevice.current.deviceIdentifier
+        #else
+            ProcessInfo.processInfo.hostName
+        #endif
     }
 
     /// ex) "iOS", "iPadOS"
     public var osType: String {
-        UIDevice.current.systemName
+        #if os(iOS)
+            UIDevice.current.systemName
+        #else
+            ProcessInfo.processInfo.operatingSystemVersionString
+        #endif
     }
 
     public var isSimulator: Bool {
@@ -59,7 +67,11 @@ public final class DeviceInfoDriver<T: DeviceNameDriverProtocol>: DeviceInfoDriv
 
     /// ex) "16.2, "16.6"
     public var osVersion: String {
-        UIDevice.current.systemVersion
+        #if os(iOS)
+            UIDevice.current.systemVersion
+        #else
+            ""
+        #endif
     }
 
     /// ex) Asia/Tokyo

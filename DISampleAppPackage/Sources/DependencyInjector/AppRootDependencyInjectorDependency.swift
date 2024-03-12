@@ -7,6 +7,7 @@ import DomainLayer
 import Foundation
 
 /// ここで使われる Driver は DependencyInjector 内でのみ使用されるため、本来必要のない protocol であるが、internal な範囲で使用することを明確化するためにあえて定義している（mockable のアノテーションをつけることは生成される Mock ファイルが Presentation 層なのでできない）
+/// periphery:ignore
 protocol AppRootDependencyInjectorDependency {
     associatedtype DeviceNameDriverProtocolAT = DeviceNameDriverProtocol
     associatedtype FirebaseSetupDriverProtocolAT: FirebaseSetupDriverProtocol

@@ -21,8 +21,8 @@ public final class AppRootRouter<Dependency: AppRootRouterDependency>: AppRootWi
     }
 
     @MainActor
-    public func createHomeTabView() -> HomeTabView<AppRootRouter> {
-        HomeTabView(router: self)
+    public func createHomeTabView() -> HomeTabView<AppRootRouter, Dependency> {
+        HomeTabView(router: self, dependency: dependency)
     }
 
     @MainActor
@@ -51,7 +51,7 @@ public final class AppRootRouter<Dependency: AppRootRouterDependency>: AppRootWi
     }
 }
 
-extension AppRootRouter where Dependency == AppRootRouterDependencyMock {
+public extension AppRootRouter where Dependency == AppRootRouterDependencyMock {
     static var empty: AppRootRouter<AppRootRouterDependencyMock> {
         AppRootRouter<AppRootRouterDependencyMock>(dependency: .empty)
     }

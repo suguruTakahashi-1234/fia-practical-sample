@@ -3,17 +3,17 @@ import DomainLayer
 import SwiftUI
 
 @MainActor
-public struct HomeTabView<Router: AppRootWireframe>: View {
+public struct HomeTabView<Router: AppRootWireframe, Dependency: HomeTabPresenterDependency>: View {
     private let router: Router
-    @State private var selectedTab: HomeTab
+    @StateObject private var presenter: HomeTabPresenter<Dependency>
 
-    public init(router: Router, selectedTab: HomeTab = .task) {
-        self.selectedTab = selectedTab
+    public init(router: Router, dependency: Dependency, selectedTab: HomeTab = .task) {
         self.router = router
+        _presenter = .init(wrappedValue: HomeTabPresenter(dependency: dependency, selectedTab: selectedTab))
     }
 
     public var body: some View {
-        TabView(selection: $selectedTab) {
+        TabView(selection: $presenter.selectedTab) {
             ForEach(HomeTab.allCases) { tab in
                 tab.contentView(router: router)
                     .tabItem {
@@ -21,6 +21,12 @@ public struct HomeTabView<Router: AppRootWireframe>: View {
                     }
                     .tag(tab)
             }
+        }
+        .task {
+            await presenter.onAppear()
+        }
+        .onDisappear {
+            presenter.onDisappear()
         }
     }
 }
@@ -62,7 +68,7 @@ struct HomeTabView_Previews: PreviewProvider, SnapshotTestable {
         .init(
             configurations: HomeTab.allCases.map { tab in .init(name: "\(tab)".initialUppercased, state: tab) },
             configure: { homeTab in
-                HomeTabView(router: AppRootRouter.empty, selectedTab: homeTab)
+                HomeTabView(router: AppRootRouter.empty, dependency: AppRootRouterDependencyMock.random, selectedTab: homeTab)
             }
         )
     }

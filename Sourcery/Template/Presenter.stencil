@@ -12,7 +12,7 @@ final class {{ argument.screenName }}Presenter<Dependency: {{ argument.screenNam
     }
 
     deinit {
-        dependency.logDriver.deinitLog()
+        OSLogDriver.deinitLog()
     }
 
     func onAppear() async {

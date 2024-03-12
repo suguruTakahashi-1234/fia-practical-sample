@@ -17,7 +17,7 @@ final class AppRootPresenter<Dependency: AppRootPresenterDependency>: Observable
     }
 
     deinit {
-        dependency.logDriver.deinitLog()
+        OSLogDriver.deinitLog()
     }
 
     func onAppear() async {

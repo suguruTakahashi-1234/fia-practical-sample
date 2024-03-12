@@ -19,7 +19,7 @@ final class LicenseDetailPresenter<Dependency: LicenseDetailPresenterDependency>
     }
 
     deinit {
-        dependency.logDriver.deinitLog()
+        OSLogDriver.deinitLog()
     }
 
     func onAppear() async {

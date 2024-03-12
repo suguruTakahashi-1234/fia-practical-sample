@@ -13,7 +13,7 @@ final class SettingPresenter<Dependency: SettingPresenterDependency>: Observable
     }
 
     deinit {
-        dependency.logDriver.deinitLog()
+        OSLogDriver.deinitLog()
     }
 
     func onAppear() async {

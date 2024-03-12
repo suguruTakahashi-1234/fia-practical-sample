@@ -5,7 +5,7 @@
 tools_package="./DISampleAppPackage"
 
 run_swiftformat() {
-  command="swift run --package-path $tools_package swiftformat $tools_package"
+  command="swift run --package-path $tools_package mint run swiftformat $tools_package"
   command -v $command >/dev/null 2>&1
   if [ $? -gt 0 ]; then
     echo "not found swiftformat "

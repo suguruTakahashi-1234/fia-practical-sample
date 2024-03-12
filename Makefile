@@ -20,11 +20,11 @@ githooks-cleanup:
 
 .PHONY: swiftformat-run
 swiftformat-run:
-	swift run --package-path $(PACKAGE_NAME) swiftformat .
+	swift run --package-path $(PACKAGE_NAME) mint run swiftformat .
 
-.PHONY: swiftformat-dry-run
-swiftformat-dry-run:
-	swift run --package-path $(PACKAGE_NAME) swiftformat --lint .
+.PHONY: swiftformat-lint
+swiftformat-lint:
+	swift run --package-path $(PACKAGE_NAME) mint run swiftformat --lint .
 
 .PHONY: mockolo-run
 mockolo-run:

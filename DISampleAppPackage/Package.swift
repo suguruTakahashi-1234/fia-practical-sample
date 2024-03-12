@@ -224,7 +224,6 @@ let package = Package(
 
         // for CLI
         .package(url: "https://github.com/yonaskolb/Mint.git", from: "0.17.5"),
-        .package(url: "https://github.com/nicklockwood/SwiftFormat", exact: "0.53.4"), // バージョンを変更した場合は .swiftformat ファイルを修正する
 
         // DocC
         .package(url: "https://github.com/apple/swift-docc-plugin", from: "1.3.0"),

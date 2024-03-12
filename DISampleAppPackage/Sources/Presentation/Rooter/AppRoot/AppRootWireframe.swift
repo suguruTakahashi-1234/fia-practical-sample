@@ -7,13 +7,14 @@ import DomainLayer
 
 public protocol AppRootWireframe {
     associatedtype AppRootWireframeAT: AppRootWireframe
+    associatedtype HomeTabPresenterDependencyAT: HomeTabPresenterDependency
     associatedtype SettingPresenterDependencyAT: SettingPresenterDependency
     associatedtype LicenseListPresenterDependencyAT: LicenseListPresenterDependency
     associatedtype LicenseDetailPresenterDependencyAT: LicenseDetailPresenterDependency
     associatedtype DeviceInfoPresenterDependencyAT: DeviceInfoPresenterDependency
     associatedtype TaskListPresenterDependencyAT: TaskListPresenterDependency
 
-    func createHomeTabView() -> HomeTabView<AppRootWireframeAT>
+    func createHomeTabView() -> HomeTabView<AppRootWireframeAT, HomeTabPresenterDependencyAT>
     func createSettingView() -> SettingView<AppRootWireframeAT, SettingPresenterDependencyAT>
     func createLicenseListView() -> LicenseListView<AppRootWireframeAT, LicenseListPresenterDependencyAT>
     func createLicenseDetailView(license: License) -> LicenseDetailView<LicenseDetailPresenterDependencyAT>

@@ -48,15 +48,3 @@ final class DeviceInfoPresenter<Dependency: DeviceInfoPresenterDependency>: Obse
         deviceInfoUseCase.getDeviceInfoValue(deviceInfoType)
     }
 }
-
-private extension BuildScheme {
-    var name: String {
-        "\(self)".camelCaseToSpaces.localizedCapitalized
-    }
-}
-
-private extension BuildConfiguration {
-    var name: String {
-        "\(self)".camelCaseToSpaces.localizedCapitalized
-    }
-}

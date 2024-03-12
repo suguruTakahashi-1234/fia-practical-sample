@@ -1,0 +1,63 @@
+{
+  // Ref: https://docs.renovatebot.com/configuration-options
+
+  // Renovateの設定スキーマへのURL
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+
+  // 基本設定を拡張
+  "extends": [
+    "config:base"
+  ],
+
+  // PRに自動で付けられるラベル
+  "labels": [],
+
+  // Renovate botを活性化
+  "enabled": true,
+
+  // 自動マージの無効化
+  "automerge": false,
+
+  // PR のタイトルと commit message の Prefix
+  "commitMessageAction": "【Renovate】",
+
+  // Xcode Cloud の CI の無効化
+  "commitMessageSuffix": "[ci skip]",
+
+  // スケジューリング
+  // ref: https://docs.renovatebot.com/configuration-options/#schedule
+  "schedule": ["after 10pm and before 5am every weekday"],
+
+  // PR作成するタイミング
+  "prCreation": "immediate",
+
+  // 1時間あたりに作成されるPR数を無制限にする（0は無制限を表す）
+  "prHourlyLimit": 0,
+
+  // 同時に開けるPRの数を無制限にする（0は無制限を表す）
+  "prConcurrentLimit": 0,
+
+  // ブランチ名に使用されるプレフィックス
+  "branchPrefix": "feature/renovate-",
+
+  // 使用する基本ブランチ
+  "baseBranches": ["$default"],
+
+  // ブランチ名に厳格な規則を適用
+  "branchNameStrict": true,
+
+  // PRタイトルに厳格な規則を適用
+  "prTitleStrict": true,
+
+  // "Dependency Dashboard" issueを作成
+  "dependencyDashboard": true,
+
+  // "Dependency Dashboard" issue のタイトル
+  "dependencyDashboardTitle": "【Renovate】ライブラリのバージョンアップ状況の整理",
+
+  // Dependency Dashboard に自動で付けられるラベル
+  "dependencyDashboardLabels": [],
+
+  // DraftのPRで作成
+  "draftPR": true
+}

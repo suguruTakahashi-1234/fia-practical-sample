@@ -3,11 +3,7 @@
 //  Copyright sugurutakahashi. All rights reserved.
 //
 
-#if os(iOS)
-    import SwiftUI // for UIPasteboard
-#elseif os(macOS)
-    import AppKit // NSPasteboard
-#endif
+import SwiftUI // for UIPasteboard
 
 public final class ClipboardDriver: ClipboardDriverProtocol {
     public init() {

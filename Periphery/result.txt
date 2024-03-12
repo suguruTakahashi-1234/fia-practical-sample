@@ -4,8 +4,8 @@
 * Indexing...
 * Analyzing...
 
-/Users/sugurutakahashi/git/DISample/DISampleAppPackage/Sources/Presentation/View/DeviceInfo/DeviceInfoView.swift:7:17: warning: Property 'router' is assigned, but never used
-/Users/sugurutakahashi/git/DISample/DISampleAppPackage/Sources/Presentation/View/TaskList/TaskListView.swift:7:17: warning: Property 'router' is assigned, but never used
+DISampleAppPackage/Sources/Presentation/View/DeviceInfo/DeviceInfoView.swift:7:17: warning: Property 'router' is assigned, but never used
+DISampleAppPackage/Sources/Presentation/View/TaskList/TaskListView.swift:7:17: warning: Property 'router' is assigned, but never used
 
 * Seeing false positives?
  - Periphery only analyzes files that are members of the targets you specify.

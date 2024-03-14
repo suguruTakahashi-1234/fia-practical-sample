@@ -7,7 +7,6 @@ import SwiftUI
 //    func create{{ argument.screenName }}View() -> {{ argument.screenName }}View<{{ argument.routerName }}WireframeAT, {{ argument.screenName }}PresenterDependencyAT>
 
 // TODO: Add {{ argument.routerName }}Router
-//    @MainActor
 //    public func create{{ argument.screenName }}View() -> {{ argument.screenName }}View<{{ argument.routerName }}Router, Dependency> {
 //        {{ argument.screenName }}View(router: self, dependency: dependency)
 //    }

@@ -36,6 +36,7 @@ public final class DeviceInfoDriver<T: DeviceNameDriverProtocol>: DeviceInfoDriv
     }
 
     /// ex) iPhone15,2, "iPad14,1"
+    @MainActor // for UIDevice
     public var deviceIdentifier: String {
         #if os(iOS)
             UIDevice.current.deviceIdentifier
@@ -45,11 +46,22 @@ public final class DeviceInfoDriver<T: DeviceNameDriverProtocol>: DeviceInfoDriv
     }
 
     /// ex) "iOS", "iPadOS"
+    @MainActor // for UIDevice
     public var osType: String {
         #if os(iOS)
             UIDevice.current.systemName
         #else
             ProcessInfo.processInfo.operatingSystemVersionString
+        #endif
+    }
+
+    /// ex) "16.2, "16.6"
+    @MainActor // for UIDevice
+    public var osVersion: String {
+        #if os(iOS)
+            UIDevice.current.systemVersion
+        #else
+            ""
         #endif
     }
 
@@ -63,15 +75,6 @@ public final class DeviceInfoDriver<T: DeviceNameDriverProtocol>: DeviceInfoDriv
 
     public var isPreview: Bool {
         ProcessInfo.processInfo.environment["XCODE_RUNNING_FOR_PREVIEWS"] == "1"
-    }
-
-    /// ex) "16.2, "16.6"
-    public var osVersion: String {
-        #if os(iOS)
-            UIDevice.current.systemVersion
-        #else
-            ""
-        #endif
     }
 
     /// ex) Asia/Tokyo

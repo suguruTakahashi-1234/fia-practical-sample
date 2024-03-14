@@ -5,8 +5,8 @@
 
 import Foundation
 
-public enum Constants {
-    public enum LogCategory {
+public enum Constants: Sendable {
+    public enum LogCategory: Sendable {
         public static let osLogger = "OSLogger(Domain & Presentation Layer)"
         public static let staticOSLogger = "OSLogger(Framework Layer)"
     }

@@ -5,7 +5,7 @@
 
 import Foundation
 
-public enum HomeTab {
+public enum HomeTab: Sendable {
     case task
     case setting
 }

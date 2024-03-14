@@ -6,6 +6,8 @@
 import DomainLayer
 import Foundation
 
+/// Interactor は 実質的に Presenter の切り出しなので問題ない
+@MainActor
 public final class DeviceInfoInteractor<Dependency: DeviceInfoUseCaseDependency>: DeviceInfoUseCase {
     private let dependency: Dependency
 

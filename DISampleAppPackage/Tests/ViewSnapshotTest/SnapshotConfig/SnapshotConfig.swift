@@ -96,6 +96,7 @@ enum SnapshotConfig {
         }
     }
 
+    @MainActor
     static func previewTest(_ previews: (some SnapshotTestable).Type, device: SnapshotConfig.DeviceType = .defaultDevice, file: StaticString = #filePath, function: String = #function, line: Int = #line) {
         previews.snapshots.assertSnapshots(
             as: .image(precision: SnapshotConfig.precision, layout: .device(config: device.viewImageConfig)),
@@ -105,6 +106,7 @@ enum SnapshotConfig {
         )
     }
 
+    @MainActor
     static func previewDeviceVariationTest(_ previews: (some SnapshotTestable).Type, file: StaticString = #filePath, function: String = #function, line: Int = #line) {
         for device in SnapshotConfig.DeviceType.allCases {
             previews.snapshots.assertSnapshots(
@@ -117,6 +119,7 @@ enum SnapshotConfig {
         }
     }
 
+    @MainActor
     static func previewContentSizeVariationTest(_ previews: (some SnapshotTestable).Type, device: SnapshotConfig.DeviceType = .defaultDevice, file: StaticString = #filePath, function: String = #function, line: Int = #line) {
         for contentSizeType in SnapshotConfig.ContentSizeType.allCases {
             previews.snapshots.assertSnapshots(

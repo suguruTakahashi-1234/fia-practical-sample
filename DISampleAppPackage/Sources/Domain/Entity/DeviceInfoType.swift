@@ -5,7 +5,7 @@
 
 import Foundation
 
-public enum DeviceInfoType {
+public enum DeviceInfoType: Sendable {
     case appVersion
     case osVersion
     case buildScheme

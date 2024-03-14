@@ -5,6 +5,7 @@
 
 import DomainLayer
 
+@MainActor
 public protocol AppRootWireframe {
     associatedtype AppRootWireframeAT: AppRootWireframe
     associatedtype HomeTabPresenterDependencyAT: HomeTabPresenterDependency
@@ -14,10 +15,10 @@ public protocol AppRootWireframe {
     associatedtype DeviceInfoPresenterDependencyAT: DeviceInfoPresenterDependency
     associatedtype TaskListPresenterDependencyAT: TaskListPresenterDependency
 
-    @MainActor func createHomeTabView() -> HomeTabView<AppRootWireframeAT, HomeTabPresenterDependencyAT>
-    @MainActor func createSettingView() -> SettingView<AppRootWireframeAT, SettingPresenterDependencyAT>
-    @MainActor func createLicenseListView() -> LicenseListView<AppRootWireframeAT, LicenseListPresenterDependencyAT>
-    @MainActor func createLicenseDetailView(license: License) -> LicenseDetailView<LicenseDetailPresenterDependencyAT>
-    @MainActor func createDeviceInfoView() -> DeviceInfoView<AppRootWireframeAT, DeviceInfoPresenterDependencyAT>
-    @MainActor func createTaskListView() -> TaskListView<AppRootWireframeAT, TaskListPresenterDependencyAT>
+    func createHomeTabView() -> HomeTabView<AppRootWireframeAT, HomeTabPresenterDependencyAT>
+    func createSettingView() -> SettingView<AppRootWireframeAT, SettingPresenterDependencyAT>
+    func createLicenseListView() -> LicenseListView<AppRootWireframeAT, LicenseListPresenterDependencyAT>
+    func createLicenseDetailView(license: License) -> LicenseDetailView<LicenseDetailPresenterDependencyAT>
+    func createDeviceInfoView() -> DeviceInfoView<AppRootWireframeAT, DeviceInfoPresenterDependencyAT>
+    func createTaskListView() -> TaskListView<AppRootWireframeAT, TaskListPresenterDependencyAT>
 }

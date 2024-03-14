@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct License: Identifiable {
+public struct License: Identifiable, Sendable {
     public let id: String
     public let name: String
     public let text: String

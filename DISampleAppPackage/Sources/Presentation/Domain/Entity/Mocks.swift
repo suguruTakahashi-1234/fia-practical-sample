@@ -475,15 +475,15 @@ public final class LicenseListPresenterDependencyMock: LicenseListPresenterDepen
 
 public final class DeviceInfoDriverProtocolMock: DeviceInfoDriverProtocol {
     public init() { }
-    public init(appVersion: String = "", appBuildNumber: String = "", deviceName: String = "", deviceIdentifier: String = "", isSimulator: Bool = false, isPreview: Bool = false, osType: String = "", osVersion: String = "", timezone: String = "", language: String = "") {
+    public init(appVersion: String = "", appBuildNumber: String = "", deviceName: String = "", deviceIdentifier: String = "", osType: String = "", osVersion: String = "", isSimulator: Bool = false, isPreview: Bool = false, timezone: String = "", language: String = "") {
         self.appVersion = appVersion
         self.appBuildNumber = appBuildNumber
         self.deviceName = deviceName
         self.deviceIdentifier = deviceIdentifier
-        self.isSimulator = isSimulator
-        self.isPreview = isPreview
         self.osType = osType
         self.osVersion = osVersion
+        self.isSimulator = isSimulator
+        self.isPreview = isPreview
         self.timezone = timezone
         self.language = language
     }
@@ -501,17 +501,17 @@ public final class DeviceInfoDriverProtocolMock: DeviceInfoDriverProtocol {
     public private(set) var deviceIdentifierSetCallCount = 0
     public var deviceIdentifier: String = "" { didSet { deviceIdentifierSetCallCount += 1 } }
 
-    public private(set) var isSimulatorSetCallCount = 0
-    public var isSimulator: Bool = false { didSet { isSimulatorSetCallCount += 1 } }
-
-    public private(set) var isPreviewSetCallCount = 0
-    public var isPreview: Bool = false { didSet { isPreviewSetCallCount += 1 } }
-
     public private(set) var osTypeSetCallCount = 0
     public var osType: String = "" { didSet { osTypeSetCallCount += 1 } }
 
     public private(set) var osVersionSetCallCount = 0
     public var osVersion: String = "" { didSet { osVersionSetCallCount += 1 } }
+
+    public private(set) var isSimulatorSetCallCount = 0
+    public var isSimulator: Bool = false { didSet { isSimulatorSetCallCount += 1 } }
+
+    public private(set) var isPreviewSetCallCount = 0
+    public var isPreview: Bool = false { didSet { isPreviewSetCallCount += 1 } }
 
     public private(set) var timezoneSetCallCount = 0
     public var timezone: String = "" { didSet { timezoneSetCallCount += 1 } }

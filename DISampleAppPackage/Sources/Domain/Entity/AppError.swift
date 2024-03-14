@@ -5,7 +5,7 @@
 
 import Foundation
 
-public enum AppError: Error {
+public enum AppError: Error, Sendable {
     case customError(String)
 }
 

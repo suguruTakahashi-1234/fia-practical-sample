@@ -5,7 +5,7 @@
 
 import Foundation
 
-public enum LogLevel {
+public enum LogLevel: Sendable {
     case debug
     case info
     case notice // = default

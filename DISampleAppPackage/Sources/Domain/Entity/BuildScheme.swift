@@ -5,7 +5,7 @@
 
 import Foundation
 
-public enum BuildScheme {
+public enum BuildScheme: Sendable {
     case mock
     case staging
     case production

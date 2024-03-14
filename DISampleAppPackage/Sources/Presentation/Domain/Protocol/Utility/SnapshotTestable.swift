@@ -8,5 +8,6 @@ import PreviewSnapshots
 public protocol SnapshotTestable {
     associatedtype State
 
+    @MainActor
     static var snapshots: PreviewSnapshots<State> { get }
 }

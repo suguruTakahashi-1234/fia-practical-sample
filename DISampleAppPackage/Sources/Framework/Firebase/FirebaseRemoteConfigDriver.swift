@@ -10,7 +10,7 @@ import Foundation
 
 public final class FirebaseRemoteConfigDriver<T: CacheDataStoreProtocol>: FirebaseRemoteConfigDriverProtocol {
     /// FirebaseApp.configure() 前に Firebase SDK API を呼ばないようにするために lazy var にしている
-    private lazy var remoteConfig = {
+    private lazy var remoteConfig: FirebaseRemoteConfig.RemoteConfig = {
         // https://firebase.google.com/docs/remote-config/get-started?platform=ios&hl=ja
         let remoteConfig = RemoteConfig.remoteConfig()
         let settings = RemoteConfigSettings()

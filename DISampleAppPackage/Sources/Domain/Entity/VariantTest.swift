@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct VariantTest: RemoteConfigurable {
+public struct VariantTest: RemoteConfigurable, Sendable {
     public let isEnabledNewFeature: Bool
 
     public init(isEnabledNewFeature: Bool) {

@@ -6,5 +6,9 @@
 import DomainLayer
 import Foundation
 
-/// @mockable
-public protocol AppRootPresenterDependency: CommonPresenterDependency {}
+/// @mockable(typealias: LocalDataStoreProtocolAT = LocalDataStore)
+public protocol AppRootPresenterDependency: CommonPresenterDependency {
+    associatedtype LocalDataStoreProtocolAT: LocalDataStoreProtocol
+
+    var localDataStore: LocalDataStoreProtocolAT { get }
+}

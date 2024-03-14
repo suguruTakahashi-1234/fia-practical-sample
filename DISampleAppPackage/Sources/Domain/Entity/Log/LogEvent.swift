@@ -13,6 +13,8 @@ public enum LogEventType: Sendable {
     case `deinit`(LogEvent.Deinit)
     case appearScreen(LogEvent.AppearScreen)
     case disappearScreen(LogEvent.DisappearScreen)
+    case updateLocalDataStore(LogEvent.UpdateLocalDataStore)
+    case launchApp(LogEvent.LaunchApp)
 }
 
 public extension LogEventType {
@@ -29,6 +31,10 @@ public extension LogEventType {
         case .appearScreen(let value):
             value
         case .disappearScreen(let value):
+            value
+        case .updateLocalDataStore(let value):
+            value
+        case .launchApp(let value):
             value
         }
     }
@@ -82,6 +88,26 @@ public enum LogEvent: Sendable {
 
         public init(screenName: String) {
             self.screenName = screenName
+        }
+    }
+
+    public struct UpdateLocalDataStore: LoggableEntity {
+        public let key: String
+        public let oldValue: String
+        public let newValue: String
+
+        public init(key: String, oldValue: String, newValue: String) {
+            self.key = key
+            self.oldValue = oldValue
+            self.newValue = newValue
+        }
+    }
+
+    public struct LaunchApp: LoggableEntity {
+        public let count: Int
+
+        public init(count: Int) {
+            self.count = count
         }
     }
 }

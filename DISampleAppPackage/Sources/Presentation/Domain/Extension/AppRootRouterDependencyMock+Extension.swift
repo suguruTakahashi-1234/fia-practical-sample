@@ -18,6 +18,7 @@ public extension AppRootRouterDependencyMock {
 
     /// 生成された init() だと nil が代入されてしまうため、デフォルト引数を設定した create を用意する
     static func create(
+        localDataStore: LocalDataStore = .init(),
         cacheDataStore: CacheDataStoreProtocolMock = .init(remoteConfigUpdateErrorSubjecter: .init(), appInfoSubjecter: .init(.defaultValue), variantTestSubjecter: .init(.defaultValue)),
         libraryLicenseDriver: LibraryLicenseDriverProtocolMock = .init(),
         deviceInfoDriver: DeviceInfoDriver<DeviceNameDriverProtocolMock> = .init(deviceNameDriver: .init(deviceName: "Mock")),
@@ -28,10 +29,11 @@ public extension AppRootRouterDependencyMock {
         .init(
             cacheDataStore: cacheDataStore,
             logDriver: logDriver,
+            localDataStore: localDataStore,
             libraryLicenseDriver: libraryLicenseDriver,
+            clipboardDriver: clipboardDriver,
             buildEnvDriver: buildEnvDriver,
-            deviceInfoDriver: deviceInfoDriver,
-            clipboardDriver: clipboardDriver
+            deviceInfoDriver: deviceInfoDriver
         )
     }
 

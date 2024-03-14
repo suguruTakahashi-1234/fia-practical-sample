@@ -14,6 +14,7 @@ import PresentationLayer
 public final class AppRootDependencyInjector: AppRootRouterDependency, AppRootDependencyInjectorDependency, LogDriverDependency {
     /// Data Store
     public let cacheDataStore: CacheDataStore
+    public let localDataStore: LocalDataStore
 
     /// Internal Driver
     let deviceNameDriver: DeviceNameDriver
@@ -38,6 +39,7 @@ public final class AppRootDependencyInjector: AppRootRouterDependency, AppRootDe
 
         // DataStore
         cacheDataStore = CacheDataStore()
+        localDataStore = LocalDataStore()
 
         // Internal Driver
         deviceNameDriver = DeviceNameDriver()

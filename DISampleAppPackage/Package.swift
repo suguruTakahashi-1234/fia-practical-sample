@@ -165,7 +165,7 @@ enum TestTargetType: CaseIterable {
     case presenterTest
     case viewSnapshotTest
 
-    private var name: String {
+    var name: String {
         "\(self)".initialUppercased
     }
 
@@ -218,7 +218,10 @@ let package = Package(
         .iOS(.v17),
         .macOS(.v14),
     ],
-    products: TargetType.allCases.map { $0.product },
+    products: TargetType.allCases.map { $0.product } + [
+        .library(name: "All Targets & Tests", targets: TargetType.allCases.map { $0.name } + TestTargetType.allCases.map { $0.name }),
+        .library(name: "All Targets", targets: TargetType.allCases.map { $0.name }),
+    ],
     dependencies: [
         // Library
         .package(url: "https://github.com/firebase/firebase-ios-sdk.git", from: "10.22.1"),

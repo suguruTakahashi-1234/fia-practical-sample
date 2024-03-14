@@ -102,7 +102,6 @@ enum TargetType: CaseIterable {
     case framework(FrameworkTargetType)
     case presentation
     case previewCatalog
-    case scenarioCatalog
 
     static var allCases: [TargetType] {
         FrameworkTargetType.allCases.map { .framework($0) } + [
@@ -110,7 +109,6 @@ enum TargetType: CaseIterable {
             .domain,
             .presentation,
             .previewCatalog,
-            .scenarioCatalog,
         ]
     }
 
@@ -192,8 +190,6 @@ private extension PackageDescription.Target.Dependency {
     /// Library
     static let firebaseAnalytics: Self = .product(name: "FirebaseAnalytics", package: "firebase-ios-sdk")
     static let firebaseRemoteConfig: Self = .product(name: "FirebaseRemoteConfig", package: "firebase-ios-sdk")
-    static let playbook: Self = .product(name: "Playbook", package: "playbook-ios")
-    static let playbookUI: Self = .product(name: "PlaybookUI", package: "playbook-ios")
     static let previewSnapshots: Self = .product(name: "PreviewSnapshots", package: "swiftui-preview-snapshots")
     static let previewSnapshotsTesting: Self = .product(name: "PreviewSnapshotsTesting", package: "swiftui-preview-snapshots")
     static let previewGallery: Self = .product(name: "PreviewGallery", package: "SnapshotPreviews-iOS")
@@ -225,7 +221,6 @@ let package = Package(
     dependencies: [
         // Library
         .package(url: "https://github.com/firebase/firebase-ios-sdk.git", from: "10.22.1"),
-        .package(url: "https://github.com/playbook-ui/playbook-ios.git", from: "0.3.5"), // TODO: 不要なのでいつでも削除可能
         .package(url: "https://github.com/doordash-oss/swiftui-preview-snapshots", from: "1.1.1"),
         .package(url: "https://github.com/EmergeTools/SnapshotPreviews-iOS", from: "0.8.6"),
         .package(url: "https://github.com/apple/swift-syntax", from: "509.1.1"), // SwiftSyntax の競合に注意(510.0.0がリリースされているがswift-testingと競合してあげられない)
@@ -301,12 +296,6 @@ extension TargetType {
             .init([
                 TargetType.presentation.dependency, // PreviewGallery() 行うモジュールに依存させるとその Preview が生成される
                 .previewGallery,
-            ])
-        case .scenarioCatalog:
-            .init([
-                TargetType.presentation.dependency,
-                .playbook,
-                .playbookUI,
             ])
         }
     }

@@ -16,7 +16,4 @@
    <FileRef
       location = "group:PreviewCatalog/PreviewCatalog.xcodeproj">
    </FileRef>
-   <FileRef
-      location = "group:ScenarioCatalog/ScenarioCatalog.xcodeproj">
-   </FileRef>
 </Workspace>

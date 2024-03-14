@@ -4,7 +4,7 @@
 //
 
 import DomainLayer
-import Playbook
+@preconcurrency import Playbook
 import PresentationLayer
 
 @MainActor

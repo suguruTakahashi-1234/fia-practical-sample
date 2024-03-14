@@ -16,6 +16,8 @@ public enum DeviceInfoType: Sendable {
     case deviceIdentifier
     case timezone
     case language
+    case launchAppCount
+    case apnsToken
 }
 
 extension DeviceInfoType: CaseIterable {}

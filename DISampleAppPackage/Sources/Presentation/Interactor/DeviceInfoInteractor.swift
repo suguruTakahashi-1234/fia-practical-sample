@@ -39,6 +39,10 @@ public final class DeviceInfoInteractor<Dependency: DeviceInfoUseCaseDependency>
             dependency.deviceInfoDriver.timezone
         case .language:
             dependency.deviceInfoDriver.language
+        case .launchAppCount:
+            "\(dependency.localDataStore.launchAppCount)"
+        case .apnsToken:
+            "\(dependency.localDataStore.apnsToken?.deviceTokenHexString ?? "not set")"
         }
     }
 }

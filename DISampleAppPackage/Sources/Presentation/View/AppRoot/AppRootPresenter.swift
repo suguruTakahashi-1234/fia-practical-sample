@@ -22,6 +22,13 @@ final class AppRootPresenter<Dependency: AppRootPresenterDependency>: Observable
 
     func onAppear() async {
         dependency.logDriver.onAppearLog()
+
+        dependency.logDriver.logging(.launchApp(.init(count: dependency.localDataStore.launchAppCount)))
+        dependency.localDataStore.launchAppCount = dependency.localDataStore.launchAppCount + 1
+
+        if !dependency.localDataStore.isFirstLaunch {
+            dependency.localDataStore.isFirstLaunch = true
+        }
     }
 
     func onDisappear() {

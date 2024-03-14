@@ -1,5 +1,5 @@
 {
-  "originHash" : "3a5f7ff23d8759c80108d23c2c56673c98a9bdef9bab9297a2d9ef82d2f41767",
+  "originHash" : "cfd97ddbde95b2412491141bcb56f9d29d5c10935d9fe552c15830ea3133d193",
   "pins" : [
     {
       "identity" : "abseil-cpp-binary",
@@ -152,15 +152,6 @@
       "state" : {
         "revision" : "3bfd2737b700b9a36565a8c94f4ad2b050a5e574",
         "version" : "1.0.1"
-      }
-    },
-    {
-      "identity" : "playbook-ios",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/playbook-ui/playbook-ios.git",
-      "state" : {
-        "revision" : "0e7c312abdb4f7afeaf24369bab114cf475f573c",
-        "version" : "0.3.5"
       }
     },
     {

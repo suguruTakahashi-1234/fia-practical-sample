@@ -6,7 +6,7 @@
 import Foundation
 
 /// 本来、enum を定義せずに LoggableEntity に準拠した型を log 出力時に引数に取ってもよいが、enum の連想値でどの型の LogEvent を持つか定義することで、ログ出力時の実装の効率をよくしている（本質的な意味はほぼない CaseIterable などを使うケースがあれば別だが）
-public enum LogEventType {
+public enum LogEventType: Sendable {
     case debug(LogEvent.Debug)
     case error(LogEvent.Error)
     case `init`(LogEvent.Init)
@@ -34,7 +34,7 @@ public extension LogEventType {
     }
 }
 
-public enum LogEvent {
+public enum LogEvent: Sendable {
     public struct Debug: LoggableEntity {
         public let message: String
 

@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct AppInfo: RemoteConfigurable {
+public struct AppInfo: RemoteConfigurable, Sendable {
     public let appUpdateInfo: AppUpdateInfo
     public let maintenanceInfo: MaintenanceInfo
 

@@ -5,7 +5,7 @@
 
 import Foundation
 
-public enum RemoteConfigType: CaseIterable {
+public enum RemoteConfigType: CaseIterable, Sendable {
     case appInfo
     case variantTest
 

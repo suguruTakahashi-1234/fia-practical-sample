@@ -14,8 +14,16 @@ private extension String {
     }
 }
 
+let swiftFlags = [
+    "-Xfrontend", "-warn-long-expression-type-checking=100",
+    "-Xfrontend", "-warn-long-function-bodies=100",
+    "-enable-actor-data-race-checks",
+]
+
 /// Ref: https://github.com/treastrain/swift-upcomingfeatureflags-cheatsheet
+/// Ref: https://zenn.dev/treastrain/articles/d2fd1b44e3ead5
 extension SwiftSetting {
+    static let strictConcurrency: Self = .enableExperimentalFeature("StrictConcurrency") // https://www.swift.org/documentation/concurrency/
     static let forwardTrailingClosures: Self = .enableUpcomingFeature("ForwardTrailingClosures") // SE-0286, Swift 5.3,  SwiftPM 5.8+
     static let existentialAny: Self = .enableUpcomingFeature("ExistentialAny") // SE-0335, Swift 5.6,  SwiftPM 5.8+
     static let bareSlashRegexLiterals: Self = .enableUpcomingFeature("BareSlashRegexLiterals") // SE-0354, Swift 5.7,  SwiftPM 5.8+
@@ -25,12 +33,15 @@ extension SwiftSetting {
     static let deprecateApplicationMain: Self = .enableUpcomingFeature("DeprecateApplicationMain") // SE-0383, Swift 5.10, SwiftPM 5.10+
     static let isolatedDefaultValues: Self = .enableUpcomingFeature("IsolatedDefaultValues") // SE-0411, Swift 5.10, SwiftPM 5.10+
     static let globalConcurrency: Self = .enableUpcomingFeature("GlobalConcurrency") // SE-0412, Swift 5.10, SwiftPM 5.10+
+    static let otherSwiftFlags: Self = .unsafeFlags(swiftFlags)
 }
 
 /// Ref: https://github.com/treastrain/swift-upcomingfeatureflags-cheatsheet
+/// Ref: https://zenn.dev/treastrain/articles/d2fd1b44e3ead5
 extension SwiftSetting: CaseIterable {
     public static var allCases: [Self] {
         [
+            .strictConcurrency,
             .forwardTrailingClosures,
             .existentialAny,
             .bareSlashRegexLiterals,
@@ -40,6 +51,7 @@ extension SwiftSetting: CaseIterable {
             .deprecateApplicationMain,
             .isolatedDefaultValues,
             .globalConcurrency,
+            .otherSwiftFlags,
         ]
     }
 }

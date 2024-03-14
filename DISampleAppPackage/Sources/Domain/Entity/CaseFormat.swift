@@ -5,7 +5,7 @@
 
 import Foundation
 
-public enum CaseFormat {
+public enum CaseFormat: Sendable {
     case original
     case snakeCase
 }

@@ -44,7 +44,7 @@ private extension HomeTab {
         }
     }
 
-    @ViewBuilder
+    @MainActor @ViewBuilder
     func contentView(router: some AppRootWireframe) -> some View {
         switch self {
         case .task:

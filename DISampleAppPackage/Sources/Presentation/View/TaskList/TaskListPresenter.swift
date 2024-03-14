@@ -20,7 +20,7 @@ final class TaskListPresenter<Dependency: TaskListPresenterDependency>: Observab
     }
 
     deinit {
-        dependency.logDriver.deinitLog()
+        OSLogDriver.deinitLog()
     }
 
     func onAppear() async {

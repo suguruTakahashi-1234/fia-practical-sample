@@ -5,6 +5,7 @@
 
 import DomainLayer
 
+@MainActor
 public protocol AppRootWireframe {
     associatedtype AppRootWireframeAT: AppRootWireframe
     associatedtype HomeTabPresenterDependencyAT: HomeTabPresenterDependency

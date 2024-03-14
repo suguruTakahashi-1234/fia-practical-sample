@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct AppUpdateInfo: Codable {
+public struct AppUpdateInfo: Codable, Sendable {
     public let minimumRequiredAppVersion: String
     public let appUpdateUrl: String
 }

@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct MaintenanceInfo: Codable {
+public struct MaintenanceInfo: Codable, Sendable {
     public let isMaintenance: Bool
     public let maintenanceAlertTitle: String
     public let maintenanceAlertMessage: String

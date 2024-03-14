@@ -5,7 +5,7 @@
 
 import Foundation
 
-public enum BuildConfiguration {
+public enum BuildConfiguration: Sendable {
     case debug
     case release
 }

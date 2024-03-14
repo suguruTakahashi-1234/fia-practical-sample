@@ -16,7 +16,7 @@ final class HomeTabPresenter<Dependency: HomeTabPresenterDependency>: Observable
     }
 
     deinit {
-        dependency.logDriver.deinitLog()
+        OSLogDriver.deinitLog()
     }
 
     func onAppear() async {

@@ -27,7 +27,7 @@ final class DeviceInfoPresenter<Dependency: DeviceInfoPresenterDependency>: Obse
     }
 
     deinit {
-        dependency.logDriver.deinitLog()
+        OSLogDriver.deinitLog()
     }
 
     func onAppear() async {

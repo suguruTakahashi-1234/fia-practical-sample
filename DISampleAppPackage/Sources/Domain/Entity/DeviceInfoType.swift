@@ -10,6 +10,7 @@ public enum DeviceInfoType: Sendable {
     case osVersion
     case buildScheme
     case buildConfiguration
+    case bundleId
     case isSimulator
     case isPreview
     case deviceName

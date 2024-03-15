@@ -7,10 +7,10 @@ import Foundation
 import SwiftUI // for UIDevice
 
 /// Development ビルドでも正しい値を用いたいので Domain 層の Driver でとして定義して、DeviceKit 依存の DeviceNameDriver のみを注入するようにしている
-public final class DeviceInfoDriver<T: DeviceNameDriverProtocol>: DeviceInfoDriverProtocol {
-    private let deviceNameDriver: T
+public final class DeviceInfoDriver<DeviceNameDriver: DeviceNameDriverProtocol>: DeviceInfoDriverProtocol {
+    private let deviceNameDriver: DeviceNameDriver
 
-    public init(deviceNameDriver: T) {
+    public init(deviceNameDriver: DeviceNameDriver) {
         OSLogDriver.initLog()
 
         self.deviceNameDriver = deviceNameDriver
@@ -28,6 +28,11 @@ public final class DeviceInfoDriver<T: DeviceNameDriverProtocol>: DeviceInfoDriv
     /// ex) 123
     public var appBuildNumber: String {
         Bundle.main.infoDictionary?["CFBundleVersion"] as? String ?? "unknown"
+    }
+
+    /// ex) com.suguru-takahashi.DISample.Development
+    public var bundleId: String {
+        "\(Bundle.main.bundleIdentifier ?? "unknown")"
     }
 
     /// ex) "iPhone 14 Pro"

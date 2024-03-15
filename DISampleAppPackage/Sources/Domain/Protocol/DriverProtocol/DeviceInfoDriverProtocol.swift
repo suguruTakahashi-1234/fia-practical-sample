@@ -16,6 +16,10 @@ public protocol DeviceInfoDriverProtocol: AnyObject {
     /// ex) 123
     var appBuildNumber: String { get }
 
+    /// Bundle.main.bundleIdentifier
+    /// ex) com.suguru-takahashi.DISample.Development
+    var bundleId: String { get }
+
     /// for DeviceKit SDK
     /// ex) "iPhone 14 Pro"
     var deviceName: String { get }

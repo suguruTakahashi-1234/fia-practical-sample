@@ -27,14 +27,17 @@ public final class AppRootDependencyInjector: AppRootRouterDependency, AppRootDe
     public let libraryLicenseDriver: LibraryLicenseDriver
 
     /// Firenbase Driver
-    let firebaseSetupDriver: FirebaseSetupDriver
+    let firebaseSetupDriver: FirebaseSetupDriver<BuildEnvDriver>
     let firebaseRemoteConfigDriver: FirebaseRemoteConfigDriver<CacheDataStore>
     public let firebaseLogDriver: FirebaseLogDriver
 
     /// Log Driver
     public let logDriver: LogDriver<OSLogDriver, FirebaseLogDriver>
 
+    @MainActor
     public init(buildScheme: BuildScheme) {
+        precondition(buildScheme != .development, "Unexpected")
+
         OSLogDriver.initLog()
 
         // DataStore
@@ -52,7 +55,7 @@ public final class AppRootDependencyInjector: AppRootRouterDependency, AppRootDe
         libraryLicenseDriver = LibraryLicenseDriver()
 
         // Firenbase Driver
-        firebaseSetupDriver = FirebaseSetupDriver()
+        firebaseSetupDriver = FirebaseSetupDriver(buildEnvDriver: buildEnvDriver)
         firebaseLogDriver = FirebaseLogDriver()
         firebaseRemoteConfigDriver = FirebaseRemoteConfigDriver(cacheDataStore: cacheDataStore)
 

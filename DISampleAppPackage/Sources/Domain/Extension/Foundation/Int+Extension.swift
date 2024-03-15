@@ -35,3 +35,9 @@ extension Int: RandomValueProvidable {
         .random(in: -10000...10000)
     }
 }
+
+extension Int: PlaceholderProvidable {
+    public static var placeholder: Int {
+        999_999
+    }
+}

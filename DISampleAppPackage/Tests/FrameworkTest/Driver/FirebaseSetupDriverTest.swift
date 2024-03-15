@@ -8,10 +8,12 @@ import FirebaseFramework
 import Testing
 
 struct FirebaseLogDriverTest {
-    var firebaseSetupDriver: FirebaseSetupDriver!
+    var firebaseSetupDriver: FirebaseSetupDriver<BuildEnvDriver>!
+    var buildEnvDriver: BuildEnvDriver!
 
     init() {
-        firebaseSetupDriver = .init()
+        buildEnvDriver = .init(buildScheme: .testing)
+        firebaseSetupDriver = .init(buildEnvDriver: buildEnvDriver)
     }
 
     @Test("初期化した時") func initialize() {

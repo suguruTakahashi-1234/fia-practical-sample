@@ -6,7 +6,8 @@
 import Foundation
 
 public enum BuildScheme: Sendable {
-    case mock
+    case testing
+    case development
     case staging
     case production
 }

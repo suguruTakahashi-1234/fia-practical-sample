@@ -144,6 +144,7 @@ enum TargetType: CaseIterable {
             name: name,
             dependencies: dependencyLibrary.dependencies,
             path: path,
+            resources: resources,
             plugins: dependencyLibrary.plugins
         )
     }
@@ -155,11 +156,23 @@ enum TargetType: CaseIterable {
     var product: PackageDescription.Product {
         .library(name: name, targets: [name])
     }
+
+    var resources: [Resource]? {
+        switch self {
+        case .framework(.firebase):
+            [
+                // Staging 環境の GoogleService-Info.plist のコピー( testTarget でインテグレーションテストをしたいときに参照する)
+                .process("Resources/GoogleService-Info-For-Testing.plist"),
+            ]
+        default:
+            nil
+        }
+    }
 }
 
 enum TestTargetType: CaseIterable {
-    case domainTest
     case frameworkTest
+    case interactorTest
     case presenterTest
     case viewSnapshotTest
 
@@ -176,11 +189,16 @@ enum TestTargetType: CaseIterable {
         }
     }
 
+    private var resources: [Resource]? {
+        nil
+    }
+
     var target: PackageDescription.Target {
         .testTarget(
             name: name,
             dependencies: dependencyLibrary.dependencies,
             exclude: exclude,
+            resources: resources,
             plugins: dependencyLibrary.plugins
         )
     }
@@ -214,10 +232,7 @@ let package = Package(
         .iOS(.v17),
         .macOS(.v14),
     ],
-    products: TargetType.allCases.map { $0.product } + [
-        .library(name: "All Targets & Tests", targets: TargetType.allCases.map { $0.name } + TestTargetType.allCases.map { $0.name }),
-        .library(name: "All Targets", targets: TargetType.allCases.map { $0.name }),
-    ],
+    products: TargetType.allCases.map { $0.product },
     dependencies: [
         // Library
         .package(url: "https://github.com/firebase/firebase-ios-sdk.git", from: "10.22.1"),
@@ -307,13 +322,14 @@ extension TargetType {
 extension TestTargetType {
     var dependencyLibrary: DependencyLibrary {
         switch self {
-        case .domainTest:
-            .init([
-                TargetType.domain.dependency,
-                .testing,
-            ])
         case .frameworkTest:
             .init(FrameworkTargetType.allCases.map { TargetType.framework($0).dependency } + [
+                .testing,
+            ])
+        case .interactorTest:
+            .init(FrameworkTargetType.allCases.map { TargetType.framework($0).dependency } + [
+                TargetType.presentation.dependency,
+                TargetType.dependencyInjector.dependency,
                 .testing,
             ])
         case .presenterTest:

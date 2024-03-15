@@ -30,6 +30,6 @@ public final class LocalDataStore: LocalDataStoreProtocol {
             return
         }
         UserDefaults.standard.removePersistentDomain(forName: domain)
-        OSLogDriver.errorLog("Completed: clear userDefaults")
+        OSLogDriver.debugLog("Completed: clear userDefaults")
     }
 }

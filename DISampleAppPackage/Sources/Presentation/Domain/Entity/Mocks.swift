@@ -540,9 +540,10 @@ public final class LicenseListPresenterDependencyMock: LicenseListPresenterDepen
 
 public final class DeviceInfoDriverProtocolMock: DeviceInfoDriverProtocol {
     public init() { }
-    public init(appVersion: String = "", appBuildNumber: String = "", deviceName: String = "", deviceIdentifier: String = "", osType: String = "", osVersion: String = "", isSimulator: Bool = false, isPreview: Bool = false, timezone: String = "", language: String = "") {
+    public init(appVersion: String = "", appBuildNumber: String = "", bundleId: String = "", deviceName: String = "", deviceIdentifier: String = "", osType: String = "", osVersion: String = "", isSimulator: Bool = false, isPreview: Bool = false, timezone: String = "", language: String = "") {
         self.appVersion = appVersion
         self.appBuildNumber = appBuildNumber
+        self.bundleId = bundleId
         self.deviceName = deviceName
         self.deviceIdentifier = deviceIdentifier
         self.osType = osType
@@ -559,6 +560,9 @@ public final class DeviceInfoDriverProtocolMock: DeviceInfoDriverProtocol {
 
     public private(set) var appBuildNumberSetCallCount = 0
     public var appBuildNumber: String = "" { didSet { appBuildNumberSetCallCount += 1 } }
+
+    public private(set) var bundleIdSetCallCount = 0
+    public var bundleId: String = "" { didSet { bundleIdSetCallCount += 1 } }
 
     public private(set) var deviceNameSetCallCount = 0
     public var deviceName: String = "" { didSet { deviceNameSetCallCount += 1 } }

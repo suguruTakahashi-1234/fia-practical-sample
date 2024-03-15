@@ -27,6 +27,8 @@ public final class DeviceInfoInteractor<Dependency: DeviceInfoUseCaseDependency>
             dependency.buildEnvDriver.buildConfiguration.name
         case .deviceIdentifier:
             dependency.deviceInfoDriver.deviceIdentifier
+        case .bundleId:
+            dependency.deviceInfoDriver.bundleId
         case .deviceName:
             dependency.deviceInfoDriver.deviceName
         case .isSimulator:

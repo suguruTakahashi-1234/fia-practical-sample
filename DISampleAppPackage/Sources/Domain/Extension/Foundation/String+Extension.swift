@@ -45,6 +45,19 @@ public extension String {
         }
     }
 
+    /// ex1) "multiplyCircleFill" -> "multiply.circle.fill"
+    /// ex2) "iphoneGen2Circle" -> "iphone.gen2.circle"
+    /// ex3) "person3" -> "person3"
+    var toDotSeparatedLowercase: String {
+        reduce("") { result, character in
+            if character.isUppercase {
+                result + "." + character.lowercased()
+            } else {
+                result + String(character)
+            }
+        }
+    }
+
     /// ex) "/Presentation/License/LicenseDetailPresenter.swift" -> "LicenseDetailPresenter".swift"
     var lastPathComponent: String {
         split(separator: "/").last?.description ?? ""

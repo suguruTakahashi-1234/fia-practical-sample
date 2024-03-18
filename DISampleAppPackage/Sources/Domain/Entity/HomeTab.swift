@@ -11,11 +11,8 @@ public enum HomeTab: Sendable {
 }
 
 /// for TabView
-extension HomeTab: Identifiable {
+extension HomeTab: Identifiable, CaseIterable {
     public var id: String {
         "\(self)"
     }
 }
-
-/// for TabView
-extension HomeTab: CaseIterable {}

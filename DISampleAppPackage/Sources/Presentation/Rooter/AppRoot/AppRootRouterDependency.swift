@@ -2,4 +2,4 @@
 import Foundation
 
 /// @mockable
-public protocol AppRootRouterDependency: AnyObject, AppRootPresenterDependency, CommonPresenterDependency, DeviceInfoPresenterDependency, HomeTabPresenterDependency, LicenseDetailPresenterDependency, LicenseListPresenterDependency, OnboardingPresenterDependency, SettingPresenterDependency, TaskListPresenterDependency {}
+public protocol AppRootRouterDependency: AnyObject, AppRootPresenterDependency, CommonPresenterDependency, DebugMenuPresenterDependency, DeviceInfoPresenterDependency, HomeTabPresenterDependency, LicenseDetailPresenterDependency, LicenseListPresenterDependency, OnboardingPresenterDependency, SettingPresenterDependency, TaskListPresenterDependency {}

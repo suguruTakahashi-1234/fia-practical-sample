@@ -14,7 +14,7 @@ public struct DeviceInfoView<Router: AppRootWireframe, Dependency: DeviceInfoPre
 
     public var body: some View {
         List {
-            Section("デバイス情報") {
+            Section("") {
                 ForEach(DeviceInfoType.allCases) { deviceInfoType in
                     Button {
                         presenter.onTapDeviceInfo(deviceInfoType)
@@ -29,7 +29,6 @@ public struct DeviceInfoView<Router: AppRootWireframe, Dependency: DeviceInfoPre
                     }
                 }
             }
-            .textCase(nil)
         }
         .navigationTitle("デバイス情報")
         .alert(presenter.copiedAlertTitle, isPresented: $presenter.shouldShowCopyAlert) {

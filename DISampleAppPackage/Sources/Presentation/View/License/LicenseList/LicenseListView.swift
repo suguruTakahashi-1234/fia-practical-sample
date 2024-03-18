@@ -18,12 +18,14 @@ public struct LicenseListView<Router: AppRootWireframe, Dependency: LicenseListP
 
     public var body: some View {
         List {
-            ForEach(presenter.licenseList) { license in
-                Button {
-                    presenter.onTapLicense(license: license)
-                } label: {
-                    Text(license.name)
-                        .frame(maxWidth: .infinity, alignment: .leading)
+            Section("") {
+                ForEach(presenter.licenseList) { license in
+                    Button {
+                        presenter.onTapLicense(license: license)
+                    } label: {
+                        Text(license.name)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                    }
                 }
             }
         }

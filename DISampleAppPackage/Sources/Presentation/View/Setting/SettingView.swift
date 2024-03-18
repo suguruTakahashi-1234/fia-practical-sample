@@ -14,13 +14,13 @@ public struct SettingView<Router: AppRootWireframe, Dependency: SettingPresenter
 
     public var body: some View {
         List {
-            Section {
+            Section("") {
                 NavigationLink {
                     router.createLicenseListView()
                 } label: {
                     Label(
                         title: { Text("ライセンス") },
-                        icon: { Image(systemName: "licenseplate") }
+                        icon: { SFSymbols.licenseplate.image }
                     )
                 }
 
@@ -29,7 +29,18 @@ public struct SettingView<Router: AppRootWireframe, Dependency: SettingPresenter
                 } label: {
                     Label(
                         title: { Text("デバイス情報") },
-                        icon: { Image(systemName: "iphone.gen3") }
+                        icon: { SFSymbols.iphoneGen3.image }
+                    )
+                }
+            }
+
+            Section("") {
+                NavigationLink {
+                    router.createDebugMenuView()
+                } label: {
+                    Label(
+                        title: { Text("デバッグメニュー") },
+                        icon: { SFSymbols.ladybug.image }
                     )
                 }
             }

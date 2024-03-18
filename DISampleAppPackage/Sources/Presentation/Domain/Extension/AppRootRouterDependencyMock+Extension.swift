@@ -31,11 +31,11 @@ public extension AppRootRouterDependencyMock {
 
         return .init(
             cacheDataStore: cacheDataStore,
-            logDriver: logDriver,
             localDataStore: localDataStore,
+            logDriver: logDriver,
             libraryLicenseDriver: libraryLicenseDriver,
-            clipboardDriver: clipboardDriver,
             buildEnvDriver: buildEnvDriver,
+            clipboardDriver: clipboardDriver,
             deviceInfoDriver: deviceInfoDriver
         )
     }

@@ -21,6 +21,8 @@ public enum DeviceInfoType: Sendable {
     case apnsToken
 }
 
+/// for View
 extension DeviceInfoType: CaseIterable {}
 
+/// for test
 extension DeviceInfoType: RandomValueProvidableForEnum {}

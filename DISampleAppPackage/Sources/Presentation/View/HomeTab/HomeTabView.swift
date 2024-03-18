@@ -16,6 +16,7 @@ public struct HomeTabView<Router: AppRootWireframe, Dependency: HomeTabPresenter
         TabView(selection: $presenter.selectedTab) {
             ForEach(HomeTab.allCases) { tab in
                 tab.contentView(router: router)
+                    .navigationStacked()
                     .tabItem {
                         tab.label
                     }

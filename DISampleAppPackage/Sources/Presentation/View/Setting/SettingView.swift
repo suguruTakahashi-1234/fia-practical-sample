@@ -13,30 +13,28 @@ public struct SettingView<Router: AppRootWireframe, Dependency: SettingPresenter
     }
 
     public var body: some View {
-        NavigationStack {
-            List {
-                Section {
-                    NavigationLink {
-                        router.createLicenseListView()
-                    } label: {
-                        Label(
-                            title: { Text("ライセンス") },
-                            icon: { Image(systemName: "licenseplate") }
-                        )
-                    }
+        List {
+            Section {
+                NavigationLink {
+                    router.createLicenseListView()
+                } label: {
+                    Label(
+                        title: { Text("ライセンス") },
+                        icon: { Image(systemName: "licenseplate") }
+                    )
+                }
 
-                    NavigationLink {
-                        router.createDeviceInfoView()
-                    } label: {
-                        Label(
-                            title: { Text("デバイス情報") },
-                            icon: { Image(systemName: "iphone.gen3") }
-                        )
-                    }
+                NavigationLink {
+                    router.createDeviceInfoView()
+                } label: {
+                    Label(
+                        title: { Text("デバイス情報") },
+                        icon: { Image(systemName: "iphone.gen3") }
+                    )
                 }
             }
-            .navigationTitle("設定")
         }
+        .navigationTitle("設定")
         .task {
             await presenter.onAppear()
         }
@@ -60,6 +58,7 @@ struct SettingView_Previews: PreviewProvider, SnapshotTestable {
             configurations: configurationAllSizesWithEmpty,
             configure: { state in
                 SettingView(router: AppRootRouter.empty, dependency: state)
+                    .navigationStacked()
             }
         )
     }

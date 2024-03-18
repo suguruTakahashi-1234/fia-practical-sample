@@ -13,15 +13,15 @@ public struct OnboardingView<Router: AppRootWireframe, Dependency: OnboardingPre
     }
 
     public var body: some View {
-        NavigationStack {
+        VStack {
             Text("OnboardingView")
-                .navigationTitle("Onboarding")
-                .task {
-                    await presenter.onAppear()
-                }
-                .onDisappear {
-                    presenter.onDisappear()
-                }
+        }
+        .navigationTitle("OnboardingView")
+        .task {
+            await presenter.onAppear()
+        }
+        .onDisappear {
+            presenter.onDisappear()
         }
     }
 }
@@ -40,6 +40,7 @@ struct OnboardingView_Previews: PreviewProvider, SnapshotTestable {
             configurations: configurationAllSizesWithEmpty,
             configure: { state in
                 OnboardingView(router: AppRootRouter.empty, dependency: state)
+                    .navigationStacked()
             }
         )
     }

@@ -13,18 +13,16 @@ public struct TaskListView<Router: AppRootWireframe, Dependency: TaskListPresent
     }
 
     public var body: some View {
-        NavigationStack {
-            VStack {
-                Text("TaskListView")
-                Text("Remote Comfig New UI Mode: \(presenter.isEnabledNewFeature ? "true" : "false")")
-            }
-            .navigationTitle("タスク一覧")
-            .task {
-                await presenter.onAppear()
-            }
-            .onDisappear {
-                presenter.onDisappear()
-            }
+        VStack {
+            Text("TaskListView")
+            Text("Remote Comfig New UI Mode: \(presenter.isEnabledNewFeature ? "true" : "false")")
+        }
+        .navigationTitle("タスク一覧")
+        .task {
+            await presenter.onAppear()
+        }
+        .onDisappear {
+            presenter.onDisappear()
         }
     }
 }
@@ -46,6 +44,7 @@ struct TaskListView_Previews: PreviewProvider, SnapshotTestable {
             ],
             configure: { state in
                 TaskListView(router: AppRootRouter.empty, dependency: state)
+                    .navigationStacked()
             }
         )
     }

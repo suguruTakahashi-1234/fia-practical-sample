@@ -6,23 +6,26 @@
 import Foundation
 
 public enum UITestPreviewType {
+    case empty
+    case random
     case small
     case medium
     case large
-    case empty
 }
 
 public extension UITestPreviewType {
     var name: String {
         switch self {
+        case .empty:
+            "Empty"
+        case .random:
+            "Random"
         case .small:
             "Size-S"
         case .medium:
             "Size-M"
         case .large:
             "Size-L"
-        case .empty:
-            "Empty"
         }
     }
 }

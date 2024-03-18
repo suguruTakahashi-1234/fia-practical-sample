@@ -20,6 +20,10 @@ public final class AppRootRouter<Dependency: AppRootRouterDependency>: AppRootWi
         AppRootView(router: self, dependency: dependency)
     }
 
+    public func createOnboardingView() -> OnboardingView<AppRootRouter, Dependency> {
+        OnboardingView(router: self, dependency: dependency)
+    }
+
     public func createHomeTabView() -> HomeTabView<AppRootRouter, Dependency> {
         HomeTabView(router: self, dependency: dependency)
     }

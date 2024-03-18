@@ -15,13 +15,11 @@ public struct LicenseDetailView<Dependency: LicenseDetailPresenterDependency>: V
     }
 
     public var body: some View {
-        NavigationStack {
-            ScrollView {
-                Text(presenter.license.text)
-                    .padding()
-            }
-            .navigationTitle(presenter.license.name)
+        ScrollView {
+            Text(presenter.license.text)
+                .padding()
         }
+        .navigationTitle(presenter.license.name)
         .task {
             await presenter.onAppear()
         }
@@ -47,6 +45,7 @@ struct LicenseDetailView_Previews: PreviewProvider, SnapshotTestable {
             ],
             configure: { state in
                 LicenseDetailView(dependency: AppRootRouterDependencyMock.random, license: state)
+                    .navigationStacked()
             }
         )
     }

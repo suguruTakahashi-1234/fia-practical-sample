@@ -22,15 +22,15 @@ public struct {{ argument.screenName }}View<Router: {{ argument.routerName }}Wir
     }
 
     public var body: some View {
-        NavigationStack {
+        VStack {
             Text("{{ argument.screenName }}View")
-                .navigationTitle("{{ argument.screenName }}")
-                .task {
-                    await presenter.onAppear()
-                }
-                .onDisappear {
-                    presenter.onDisappear()
-                }
+        }
+        .navigationTitle("{{ argument.screenName }}")
+        .task {
+            await presenter.onAppear()
+        }
+        .onDisappear {
+            presenter.onDisappear()
         }
     }
 }
@@ -49,6 +49,7 @@ struct {{ argument.screenName }}View_Previews: PreviewProvider, SnapshotTestable
             configurations: configurationAllSizesWithEmpty,
             configure: { state in
                 {{ argument.screenName }}View(router: {{ argument.routerName }}Router.empty, dependency: state)
+                    .navigationStacked()
             }
         )
     }

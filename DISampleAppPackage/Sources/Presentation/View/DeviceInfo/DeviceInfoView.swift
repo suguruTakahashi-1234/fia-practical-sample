@@ -13,35 +13,33 @@ public struct DeviceInfoView<Router: AppRootWireframe, Dependency: DeviceInfoPre
     }
 
     public var body: some View {
-        NavigationStack {
-            List {
-                Section("Device Info") {
-                    ForEach(DeviceInfoType.allCases) { deviceInfoType in
-                        Button {
-                            presenter.onTapDeviceInfo(deviceInfoType)
-                        } label: {
-                            HStack {
-                                Text(deviceInfoType.name)
-                                Spacer()
-                                Text(presenter.getDeviceInfoValue(deviceInfoType))
-                                    .lineLimit(1)
-                                    .truncationMode(.middle)
-                            }
+        List {
+            Section("デバイス情報") {
+                ForEach(DeviceInfoType.allCases) { deviceInfoType in
+                    Button {
+                        presenter.onTapDeviceInfo(deviceInfoType)
+                    } label: {
+                        HStack {
+                            Text(deviceInfoType.name)
+                            Spacer()
+                            Text(presenter.getDeviceInfoValue(deviceInfoType))
+                                .lineLimit(1)
+                                .truncationMode(.middle)
                         }
                     }
                 }
-                .textCase(nil)
             }
-            .navigationTitle("Device Info")
-            .alert(presenter.copiedAlertTitle, isPresented: $presenter.shouldShowCopyAlert) {
-                Button("OK", action: {})
-            }
-            .task {
-                await presenter.onAppear()
-            }
-            .onDisappear {
-                presenter.onDisappear()
-            }
+            .textCase(nil)
+        }
+        .navigationTitle("デバイス情報")
+        .alert(presenter.copiedAlertTitle, isPresented: $presenter.shouldShowCopyAlert) {
+            Button("OK", action: {})
+        }
+        .task {
+            await presenter.onAppear()
+        }
+        .onDisappear {
+            presenter.onDisappear()
         }
     }
 }
@@ -75,6 +73,7 @@ struct DeviceInfoView_Previews: PreviewProvider, SnapshotTestable {
             configurations: configurationEmpty,
             configure: { state in
                 DeviceInfoView(router: AppRootRouter.empty, dependency: state)
+                    .navigationStacked()
             }
         )
     }

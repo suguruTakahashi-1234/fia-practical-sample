@@ -148,6 +148,22 @@ public final class HomeTabPresenterDependencyMock: HomeTabPresenterDependency {
     }
 }
 
+public final class OnboardingPresenterDependencyMock: OnboardingPresenterDependency {
+    public init() { }
+    public init(logDriver: LogDriverProtocolAT) {
+        self._logDriver = logDriver
+    }
+
+    public typealias LogDriverProtocolAT = LogDriver<OSLogDriver, FirebaseLogDriverProtocolMock>
+
+    public private(set) var logDriverSetCallCount = 0
+    private var _logDriver: LogDriverProtocolAT!  { didSet { logDriverSetCallCount += 1 } }
+    public var logDriver: LogDriverProtocolAT {
+        get { return _logDriver }
+        set { _logDriver = newValue }
+    }
+}
+
 public final class SettingPresenterDependencyMock: SettingPresenterDependency {
     public init() { }
     public init(logDriver: LogDriverProtocolAT) {

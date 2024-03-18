@@ -19,7 +19,7 @@ public struct LicenseDetailView<Dependency: LicenseDetailPresenterDependency>: V
             Text(presenter.license.text)
                 .padding()
         }
-
+        .navigationTitle(presenter.license.name)
         .task {
             await presenter.onAppear()
         }

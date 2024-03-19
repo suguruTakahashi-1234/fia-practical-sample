@@ -10,12 +10,6 @@ final class StagingUITests: XCTestCase {
         continueAfterFailure = false
     }
 
-    func testLaunchPerformance() throws {
-        measure(metrics: [XCTApplicationLaunchMetric()]) {
-            XCUIApplication().launch()
-        }
-    }
-
     func testTaskListView() throws {
         let app = XCUIApplication()
         app.launch()
@@ -51,9 +45,9 @@ final class StagingUITests: XCTestCase {
         app.tabBars["Tab Bar"].buttons["設定"].tap()
 
         let collectionViewsQuery = app.collectionViews
-        collectionViewsQuery/*@START_MENU_TOKEN@*/ .buttons["デバイス情報"]/*[[".cells.buttons[\"デバイス情報\"]",".buttons[\"デバイス情報\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/ .tap()
-        collectionViewsQuery/*@START_MENU_TOKEN@*/ .buttons["App Version, 1.0 (1)"]/*[[".cells.buttons[\"App Version, 1.0 (1)\"]",".buttons[\"App Version, 1.0 (1)\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/ .tap()
-        app.alerts["Copied \"1.0 (1)\""].scrollViews.otherElements.buttons["OK"].tap()
-        app.navigationBars["Device Info"].buttons["設定"].tap()
+        collectionViewsQuery/*@START_MENU_TOKEN@*/ .staticTexts["デバイス情報"]/*[[".cells",".buttons[\"デバイス情報\"].staticTexts[\"デバイス情報\"]",".staticTexts[\"デバイス情報\"]"],[[[-1,2],[-1,1],[-1,0,1]],[[-1,2],[-1,1]]],[0]]@END_MENU_TOKEN@*/ .tap()
+        collectionViewsQuery/*@START_MENU_TOKEN@*/ .buttons["Build Scheme, Staging"]/*[[".cells.buttons[\"Build Scheme, Staging\"]",".buttons[\"Build Scheme, Staging\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/ .tap()
+        app.alerts["Copied \"Staging\""].scrollViews.otherElements.buttons["OK"].tap()
+        app.navigationBars["デバイス情報"].buttons["設定"].tap()
     }
 }

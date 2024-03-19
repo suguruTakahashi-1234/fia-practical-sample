@@ -6,6 +6,8 @@
 import DomainLayer
 import SwiftUI
 
+// MARK: - View
+
 @MainActor
 public struct LicenseListView<Router: AppRootWireframe, Dependency: LicenseListPresenterDependency>: View {
     private let router: Router
@@ -42,6 +44,8 @@ public struct LicenseListView<Router: AppRootWireframe, Dependency: LicenseListP
         }
     }
 }
+
+// MARK: - Preview
 
 import PreviewSnapshots
 

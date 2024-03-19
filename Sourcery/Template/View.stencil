@@ -11,6 +11,8 @@ import SwiftUI
 //        {{ argument.screenName }}View(router: self, dependency: dependency)
 //    }
 
+// MARK: - View
+
 @MainActor
 public struct {{ argument.screenName }}View<Router: {{ argument.routerName }}Wireframe, Dependency: {{ argument.screenName }}PresenterDependency>: View {
     private let router: Router

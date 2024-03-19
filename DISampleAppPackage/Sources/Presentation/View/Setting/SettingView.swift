@@ -2,6 +2,8 @@
 import DomainLayer
 import SwiftUI
 
+// MARK: - View
+
 @MainActor
 public struct SettingView<Router: AppRootWireframe, Dependency: SettingPresenterDependency>: View {
     private let router: Router

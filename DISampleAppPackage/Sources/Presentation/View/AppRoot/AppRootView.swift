@@ -6,6 +6,8 @@
 import DomainLayer
 import SwiftUI
 
+// MARK: - View
+
 @MainActor
 public struct AppRootView<Router: AppRootWireframe, Dependency: AppRootPresenterDependency>: View {
     private let router: Router
@@ -32,6 +34,8 @@ public struct AppRootView<Router: AppRootWireframe, Dependency: AppRootPresenter
         }
     }
 }
+
+// MARK: - Preview
 
 import PreviewSnapshots
 

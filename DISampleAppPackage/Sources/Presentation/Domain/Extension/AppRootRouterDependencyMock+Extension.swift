@@ -26,8 +26,11 @@ public extension AppRootRouterDependencyMock {
         logDriver: LogDriver<OSLogDriver, FirebaseLogDriverProtocolMock> = .init(osLogDriver: .init(), firebaseLogDriver: .init()),
         clipboardDriver: ClipboardDriver = .init() // テスト時に本物の ClipboardDriver を使ってしまうとペースト許諾のアラートが表示されてテストが実行されないため、Mock に差し替え可能にしているが通常は本物を使う
     ) -> Self {
-        // テスト時に困るのでlaunchAppCountを毎回リセットする
+        // スナップショットテスト時に固定値でないと困るのでlaunchAppCountを毎回リセットする
         localDataStore.launchAppCount = .placeholder
+
+        // デバッグメニューからいつでもオンボーディングの状態に戻すことができるので、検証時の利便性を考えて、オンボーディングは済んでいるものとする
+        localDataStore.isCompletedOnboarding = true
 
         return .init(
             cacheDataStore: cacheDataStore,

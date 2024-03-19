@@ -2,38 +2,20 @@
 import DomainLayer
 import SwiftUI
 
-enum DebugMenuType {
+// MARK: - Entity
+
+public enum DebugMenuType {
     case deviceInfo
 //    case viewList
 //    case changeDataStore
 }
 
-enum DebugActionType {
+public enum DebugActionType {
     case forceCrash
     case clearUserDefaults
 }
 
-extension DebugActionType: CaseIterable, Identifiable {
-    var id: String {
-        name
-    }
-
-    var name: String {
-        switch self {
-        case .forceCrash:
-            "強制クラッシュ"
-        case .clearUserDefaults:
-            "UserDefaults の初期化"
-        }
-    }
-
-    var alertTitle: String {
-        switch self {
-        default:
-            "\(name) "
-        }
-    }
-}
+// MARK: - View
 
 @MainActor
 public struct DebugMenuView<Router: AppRootWireframe, Dependency: DebugMenuPresenterDependency>: View {
@@ -81,11 +63,43 @@ public struct DebugMenuView<Router: AppRootWireframe, Dependency: DebugMenuPrese
     }
 }
 
-extension DebugMenuType: CaseIterable, Identifiable {
-    var id: String {
-        name
+// MARK: - Extension DebugActionType
+
+/// for ForEach
+extension DebugActionType: CaseIterable, Identifiable {
+    public var id: String {
+        "\(self)"
+    }
+}
+
+private extension DebugActionType {
+    var name: String {
+        switch self {
+        case .forceCrash:
+            "強制クラッシュ"
+        case .clearUserDefaults:
+            "UserDefaults の初期化"
+        }
     }
 
+    var alertTitle: String {
+        switch self {
+        default:
+            "\(name) "
+        }
+    }
+}
+
+// MARK: - Extension DebugMenuType
+
+/// for ForEach
+extension DebugMenuType: CaseIterable, Identifiable {
+    public var id: String {
+        "\(self)"
+    }
+}
+
+private extension DebugMenuType {
     var name: String {
         switch self {
         case .deviceInfo:

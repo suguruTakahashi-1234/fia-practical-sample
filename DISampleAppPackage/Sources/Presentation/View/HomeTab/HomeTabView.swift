@@ -2,6 +2,8 @@
 import DomainLayer
 import SwiftUI
 
+// MARK: - View
+
 @MainActor
 public struct HomeTabView<Router: AppRootWireframe, Dependency: HomeTabPresenterDependency>: View {
     private let router: Router

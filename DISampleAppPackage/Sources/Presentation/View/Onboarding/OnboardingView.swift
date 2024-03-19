@@ -2,10 +2,14 @@
 import DomainLayer
 import SwiftUI
 
+// MARK: - Entity
+
 public enum OnboardingStep {
     case introduction
     case start
 }
+
+// MARK: - View
 
 @MainActor
 public struct OnboardingView<Router: AppRootWireframe, Dependency: OnboardingPresenterDependency>: View {
@@ -48,11 +52,16 @@ public struct OnboardingView<Router: AppRootWireframe, Dependency: OnboardingPre
     }
 }
 
+// MARK: - Extension
+
+/// for TabView
 extension OnboardingStep: Identifiable, CaseIterable {
     public var id: String {
         "\(self)"
     }
+}
 
+private extension OnboardingStep {
     var message: String {
         switch self {
         case .introduction:

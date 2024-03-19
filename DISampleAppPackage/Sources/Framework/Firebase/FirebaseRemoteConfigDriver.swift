@@ -5,12 +5,11 @@
 
 import Combine
 import DomainLayer
-import FirebaseRemoteConfig
+@preconcurrency import FirebaseRemoteConfig
 import Foundation
 
-public final class FirebaseRemoteConfigDriver<T: CacheDataStoreProtocol>: FirebaseRemoteConfigDriverProtocol {
-    /// FirebaseApp.configure() 前に Firebase SDK API を呼ばないようにするために lazy var にしている
-    private lazy var remoteConfig: FirebaseRemoteConfig.RemoteConfig = {
+public final class FirebaseRemoteConfigDriver<CacheDataStore: CacheDataStoreProtocol>: FirebaseRemoteConfigDriverProtocol {
+    private let remoteConfig: FirebaseRemoteConfig.RemoteConfig = {
         // https://firebase.google.com/docs/remote-config/get-started?platform=ios&hl=ja
         let remoteConfig = RemoteConfig.remoteConfig()
         let settings = RemoteConfigSettings()
@@ -22,11 +21,12 @@ public final class FirebaseRemoteConfigDriver<T: CacheDataStoreProtocol>: Fireba
 
     private let updatedRemoteConfigTypesSubject = PassthroughSubject<[RemoteConfigType], Never>()
 
-    private let cacheDataStore: T
+    private let cacheDataStore: CacheDataStore
 
     private var cancellables = Set<AnyCancellable>()
 
-    public init(cacheDataStore: T) {
+    @MainActor
+    public init(cacheDataStore: CacheDataStore) {
         OSLogDriver.initLog()
 
         self.cacheDataStore = cacheDataStore
@@ -52,23 +52,14 @@ public final class FirebaseRemoteConfigDriver<T: CacheDataStoreProtocol>: Fireba
                 }
             }
             .store(in: &cancellables)
-
-        Task {
-            do {
-                try await setUp()
-                OSLogDriver.debugLog("Completed setup FirebaseRemoteConfigDriver")
-            } catch {
-                OSLogDriver.errorLog(error.toAppError)
-                assertionFailure("\(error.toAppError))")
-            }
-        }
     }
 
     deinit {
         OSLogDriver.deinitLog()
     }
 
-    private func setUp() async throws {
+    @MainActor //
+    public func setUp() async throws {
         do {
             try setDefaults()
             try await remoteConfig.fetchAndActivate()

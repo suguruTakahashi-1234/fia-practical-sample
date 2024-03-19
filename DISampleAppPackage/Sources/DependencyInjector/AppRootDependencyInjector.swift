@@ -34,6 +34,7 @@ public final class AppRootDependencyInjector: AppRootRouterDependency, AppRootDe
     /// Log Driver
     public let logDriver: LogDriver<OSLogDriver, FirebaseLogDriver>
 
+    /// テストする想定がないため、Driver の生成以外の処理が大きくなりすぎないように注意すること
     @MainActor
     public init(buildScheme: BuildScheme) {
         precondition(buildScheme != .development, "Unexpected")
@@ -56,11 +57,25 @@ public final class AppRootDependencyInjector: AppRootRouterDependency, AppRootDe
 
         // Firenbase Driver
         firebaseSetupDriver = FirebaseSetupDriver(buildEnvDriver: buildEnvDriver)
+
+        // FirebaseApp.configure() を実行しなければ、その他の Firebase 関連の API が使用できずエラーが発生するため
+        firebaseSetupDriver.configure()
+
         firebaseLogDriver = FirebaseLogDriver()
         firebaseRemoteConfigDriver = FirebaseRemoteConfigDriver(cacheDataStore: cacheDataStore)
 
         // Setup LogDriver
         logDriver = LogDriver(osLogDriver: osLogDriver, firebaseLogDriver: firebaseLogDriver)
         logDriver.debugLog("Completed setup LogDriver")
+
+        Task {
+            do {
+                try await firebaseRemoteConfigDriver.setUp()
+                OSLogDriver.debugLog("Completed setup FirebaseRemoteConfigDriver")
+            } catch {
+                OSLogDriver.errorLog(error.toAppError)
+                assertionFailure("\(error.toAppError))")
+            }
+        }
     }
 }

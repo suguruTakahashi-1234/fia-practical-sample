@@ -6,4 +6,6 @@
 import Foundation
 
 /// @mockable
-public protocol FirebaseSetupDriverProtocol: AnyObject {}
+public protocol FirebaseSetupDriverProtocol: AnyObject {
+    func configure()
+}

@@ -402,12 +402,30 @@ public final class FirebaseRemoteConfigDriverProtocolMock: FirebaseRemoteConfigD
     public init() { }
 
 
+    public private(set) var setUpCallCount = 0
+    public var setUpHandler: (() async throws -> ())?
+    public func setUp() async throws  {
+        setUpCallCount += 1
+        if let setUpHandler = setUpHandler {
+            try await setUpHandler()
+        }
+        
+    }
 }
 
 public final class FirebaseSetupDriverProtocolMock: FirebaseSetupDriverProtocol {
     public init() { }
 
 
+    public private(set) var configureCallCount = 0
+    public var configureHandler: (() -> ())?
+    public func configure()  {
+        configureCallCount += 1
+        if let configureHandler = configureHandler {
+            configureHandler()
+        }
+        
+    }
 }
 
 public final class LibraryLicenseDriverProtocolMock: LibraryLicenseDriverProtocol {

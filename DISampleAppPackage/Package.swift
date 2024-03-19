@@ -238,11 +238,11 @@ let package = Package(
         .package(url: "https://github.com/firebase/firebase-ios-sdk.git", from: "10.22.1"),
         .package(url: "https://github.com/doordash-oss/swiftui-preview-snapshots", from: "1.1.1"),
         .package(url: "https://github.com/EmergeTools/SnapshotPreviews-iOS", from: "0.8.6"),
-        .package(url: "https://github.com/apple/swift-syntax", from: "509.1.1"), // SwiftSyntax の競合に注意(510.0.0がリリースされているがswift-testingと競合してあげられない)
+        .package(url: "https://github.com/apple/swift-syntax", from: "510.0.1"),
         .package(url: "https://github.com/devicekit/DeviceKit.git", from: "5.2.2"),
 
         // Test
-        .package(url: "https://github.com/apple/swift-testing.git", from: "0.5.1"),
+        .package(url: "https://github.com/apple/swift-testing.git", from: "0.6.0"),
 
         // Plugin
         .package(url: "https://github.com/maiyama18/LicensesPlugin", from: "0.1.6"),

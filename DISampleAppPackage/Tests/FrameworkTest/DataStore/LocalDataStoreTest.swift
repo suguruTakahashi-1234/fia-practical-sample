@@ -15,8 +15,8 @@ struct LocalDataStoreTest {
     }
 
     @Test("値を更新したとき") func update() {
-        localDataStore.isFirstLaunch = true
-        localDataStore.isFirstLaunch = false
+        localDataStore.isCompletedOnboarding = true
+        localDataStore.isCompletedOnboarding = false
         localDataStore.launchAppCount = .random
         localDataStore.launchAppCount = .random
         localDataStore.apnsToken = nil
@@ -26,17 +26,17 @@ struct LocalDataStoreTest {
     }
 
     @Test("初期化したとき") func allClear() {
-        localDataStore.isFirstLaunch = false
+        localDataStore.isCompletedOnboarding = true
         localDataStore.launchAppCount = .random
         localDataStore.apnsToken = Data()
 
-        #expect(localDataStore.isFirstLaunch != true, "前提条件の確認 isFirstLaunch")
+        #expect(localDataStore.isCompletedOnboarding != false, "前提条件の確認 isCompletedOnboarding")
         #expect(localDataStore.launchAppCount != 0, "前提条件の確認 launchAppCount")
         #expect(localDataStore.apnsToken != nil, "前提条件の確認 apnsToken")
 
         localDataStore.allClear()
 
-        #expect(localDataStore.isFirstLaunch == true, "デフォルト値になっていること isFirstLaunch")
+        #expect(localDataStore.isCompletedOnboarding == false, "デフォルト値になっていること isCompletedOnboarding")
         #expect(localDataStore.launchAppCount == 0, "デフォルト値になっていること launchAppCount")
         #expect(localDataStore.apnsToken == nil, "デフォルト値になっていること apnsToken")
     }

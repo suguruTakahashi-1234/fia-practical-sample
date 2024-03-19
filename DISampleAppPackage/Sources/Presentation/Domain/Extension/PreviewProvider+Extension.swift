@@ -28,19 +28,19 @@ private extension UITestPreviewType {
 }
 
 public extension PreviewProvider {
-    static var configurationEmpty: [PreviewSnapshots<AppRootRouterDependencyMock>.Configuration] {
+    static var empty: [PreviewSnapshots<AppRootRouterDependencyMock>.Configuration] {
         [
             UITestPreviewType.empty.configuration,
         ]
     }
 
-    static var configurationRandom: [PreviewSnapshots<AppRootRouterDependencyMock>.Configuration] {
+    static var standard: [PreviewSnapshots<AppRootRouterDependencyMock>.Configuration] {
         [
             UITestPreviewType.random.configuration,
         ]
     }
 
-    static var configurationAllSizes: [PreviewSnapshots<AppRootRouterDependencyMock>.Configuration] {
+    static var allSizes: [PreviewSnapshots<AppRootRouterDependencyMock>.Configuration] {
         [
             UITestPreviewType.small.configuration,
             UITestPreviewType.medium.configuration,
@@ -48,7 +48,7 @@ public extension PreviewProvider {
         ]
     }
 
-    static var configurationAllSizesWithEmpty: [PreviewSnapshots<AppRootRouterDependencyMock>.Configuration] {
-        configurationEmpty + configurationAllSizes
+    static var allSizesWithEmpty: [PreviewSnapshots<AppRootRouterDependencyMock>.Configuration] {
+        allSizes + empty
     }
 }

@@ -4,12 +4,15 @@ import Foundation
 
 @MainActor
 final class OnboardingPresenter<Dependency: OnboardingPresenterDependency>: ObservableObject {
+    @Published var selectedStep: OnboardingStep = .introduction
+
     private let dependency: Dependency
 
-    init(dependency: Dependency) {
+    init(dependency: Dependency, onboardingStep: OnboardingStep) {
         dependency.logDriver.initLog()
 
         self.dependency = dependency
+        selectedStep = onboardingStep
     }
 
     deinit {
@@ -22,5 +25,14 @@ final class OnboardingPresenter<Dependency: OnboardingPresenterDependency>: Obse
 
     func onDisappear() {
         dependency.logDriver.onDisappearLog()
+    }
+
+    func onTapNextStep() {
+        switch selectedStep {
+        case .introduction:
+            selectedStep = .start
+        case .start:
+            dependency.localDataStore.isCompletedOnboarding = true
+        }
     }
 }

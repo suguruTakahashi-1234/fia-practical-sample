@@ -175,11 +175,20 @@ public final class HomeTabPresenterDependencyMock: HomeTabPresenterDependency {
 
 public final class OnboardingPresenterDependencyMock: OnboardingPresenterDependency {
     public init() { }
-    public init(logDriver: LogDriverProtocolAT) {
+    public init(localDataStore: LocalDataStoreProtocolAT, logDriver: LogDriverProtocolAT) {
+        self._localDataStore = localDataStore
         self._logDriver = logDriver
     }
 
+    public typealias LocalDataStoreProtocolAT = LocalDataStore
     public typealias LogDriverProtocolAT = LogDriver<OSLogDriver, FirebaseLogDriverProtocolMock>
+
+    public private(set) var localDataStoreSetCallCount = 0
+    private var _localDataStore: LocalDataStoreProtocolAT!  { didSet { localDataStoreSetCallCount += 1 } }
+    public var localDataStore: LocalDataStoreProtocolAT {
+        get { return _localDataStore }
+        set { _localDataStore = newValue }
+    }
 
     public private(set) var logDriverSetCallCount = 0
     private var _logDriver: LogDriverProtocolAT!  { didSet { logDriverSetCallCount += 1 } }
@@ -414,9 +423,9 @@ public final class LibraryLicenseDriverProtocolMock: LibraryLicenseDriverProtoco
 
 public final class LocalDataStoreProtocolMock: LocalDataStoreProtocol {
     public init() { }
-    public init(launchAppCount: Int = 0, isFirstLaunch: Bool = false, apnsToken: Data? = nil) {
+    public init(launchAppCount: Int = 0, isCompletedOnboarding: Bool = false, apnsToken: Data? = nil) {
         self.launchAppCount = launchAppCount
-        self.isFirstLaunch = isFirstLaunch
+        self.isCompletedOnboarding = isCompletedOnboarding
         self.apnsToken = apnsToken
     }
 
@@ -424,8 +433,8 @@ public final class LocalDataStoreProtocolMock: LocalDataStoreProtocol {
     public private(set) var launchAppCountSetCallCount = 0
     public var launchAppCount: Int = 0 { didSet { launchAppCountSetCallCount += 1 } }
 
-    public private(set) var isFirstLaunchSetCallCount = 0
-    public var isFirstLaunch: Bool = false { didSet { isFirstLaunchSetCallCount += 1 } }
+    public private(set) var isCompletedOnboardingSetCallCount = 0
+    public var isCompletedOnboarding: Bool = false { didSet { isCompletedOnboardingSetCallCount += 1 } }
 
     public private(set) var apnsTokenSetCallCount = 0
     public var apnsToken: Data? = nil { didSet { apnsTokenSetCallCount += 1 } }

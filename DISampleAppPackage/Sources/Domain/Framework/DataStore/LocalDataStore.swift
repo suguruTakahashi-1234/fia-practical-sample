@@ -9,8 +9,8 @@ public final class LocalDataStore: LocalDataStoreProtocol {
     @UserDefaultsWrapper(key: .launchAppCount, defaultValue: 0)
     public var launchAppCount: Int
 
-    @UserDefaultsWrapper(key: .isFirstLaunch, defaultValue: true)
-    public var isFirstLaunch: Bool
+    @UserDefaultsWrapper(key: .isCompletedOnboarding, defaultValue: false)
+    public var isCompletedOnboarding: Bool
 
     @UserDefaultsWrapperNilable(key: .apnsToken, defaultValue: nil)
     public var apnsToken: Data?

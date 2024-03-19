@@ -8,7 +8,7 @@ import Foundation
 /// @mockable
 public protocol LocalDataStoreProtocol: AnyObject {
     var launchAppCount: Int { get set }
-    var isFirstLaunch: Bool { get set }
+    var isCompletedOnboarding: Bool { get set }
     var apnsToken: Data? { get set }
 
     func allClear()

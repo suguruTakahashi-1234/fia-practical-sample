@@ -52,7 +52,7 @@ struct LicenseListView_Previews: PreviewProvider, SnapshotTestable {
 
     static var snapshots: PreviewSnapshots<AppRootRouterDependencyMock> {
         .init(
-            configurations: configurationAllSizes,
+            configurations: allSizes,
             configure: { state in
                 LicenseListView(router: AppRootRouter.empty, dependency: state)
                     .navigationStacked()

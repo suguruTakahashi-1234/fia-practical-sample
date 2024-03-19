@@ -8,11 +8,11 @@ final class HomeTabPresenter<Dependency: HomeTabPresenterDependency>: Observable
 
     private let dependency: Dependency
 
-    init(dependency: Dependency, selectedTab: HomeTab) {
+    init(dependency: Dependency, homeTab: HomeTab) {
         dependency.logDriver.initLog()
 
         self.dependency = dependency
-        self.selectedTab = selectedTab
+        selectedTab = homeTab
     }
 
     deinit {

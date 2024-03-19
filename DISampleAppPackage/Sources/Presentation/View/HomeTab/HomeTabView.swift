@@ -7,9 +7,11 @@ public struct HomeTabView<Router: AppRootWireframe, Dependency: HomeTabPresenter
     private let router: Router
     @StateObject private var presenter: HomeTabPresenter<Dependency>
 
-    public init(router: Router, dependency: Dependency, selectedTab: HomeTab = .task) {
+    /// Previews で検証できるように init の引数に tab を設定している（要検討）
+    /// SwiftUI の TabView のタップは Binding による更新なので仕方のない側面もある
+    public init(router: Router, dependency: Dependency, homeTab: HomeTab = .task) {
         self.router = router
-        _presenter = .init(wrappedValue: HomeTabPresenter(dependency: dependency, selectedTab: selectedTab))
+        _presenter = .init(wrappedValue: HomeTabPresenter(dependency: dependency, homeTab: homeTab))
     }
 
     public var body: some View {
@@ -69,7 +71,7 @@ struct HomeTabView_Previews: PreviewProvider, SnapshotTestable {
         .init(
             configurations: HomeTab.allCases.map { tab in .init(name: "\(tab)".initialUppercased, state: tab) },
             configure: { homeTab in
-                HomeTabView(router: AppRootRouter.empty, dependency: AppRootRouterDependencyMock.random, selectedTab: homeTab)
+                HomeTabView(router: AppRootRouter.empty, dependency: AppRootRouterDependencyMock.random, homeTab: homeTab)
             }
         )
     }

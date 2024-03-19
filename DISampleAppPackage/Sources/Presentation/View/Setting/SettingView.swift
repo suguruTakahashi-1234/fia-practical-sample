@@ -66,7 +66,7 @@ struct SettingView_Previews: PreviewProvider, SnapshotTestable {
 
     static var snapshots: PreviewSnapshots<AppRootRouterDependencyMock> {
         .init(
-            configurations: configurationAllSizesWithEmpty,
+            configurations: standard,
             configure: { state in
                 SettingView(router: AppRootRouter.empty, dependency: state)
                     .navigationStacked()

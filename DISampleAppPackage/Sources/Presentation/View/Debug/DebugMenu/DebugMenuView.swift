@@ -139,7 +139,7 @@ struct DebugMenuView_Previews: PreviewProvider, SnapshotTestable {
 
     static var snapshots: PreviewSnapshots<AppRootRouterDependencyMock> {
         .init(
-            configurations: configurationAllSizesWithEmpty,
+            configurations: standard,
             configure: { state in
                 DebugMenuView(router: AppRootRouter.empty, dependency: state)
                     .navigationStacked()

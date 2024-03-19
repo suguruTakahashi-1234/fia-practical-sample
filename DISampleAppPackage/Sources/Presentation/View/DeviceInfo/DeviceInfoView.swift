@@ -69,7 +69,7 @@ struct DeviceInfoView_Previews: PreviewProvider, SnapshotTestable {
 
     static var snapshots: PreviewSnapshots<AppRootRouterDependencyMock> {
         .init(
-            configurations: configurationEmpty,
+            configurations: standard,
             configure: { state in
                 DeviceInfoView(router: AppRootRouter.empty, dependency: state)
                     .navigationStacked()

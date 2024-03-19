@@ -11,7 +11,7 @@ private extension UITestPreviewType {
         switch self {
         case .empty:
             .empty
-        case .random:
+        case .standard:
             .random
         case .small:
             .sizeS
@@ -36,7 +36,7 @@ public extension PreviewProvider {
 
     static var standard: [PreviewSnapshots<AppRootRouterDependencyMock>.Configuration] {
         [
-            UITestPreviewType.random.configuration,
+            UITestPreviewType.standard.configuration,
         ]
     }
 

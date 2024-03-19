@@ -2,6 +2,8 @@
 import DomainLayer
 import SwiftUI
 
+// MARK: - View
+
 @MainActor
 public struct TaskListView<Router: AppRootWireframe, Dependency: TaskListPresenterDependency>: View {
     private let router: Router

@@ -47,6 +47,10 @@ public final class AppRootRouter<Dependency: AppRootRouterDependency>: AppRootWi
     public func createDeviceInfoView() -> DeviceInfoView<AppRootRouter, Dependency> {
         DeviceInfoView(router: self, dependency: dependency)
     }
+
+    public func createDebugMenuView() -> DebugMenuView<AppRootRouter, Dependency> {
+        DebugMenuView(router: self, dependency: dependency)
+    }
 }
 
 public extension AppRootRouter where Dependency == AppRootRouterDependencyMock {

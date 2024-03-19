@@ -15,9 +15,6 @@ public final class FirebaseSetupDriver<BuildEnvDriver: BuildEnvDriverProtocol>: 
 
         self.buildEnvDriver = buildEnvDriver
 
-        // Presenter で実行するまで configure() を呼べないと、他の Firebase SDK の API を一切使うことができないため、init で configure() を実行する
-        configure()
-
         OSLogDriver.debugLog("Completed configure FirebaseSetupDriver")
     }
 
@@ -25,7 +22,7 @@ public final class FirebaseSetupDriver<BuildEnvDriver: BuildEnvDriverProtocol>: 
         OSLogDriver.deinitLog()
     }
 
-    private func configure() {
+    public func configure() {
         switch buildEnvDriver.buildScheme {
         case .testing:
             let fileName: String = "GoogleService-Info-For-Testing" // Staging 環境の GoogleService-Info.plist のコピー

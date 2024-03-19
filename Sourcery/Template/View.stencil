@@ -11,6 +11,8 @@ import SwiftUI
 //        {{ argument.screenName }}View(router: self, dependency: dependency)
 //    }
 
+// MARK: - View
+
 @MainActor
 public struct {{ argument.screenName }}View<Router: {{ argument.routerName }}Wireframe, Dependency: {{ argument.screenName }}PresenterDependency>: View {
     private let router: Router
@@ -46,7 +48,7 @@ struct {{ argument.screenName }}View_Previews: PreviewProvider, SnapshotTestable
 
     static var snapshots: PreviewSnapshots<{{ argument.routerName }}RouterDependencyMock> {
         .init(
-            configurations: configurationAllSizesWithEmpty,
+            configurations: standard,
             configure: { state in
                 {{ argument.screenName }}View(router: {{ argument.routerName }}Router.empty, dependency: state)
                     .navigationStacked()

@@ -6,6 +6,8 @@
 import DomainLayer
 import SwiftUI
 
+// MARK: - View
+
 @MainActor
 public struct AppRootView<Router: AppRootWireframe, Dependency: AppRootPresenterDependency>: View {
     private let router: Router
@@ -17,15 +19,23 @@ public struct AppRootView<Router: AppRootWireframe, Dependency: AppRootPresenter
     }
 
     public var body: some View {
-        router.createHomeTabView()
-            .task {
-                await presenter.onAppear()
+        Group {
+            if presenter.isCompletedOnboarding {
+                router.createHomeTabView()
+            } else {
+                router.createOnboardingView()
             }
-            .onDisappear {
-                presenter.onDisappear()
-            }
+        }
+        .task {
+            await presenter.onAppear()
+        }
+        .onDisappear {
+            presenter.onDisappear()
+        }
     }
 }
+
+// MARK: - Preview
 
 import PreviewSnapshots
 
@@ -36,7 +46,7 @@ struct AppRootView_Previews: PreviewProvider, SnapshotTestable {
 
     static var snapshots: PreviewSnapshots<AppRootRouterDependencyMock> {
         PreviewSnapshots(
-            configurations: configurationEmpty,
+            configurations: standard,
             configure: { state in
                 AppRootView(router: AppRootRouter.empty, dependency: state)
             }

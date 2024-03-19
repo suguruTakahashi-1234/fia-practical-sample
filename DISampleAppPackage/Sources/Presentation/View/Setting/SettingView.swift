@@ -2,6 +2,8 @@
 import DomainLayer
 import SwiftUI
 
+// MARK: - View
+
 @MainActor
 public struct SettingView<Router: AppRootWireframe, Dependency: SettingPresenterDependency>: View {
     private let router: Router
@@ -14,13 +16,13 @@ public struct SettingView<Router: AppRootWireframe, Dependency: SettingPresenter
 
     public var body: some View {
         List {
-            Section {
+            Section("") {
                 NavigationLink {
                     router.createLicenseListView()
                 } label: {
                     Label(
                         title: { Text("ライセンス") },
-                        icon: { Image(systemName: "licenseplate") }
+                        icon: { SFSymbols.licenseplate.image }
                     )
                 }
 
@@ -29,7 +31,18 @@ public struct SettingView<Router: AppRootWireframe, Dependency: SettingPresenter
                 } label: {
                     Label(
                         title: { Text("デバイス情報") },
-                        icon: { Image(systemName: "iphone.gen3") }
+                        icon: { SFSymbols.iphoneGen3.image }
+                    )
+                }
+            }
+
+            Section("") {
+                NavigationLink {
+                    router.createDebugMenuView()
+                } label: {
+                    Label(
+                        title: { Text("デバッグメニュー") },
+                        icon: { SFSymbols.ladybug.image }
                     )
                 }
             }
@@ -55,7 +68,7 @@ struct SettingView_Previews: PreviewProvider, SnapshotTestable {
 
     static var snapshots: PreviewSnapshots<AppRootRouterDependencyMock> {
         .init(
-            configurations: configurationAllSizesWithEmpty,
+            configurations: standard,
             configure: { state in
                 SettingView(router: AppRootRouter.empty, dependency: state)
                     .navigationStacked()

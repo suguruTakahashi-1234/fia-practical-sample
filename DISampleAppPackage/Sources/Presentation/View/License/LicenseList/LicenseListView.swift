@@ -6,6 +6,8 @@
 import DomainLayer
 import SwiftUI
 
+// MARK: - View
+
 @MainActor
 public struct LicenseListView<Router: AppRootWireframe, Dependency: LicenseListPresenterDependency>: View {
     private let router: Router
@@ -18,12 +20,14 @@ public struct LicenseListView<Router: AppRootWireframe, Dependency: LicenseListP
 
     public var body: some View {
         List {
-            ForEach(presenter.licenseList) { license in
-                Button {
-                    presenter.onTapLicense(license: license)
-                } label: {
-                    Text(license.name)
-                        .frame(maxWidth: .infinity, alignment: .leading)
+            Section("") {
+                ForEach(presenter.licenseList) { license in
+                    Button {
+                        presenter.onTapLicense(license: license)
+                    } label: {
+                        Text(license.name)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                    }
                 }
             }
         }
@@ -41,6 +45,8 @@ public struct LicenseListView<Router: AppRootWireframe, Dependency: LicenseListP
     }
 }
 
+// MARK: - Preview
+
 import PreviewSnapshots
 
 struct LicenseListView_Previews: PreviewProvider, SnapshotTestable {
@@ -50,7 +56,7 @@ struct LicenseListView_Previews: PreviewProvider, SnapshotTestable {
 
     static var snapshots: PreviewSnapshots<AppRootRouterDependencyMock> {
         .init(
-            configurations: configurationAllSizes,
+            configurations: allSizes,
             configure: { state in
                 LicenseListView(router: AppRootRouter.empty, dependency: state)
                     .navigationStacked()

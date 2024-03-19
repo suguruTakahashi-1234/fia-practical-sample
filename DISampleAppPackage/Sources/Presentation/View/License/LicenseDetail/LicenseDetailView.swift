@@ -6,6 +6,8 @@
 import DomainLayer
 import SwiftUI
 
+// MARK: - View
+
 @MainActor
 public struct LicenseDetailView<Dependency: LicenseDetailPresenterDependency>: View {
     @StateObject private var presenter: LicenseDetailPresenter<Dependency>
@@ -28,6 +30,8 @@ public struct LicenseDetailView<Dependency: LicenseDetailPresenterDependency>: V
         }
     }
 }
+
+// MARK: - Preview
 
 import PreviewSnapshots
 

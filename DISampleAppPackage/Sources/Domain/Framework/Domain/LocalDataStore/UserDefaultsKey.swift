@@ -7,6 +7,6 @@ import Foundation
 
 public enum UserDefaultsKey: String {
     case launchAppCount
-    case isFirstLaunch
+    case isCompletedOnboarding
     case apnsToken
 }

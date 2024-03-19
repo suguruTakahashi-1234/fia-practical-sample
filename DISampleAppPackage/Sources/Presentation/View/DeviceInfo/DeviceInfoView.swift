@@ -2,6 +2,8 @@
 import DomainLayer
 import SwiftUI
 
+// MARK: - View
+
 @MainActor
 public struct DeviceInfoView<Router: AppRootWireframe, Dependency: DeviceInfoPresenterDependency>: View {
     private let router: Router
@@ -14,7 +16,7 @@ public struct DeviceInfoView<Router: AppRootWireframe, Dependency: DeviceInfoPre
 
     public var body: some View {
         List {
-            Section("デバイス情報") {
+            Section("") {
                 ForEach(DeviceInfoType.allCases) { deviceInfoType in
                     Button {
                         presenter.onTapDeviceInfo(deviceInfoType)
@@ -29,7 +31,6 @@ public struct DeviceInfoView<Router: AppRootWireframe, Dependency: DeviceInfoPre
                     }
                 }
             }
-            .textCase(nil)
         }
         .navigationTitle("デバイス情報")
         .alert(presenter.copiedAlertTitle, isPresented: $presenter.shouldShowCopyAlert) {
@@ -70,7 +71,7 @@ struct DeviceInfoView_Previews: PreviewProvider, SnapshotTestable {
 
     static var snapshots: PreviewSnapshots<AppRootRouterDependencyMock> {
         .init(
-            configurations: configurationEmpty,
+            configurations: standard,
             configure: { state in
                 DeviceInfoView(router: AppRootRouter.empty, dependency: state)
                     .navigationStacked()

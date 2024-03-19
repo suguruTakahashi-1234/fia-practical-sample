@@ -6,4 +6,6 @@
 import Foundation
 
 /// @mockable
-public protocol FirebaseRemoteConfigDriverProtocol: AnyObject {}
+public protocol FirebaseRemoteConfigDriverProtocol: AnyObject {
+    func setUp() async throws
+}

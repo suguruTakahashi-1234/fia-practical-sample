@@ -421,35 +421,6 @@ public final class LibraryLicenseDriverProtocolMock: LibraryLicenseDriverProtoco
     public var licenseList: [License] = [License]() { didSet { licenseListSetCallCount += 1 } }
 }
 
-public final class LocalDataStoreProtocolMock: LocalDataStoreProtocol {
-    public init() { }
-    public init(launchAppCount: Int = 0, isCompletedOnboarding: Bool = false, apnsToken: Data? = nil) {
-        self.launchAppCount = launchAppCount
-        self.isCompletedOnboarding = isCompletedOnboarding
-        self.apnsToken = apnsToken
-    }
-
-
-    public private(set) var launchAppCountSetCallCount = 0
-    public var launchAppCount: Int = 0 { didSet { launchAppCountSetCallCount += 1 } }
-
-    public private(set) var isCompletedOnboardingSetCallCount = 0
-    public var isCompletedOnboarding: Bool = false { didSet { isCompletedOnboardingSetCallCount += 1 } }
-
-    public private(set) var apnsTokenSetCallCount = 0
-    public var apnsToken: Data? = nil { didSet { apnsTokenSetCallCount += 1 } }
-
-    public private(set) var allClearCallCount = 0
-    public var allClearHandler: (() -> ())?
-    public func allClear()  {
-        allClearCallCount += 1
-        if let allClearHandler = allClearHandler {
-            allClearHandler()
-        }
-        
-    }
-}
-
 public final class LocalDataStoreProviderMock: LocalDataStoreProvider {
     public init() { }
     public init(localDataStore: LocalDataStoreProtocolAT) {
@@ -519,6 +490,38 @@ public final class LogDriverProviderMock: LogDriverProvider {
     public var logDriver: LogDriverProtocolAT {
         get { return _logDriver }
         set { _logDriver = newValue }
+    }
+}
+
+public final class LocalDataStoreProtocolMock: LocalDataStoreProtocol {
+    public init() { }
+    public init(launchAppCount: Int = 0, isCompletedOnboarding: Bool = false, apnsToken: Data? = nil) {
+        self.launchAppCount = launchAppCount
+        self.isCompletedOnboarding = isCompletedOnboarding
+        self.apnsToken = apnsToken
+    }
+
+
+    public var isCompletedOnboardingPublisher: AnyPublisher<Bool, Never> { return self.isCompletedOnboardingPublisherSubject.eraseToAnyPublisher() }
+    public private(set) var isCompletedOnboardingPublisherSubject = PassthroughSubject<Bool, Never>()
+
+    public private(set) var launchAppCountSetCallCount = 0
+    public var launchAppCount: Int = 0 { didSet { launchAppCountSetCallCount += 1 } }
+
+    public private(set) var isCompletedOnboardingSetCallCount = 0
+    public var isCompletedOnboarding: Bool = false { didSet { isCompletedOnboardingSetCallCount += 1 } }
+
+    public private(set) var apnsTokenSetCallCount = 0
+    public var apnsToken: Data? = nil { didSet { apnsTokenSetCallCount += 1 } }
+
+    public private(set) var allClearCallCount = 0
+    public var allClearHandler: (() -> ())?
+    public func allClear()  {
+        allClearCallCount += 1
+        if let allClearHandler = allClearHandler {
+            allClearHandler()
+        }
+        
     }
 }
 

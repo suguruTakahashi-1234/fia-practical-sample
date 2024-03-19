@@ -3,6 +3,7 @@
 //  Copyright sugurutakahashi. All rights reserved.
 //
 
+import Combine
 import DomainLayer
 import Foundation
 
@@ -17,6 +18,9 @@ final class AppRootPresenter<Dependency: AppRootPresenterDependency>: Observable
         isCompletedOnboarding = dependency.localDataStore.isCompletedOnboarding
 
         dependency.logDriver.initLog()
+
+        dependency.localDataStore.isCompletedOnboardingPublisher
+            .assign(to: &$isCompletedOnboarding)
     }
 
     deinit {
@@ -28,10 +32,6 @@ final class AppRootPresenter<Dependency: AppRootPresenterDependency>: Observable
 
         dependency.logDriver.logging(.launchApp(.init(count: dependency.localDataStore.launchAppCount)))
         dependency.localDataStore.launchAppCount = dependency.localDataStore.launchAppCount + 1
-
-        if !dependency.localDataStore.isCompletedOnboarding {
-            dependency.localDataStore.isCompletedOnboarding = true
-        }
     }
 
     func onDisappear() {

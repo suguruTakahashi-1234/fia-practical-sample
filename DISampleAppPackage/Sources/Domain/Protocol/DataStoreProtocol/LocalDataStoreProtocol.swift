@@ -3,10 +3,13 @@
 //  Copyright sugurutakahashi. All rights reserved.
 //
 
+import Combine
 import Foundation
 
 /// @mockable
 public protocol LocalDataStoreProtocol: AnyObject {
+    var isCompletedOnboardingPublisher: AnyPublisher<Bool, Never> { get }
+
     var launchAppCount: Int { get set }
     var isCompletedOnboarding: Bool { get set }
     var apnsToken: Data? { get set }

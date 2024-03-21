@@ -1,5 +1,5 @@
 {
-  "originHash" : "ae12b336cc59354c81c1e5aa379db59d1b67c19c0678d95ec26b2a5b9e5ca88c",
+  "originHash" : "e3a000e4b56af162655fa117fa98a259f13824cf52b7544431af66a40a1d5b30",
   "pins" : [
     {
       "identity" : "abseil-cpp-binary",
@@ -15,8 +15,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/EmergeTools/AccessibilitySnapshot.git",
       "state" : {
-        "revision" : "f305653df67004266e4c49d10a23a278b7168986",
-        "version" : "1.0.1"
+        "revision" : "54046d8fa44b9fa9f0e2229526f6ed89cb5e0ec2",
+        "version" : "1.0.2"
       }
     },
     {
@@ -177,8 +177,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/EmergeTools/SnapshotPreviews-iOS",
       "state" : {
-        "revision" : "b5ecd861360c7f8a886e6f8b6c1deab15695cbc5",
-        "version" : "0.8.6"
+        "revision" : "af5c23ffb358a19ea4a104312fecd2642bf126fd",
+        "version" : "0.8.7"
       }
     },
     {

@@ -1,8 +1,8 @@
 import DomainLayer
 import Foundation
 
-@MainActor
-final class {{ argument.screenName }}Presenter<Dependency: {{ argument.screenName }}PresenterDependency>: ObservableObject {
+@MainActor @Observable
+final class {{ argument.screenName }}Presenter<Dependency: {{ argument.screenName }}PresenterDependency> {
     private let dependency: Dependency
 
     init(dependency: Dependency) {

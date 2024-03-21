@@ -16,11 +16,11 @@ import SwiftUI
 @MainActor
 public struct {{ argument.screenName }}View<Router: {{ argument.routerName }}Wireframe, Dependency: {{ argument.screenName }}PresenterDependency>: View {
     private let router: Router
-    @StateObject private var presenter: {{ argument.screenName }}Presenter<Dependency>
+    @State private var presenter: {{ argument.screenName }}Presenter<Dependency>
 
     public init(router: Router, dependency: Dependency) {
         self.router = router
-        _presenter = .init(wrappedValue: {{ argument.screenName }}Presenter(dependency: dependency))
+        presenter = {{ argument.screenName }}Presenter(dependency: dependency)
     }
 
     public var body: some View {

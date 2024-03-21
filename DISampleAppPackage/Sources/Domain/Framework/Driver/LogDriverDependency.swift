@@ -6,7 +6,7 @@
 import Foundation
 
 /// @mockable(typealias: OSLogDriverProtocolAT = OSLogDriver; FirebaseAnalyticsLogDriverProtocolAT = FirebaseAnalyticsLogDriverProtocolMock; FirebaseCrashlyticsLogDriverProtocolAT = FirebaseCrashlyticsLogDriverProtocolMock;)
-public protocol LogDriverDependency {
+public protocol LogDriverDependency: AnyObject {
     associatedtype OSLogDriverProtocolAT: OSLogDriverProtocol
     associatedtype FirebaseAnalyticsLogDriverProtocolAT: FirebaseAnalyticsLogDriverProtocol
     associatedtype FirebaseCrashlyticsLogDriverProtocolAT: FirebaseCrashlyticsLogDriverProtocol

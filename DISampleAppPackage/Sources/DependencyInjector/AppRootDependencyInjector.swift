@@ -12,6 +12,19 @@ import PresentationLayer
 
 /// ※ UseCase は Presenter の拡張のため DI 層では保持しない
 public final class AppRootDependencyInjector: AppRootRouterDependency, AppRootDependencyInjectorDependency, LogDriverDependency {
+    /// Internal DependencyInjector
+    public final class LogDriverDependencyInjector: LogDriverDependency {
+        public let osLogDriver: OSLogDriver
+        public let firebaseAnalyticsLogDriver: FirebaseAnalyticsLogDriver
+        public let firebaseCrashlyticsLogDriver: FirebaseCrashlyticsLogDriver<DeviceInfoDriver<DeviceNameDriver>>
+
+        public init(osLogDriver: OSLogDriver, firebaseAnalyticsLogDriver: FirebaseAnalyticsLogDriver, firebaseCrashlyticsLogDriver: FirebaseCrashlyticsLogDriver<DeviceInfoDriver<DeviceNameDriver>>) {
+            self.osLogDriver = osLogDriver
+            self.firebaseAnalyticsLogDriver = firebaseAnalyticsLogDriver
+            self.firebaseCrashlyticsLogDriver = firebaseCrashlyticsLogDriver
+        }
+    }
+
     /// Data Store
     public let cacheDataStore: CacheDataStore
     public let localDataStore: LocalDataStore
@@ -19,8 +32,7 @@ public final class AppRootDependencyInjector: AppRootRouterDependency, AppRootDe
     /// Internal Driver
     let deviceNameDriver: DeviceNameDriver
 
-    /// Public Driver
-    public let osLogDriver: OSLogDriver
+    /// Generic Driver
     public let buildEnvDriver: BuildEnvDriver
     public let deviceInfoDriver: DeviceInfoDriver<DeviceNameDriver>
     public let clipboardDriver: ClipboardDriver
@@ -31,7 +43,8 @@ public final class AppRootDependencyInjector: AppRootRouterDependency, AppRootDe
     let firebaseRemoteConfigDriver: FirebaseRemoteConfigDriver<CacheDataStore>
 
     /// Log Driver
-    public let logDriver: LogDriver<OSLogDriver, FirebaseAnalyticsLogDriver, FirebaseCrashlyticsLogDriver<DeviceInfoDriver<DeviceNameDriver>>>
+    public let logDriver: LogDriver<LogDriverDependencyInjector>
+    public let osLogDriver: OSLogDriver
     public let firebaseAnalyticsLogDriver: FirebaseAnalyticsLogDriver
     public let firebaseCrashlyticsLogDriver: FirebaseCrashlyticsLogDriver<DeviceInfoDriver<DeviceNameDriver>>
 
@@ -65,7 +78,7 @@ public final class AppRootDependencyInjector: AppRootRouterDependency, AppRootDe
         osLogDriver = OSLogDriver()
         firebaseAnalyticsLogDriver = FirebaseAnalyticsLogDriver()
         firebaseCrashlyticsLogDriver = FirebaseCrashlyticsLogDriver(deviceInfoDriver: deviceInfoDriver)
-        logDriver = LogDriver(osLogDriver: osLogDriver, firebaseAnalyticsLogDriver: firebaseAnalyticsLogDriver, firebaseCrashlyticsLogDriver: firebaseCrashlyticsLogDriver)
+        logDriver = LogDriver(dependency: LogDriverDependencyInjector(osLogDriver: osLogDriver, firebaseAnalyticsLogDriver: firebaseAnalyticsLogDriver, firebaseCrashlyticsLogDriver: firebaseCrashlyticsLogDriver))
         logDriver.debugLog("Completed setup LogDriver")
 
         Task {

@@ -26,7 +26,7 @@ extension UserDefaultsWrappable {
 
         do {
             let decodedValue = try T.decoder.decode(T?.self, from: data)
-            OSLogDriver.debugLog("Return UserDefaults value, key: \(key), value: \(String(describing: decodedValue))")
+            OSLogDriver.debugLog("Return UserDefaults value, key: \(key), value: \(String(describing: decodedValue))", level: .debug)
             return decodedValue
         } catch {
             OSLogDriver.errorLog("Failed to decode \(key): \(error), defaultValue: \(String(describing: defaultValue)), data: \(data)", level: .fault)

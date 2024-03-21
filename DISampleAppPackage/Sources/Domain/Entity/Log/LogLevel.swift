@@ -21,15 +21,15 @@ public extension LogLevel {
     var description: String {
         switch self {
         case .debug:
-            "[debug] ◽️"
+            "[debug]  ⬜️"
         case .info:
-            "[info] 🔷"
+            "[info]   🔷"
         case .notice:
             "[notice] 🟢"
         case .error:
-            "[error] ⚠️"
+            "[error]  ⚠️"
         case .fault:
-            "[fault] ❌"
+            "[fault]  ❌"
         }
     }
 }

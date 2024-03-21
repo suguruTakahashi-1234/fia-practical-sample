@@ -2,9 +2,9 @@
 import DomainLayer
 import Foundation
 
-@MainActor
-final class HomeTabPresenter<Dependency: HomeTabPresenterDependency>: ObservableObject {
-    @Published var selectedTab: HomeTab
+@MainActor @Observable
+final class HomeTabPresenter<Dependency: HomeTabPresenterDependency> {
+    var selectedTab: HomeTab
 
     private let dependency: Dependency
 

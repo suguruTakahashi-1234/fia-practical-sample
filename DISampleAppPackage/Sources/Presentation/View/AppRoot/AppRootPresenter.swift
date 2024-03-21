@@ -7,11 +7,12 @@ import Combine
 import DomainLayer
 import Foundation
 
-@MainActor
-final class AppRootPresenter<Dependency: AppRootPresenterDependency>: ObservableObject {
-    @Published var isCompletedOnboarding: Bool
+@MainActor @Observable
+final class AppRootPresenter<Dependency: AppRootPresenterDependency> {
+    var isCompletedOnboarding: Bool
 
     private let dependency: Dependency
+    private var cancellables = Set<AnyCancellable>()
 
     init(dependency: Dependency) {
         self.dependency = dependency
@@ -20,7 +21,8 @@ final class AppRootPresenter<Dependency: AppRootPresenterDependency>: Observable
         dependency.logDriver.initLog()
 
         dependency.localDataStore.isCompletedOnboardingPublisher
-            .assign(to: &$isCompletedOnboarding)
+            .assign(to: \.isCompletedOnboarding, on: self)
+            .store(in: &cancellables)
     }
 
     deinit {

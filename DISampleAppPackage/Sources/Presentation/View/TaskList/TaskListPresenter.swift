@@ -1,12 +1,15 @@
 
+import Combine
 import DomainLayer
 import Foundation
+import Observation
 
-@MainActor
-final class TaskListPresenter<Dependency: TaskListPresenterDependency>: ObservableObject {
-    @Published private(set) var isEnabledNewFeature: Bool = false
+@MainActor @Observable
+final class TaskListPresenter<Dependency: TaskListPresenterDependency> {
+    private(set) var isEnabledNewFeature: Bool = false
 
     private let dependency: Dependency
+    private var cancellables = Set<AnyCancellable>()
 
     init(dependency: Dependency) {
         dependency.logDriver.initLog()
@@ -16,7 +19,8 @@ final class TaskListPresenter<Dependency: TaskListPresenterDependency>: Observab
         dependency.cacheDataStore.variantTestSubjecter
             .receive(on: RunLoop.main)
             .map { $0.isEnabledNewFeature }
-            .assign(to: &$isEnabledNewFeature)
+            .assign(to: \.isEnabledNewFeature, on: self)
+            .store(in: &cancellables)
     }
 
     deinit {

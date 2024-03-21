@@ -11,11 +11,11 @@ import SwiftUI
 @MainActor
 public struct LicenseListView<Router: AppRootWireframe, Dependency: LicenseListPresenterDependency>: View {
     private let router: Router
-    @StateObject private var presenter: LicenseListPresenter<Dependency>
+    @State private var presenter: LicenseListPresenter<Dependency>
 
     public init(router: Router, dependency: Dependency) {
         self.router = router
-        _presenter = .init(wrappedValue: LicenseListPresenter(dependency: dependency))
+        presenter = LicenseListPresenter(dependency: dependency)
     }
 
     public var body: some View {

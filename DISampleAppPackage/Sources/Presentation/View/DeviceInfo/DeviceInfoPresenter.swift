@@ -3,15 +3,16 @@ import DomainLayer
 import Foundation
 import SwiftUI // for UIPasteboard
 
-@MainActor
-final class DeviceInfoPresenter<Dependency: DeviceInfoPresenterDependency>: ObservableObject {
-    @Published var shouldShowCopyAlert: Bool = false
+@MainActor @Observable
+final class DeviceInfoPresenter<Dependency: DeviceInfoPresenterDependency> {
+    var shouldShowCopyAlert: Bool = false
     private(set) var selectedDeviceInfoType: DeviceInfoType?
 
     /// UseCase の Mock を使用する場合はここを書き換える（DI のコードは書き換えず Presenter で直接指定する）
     private let deviceInfoUseCase: DeviceInfoInteractor<Dependency>
     private let dependency: Dependency
 
+    @ObservationIgnored
     var copiedAlertTitle: String {
         guard let selectedDeviceInfoType else {
             return ""

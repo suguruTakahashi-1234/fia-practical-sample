@@ -5,11 +5,12 @@
 
 import DomainLayer
 import Foundation
+import Observation
 
-@MainActor
-final class LicenseListPresenter<Dependency: LicenseListPresenterDependency>: ObservableObject {
-    @Published private(set) var licenseList: [License] = []
-    @Published var selectedLicense: License?
+@MainActor @Observable
+final class LicenseListPresenter<Dependency: LicenseListPresenterDependency> {
+    private(set) var licenseList: [License] = []
+    var selectedLicense: License?
 
     private let dependency: Dependency
 

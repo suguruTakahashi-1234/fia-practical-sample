@@ -2,9 +2,9 @@
 import DomainLayer
 import Foundation
 
-@MainActor
-final class OnboardingPresenter<Dependency: OnboardingPresenterDependency>: ObservableObject {
-    @Published var selectedStep: OnboardingStep = .introduction
+@MainActor @Observable
+final class OnboardingPresenter<Dependency: OnboardingPresenterDependency> {
+    var selectedStep: OnboardingStep = .introduction
 
     private let dependency: Dependency
 

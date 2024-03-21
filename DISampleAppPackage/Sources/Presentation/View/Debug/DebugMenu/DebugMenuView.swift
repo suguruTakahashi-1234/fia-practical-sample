@@ -20,7 +20,7 @@ public enum DebugActionType {
 @MainActor
 public struct DebugMenuView<Router: AppRootWireframe, Dependency: DebugMenuPresenterDependency>: View {
     private let router: Router
-    @StateObject private var presenter: DebugMenuPresenter<Dependency>
+    @State private var presenter: DebugMenuPresenter<Dependency>
 
     public init(router: Router, dependency: Dependency) {
         self.router = router

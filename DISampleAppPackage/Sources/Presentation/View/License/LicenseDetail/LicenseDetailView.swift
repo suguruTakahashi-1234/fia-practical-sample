@@ -10,10 +10,10 @@ import SwiftUI
 
 @MainActor
 public struct LicenseDetailView<Dependency: LicenseDetailPresenterDependency>: View {
-    @StateObject private var presenter: LicenseDetailPresenter<Dependency>
+    @State private var presenter: LicenseDetailPresenter<Dependency>
 
     public init(dependency: Dependency, license: License) {
-        _presenter = .init(wrappedValue: LicenseDetailPresenter(dependency: dependency, license: license))
+        presenter = LicenseDetailPresenter(dependency: dependency, license: license)
     }
 
     public var body: some View {

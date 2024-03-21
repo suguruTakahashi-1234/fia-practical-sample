@@ -14,13 +14,13 @@ public enum OnboardingStep {
 @MainActor
 public struct OnboardingView<Router: AppRootWireframe, Dependency: OnboardingPresenterDependency>: View {
     private let router: Router
-    @StateObject private var presenter: OnboardingPresenter<Dependency>
+    @State private var presenter: OnboardingPresenter<Dependency>
 
     /// Previews で検証できるように init の引数に tab を設定している（要検討）
     /// SwiftUI の TabView のタップは Binding による更新なので仕方のない側面もある
     public init(router: Router, dependency: Dependency, onboardingStep: OnboardingStep = .introduction) {
         self.router = router
-        _presenter = .init(wrappedValue: OnboardingPresenter(dependency: dependency, onboardingStep: onboardingStep))
+        presenter = OnboardingPresenter(dependency: dependency, onboardingStep: onboardingStep)
     }
 
     public var body: some View {

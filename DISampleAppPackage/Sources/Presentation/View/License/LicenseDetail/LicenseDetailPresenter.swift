@@ -7,7 +7,7 @@ import DomainLayer
 import Foundation
 
 @MainActor @Observable
-final class LicenseDetailPresenter<Dependency: LicenseDetailPresenterDependency> {
+public final class LicenseDetailPresenter<Dependency: LicenseDetailPresenterDependency> {
     let license: License
     private let dependency: Dependency
 

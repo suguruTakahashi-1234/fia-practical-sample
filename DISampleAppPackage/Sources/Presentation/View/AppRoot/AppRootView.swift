@@ -13,9 +13,9 @@ public struct AppRootView<Router: AppRootWireframe, Dependency: AppRootPresenter
     private let router: Router
     @State private var presenter: AppRootPresenter<Dependency>
 
-    public init(router: Router, dependency: Dependency) {
+    public init(router: Router, presenter: AppRootPresenter<Dependency>) {
         self.router = router
-        presenter = AppRootPresenter(dependency: dependency)
+        self.presenter = presenter
     }
 
     public var body: some View {
@@ -48,7 +48,7 @@ struct AppRootView_Previews: PreviewProvider, SnapshotTestable {
         PreviewSnapshots(
             configurations: standard,
             configure: { state in
-                AppRootView(router: AppRootRouter.empty, dependency: state)
+                AppRootView(router: AppRootRouter.empty, presenter: AppRootPresenter<AppRootRouterDependencyMock>(dependency: state))
             }
         )
     }

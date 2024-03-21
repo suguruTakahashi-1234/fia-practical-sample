@@ -8,7 +8,7 @@ import DomainLayer
 import Foundation
 
 @MainActor @Observable
-final class AppRootPresenter<Dependency: AppRootPresenterDependency> {
+public final class AppRootPresenter<Dependency: AppRootPresenterDependency> {
     var isCompletedOnboarding: Bool
 
     private let dependency: Dependency

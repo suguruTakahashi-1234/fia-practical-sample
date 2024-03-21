@@ -17,7 +17,7 @@ public final class AppRootRouter<Dependency: AppRootRouterDependency>: AppRootWi
     }
 
     public func createAppRootView() -> AppRootView<AppRootRouter, Dependency> {
-        AppRootView(router: self, dependency: dependency)
+        AppRootView(router: self, presenter: AppRootPresenter(dependency: dependency))
     }
 
     public func createOnboardingView() -> OnboardingView<AppRootRouter, Dependency> {
@@ -37,7 +37,7 @@ public final class AppRootRouter<Dependency: AppRootRouterDependency>: AppRootWi
     }
 
     public func createLicenseDetailView(license: License) -> LicenseDetailView<Dependency> {
-        LicenseDetailView(dependency: dependency, license: license)
+        LicenseDetailView(presenter: LicenseDetailPresenter(dependency: dependency, license: license))
     }
 
     public func createSettingView() -> SettingView<AppRootRouter, Dependency> {

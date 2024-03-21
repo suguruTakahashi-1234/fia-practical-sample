@@ -12,8 +12,8 @@ import SwiftUI
 public struct LicenseDetailView<Dependency: LicenseDetailPresenterDependency>: View {
     @State private var presenter: LicenseDetailPresenter<Dependency>
 
-    public init(dependency: Dependency, license: License) {
-        presenter = LicenseDetailPresenter(dependency: dependency, license: license)
+    public init(presenter: LicenseDetailPresenter<Dependency>) {
+        self.presenter = presenter
     }
 
     public var body: some View {
@@ -48,7 +48,7 @@ struct LicenseDetailView_Previews: PreviewProvider, SnapshotTestable {
                 .init(type: .large, state: .sizeL),
             ],
             configure: { state in
-                LicenseDetailView(dependency: AppRootRouterDependencyMock.random, license: state)
+                LicenseDetailView(presenter: LicenseDetailPresenter(dependency: AppRootRouterDependencyMock.random, license: state))
                     .navigationStacked()
             }
         )

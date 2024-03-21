@@ -7,11 +7,11 @@ import SwiftUI
 @MainActor
 public struct TaskListView<Router: AppRootWireframe, Dependency: TaskListPresenterDependency>: View {
     private let router: Router
-    @StateObject private var presenter: TaskListPresenter<Dependency>
+    @State private var presenter: TaskListPresenter<Dependency>
 
     public init(router: Router, dependency: Dependency) {
         self.router = router
-        _presenter = .init(wrappedValue: TaskListPresenter(dependency: dependency))
+        presenter = TaskListPresenter(dependency: dependency)
     }
 
     public var body: some View {

@@ -2,10 +2,10 @@
 import DomainLayer
 import Foundation
 
-@MainActor
-final class DebugMenuPresenter<Dependency: DebugMenuPresenterDependency>: ObservableObject {
-    @Published private(set) var selectedDebugActionType: DebugActionType?
-    @Published var shouldShowAlert: Bool = false
+@MainActor @Observable
+final class DebugMenuPresenter<Dependency: DebugMenuPresenterDependency> {
+    private(set) var selectedDebugActionType: DebugActionType?
+    var shouldShowAlert: Bool = false
 
     private let dependency: Dependency
 

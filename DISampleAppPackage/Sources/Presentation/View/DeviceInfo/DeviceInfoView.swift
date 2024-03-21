@@ -7,11 +7,11 @@ import SwiftUI
 @MainActor
 public struct DeviceInfoView<Router: AppRootWireframe, Dependency: DeviceInfoPresenterDependency>: View {
     private let router: Router
-    @StateObject private var presenter: DeviceInfoPresenter<Dependency>
+    @State private var presenter: DeviceInfoPresenter<Dependency>
 
     public init(router: Router, dependency: Dependency) {
         self.router = router
-        _presenter = .init(wrappedValue: DeviceInfoPresenter(dependency: dependency))
+        presenter = DeviceInfoPresenter(dependency: dependency)
     }
 
     public var body: some View {

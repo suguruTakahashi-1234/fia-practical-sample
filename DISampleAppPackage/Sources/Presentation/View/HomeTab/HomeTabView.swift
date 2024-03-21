@@ -7,13 +7,13 @@ import SwiftUI
 @MainActor
 public struct HomeTabView<Router: AppRootWireframe, Dependency: HomeTabPresenterDependency>: View {
     private let router: Router
-    @StateObject private var presenter: HomeTabPresenter<Dependency>
+    @State private var presenter: HomeTabPresenter<Dependency>
 
     /// Previews で検証できるように init の引数に tab を設定している（要検討）
     /// SwiftUI の TabView のタップは Binding による更新なので仕方のない側面もある
     public init(router: Router, dependency: Dependency, homeTab: HomeTab = .task) {
         self.router = router
-        _presenter = .init(wrappedValue: HomeTabPresenter(dependency: dependency, homeTab: homeTab))
+        presenter = HomeTabPresenter(dependency: dependency, homeTab: homeTab)
     }
 
     public var body: some View {

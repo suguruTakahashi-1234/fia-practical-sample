@@ -2,8 +2,8 @@
 import DomainLayer
 import Foundation
 
-@MainActor
-final class SettingPresenter<Dependency: SettingPresenterDependency>: ObservableObject {
+@MainActor @Observable
+final class SettingPresenter<Dependency: SettingPresenterDependency> {
     private let dependency: Dependency
 
     init(dependency: Dependency) {

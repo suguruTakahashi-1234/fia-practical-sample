@@ -7,7 +7,7 @@
 
   // 基本設定を拡張
   "extends": [
-    "config:base"
+    "config:recommended"
   ],
 
   // PRに自動で付けられるラベル
@@ -18,6 +18,9 @@
 
   // 自動マージの無効化
   "automerge": false,
+
+  // タイムゾーンの設定
+  "timezone": "Asia/Tokyo",
 
   // PR のタイトルと commit message の Prefix
   "commitMessageAction": "【Renovate】",

@@ -28,7 +28,7 @@ public final class StaticLogDriver {
 
 /// よく使う記述は以下の Extension で定義している
 public extension StaticLogDriver {
-    static func debugLog(_ message: String = "", level: LogLevel = .info, file: String = #filePath, function: String = #function, line: Int = #line) {
+    static func debugLog(_ message: String = "", level: LogLevel = .notice, file: String = #filePath, function: String = #function, line: Int = #line) {
         log(.debug(.init(message: message)), level: level, file: file, function: function, line: line)
     }
 

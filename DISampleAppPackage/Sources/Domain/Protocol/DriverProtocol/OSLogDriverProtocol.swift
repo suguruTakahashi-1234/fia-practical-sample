@@ -12,11 +12,11 @@ public protocol OSLogDriverProtocol: LogDriverProtocol {
 
 public extension OSLogDriverProtocol {
     /// log への簡易アクセス
-    static func logging(_ logEventType: LogEventType, level: LogLevel = .info, file: String = #filePath, function: String = #function, line: Int = #line) {
+    static func logging(_ logEventType: LogEventType, level: LogLevel = .notice, file: String = #filePath, function: String = #function, line: Int = #line) {
         log(logEventType, level: level, file: file.lastPathComponent, function: function, line: line)
     }
 
-    static func debugLog(_ message: String = "", level: LogLevel = .info, file: String = #filePath, function: String = #function, line: Int = #line) {
+    static func debugLog(_ message: String = "", level: LogLevel = .notice, file: String = #filePath, function: String = #function, line: Int = #line) {
         logging(.debug(.init(message: message)), level: level, file: file, function: function, line: line)
     }
 

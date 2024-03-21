@@ -62,8 +62,8 @@ public final class AppRootDependencyInjector: AppRootRouterDependency, AppRootDe
         firebaseRemoteConfigDriver = FirebaseRemoteConfigDriver(cacheDataStore: cacheDataStore)
 
         // Setup LogDriver
-        firebaseAnalyticsLogDriver = FirebaseAnalyticsLogDriver()
         osLogDriver = OSLogDriver()
+        firebaseAnalyticsLogDriver = FirebaseAnalyticsLogDriver()
         firebaseCrashlyticsLogDriver = FirebaseCrashlyticsLogDriver(deviceInfoDriver: deviceInfoDriver)
         logDriver = LogDriver(osLogDriver: osLogDriver, firebaseAnalyticsLogDriver: firebaseAnalyticsLogDriver, firebaseCrashlyticsLogDriver: firebaseCrashlyticsLogDriver)
         logDriver.debugLog("Completed setup LogDriver")

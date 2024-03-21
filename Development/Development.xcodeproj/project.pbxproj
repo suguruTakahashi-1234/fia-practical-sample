@@ -358,6 +358,7 @@
 				CODE_SIGN_ENTITLEMENTS = Development/Development.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_ASSET_PATHS = "\"Development/Preview Content\"";
 				DEVELOPMENT_TEAM = Z374HA4GH7;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -397,6 +398,7 @@
 				CODE_SIGN_ENTITLEMENTS = Development/Development.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_ASSET_PATHS = "\"Development/Preview Content\"";
 				DEVELOPMENT_TEAM = Z374HA4GH7;
 				ENABLE_HARDENED_RUNTIME = YES;

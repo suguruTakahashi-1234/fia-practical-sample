@@ -23,7 +23,7 @@ public extension AppRootRouterDependencyMock {
         libraryLicenseDriver: LibraryLicenseDriverProtocolMock = .init(),
         deviceInfoDriver: DeviceInfoDriver<DeviceNameDriverProtocolMock> = .init(deviceNameDriver: .init(deviceName: "Mock")),
         buildEnvDriver: BuildEnvDriverProtocolMock = .init(buildScheme: .development, buildConfiguration: AppRootRouterDependencyMock.buildConfiguration),
-        logDriver: LogDriver<OSLogDriver, FirebaseLogDriverProtocolMock> = .init(osLogDriver: .init(), firebaseLogDriver: .init()),
+        logDriver: LogDriver<OSLogDriver, FirebaseAnalyticsLogDriverProtocolMock, FirebaseCrashlyticsLogDriverProtocolMock> = .init(osLogDriver: .init(), firebaseAnalyticsLogDriver: .init(), firebaseCrashlyticsLogDriver: .init()), // OSLogDriver は本物を使う
         clipboardDriver: ClipboardDriver = .init() // テスト時に本物の ClipboardDriver を使ってしまうとペースト許諾のアラートが表示されてテストが実行されないため、Mock に差し替え可能にしているが通常は本物を使う
     ) -> Self {
         // スナップショットテスト時に固定値でないと困るのでlaunchAppCountを毎回リセットする

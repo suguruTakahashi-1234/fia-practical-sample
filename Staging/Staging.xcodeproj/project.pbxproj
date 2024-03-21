@@ -124,6 +124,7 @@
 				4471BCAE2B81F08800218534 /* Sources */,
 				4471BCAF2B81F08800218534 /* Frameworks */,
 				4471BCB02B81F08800218534 /* Resources */,
+				441DA6B52BABA5DB0035A2ED /* Upload dSYM Files To Firebase Crashlytics */,
 			);
 			buildRules = (
 			);
@@ -213,6 +214,33 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		441DA6B52BABA5DB0035A2ED /* Upload dSYM Files To Firebase Crashlytics */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}",
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${PRODUCT_NAME}",
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Info.plist",
+				"$(TARGET_BUILD_DIR)/$(UNLOCALIZED_RESOURCES_FOLDER_PATH)/GoogleService-Info.plist",
+				"$(TARGET_BUILD_DIR)/$(EXECUTABLE_PATH)",
+			);
+			name = "Upload dSYM Files To Firebase Crashlytics";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${BUILD_DIR%/Build/*}/SourcePackages/checkouts/firebase-ios-sdk/Crashlytics/run\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		4471BCAE2B81F08800218534 /* Sources */ = {
@@ -366,6 +394,7 @@
 				CODE_SIGN_ENTITLEMENTS = Staging/Staging.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_ASSET_PATHS = "\"Staging/Preview Content\"";
 				DEVELOPMENT_TEAM = Z374HA4GH7;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -405,6 +434,7 @@
 				CODE_SIGN_ENTITLEMENTS = Staging/Staging.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_ASSET_PATHS = "\"Staging/Preview Content\"";
 				DEVELOPMENT_TEAM = Z374HA4GH7;
 				ENABLE_HARDENED_RUNTIME = YES;

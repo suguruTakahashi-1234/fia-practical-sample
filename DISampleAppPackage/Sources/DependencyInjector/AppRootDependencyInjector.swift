@@ -29,10 +29,11 @@ public final class AppRootDependencyInjector: AppRootRouterDependency, AppRootDe
     /// Firenbase Driver
     let firebaseSetupDriver: FirebaseSetupDriver<BuildEnvDriver>
     let firebaseRemoteConfigDriver: FirebaseRemoteConfigDriver<CacheDataStore>
-    public let firebaseLogDriver: FirebaseLogDriver
 
     /// Log Driver
-    public let logDriver: LogDriver<OSLogDriver, FirebaseLogDriver>
+    public let logDriver: LogDriver<OSLogDriver, FirebaseAnalyticsLogDriver, FirebaseCrashlyticsLogDriver<DeviceInfoDriver<DeviceNameDriver>>>
+    public let firebaseAnalyticsLogDriver: FirebaseAnalyticsLogDriver
+    public let firebaseCrashlyticsLogDriver: FirebaseCrashlyticsLogDriver<DeviceInfoDriver<DeviceNameDriver>>
 
     /// テストする想定がないため、Driver の生成以外の処理が大きくなりすぎないように注意すること
     @MainActor
@@ -49,7 +50,6 @@ public final class AppRootDependencyInjector: AppRootRouterDependency, AppRootDe
         deviceNameDriver = DeviceNameDriver()
 
         // Public Driver
-        osLogDriver = OSLogDriver()
         buildEnvDriver = BuildEnvDriver(buildScheme: buildScheme)
         deviceInfoDriver = DeviceInfoDriver(deviceNameDriver: deviceNameDriver)
         clipboardDriver = ClipboardDriver()
@@ -57,15 +57,15 @@ public final class AppRootDependencyInjector: AppRootRouterDependency, AppRootDe
 
         // Firenbase Driver
         firebaseSetupDriver = FirebaseSetupDriver(buildEnvDriver: buildEnvDriver)
-
         // FirebaseApp.configure() を実行しなければ、その他の Firebase 関連の API が使用できずエラーが発生するため
         firebaseSetupDriver.configure()
-
-        firebaseLogDriver = FirebaseLogDriver()
         firebaseRemoteConfigDriver = FirebaseRemoteConfigDriver(cacheDataStore: cacheDataStore)
 
         // Setup LogDriver
-        logDriver = LogDriver(osLogDriver: osLogDriver, firebaseLogDriver: firebaseLogDriver)
+        osLogDriver = OSLogDriver()
+        firebaseAnalyticsLogDriver = FirebaseAnalyticsLogDriver()
+        firebaseCrashlyticsLogDriver = FirebaseCrashlyticsLogDriver(deviceInfoDriver: deviceInfoDriver)
+        logDriver = LogDriver(osLogDriver: osLogDriver, firebaseAnalyticsLogDriver: firebaseAnalyticsLogDriver, firebaseCrashlyticsLogDriver: firebaseCrashlyticsLogDriver)
         logDriver.debugLog("Completed setup LogDriver")
 
         Task {

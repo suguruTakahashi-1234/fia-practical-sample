@@ -6,7 +6,7 @@
 import Foundation
 
 public extension String {
-    /// ex) "dependencyInjector" -> "DependencyInjector"
+    /// - ex) "dependencyInjector" -> "DependencyInjector"
     var initialUppercased: String {
         guard !isEmpty else {
             return ""
@@ -14,7 +14,7 @@ public extension String {
         return prefix(1).uppercased() + dropFirst()
     }
 
-    /// ex) "thisIsCamelCase" -> "this Is Camel Case"
+    /// - ex) "thisIsCamelCase" -> "this Is Camel Case"
     var camelCaseToSpaces: String {
         reduce("") { result, character in
             if character.isUppercase, result.isEmpty == false {
@@ -25,10 +25,10 @@ public extension String {
         }
     }
 
-    /// ex1) "snakeCase" -> "snake_case"
-    /// ex2) "SnakeCase" -> "snake_case"
-    /// ex3) "_SnakeCase" -> "_snake_case"
-    /// ex4) "snakeCaseURL0123" -> "snake_case_u_r_l0123"
+    /// - ex1) "snakeCase" -> "snake_case"
+    /// - ex2) "SnakeCase" -> "snake_case"
+    /// - ex3) "_SnakeCase" -> "_snake_case"
+    /// - ex4) "snakeCaseURL0123" -> "snake_case_u_r_l0123"
     var toSnakeCase: String {
         let snakeCased = unicodeScalars.reduce("") { result, scalar in
             if CharacterSet.uppercaseLetters.contains(scalar) {
@@ -45,9 +45,9 @@ public extension String {
         }
     }
 
-    /// ex1) "multiplyCircleFill" -> "multiply.circle.fill"
-    /// ex2) "iphoneGen2Circle" -> "iphone.gen2.circle"
-    /// ex3) "person3" -> "person3"
+    /// - ex1) "multiplyCircleFill" -> "multiply.circle.fill"
+    /// - ex2) "iphoneGen2Circle" -> "iphone.gen2.circle"
+    /// - ex3) "person3" -> "person3"
     var toDotSeparatedLowercase: String {
         reduce("") { result, character in
             if character.isUppercase {
@@ -68,6 +68,19 @@ public extension String {
         let lastPathComponent = split(separator: "/").last?.description ?? ""
         let components = lastPathComponent.split(separator: ".")
         return components.dropLast().joined(separator: ".")
+    }
+
+    /// 文字列数をトリミングする
+    /// - Parameters:
+    ///   - maxLength: 最大文字列長
+    /// - Returns: トリミングされた文字列
+    /// - ex1) "1234".trimmed(maxLength: 3) -> "123"
+    /// - ex2) "12".trimmed(maxLength: 3) -> "12"
+    func trimmed(maxLength: Int) -> String {
+        if count <= maxLength {
+            return self
+        }
+        return String(prefix(maxLength))
     }
 }
 

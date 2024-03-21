@@ -10,7 +10,7 @@ import Foundation
 
 public final class FirebaseRemoteConfigDriver<CacheDataStore: CacheDataStoreProtocol>: FirebaseRemoteConfigDriverProtocol {
     private let remoteConfig: FirebaseRemoteConfig.RemoteConfig = {
-        // https://firebase.google.com/docs/remote-config/get-started?platform=ios&hl=ja
+        // https://firebase.google.com/docs/remote-config/get-started?platform=ios
         let remoteConfig = RemoteConfig.remoteConfig()
         let settings = RemoteConfigSettings()
         settings.minimumFetchInterval = 0

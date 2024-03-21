@@ -35,7 +35,7 @@ final class DebugMenuPresenter<Dependency: DebugMenuPresenterDependency>: Observ
     func onTapAlertOk(_ debugActionType: DebugActionType) {
         switch debugActionType {
         case .forceCrash:
-            fatalError("強制クラッシュ")
+            fatalError("Force Crash!!")
         case .clearUserDefaults:
             dependency.localDataStore.allClear()
         }

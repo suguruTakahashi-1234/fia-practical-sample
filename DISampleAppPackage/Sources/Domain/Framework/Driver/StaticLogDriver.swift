@@ -9,18 +9,20 @@ import Foundation
 /// 現状、この class は使用していないが、今のままだと Driver 中の処理をログ送信する場合は、OSLogDriver のみになり、Firebase や他の Cloud サービスに連携できないため、そのときは any を許容してしまうがこちらの Driver を用いる
 /// 現状、Swift の言語仕様上、static な変数と generics は共存できない
 public final class StaticLogDriver {
-    /// 現状、thread safe でなくても問題ない
     private nonisolated(unsafe) static var firebaseLogDriver: (any FirebaseLogDriverProtocol)?
+    private nonisolated(unsafe) static var firebaseCrashlyticsLogDriver: (any FirebaseCrashlyticsLogDriverProtocol)?
 
     private init() {}
 
-    public static func setDriver(firebaseLogDriver: any FirebaseLogDriverProtocol) {
+    public static func setDriver(firebaseLogDriver: any FirebaseLogDriverProtocol, firebaseCrashlyticsLogDriver: any FirebaseCrashlyticsLogDriverProtocol) {
         Self.firebaseLogDriver = firebaseLogDriver
+        Self.firebaseCrashlyticsLogDriver = firebaseCrashlyticsLogDriver
     }
 
     public static func log(_ event: LogEventType, level: LogLevel = .notice, file: String = #filePath, function: String = #function, line: Int = #line) {
         OSLogDriver.log(event, level: level, file: file.lastPathComponent, function: function, line: line)
         firebaseLogDriver?.log(event, level: level, file: file.lastPathComponent, function: function, line: line)
+        firebaseCrashlyticsLogDriver?.log(event, level: level, file: file.lastPathComponent, function: function, line: line)
     }
 }
 

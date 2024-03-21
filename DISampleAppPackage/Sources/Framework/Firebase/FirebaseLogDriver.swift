@@ -16,14 +16,25 @@ public final class FirebaseLogDriver: FirebaseLogDriverProtocol {
     }
 
     public func log(_ event: LogEventType, level: LogLevel, file: String, function: String, line: Int) {
-        Analytics.logEvent(
-            event.logEvent.instanceSnakeCasedStructName,
-            parameters: event.logEvent.toAnalyticsPropertiesWithMetadata(level: level, file: file, function: function, line: line).trimmingValuesToMaxLength(100) // Firebase は 100 文字以上はログ送信に失敗する
-        )
+        switch level {
+        case .debug:
+            // debug レベルのログは送信しないようにする
+            break
+        case .info, .notice, .error, .fault:
+            Analytics.logEvent(
+                event.logEvent.instanceSnakeCasedStructName,
+                parameters: event.logEvent.toAnalyticsPropertiesWithMetadata(
+                    level: level,
+                    file: file,
+                    function: function,
+                    line: line
+                ).trimmedStringValue(maxLength: 100) // Firebase は 100 文字以上はログ送信に失敗するのでトリミングする
+            )
+        }
     }
 }
 
-extension LoggableEntity {
+private extension LoggableEntity {
     func toAnalyticsPropertiesWithMetadata(level: LogLevel, file: String, function: String, line: Int) -> [String: Any] {
         let metadata: [String: Any] = [
             "log_level": level.name,
@@ -35,7 +46,7 @@ extension LoggableEntity {
     }
 
     /// AWS や Protocol Buffers を考慮の IF を考慮して String, Int, Double, Bool のみを許容してる
-    private var toAnalyticsProperties: [String: Any] {
+    var toAnalyticsProperties: [String: Any] {
         toDictionary(caseFormat: .snakeCase).mapValues { value in
             switch value {
             case let intValue as Int:

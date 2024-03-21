@@ -161,7 +161,7 @@ enum TargetType: CaseIterable {
         switch self {
         case .framework(.firebase):
             [
-                // Staging 環境の GoogleService-Info.plist のコピー( testTarget でインテグレーションテストをしたいときに参照する)
+                // Staging 環境の GoogleService-Info.plist のコピー (testTarget でインテグレーションテストをしたいときに参照する)
                 .process("Resources/GoogleService-Info-For-Testing.plist"),
             ]
         default:
@@ -208,6 +208,7 @@ private extension PackageDescription.Target.Dependency {
     /// Library
     static let firebaseAnalytics: Self = .product(name: "FirebaseAnalytics", package: "firebase-ios-sdk")
     static let firebaseRemoteConfig: Self = .product(name: "FirebaseRemoteConfig", package: "firebase-ios-sdk")
+    static let firebaseCrashlytics: Self = .product(name: "FirebaseCrashlytics", package: "firebase-ios-sdk")
     static let previewSnapshots: Self = .product(name: "PreviewSnapshots", package: "swiftui-preview-snapshots")
     static let previewSnapshotsTesting: Self = .product(name: "PreviewSnapshotsTesting", package: "swiftui-preview-snapshots")
     static let previewGallery: Self = .product(name: "PreviewGallery", package: "SnapshotPreviews-iOS")
@@ -235,7 +236,7 @@ let package = Package(
     products: TargetType.allCases.map { $0.product },
     dependencies: [
         // Library
-        .package(url: "https://github.com/firebase/firebase-ios-sdk.git", from: "10.22.1"),
+        .package(url: "https://github.com/firebase/firebase-ios-sdk.git", from: "10.23.0"),
         .package(url: "https://github.com/doordash-oss/swiftui-preview-snapshots", from: "1.1.1"),
         .package(url: "https://github.com/EmergeTools/SnapshotPreviews-iOS", from: "0.8.6"),
         .package(url: "https://github.com/apple/swift-syntax", from: "510.0.1"),
@@ -290,6 +291,7 @@ extension TargetType {
                 TargetType.domain.dependency,
                 .firebaseAnalytics,
                 .firebaseRemoteConfig,
+                .firebaseCrashlytics,
             ])
         case .framework(.device):
             .init([

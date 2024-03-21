@@ -7,7 +7,7 @@ import DomainLayer
 import FirebaseFramework
 import Testing
 
-struct FirebaseLogDriverTest {
+struct FirebaseAnalyticsLogDriverTest {
     var firebaseSetupDriver: FirebaseSetupDriver<BuildEnvDriver>!
     var buildEnvDriver: BuildEnvDriver!
 

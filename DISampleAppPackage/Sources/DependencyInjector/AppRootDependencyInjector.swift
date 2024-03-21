@@ -31,8 +31,8 @@ public final class AppRootDependencyInjector: AppRootRouterDependency, AppRootDe
     let firebaseRemoteConfigDriver: FirebaseRemoteConfigDriver<CacheDataStore>
 
     /// Log Driver
-    public let logDriver: LogDriver<OSLogDriver, FirebaseLogDriver, FirebaseCrashlyticsLogDriver<DeviceInfoDriver<DeviceNameDriver>>>
-    public let firebaseLogDriver: FirebaseLogDriver
+    public let logDriver: LogDriver<OSLogDriver, FirebaseAnalyticsLogDriver, FirebaseCrashlyticsLogDriver<DeviceInfoDriver<DeviceNameDriver>>>
+    public let firebaseAnalyticsLogDriver: FirebaseAnalyticsLogDriver
     public let firebaseCrashlyticsLogDriver: FirebaseCrashlyticsLogDriver<DeviceInfoDriver<DeviceNameDriver>>
 
     /// テストする想定がないため、Driver の生成以外の処理が大きくなりすぎないように注意すること
@@ -62,10 +62,10 @@ public final class AppRootDependencyInjector: AppRootRouterDependency, AppRootDe
         firebaseRemoteConfigDriver = FirebaseRemoteConfigDriver(cacheDataStore: cacheDataStore)
 
         // Setup LogDriver
-        firebaseLogDriver = FirebaseLogDriver()
+        firebaseAnalyticsLogDriver = FirebaseAnalyticsLogDriver()
         osLogDriver = OSLogDriver()
         firebaseCrashlyticsLogDriver = FirebaseCrashlyticsLogDriver(deviceInfoDriver: deviceInfoDriver)
-        logDriver = LogDriver(osLogDriver: osLogDriver, firebaseLogDriver: firebaseLogDriver, firebaseCrashlyticsLogDriver: firebaseCrashlyticsLogDriver)
+        logDriver = LogDriver(osLogDriver: osLogDriver, firebaseAnalyticsLogDriver: firebaseAnalyticsLogDriver, firebaseCrashlyticsLogDriver: firebaseCrashlyticsLogDriver)
         logDriver.debugLog("Completed setup LogDriver")
 
         Task {

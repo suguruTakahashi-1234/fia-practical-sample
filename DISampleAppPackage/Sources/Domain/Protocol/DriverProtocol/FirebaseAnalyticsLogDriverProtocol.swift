@@ -6,4 +6,4 @@
 import Foundation
 
 /// @mockable
-public protocol FirebaseLogDriverProtocol: LogDriverProtocol {}
+public protocol FirebaseAnalyticsLogDriverProtocol: LogDriverProtocol {}

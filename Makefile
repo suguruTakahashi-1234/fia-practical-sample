@@ -42,6 +42,10 @@ swift-docc-gen:
 periphery-scan:
 	./Periphery/Script/periphery_scan.sh $(CURDIR)
 
+.PHONY: spm-dependencies-mermaid-gen
+spm-dependencies-mermaid-gen:
+	./Depermaid/Script/spm_dependencies_mermaid_gen.sh
+
 .PHONY: presentation-code-gen
 presentation-code-gen:
 	$(MAKE) sourcery-presentation-code-gen

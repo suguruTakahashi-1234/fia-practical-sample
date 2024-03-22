@@ -250,8 +250,7 @@ let package = Package(
 
         // for CLI
         .package(url: "https://github.com/yonaskolb/Mint.git", from: "0.17.5"),
-
-        // DocC
+        .package(url: "https://github.com/daikimat/depermaid.git", from: "1.1.0"),
         .package(url: "https://github.com/apple/swift-docc-plugin", from: "1.3.0"),
     ],
     targets: MacroTargetType.allCases.map { $0.target } + TargetType.allCases.map { $0.target } + TestTargetType.allCases.map { $0.target }
@@ -281,7 +280,6 @@ extension TargetType {
         switch self {
         case .dependencyInjector:
             .init(FrameworkTargetType.allCases.map { TargetType.framework($0).dependency } + [
-                TargetType.domain.dependency,
                 TargetType.presentation.dependency,
             ])
         case .domain:
@@ -329,8 +327,7 @@ extension TestTargetType {
                 .testing,
             ])
         case .interactorTest:
-            .init(FrameworkTargetType.allCases.map { TargetType.framework($0).dependency } + [
-                TargetType.presentation.dependency,
+            .init([
                 TargetType.dependencyInjector.dependency,
                 .testing,
             ])

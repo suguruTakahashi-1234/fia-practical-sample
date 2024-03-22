@@ -1,5 +1,5 @@
 {
-  "originHash" : "e3a000e4b56af162655fa117fa98a259f13824cf52b7544431af66a40a1d5b30",
+  "originHash" : "9417e446eddacbc8f943caa2fbaf553f05f446b6458073a2e5214331868cca40",
   "pins" : [
     {
       "identity" : "abseil-cpp-binary",
@@ -26,6 +26,15 @@
       "state" : {
         "revision" : "3e464dad87dad2d29bb29a97836789bf0f8f67d2",
         "version" : "10.18.1"
+      }
+    },
+    {
+      "identity" : "depermaid",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/daikimat/depermaid.git",
+      "state" : {
+        "revision" : "0d34e7d36e4c71559841757277e491e494bf422f",
+        "version" : "1.1.0"
       }
     },
     {

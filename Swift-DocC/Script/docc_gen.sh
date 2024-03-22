@@ -1,12 +1,12 @@
 #!/bin/bash
 
-if [ "$#" -ne 2 ]; then
-    echo "Usage: $0 <Target> <Packge Name>"
+if [ "$#" -ne 1 ]; then
+    echo "Usage: $0 <Packge Name>"
     exit 1
 fi
 
-target=$1
-package_name=$2
+package_name=$1
+target="DomainLayer"
 
 cd $package_name
 
@@ -21,7 +21,7 @@ swift package --allow-writing-to-directory ../docs \
 
 echo "Documentation for $target has been generated and saved to ../docs"
 
-target_lower=$(echo "$1" | tr '[:upper:]' '[:lower:]')
+target_lower=$(echo "$target" | tr '[:upper:]' '[:lower:]')
 url="https://sugurutakahashi-1234.github.io/DISample/documentation/$target_lower"
 echo "After pushing your changes to GitHub, please visit the following url to view the documentation:"
 echo "$url"

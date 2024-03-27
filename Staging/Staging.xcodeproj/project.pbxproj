@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		441DA6B22BA9E38B0035A2ED /* StagingLaunchPerformanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441DA6B12BA9E38B0035A2ED /* StagingLaunchPerformanceTests.swift */; };
-		445C83982B873C7D00DDF236 /* DependencyInjectorLayer in Frameworks */ = {isa = PBXBuildFile; productRef = 445C83972B873C7D00DDF236 /* DependencyInjectorLayer */; };
 		4471BCB62B81F08800218534 /* StagingApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4471BCB52B81F08800218534 /* StagingApp.swift */; };
 		4471BCBA2B81F08900218534 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4471BCB92B81F08900218534 /* Assets.xcassets */; };
 		4471BCBE2B81F08900218534 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4471BCBD2B81F08900218534 /* Preview Assets.xcassets */; };
@@ -16,6 +15,7 @@
 		4483802F2B918A6E006A0BC7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4483802E2B918A6E006A0BC7 /* GoogleService-Info.plist */; };
 		44ABAB332B9B61240039ECF7 /* StagingUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44ABAB322B9B61240039ECF7 /* StagingUITests.swift */; };
 		44CBBA592BB406F800FE692F /* InfoPlist.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 44CBBA582BB406F800FE692F /* InfoPlist.xcstrings */; };
+		44CBBA612BB480F500FE692F /* DependencyInjectionLayer in Frameworks */ = {isa = PBXBuildFile; productRef = 44CBBA602BB480F500FE692F /* DependencyInjectionLayer */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,7 +47,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				447577602B84D3EA00DC2FDB /* PresentationLayer in Frameworks */,
-				445C83982B873C7D00DDF236 /* DependencyInjectorLayer in Frameworks */,
+				44CBBA612BB480F500FE692F /* DependencyInjectionLayer in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -136,7 +136,7 @@
 			name = Staging;
 			packageProductDependencies = (
 				4475775F2B84D3EA00DC2FDB /* PresentationLayer */,
-				445C83972B873C7D00DDF236 /* DependencyInjectorLayer */,
+				44CBBA602BB480F500FE692F /* DependencyInjectionLayer */,
 			);
 			productName = Staging;
 			productReference = 4471BCB22B81F08800218534 /* Staging.app */;
@@ -552,13 +552,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		445C83972B873C7D00DDF236 /* DependencyInjectorLayer */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = DependencyInjectorLayer;
-		};
 		4475775F2B84D3EA00DC2FDB /* PresentationLayer */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = PresentationLayer;
+		};
+		44CBBA602BB480F500FE692F /* DependencyInjectionLayer */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = DependencyInjectionLayer;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

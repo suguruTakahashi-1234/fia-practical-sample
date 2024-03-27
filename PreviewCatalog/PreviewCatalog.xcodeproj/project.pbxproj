@@ -11,6 +11,7 @@
 		445C836A2B87144D00DDF236 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 445C83692B87144D00DDF236 /* Assets.xcassets */; };
 		445C836E2B87144D00DDF236 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 445C836D2B87144D00DDF236 /* Preview Assets.xcassets */; };
 		445C83782B87166F00DDF236 /* PreviewCatalogLayer in Frameworks */ = {isa = PBXBuildFile; productRef = 445C83772B87166F00DDF236 /* PreviewCatalogLayer */; };
+		44CBBA5D2BB408EF00FE692F /* InfoPlist.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 44CBBA5C2BB408EF00FE692F /* InfoPlist.xcstrings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +20,7 @@
 		445C83692B87144D00DDF236 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		445C836B2B87144D00DDF236 /* PreviewCatalog.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PreviewCatalog.entitlements; sourceTree = "<group>"; };
 		445C836D2B87144D00DDF236 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		44CBBA5C2BB408EF00FE692F /* InfoPlist.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = InfoPlist.xcstrings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +59,7 @@
 				445C83692B87144D00DDF236 /* Assets.xcassets */,
 				445C836B2B87144D00DDF236 /* PreviewCatalog.entitlements */,
 				445C836C2B87144D00DDF236 /* Preview Content */,
+				44CBBA5C2BB408EF00FE692F /* InfoPlist.xcstrings */,
 			);
 			path = PreviewCatalog;
 			sourceTree = "<group>";
@@ -116,11 +119,11 @@
 			};
 			buildConfigurationList = 445C835D2B87144D00DDF236 /* Build configuration list for PBXProject "PreviewCatalog" */;
 			compatibilityVersion = "Xcode 14.0";
-			developmentRegion = en;
+			developmentRegion = ja;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
-				Base,
+				ja,
 			);
 			mainGroup = 445C83592B87144D00DDF236;
 			productRefGroup = 445C83632B87144D00DDF236 /* Products */;
@@ -139,6 +142,7 @@
 			files = (
 				445C836E2B87144D00DDF236 /* Preview Assets.xcassets in Resources */,
 				445C836A2B87144D00DDF236 /* Assets.xcassets in Resources */,
+				44CBBA5D2BB408EF00FE692F /* InfoPlist.xcstrings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -283,6 +287,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "プレビュー";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -322,6 +327,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "プレビュー";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;

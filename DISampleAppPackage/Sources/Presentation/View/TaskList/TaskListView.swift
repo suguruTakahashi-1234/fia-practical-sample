@@ -16,10 +16,10 @@ public struct TaskListView<Router: AppRootWireframe, Dependency: TaskListPresent
 
     public var body: some View {
         VStack {
-            Text("TaskListView")
-            Text("Remote Comfig New UI Mode: \(presenter.isEnabledNewFeature ? "true" : "false")")
+            Text("タスク一覧", bundle: .module)
+            Text("Remote Comfig 新 UI モード: \(presenter.isEnabledNewFeature ? String(localized: "オン", bundle: .module) : String(localized: "オフ", bundle: .module))", bundle: .module)
         }
-        .navigationTitle("タスク一覧")
+        .navigationTitle(String(localized: "タスク一覧", bundle: .module))
         .task {
             await presenter.onAppear()
         }

@@ -15,6 +15,7 @@
 		447577602B84D3EA00DC2FDB /* PresentationLayer in Frameworks */ = {isa = PBXBuildFile; productRef = 4475775F2B84D3EA00DC2FDB /* PresentationLayer */; };
 		4483802F2B918A6E006A0BC7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4483802E2B918A6E006A0BC7 /* GoogleService-Info.plist */; };
 		44ABAB332B9B61240039ECF7 /* StagingUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44ABAB322B9B61240039ECF7 /* StagingUITests.swift */; };
+		44CBBA592BB406F800FE692F /* InfoPlist.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 44CBBA582BB406F800FE692F /* InfoPlist.xcstrings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,6 +38,7 @@
 		4483802E2B918A6E006A0BC7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		44ABAB302B9B61240039ECF7 /* StagingUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StagingUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		44ABAB322B9B61240039ECF7 /* StagingUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StagingUITests.swift; sourceTree = "<group>"; };
+		44CBBA582BB406F800FE692F /* InfoPlist.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = InfoPlist.xcstrings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +88,7 @@
 				4471BCB92B81F08900218534 /* Assets.xcassets */,
 				4471BCBB2B81F08900218534 /* Staging.entitlements */,
 				4471BCBC2B81F08900218534 /* Preview Content */,
+				44CBBA582BB406F800FE692F /* InfoPlist.xcstrings */,
 			);
 			path = Staging;
 			sourceTree = "<group>";
@@ -178,11 +181,11 @@
 			};
 			buildConfigurationList = 4471BCAD2B81F08800218534 /* Build configuration list for PBXProject "Staging" */;
 			compatibilityVersion = "Xcode 14.0";
-			developmentRegion = en;
+			developmentRegion = ja;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
-				Base,
+				ja,
 			);
 			mainGroup = 4471BCA92B81F08800218534;
 			productRefGroup = 4471BCB32B81F08800218534 /* Products */;
@@ -202,6 +205,7 @@
 			files = (
 				4471BCBE2B81F08900218534 /* Preview Assets.xcassets in Resources */,
 				4471BCBA2B81F08900218534 /* Assets.xcassets in Resources */,
+				44CBBA592BB406F800FE692F /* InfoPlist.xcstrings in Resources */,
 				4483802F2B918A6E006A0BC7 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -400,6 +404,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "DIサンプル(検証)";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -440,6 +445,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "DIサンプル(検証)";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;

@@ -43,9 +43,9 @@ private extension HomeTab {
     var label: some View {
         switch self {
         case .task:
-            Label(title: { Text("タスク") }, icon: { SFSymbols.pencilAndListClipboard.image })
+            Label(title: { Text("タスク", bundle: .module) }, icon: { SFSymbols.pencilAndListClipboard.image })
         case .setting:
-            Label(title: { Text("設定") }, icon: { SFSymbols.gearshapeFill.image })
+            Label(title: { Text("設定", bundle: .module) }, icon: { SFSymbols.gearshapeFill.image })
         }
     }
 

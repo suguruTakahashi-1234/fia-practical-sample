@@ -32,7 +32,7 @@ public struct DeviceInfoView<Router: AppRootWireframe, Dependency: DeviceInfoPre
                 }
             }
         }
-        .navigationTitle("デバイス情報")
+        .navigationTitle(String(localized: "デバイス情報", bundle: .module))
         .alert(presenter.copiedAlertTitle, isPresented: $presenter.shouldShowCopyAlert) {
             Button("OK", action: {})
         }

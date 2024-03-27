@@ -7,14 +7,14 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "DI Sample"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "DI サンプル"
+            "value" : "DIサンプル"
           }
         }
       }

@@ -3,7 +3,7 @@
 //  Copyright sugurutakahashi. All rights reserved.
 //
 
-import DependencyInjectorLayer
+import DependencyInjectionLayer
 import PresentationLayer
 import SwiftUI
 

@@ -11,11 +11,11 @@
 		4428A3FE2B7CBE9200C57F9A /* ProductionApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4428A3FD2B7CBE9200C57F9A /* ProductionApp.swift */; };
 		4428A4022B7CBE9300C57F9A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4428A4012B7CBE9300C57F9A /* Assets.xcassets */; };
 		4428A4062B7CBE9300C57F9A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4428A4052B7CBE9300C57F9A /* Preview Assets.xcassets */; };
-		445C839A2B873C9300DDF236 /* DependencyInjectorLayer in Frameworks */ = {isa = PBXBuildFile; productRef = 445C83992B873C9300DDF236 /* DependencyInjectorLayer */; };
 		447577662B84D3F900DC2FDB /* PresentationLayer in Frameworks */ = {isa = PBXBuildFile; productRef = 447577652B84D3F900DC2FDB /* PresentationLayer */; };
 		4483802D2B918A45006A0BC7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4483802C2B918A45006A0BC7 /* GoogleService-Info.plist */; };
 		44ABAB152B9B5B760039ECF7 /* ProductionUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44ABAB142B9B5B760039ECF7 /* ProductionUITests.swift */; };
 		44CBBA5B2BB4079600FE692F /* InfoPlist.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 44CBBA5A2BB4079600FE692F /* InfoPlist.xcstrings */; };
+		44CBBA632BB4810200FE692F /* DependencyInjectionLayer in Frameworks */ = {isa = PBXBuildFile; productRef = 44CBBA622BB4810200FE692F /* DependencyInjectionLayer */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,7 +47,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				447577662B84D3F900DC2FDB /* PresentationLayer in Frameworks */,
-				445C839A2B873C9300DDF236 /* DependencyInjectorLayer in Frameworks */,
+				44CBBA632BB4810200FE692F /* DependencyInjectionLayer in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -136,7 +136,7 @@
 			name = Production;
 			packageProductDependencies = (
 				447577652B84D3F900DC2FDB /* PresentationLayer */,
-				445C83992B873C9300DDF236 /* DependencyInjectorLayer */,
+				44CBBA622BB4810200FE692F /* DependencyInjectionLayer */,
 			);
 			productName = Production;
 			productReference = 4428A3FA2B7CBE9200C57F9A /* Production.app */;
@@ -551,13 +551,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		445C83992B873C9300DDF236 /* DependencyInjectorLayer */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = DependencyInjectorLayer;
-		};
 		447577652B84D3F900DC2FDB /* PresentationLayer */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = PresentationLayer;
+		};
+		44CBBA622BB4810200FE692F /* DependencyInjectionLayer */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = DependencyInjectionLayer;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

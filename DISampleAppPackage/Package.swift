@@ -5,7 +5,7 @@ import CompilerPluginSupport
 import PackageDescription
 
 private extension String {
-    /// ex) "dependencyInjector" -> "DependencyInjector"
+    /// ex) "dependencyInjection" -> "DependencyInjection"
     var initialUppercased: String {
         guard !isEmpty else {
             return ""
@@ -97,7 +97,7 @@ enum FrameworkTargetType: CaseIterable {
 }
 
 enum TargetType: CaseIterable {
-    case dependencyInjector
+    case dependencyInjection
     case domain
     case framework(FrameworkTargetType)
     case presentation
@@ -105,7 +105,7 @@ enum TargetType: CaseIterable {
 
     static var allCases: [TargetType] {
         FrameworkTargetType.allCases.map { .framework($0) } + [
-            .dependencyInjector,
+            .dependencyInjection,
             .domain,
             .presentation,
             .previewCatalog,
@@ -278,7 +278,7 @@ extension MacroTargetType {
 extension TargetType {
     var dependencyLibrary: DependencyLibrary {
         switch self {
-        case .dependencyInjector:
+        case .dependencyInjection:
             .init(FrameworkTargetType.allCases.map { TargetType.framework($0).dependency } + [
                 TargetType.presentation.dependency,
             ])
@@ -328,7 +328,7 @@ extension TestTargetType {
             ])
         case .interactorTest:
             .init([
-                TargetType.dependencyInjector.dependency,
+                TargetType.dependencyInjection.dependency,
                 .testing,
             ])
         case .presenterTest:

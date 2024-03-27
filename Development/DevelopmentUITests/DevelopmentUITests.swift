@@ -13,19 +13,19 @@ final class DevelopmentUITests: XCTestCase {
     func testTaskListView() throws {
         let app = XCUIApplication()
         app.launch()
-        app.tabBars["Tab Bar"].buttons["タスク"].tap()
+        app.tabBars["タブバー"].buttons["タスク"].tap()
     }
 
     func testSettingView() throws {
         let app = XCUIApplication()
         app.launch()
-        app.tabBars["Tab Bar"].buttons["設定"].tap()
+        app.tabBars["タブバー"].buttons["設定"].tap()
     }
 
     func testLicenseListView() throws {
         let app = XCUIApplication()
         app.launch()
-        app.tabBars["Tab Bar"].buttons["設定"].tap()
+        app.tabBars["タブバー"].buttons["設定"].tap()
         app.collectionViews/*@START_MENU_TOKEN@*/ .staticTexts["ライセンス"]/*[[".cells",".buttons[\"ライセンス\"].staticTexts[\"ライセンス\"]",".staticTexts[\"ライセンス\"]"],[[[-1,2],[-1,1],[-1,0,1]],[[-1,2],[-1,1]]],[0]]@END_MENU_TOKEN@*/ .tap()
         app.navigationBars["ライセンス"].buttons["設定"].tap()
     }
@@ -33,7 +33,7 @@ final class DevelopmentUITests: XCTestCase {
     func testLicenseDetailView() throws {
         let app = XCUIApplication()
         app.launch()
-        app.tabBars["Tab Bar"].buttons["設定"].tap()
+        app.tabBars["タブバー"].buttons["設定"].tap()
         let collectionViewsQuery = app.collectionViews
         collectionViewsQuery/*@START_MENU_TOKEN@*/ .buttons["ライセンス"]/*[[".cells.buttons[\"ライセンス\"]",".buttons[\"ライセンス\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/ .tap()
 
@@ -44,7 +44,7 @@ final class DevelopmentUITests: XCTestCase {
     func testDeviveInfoView() throws {
         let app = XCUIApplication()
         app.launch()
-        app.tabBars["Tab Bar"].buttons["設定"].tap()
+        app.tabBars["タブバー"].buttons["設定"].tap()
 
         let collectionViewsQuery = app.collectionViews
         collectionViewsQuery/*@START_MENU_TOKEN@*/ .buttons["デバイス情報"]/*[[".cells.buttons[\"デバイス情報\"]",".buttons[\"デバイス情報\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/ .tap()

@@ -15,6 +15,7 @@
 		447577662B84D3F900DC2FDB /* PresentationLayer in Frameworks */ = {isa = PBXBuildFile; productRef = 447577652B84D3F900DC2FDB /* PresentationLayer */; };
 		4483802D2B918A45006A0BC7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4483802C2B918A45006A0BC7 /* GoogleService-Info.plist */; };
 		44ABAB152B9B5B760039ECF7 /* ProductionUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44ABAB142B9B5B760039ECF7 /* ProductionUITests.swift */; };
+		44CBBA5B2BB4079600FE692F /* InfoPlist.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 44CBBA5A2BB4079600FE692F /* InfoPlist.xcstrings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,6 +38,7 @@
 		4483802C2B918A45006A0BC7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		44ABAB122B9B5B760039ECF7 /* ProductionUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ProductionUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		44ABAB142B9B5B760039ECF7 /* ProductionUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductionUITests.swift; sourceTree = "<group>"; };
+		44CBBA5A2BB4079600FE692F /* InfoPlist.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = InfoPlist.xcstrings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +88,7 @@
 				4428A4012B7CBE9300C57F9A /* Assets.xcassets */,
 				4428A4032B7CBE9300C57F9A /* Production.entitlements */,
 				4428A4042B7CBE9300C57F9A /* Preview Content */,
+				44CBBA5A2BB4079600FE692F /* InfoPlist.xcstrings */,
 			);
 			path = Production;
 			sourceTree = "<group>";
@@ -202,6 +205,7 @@
 			files = (
 				4428A4062B7CBE9300C57F9A /* Preview Assets.xcassets in Resources */,
 				4428A4022B7CBE9300C57F9A /* Assets.xcassets in Resources */,
+				44CBBA5B2BB4079600FE692F /* InfoPlist.xcstrings in Resources */,
 				4483802D2B918A45006A0BC7 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -399,6 +403,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "DIサンプル";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -439,6 +444,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "DIサンプル";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;

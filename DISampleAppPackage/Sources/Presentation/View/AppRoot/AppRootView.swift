@@ -24,6 +24,7 @@ public struct AppRootView<Router: AppRootWireframe, Dependency: AppRootPresenter
                 router.createHomeTabView()
             } else {
                 router.createOnboardingView()
+                    .navigationStacked()
             }
         }
         .task {

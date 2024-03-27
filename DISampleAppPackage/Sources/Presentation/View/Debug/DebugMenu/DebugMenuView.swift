@@ -4,8 +4,9 @@ import SwiftUI
 
 // MARK: - Entity
 
-public enum DebugMenuType {
+public enum DebugShowViewType {
     case deviceInfo
+    case onboarding
 //    case viewList
 //    case changeDataStore
 }
@@ -30,7 +31,7 @@ public struct DebugMenuView<Router: AppRootWireframe, Dependency: DebugMenuPrese
     public var body: some View {
         List {
             Section("") {
-                ForEach(DebugMenuType.allCases) { debugMenu in
+                ForEach(DebugShowViewType.allCases) { debugMenu in
                     NavigationLink {
                         debugMenu.contentView(router: router)
                     } label: {
@@ -47,10 +48,10 @@ public struct DebugMenuView<Router: AppRootWireframe, Dependency: DebugMenuPrese
                 }
             }
         }
-        .navigationTitle("デバッグメニュー")
-        .alert(presenter.selectedDebugActionType?.alertTitle ?? "Unexpected", isPresented: $presenter.shouldShowAlert, presenting: presenter.selectedDebugActionType) { selectedDebugActionType in
-            Button("Cancel", role: .cancel) {}
-            Button("OK", role: .destructive) {
+        .navigationTitle(String(localized: "デバッグメニュー", bundle: .module))
+        .alert(presenter.selectedDebugActionType?.alertTitle ?? String(localized: "予期せぬエラー", bundle: .module), isPresented: $presenter.shouldShowAlert, presenting: presenter.selectedDebugActionType) { selectedDebugActionType in
+            Button(String(localized: "キャンセル", bundle: .module), role: .cancel) {}
+            Button(String(localized: "OK", bundle: .module), role: .destructive) {
                 presenter.onTapAlertOk(selectedDebugActionType)
             }
         }
@@ -76,16 +77,16 @@ private extension DebugActionType {
     var name: String {
         switch self {
         case .forceCrash:
-            "強制クラッシュ"
+            String(localized: "強制クラッシュ", bundle: .module)
         case .clearUserDefaults:
-            "UserDefaults の初期化"
+            String(localized: "UserDefaults の初期化", bundle: .module)
         }
     }
 
     var alertTitle: String {
         switch self {
         default:
-            "\(name) "
+            name
         }
     }
 }
@@ -93,17 +94,19 @@ private extension DebugActionType {
 // MARK: - Extension DebugMenuType
 
 /// for ForEach
-extension DebugMenuType: CaseIterable, Identifiable {
+extension DebugShowViewType: CaseIterable, Identifiable {
     public var id: String {
         "\(self)"
     }
 }
 
-private extension DebugMenuType {
+private extension DebugShowViewType {
     var name: String {
         switch self {
         case .deviceInfo:
-            "デバイス情報"
+            String(localized: "デバイス情報", bundle: .module)
+        case .onboarding:
+            String(localized: "オンボーディング", bundle: .module)
 //        case .viewList:
 //            "デバッグ画面一覧"
 //        case .changeDataStore:
@@ -115,6 +118,8 @@ private extension DebugMenuType {
         switch self {
         case .deviceInfo:
             SFSymbols.iphoneGen3.image
+        case .onboarding:
+            SFSymbols.book.image
 //        case .viewList:
 //            SFSymbols.rectangleGrid1x2.image
 //        case .changeDataStore:
@@ -124,7 +129,7 @@ private extension DebugMenuType {
 
     var label: some View {
         Label(
-            title: { Text(self.name) },
+            title: { Text(name) },
             icon: { self.image }
         )
     }
@@ -134,6 +139,8 @@ private extension DebugMenuType {
         switch self {
         case .deviceInfo:
             router.createDeviceInfoView()
+        case .onboarding:
+            router.createOnboardingView()
 //        case .viewList:
 //            router.createDeviceInfoView()
 //        case .changeDataStore:

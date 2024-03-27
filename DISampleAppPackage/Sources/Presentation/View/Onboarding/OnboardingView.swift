@@ -42,7 +42,7 @@ public struct OnboardingView<Router: AppRootWireframe, Dependency: OnboardingPre
                 Text(presenter.selectedStep.buttonText)
             }
         }
-        .navigationTitle("チュートリアル")
+        .navigationTitle(String(localized: "チュートリアル", bundle: .module))
         .task {
             await presenter.onAppear()
         }
@@ -65,18 +65,18 @@ private extension OnboardingStep {
     var message: String {
         switch self {
         case .introduction:
-            "このサービスはxxxです"
+            String(localized: "このサービスはxxxです", bundle: .module)
         case .start:
-            "サービスを開始します"
+            String(localized: "サービスを開始します", bundle: .module)
         }
     }
 
     var buttonText: String {
         switch self {
         case .introduction:
-            "次へ"
+            String(localized: "次へ", bundle: .module)
         case .start:
-            "始める"
+            String(localized: "始める", bundle: .module)
         }
     }
 }

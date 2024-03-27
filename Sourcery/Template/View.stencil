@@ -25,9 +25,9 @@ public struct {{ argument.screenName }}View<Router: {{ argument.routerName }}Wir
 
     public var body: some View {
         VStack {
-            Text("{{ argument.screenName }}View")
+            Text(String(localized: "{{ argument.screenName }}View", bundle: .module))
         }
-        .navigationTitle("{{ argument.screenName }}")
+        .navigationTitle(String(localized: "{{ argument.screenName }}View", bundle: .module))
         .task {
             await presenter.onAppear()
         }

@@ -7,6 +7,7 @@ import SwiftUI
 
 public enum SFSymbols: String {
     /// アルファベット順に整列させておくと管理しやすい
+    case book
     case gearshapeFill
     case iphoneGen3
     case ladybug

@@ -21,7 +21,7 @@ public struct SettingView<Router: AppRootWireframe, Dependency: SettingPresenter
                     router.createLicenseListView()
                 } label: {
                     Label(
-                        title: { Text("ライセンス") },
+                        title: { Text("ライセンス", bundle: .module) },
                         icon: { SFSymbols.licenseplate.image }
                     )
                 }
@@ -30,7 +30,7 @@ public struct SettingView<Router: AppRootWireframe, Dependency: SettingPresenter
                     router.createDeviceInfoView()
                 } label: {
                     Label(
-                        title: { Text("デバイス情報") },
+                        title: { Text("デバイス情報", bundle: .module) },
                         icon: { SFSymbols.iphoneGen3.image }
                     )
                 }
@@ -41,13 +41,13 @@ public struct SettingView<Router: AppRootWireframe, Dependency: SettingPresenter
                     router.createDebugMenuView()
                 } label: {
                     Label(
-                        title: { Text("デバッグメニュー") },
+                        title: { Text("デバッグメニュー", bundle: .module) },
                         icon: { SFSymbols.ladybug.image }
                     )
                 }
             }
         }
-        .navigationTitle("設定")
+        .navigationTitle(String(localized: "設定", bundle: .module))
         .task {
             await presenter.onAppear()
         }

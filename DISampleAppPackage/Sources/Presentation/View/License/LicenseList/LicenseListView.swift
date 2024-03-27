@@ -31,7 +31,7 @@ public struct LicenseListView<Router: AppRootWireframe, Dependency: LicenseListP
                 }
             }
         }
-        .navigationTitle("ライセンス")
+        .navigationTitle(String(localized: "ライセンス", bundle: .module))
         .sheet(item: $presenter.selectedLicense, content: { license in
             router.createLicenseDetailView(license: license)
                 .navigationStacked()

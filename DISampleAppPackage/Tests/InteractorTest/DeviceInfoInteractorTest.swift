@@ -3,7 +3,7 @@
 //  Copyright sugurutakahashi. All rights reserved.
 //
 
-import DependencyInjectorLayer
+import DependencyInjectionLayer
 import DomainLayer
 @testable import PresentationLayer
 import Testing

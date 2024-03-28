@@ -10,4 +10,8 @@ public enum Constants {
         public static let osLogger = "OSLogger(Domain & Presentation Layer)"
         public static let staticOSLogger = "OSLogger(Framework Layer)"
     }
+
+    public enum Arguments {
+        public static let firstLaunchUITest = "-FirstLaunchUITest"
+    }
 }

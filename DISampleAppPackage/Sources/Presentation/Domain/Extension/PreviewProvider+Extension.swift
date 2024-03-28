@@ -12,7 +12,7 @@ private extension UITestPreviewType {
         case .empty:
             .empty
         case .standard:
-            .random
+            .randomForSnapshotTest
         case .small:
             .sizeS
         case .medium:

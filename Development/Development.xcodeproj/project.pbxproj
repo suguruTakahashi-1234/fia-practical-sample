@@ -14,6 +14,8 @@
 		4475775E2B84D3C700DC2FDB /* PresentationLayer in Frameworks */ = {isa = PBXBuildFile; productRef = 4475775D2B84D3C700DC2FDB /* PresentationLayer */; };
 		44ABAB242B9B60AC0039ECF7 /* DevelopmentUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44ABAB232B9B60AC0039ECF7 /* DevelopmentUITests.swift */; };
 		44CBBA572BB406A000FE692F /* InfoPlist.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 44CBBA562BB406A000FE692F /* InfoPlist.xcstrings */; };
+		44EC2DC72BB50A8D00D3648C /* DevelopmentFirstLaunchUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44EC2DC62BB50A8D00D3648C /* DevelopmentFirstLaunchUITests.swift */; };
+		44EC2DCD2BB52A6900D3648C /* DomainLayer in Frameworks */ = {isa = PBXBuildFile; productRef = 44EC2DCC2BB52A6900D3648C /* DomainLayer */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +38,7 @@
 		44ABAB212B9B60AC0039ECF7 /* DevelopmentUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DevelopmentUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		44ABAB232B9B60AC0039ECF7 /* DevelopmentUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevelopmentUITests.swift; sourceTree = "<group>"; };
 		44CBBA562BB406A000FE692F /* InfoPlist.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = InfoPlist.xcstrings; sourceTree = "<group>"; };
+		44EC2DC62BB50A8D00D3648C /* DevelopmentFirstLaunchUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevelopmentFirstLaunchUITests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +54,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				44EC2DCD2BB52A6900D3648C /* DomainLayer in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -80,10 +84,10 @@
 			isa = PBXGroup;
 			children = (
 				446C33E32B83018300B3DD37 /* DevelopmentApp.swift */,
-				446C33E72B83018400B3DD37 /* Assets.xcassets */,
 				446C33E92B83018400B3DD37 /* Development.entitlements */,
-				446C33EA2B83018400B3DD37 /* Preview Content */,
+				446C33E72B83018400B3DD37 /* Assets.xcassets */,
 				44CBBA562BB406A000FE692F /* InfoPlist.xcstrings */,
+				446C33EA2B83018400B3DD37 /* Preview Content */,
 			);
 			path = Development;
 			sourceTree = "<group>";
@@ -106,8 +110,9 @@
 		44ABAB222B9B60AC0039ECF7 /* DevelopmentUITests */ = {
 			isa = PBXGroup;
 			children = (
-				44ABAB232B9B60AC0039ECF7 /* DevelopmentUITests.swift */,
+				44EC2DC62BB50A8D00D3648C /* DevelopmentFirstLaunchUITests.swift */,
 				441DA6AF2BA9E34A0035A2ED /* DevelopmentLaunchPerformanceTests.swift */,
+				44ABAB232B9B60AC0039ECF7 /* DevelopmentUITests.swift */,
 			);
 			path = DevelopmentUITests;
 			sourceTree = "<group>";
@@ -149,6 +154,9 @@
 				44ABAB282B9B60AC0039ECF7 /* PBXTargetDependency */,
 			);
 			name = DevelopmentUITests;
+			packageProductDependencies = (
+				44EC2DCC2BB52A6900D3648C /* DomainLayer */,
+			);
 			productName = DevelopmentUITests;
 			productReference = 44ABAB212B9B60AC0039ECF7 /* DevelopmentUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
@@ -225,6 +233,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				44ABAB242B9B60AC0039ECF7 /* DevelopmentUITests.swift in Sources */,
+				44EC2DC72BB50A8D00D3648C /* DevelopmentFirstLaunchUITests.swift in Sources */,
 				441DA6B02BA9E34A0035A2ED /* DevelopmentLaunchPerformanceTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -519,6 +528,10 @@
 		4475775D2B84D3C700DC2FDB /* PresentationLayer */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = PresentationLayer;
+		};
+		44EC2DCC2BB52A6900D3648C /* DomainLayer */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = DomainLayer;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

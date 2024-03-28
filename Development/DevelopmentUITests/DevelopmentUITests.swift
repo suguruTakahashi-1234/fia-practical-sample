@@ -12,6 +12,12 @@ final class DevelopmentUITests: XCTestCase {
         continueAfterFailure = false
         app = XCUIApplication()
         app.launch()
+
+        // "次へのボタンが存在する場合はチュートリアル画面のためスキップ処理を入れる"
+        if app.buttons["次へ"].exists {
+            app.buttons["次へ"].tap()
+            app.buttons["始める"].tap()
+        }
     }
 
     func testTaskListView() throws {
@@ -33,7 +39,7 @@ final class DevelopmentUITests: XCTestCase {
         let collectionViewsQuery = app.collectionViews
         collectionViewsQuery/*@START_MENU_TOKEN@*/ .buttons["ライセンス"]/*[[".cells.buttons[\"ライセンス\"]",".buttons[\"ライセンス\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/ .tap()
 
-        // Mock がランダム生成するため使用不能
+        // Mock がランダムに文字列を生成するため使用不能
         // collectionViewsQuery/*@START_MENU_TOKEN@*/.buttons["abseil"]/*[[".cells.buttons[\"abseil\"]",".buttons[\"abseil\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
     }
 

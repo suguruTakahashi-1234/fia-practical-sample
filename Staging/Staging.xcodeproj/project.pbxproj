@@ -16,6 +16,8 @@
 		44ABAB332B9B61240039ECF7 /* StagingUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44ABAB322B9B61240039ECF7 /* StagingUITests.swift */; };
 		44CBBA592BB406F800FE692F /* InfoPlist.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 44CBBA582BB406F800FE692F /* InfoPlist.xcstrings */; };
 		44CBBA612BB480F500FE692F /* DependencyInjectionLayer in Frameworks */ = {isa = PBXBuildFile; productRef = 44CBBA602BB480F500FE692F /* DependencyInjectionLayer */; };
+		44EC2DC92BB5273D00D3648C /* StagingFirstLaunchUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44EC2DC82BB5273D00D3648C /* StagingFirstLaunchUITests.swift */; };
+		44EC2DCF2BB52A8100D3648C /* DomainLayer in Frameworks */ = {isa = PBXBuildFile; productRef = 44EC2DCE2BB52A8100D3648C /* DomainLayer */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,6 +41,7 @@
 		44ABAB302B9B61240039ECF7 /* StagingUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StagingUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		44ABAB322B9B61240039ECF7 /* StagingUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StagingUITests.swift; sourceTree = "<group>"; };
 		44CBBA582BB406F800FE692F /* InfoPlist.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = InfoPlist.xcstrings; sourceTree = "<group>"; };
+		44EC2DC82BB5273D00D3648C /* StagingFirstLaunchUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StagingFirstLaunchUITests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +58,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				44EC2DCF2BB52A8100D3648C /* DomainLayer in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -84,11 +88,11 @@
 			isa = PBXGroup;
 			children = (
 				4471BCB52B81F08800218534 /* StagingApp.swift */,
+				4471BCBB2B81F08900218534 /* Staging.entitlements */,
 				4483802E2B918A6E006A0BC7 /* GoogleService-Info.plist */,
 				4471BCB92B81F08900218534 /* Assets.xcassets */,
-				4471BCBB2B81F08900218534 /* Staging.entitlements */,
-				4471BCBC2B81F08900218534 /* Preview Content */,
 				44CBBA582BB406F800FE692F /* InfoPlist.xcstrings */,
+				4471BCBC2B81F08900218534 /* Preview Content */,
 			);
 			path = Staging;
 			sourceTree = "<group>";
@@ -111,8 +115,9 @@
 		44ABAB312B9B61240039ECF7 /* StagingUITests */ = {
 			isa = PBXGroup;
 			children = (
-				44ABAB322B9B61240039ECF7 /* StagingUITests.swift */,
+				44EC2DC82BB5273D00D3648C /* StagingFirstLaunchUITests.swift */,
 				441DA6B12BA9E38B0035A2ED /* StagingLaunchPerformanceTests.swift */,
+				44ABAB322B9B61240039ECF7 /* StagingUITests.swift */,
 			);
 			path = StagingUITests;
 			sourceTree = "<group>";
@@ -156,6 +161,9 @@
 				44ABAB372B9B61240039ECF7 /* PBXTargetDependency */,
 			);
 			name = StagingUITests;
+			packageProductDependencies = (
+				44EC2DCE2BB52A8100D3648C /* DomainLayer */,
+			);
 			productName = StagingUITests;
 			productReference = 44ABAB302B9B61240039ECF7 /* StagingUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
@@ -260,6 +268,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				44ABAB332B9B61240039ECF7 /* StagingUITests.swift in Sources */,
+				44EC2DC92BB5273D00D3648C /* StagingFirstLaunchUITests.swift in Sources */,
 				441DA6B22BA9E38B0035A2ED /* StagingLaunchPerformanceTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -559,6 +568,10 @@
 		44CBBA602BB480F500FE692F /* DependencyInjectionLayer */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = DependencyInjectionLayer;
+		};
+		44EC2DCE2BB52A8100D3648C /* DomainLayer */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = DomainLayer;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

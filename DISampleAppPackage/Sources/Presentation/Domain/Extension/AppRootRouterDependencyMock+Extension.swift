@@ -26,13 +26,7 @@ public extension AppRootRouterDependencyMock {
         logDriver: LogDriver<LogDriverDependencyMock> = .init(dependency: .init(osLogDriver: OSLogDriver(), firebaseAnalyticsLogDriver: .init(), firebaseCrashlyticsLogDriver: .init())), // OSLogDriver は本物を使う
         clipboardDriver: ClipboardDriver = .init() // テスト時に本物の ClipboardDriver を使ってしまうとペースト許諾のアラートが表示されてテストが実行されないため、Mock に差し替え可能にしているが通常は本物を使う
     ) -> Self {
-        // スナップショットテスト時に固定値でないと困るのでlaunchAppCountを毎回リセットする
-        localDataStore.launchAppCount = .placeholder
-
-        // デバッグメニューからいつでもオンボーディングの状態に戻すことができるので、検証時の利便性を考えて、オンボーディングは済んでいるものとする
-        localDataStore.isCompletedOnboarding = true
-
-        return .init(
+        Self(
             cacheDataStore: cacheDataStore,
             localDataStore: localDataStore,
             logDriver: logDriver,
@@ -43,31 +37,49 @@ public extension AppRootRouterDependencyMock {
         )
     }
 
-    static var empty: Self {
-        .create()
-    }
-
-    static var random: Self {
-        .create(
+    /// UseDefaults を指定したいケースが多々あるため設置している
+    static func random(localDataStore: LocalDataStore = .init()) -> Self {
+        create(
+            localDataStore: localDataStore,
             libraryLicenseDriver: .init(licenseList: .randoms)
         )
     }
 
+    static var empty: Self {
+        create()
+    }
+
+    static var random: Self {
+        Self.random()
+    }
+
     static var sizeS: Self {
-        .create(
+        create(
             libraryLicenseDriver: .init(licenseList: .multipleSizeS)
         )
     }
 
     static var sizeM: Self {
-        .create(
+        create(
             libraryLicenseDriver: .init(licenseList: .multipleSizeM)
         )
     }
 
     static var sizeL: Self {
-        .create(
+        create(
             libraryLicenseDriver: .init(licenseList: .multipleSizeL)
         )
+    }
+
+    static var randomForSnapshotTest: Self {
+        let localDataStore: LocalDataStore = .init()
+
+        // スナップショットテスト時に固定値でないと困るのでlaunchAppCountを毎回リセットする
+        localDataStore.launchAppCount = .placeholder
+
+        // スナップショットテスト時はオンボーディングは済んでいるものとする
+        localDataStore.isCompletedOnboarding = true
+
+        return Self.random(localDataStore: localDataStore)
     }
 }

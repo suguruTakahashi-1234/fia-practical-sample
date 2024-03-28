@@ -41,6 +41,18 @@ public final class LocalDataStore: LocalDataStoreProtocol {
             return
         }
         UserDefaults.standard.removePersistentDomain(forName: domain)
-        OSLogDriver.debugLog("Completed: clear userDefaults")
+        OSLogDriver.debugLog("Completed: clear UserDefaults")
+    }
+
+    /// コマンドライン引数で初回起動UIテストモードが有効であれば UserDefaults をクリアにする
+    public static func allClearForFirstLaunchUITest() {
+        if ProcessInfo.processInfo.arguments.contains(Constants.Arguments.firstLaunchUITest) {
+            guard let domain = Bundle.main.bundleIdentifier else {
+                OSLogDriver.errorLog("Bundle.main.bundleIdentifier is nil", level: .fault)
+                fatalError("Bundle.main.bundleIdentifier is nil")
+            }
+            UserDefaults.standard.removePersistentDomain(forName: domain)
+            OSLogDriver.debugLog("Completed: clear UserDefaults for first launch UI Test")
+        }
     }
 }

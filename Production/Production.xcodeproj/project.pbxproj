@@ -16,6 +16,8 @@
 		44ABAB152B9B5B760039ECF7 /* ProductionUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44ABAB142B9B5B760039ECF7 /* ProductionUITests.swift */; };
 		44CBBA5B2BB4079600FE692F /* InfoPlist.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 44CBBA5A2BB4079600FE692F /* InfoPlist.xcstrings */; };
 		44CBBA632BB4810200FE692F /* DependencyInjectionLayer in Frameworks */ = {isa = PBXBuildFile; productRef = 44CBBA622BB4810200FE692F /* DependencyInjectionLayer */; };
+		44EC2DCB2BB5274200D3648C /* ProductionFirstLaunchUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44EC2DCA2BB5274200D3648C /* ProductionFirstLaunchUITests.swift */; };
+		44EC2DD12BB52A8900D3648C /* DomainLayer in Frameworks */ = {isa = PBXBuildFile; productRef = 44EC2DD02BB52A8900D3648C /* DomainLayer */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,6 +41,7 @@
 		44ABAB122B9B5B760039ECF7 /* ProductionUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ProductionUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		44ABAB142B9B5B760039ECF7 /* ProductionUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductionUITests.swift; sourceTree = "<group>"; };
 		44CBBA5A2BB4079600FE692F /* InfoPlist.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = InfoPlist.xcstrings; sourceTree = "<group>"; };
+		44EC2DCA2BB5274200D3648C /* ProductionFirstLaunchUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductionFirstLaunchUITests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +58,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				44EC2DD12BB52A8900D3648C /* DomainLayer in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -84,11 +88,11 @@
 			isa = PBXGroup;
 			children = (
 				4428A3FD2B7CBE9200C57F9A /* ProductionApp.swift */,
+				4428A4032B7CBE9300C57F9A /* Production.entitlements */,
 				4483802C2B918A45006A0BC7 /* GoogleService-Info.plist */,
 				4428A4012B7CBE9300C57F9A /* Assets.xcassets */,
-				4428A4032B7CBE9300C57F9A /* Production.entitlements */,
-				4428A4042B7CBE9300C57F9A /* Preview Content */,
 				44CBBA5A2BB4079600FE692F /* InfoPlist.xcstrings */,
+				4428A4042B7CBE9300C57F9A /* Preview Content */,
 			);
 			path = Production;
 			sourceTree = "<group>";
@@ -111,8 +115,9 @@
 		44ABAB132B9B5B760039ECF7 /* ProductionUITests */ = {
 			isa = PBXGroup;
 			children = (
-				44ABAB142B9B5B760039ECF7 /* ProductionUITests.swift */,
+				44EC2DCA2BB5274200D3648C /* ProductionFirstLaunchUITests.swift */,
 				441DA6B32BA9E3910035A2ED /* ProductiontLaunchPerformanceTests.swift */,
+				44ABAB142B9B5B760039ECF7 /* ProductionUITests.swift */,
 			);
 			path = ProductionUITests;
 			sourceTree = "<group>";
@@ -156,6 +161,9 @@
 				44ABAB192B9B5B760039ECF7 /* PBXTargetDependency */,
 			);
 			name = ProductionUITests;
+			packageProductDependencies = (
+				44EC2DD02BB52A8900D3648C /* DomainLayer */,
+			);
 			productName = ProductionUITests;
 			productReference = 44ABAB122B9B5B760039ECF7 /* ProductionUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
@@ -260,6 +268,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				44ABAB152B9B5B760039ECF7 /* ProductionUITests.swift in Sources */,
+				44EC2DCB2BB5274200D3648C /* ProductionFirstLaunchUITests.swift in Sources */,
 				441DA6B42BA9E3910035A2ED /* ProductiontLaunchPerformanceTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -558,6 +567,10 @@
 		44CBBA622BB4810200FE692F /* DependencyInjectionLayer */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = DependencyInjectionLayer;
+		};
+		44EC2DD02BB52A8900D3648C /* DomainLayer */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = DomainLayer;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

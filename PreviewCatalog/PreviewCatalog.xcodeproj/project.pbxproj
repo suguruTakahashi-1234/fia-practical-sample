@@ -56,10 +56,10 @@
 			isa = PBXGroup;
 			children = (
 				445C83652B87144D00DDF236 /* PreviewCatalogApp.swift */,
-				445C83692B87144D00DDF236 /* Assets.xcassets */,
 				445C836B2B87144D00DDF236 /* PreviewCatalog.entitlements */,
-				445C836C2B87144D00DDF236 /* Preview Content */,
+				445C83692B87144D00DDF236 /* Assets.xcassets */,
 				44CBBA5C2BB408EF00FE692F /* InfoPlist.xcstrings */,
+				445C836C2B87144D00DDF236 /* Preview Content */,
 			);
 			path = PreviewCatalog;
 			sourceTree = "<group>";

@@ -12,6 +12,12 @@ final class ProductionUITests: XCTestCase {
         continueAfterFailure = false
         app = XCUIApplication()
         app.launch()
+
+        // "次へのボタンが存在する場合はチュートリアル画面のためスキップ処理を入れる"
+        if app.buttons["次へ"].exists {
+            app.buttons["次へ"].tap()
+            app.buttons["始める"].tap()
+        }
     }
 
     func testTaskListView() throws {

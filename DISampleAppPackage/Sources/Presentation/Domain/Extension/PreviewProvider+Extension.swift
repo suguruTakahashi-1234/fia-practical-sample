@@ -13,6 +13,8 @@ private extension UITestPreviewType {
             .empty
         case .standard:
             .randomForSnapshotTest
+        case .placeholder:
+            .placeholder
         case .small:
             .sizeS
         case .medium:
@@ -40,11 +42,18 @@ public extension PreviewProvider {
         ]
     }
 
+    static var placeholder: [PreviewSnapshots<AppRootRouterDependencyMock>.Configuration] {
+        [
+            UITestPreviewType.placeholder.configuration,
+        ]
+    }
+
     static var allSizes: [PreviewSnapshots<AppRootRouterDependencyMock>.Configuration] {
         [
             UITestPreviewType.small.configuration,
             UITestPreviewType.medium.configuration,
             UITestPreviewType.large.configuration,
+            UITestPreviewType.placeholder.configuration,
         ]
     }
 

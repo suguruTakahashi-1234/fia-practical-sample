@@ -12,6 +12,7 @@ public enum Constants {
     }
 
     public enum Arguments {
+        public static let placeholderUITest = "-PlaceholderUITest"
         public static let firstLaunchUITest = "-FirstLaunchUITest"
     }
 }

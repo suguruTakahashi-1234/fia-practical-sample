@@ -13,14 +13,20 @@ extension License: RandomValueProvidable {
 
 extension License: SizeValueProvidable {
     public static var sizeS: License {
-        .init(id: .sizeS, name: .sizeS, text: .sizeS)
+        .init(id: .random, name: .sizeS, text: .sizeS)
     }
 
     public static var sizeM: License {
-        .init(id: .sizeM, name: .sizeM, text: .sizeM)
+        .init(id: .random, name: .sizeM, text: .sizeM)
     }
 
     public static var sizeL: License {
-        .init(id: .sizeL, name: .sizeL, text: .sizeL)
+        .init(id: .random, name: .sizeL, text: .sizeL)
+    }
+}
+
+extension License: PlaceholderProvidable {
+    public static var placeholder: License {
+        .init(id: .random, name: .placeholder, text: .placeholder)
     }
 }

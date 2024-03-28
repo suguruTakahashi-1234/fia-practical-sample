@@ -71,6 +71,12 @@ public extension AppRootRouterDependencyMock {
         )
     }
 
+    static var placeholder: Self {
+        create(
+            libraryLicenseDriver: .init(licenseList: .placeholders)
+        )
+    }
+
     static var randomForSnapshotTest: Self {
         let localDataStore: LocalDataStore = .init()
 

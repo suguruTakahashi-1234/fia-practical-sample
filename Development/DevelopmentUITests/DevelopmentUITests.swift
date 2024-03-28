@@ -3,6 +3,7 @@
 //  Copyright sugurutakahashi. All rights reserved.
 //
 
+import DomainLayer
 import XCTest
 
 final class DevelopmentUITests: XCTestCase {
@@ -11,6 +12,7 @@ final class DevelopmentUITests: XCTestCase {
     override func setUpWithError() throws {
         continueAfterFailure = false
         app = XCUIApplication()
+        app.launchArguments.append(Constants.Arguments.placeholderUITest)
         app.launch()
 
         // "次へのボタンが存在する場合はチュートリアル画面のためスキップ処理を入れる"
@@ -37,10 +39,8 @@ final class DevelopmentUITests: XCTestCase {
     func testLicenseDetailView() throws {
         app.tabBars["タブバー"].buttons["設定"].tap()
         let collectionViewsQuery = app.collectionViews
-        collectionViewsQuery/*@START_MENU_TOKEN@*/ .buttons["ライセンス"]/*[[".cells.buttons[\"ライセンス\"]",".buttons[\"ライセンス\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/ .tap()
-
-        // Mock がランダムに文字列を生成するため使用不能
-        // collectionViewsQuery/*@START_MENU_TOKEN@*/.buttons["abseil"]/*[[".cells.buttons[\"abseil\"]",".buttons[\"abseil\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        collectionViewsQuery/*@START_MENU_TOKEN@*/ .staticTexts["ライセンス"]/*[[".cells",".buttons[\"ライセンス\"].staticTexts[\"ライセンス\"]",".staticTexts[\"ライセンス\"]"],[[[-1,2],[-1,1],[-1,0,1]],[[-1,2],[-1,1]]],[0]]@END_MENU_TOKEN@*/ .tap()
+        collectionViewsQuery/*@START_MENU_TOKEN@*/ .buttons["abc123あいう漢字カナ"]/*[[".cells.buttons[\"abc123あいう漢字カナ\"]",".buttons[\"abc123あいう漢字カナ\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/ .tap()
     }
 
     func testDeviveInfoView() throws {

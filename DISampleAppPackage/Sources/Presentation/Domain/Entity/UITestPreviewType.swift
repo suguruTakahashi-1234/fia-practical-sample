@@ -8,6 +8,7 @@ import Foundation
 public enum UITestPreviewType {
     case empty
     case standard
+    case placeholder
     case small
     case medium
     case large
@@ -20,6 +21,8 @@ public extension UITestPreviewType {
             "Empty"
         case .standard:
             "Standard"
+        case .placeholder:
+            "Placeholder"
         case .small:
             "Size-S"
         case .medium:

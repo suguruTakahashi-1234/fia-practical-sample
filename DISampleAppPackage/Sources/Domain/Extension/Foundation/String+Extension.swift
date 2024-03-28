@@ -117,3 +117,9 @@ extension String: SizeValueProvidable {
         "long length string, long string, long string, long string, long string, long string, long string, long string, long string, long string, long string"
     }
 }
+
+extension String: PlaceholderProvidable {
+    public static var placeholder: String {
+        "abc123あいう漢字カナ"
+    }
+}

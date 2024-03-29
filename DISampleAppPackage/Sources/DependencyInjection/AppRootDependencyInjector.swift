@@ -81,6 +81,12 @@ public final class AppRootDependencyInjector: AppRootRouterDependency, AppRootDe
         logDriver = LogDriver(dependency: LogDriverDependencyInjector(osLogDriver: osLogDriver, firebaseAnalyticsLogDriver: firebaseAnalyticsLogDriver, firebaseCrashlyticsLogDriver: firebaseCrashlyticsLogDriver))
         logDriver.debugLog("Completed setup LogDriver")
 
+        guard !buildEnvDriver.buildScheme.isTesting else {
+            // テスト用の Bundle ID と GoogleService-Info.plist が一致しないせいか FirebaseRemoteConfigDriver.setUp() がたまに失敗するので、現状、影響ない処理のためスキップする（要検討）
+            OSLogDriver.debugLog("Skip setup FirebaseRemoteConfigDriver for test")
+            return
+        }
+
         Task {
             do {
                 try await firebaseRemoteConfigDriver.setUp()

@@ -16,7 +16,8 @@ struct FirebaseAnalyticsLogDriverTest {
         firebaseSetupDriver = .init(buildEnvDriver: buildEnvDriver)
     }
 
-    @Test("初期化した時") func initialize() {
+    @Test("GoogleService-Info.plist の読み込みをした時") func configure() {
+        firebaseSetupDriver.configure()
         #expect(true, "エラーが発生しないこと")
     }
 }

@@ -23,21 +23,16 @@ public final class FirebaseSetupDriver<BuildEnvDriver: BuildEnvDriverProtocol>: 
     }
 
     public func configure() {
-        switch buildEnvDriver.buildScheme {
-        case .testing:
+        if buildEnvDriver.buildScheme.isTesting {
             let fileName: String = "GoogleService-Info-For-Testing" // Staging 環境の GoogleService-Info.plist のコピー
             guard let filePath = Bundle.module.path(forResource: fileName, ofType: "plist"), let firebaseOptions = FirebaseOptions(contentsOfFile: filePath) else {
                 OSLogDriver.errorLog("Unable to find \(fileName).plist in the bundle.")
                 fatalError("Unable to find \(fileName).plist in the bundle.")
             }
 
-            // Bundle ID などが一致しない warning が表示されるがテスト中に問題なければ、一旦、それでよし
+            // Bundle ID などが一致しないと warning が表示されるがテスト中に問題なければ、一旦、それでよし
             FirebaseApp.configure(options: firebaseOptions)
-
-        case .development:
-            fatalError("unexpected")
-
-        case .staging, .production:
+        } else {
             FirebaseApp.configure()
         }
     }

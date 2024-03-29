@@ -58,7 +58,7 @@ public final class FirebaseRemoteConfigDriver<CacheDataStore: CacheDataStoreProt
         OSLogDriver.deinitLog()
     }
 
-    @MainActor //
+    @MainActor
     public func setUp() async throws {
         do {
             try setDefaults()

@@ -15,6 +15,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		443C0FE02BB71DEF00D07E37 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		445C83622B87144D00DDF236 /* PreviewCatalog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PreviewCatalog.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		445C83652B87144D00DDF236 /* PreviewCatalogApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewCatalogApp.swift; sourceTree = "<group>"; };
 		445C83692B87144D00DDF236 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -57,6 +58,7 @@
 			children = (
 				445C83652B87144D00DDF236 /* PreviewCatalogApp.swift */,
 				445C836B2B87144D00DDF236 /* PreviewCatalog.entitlements */,
+				443C0FE02BB71DEF00D07E37 /* Info.plist */,
 				445C83692B87144D00DDF236 /* Assets.xcassets */,
 				44CBBA5C2BB408EF00FE692F /* InfoPlist.xcstrings */,
 				445C836C2B87144D00DDF236 /* Preview Content */,
@@ -287,6 +289,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = PreviewCatalog/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "プレビュー";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
@@ -327,6 +330,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = PreviewCatalog/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "プレビュー";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;

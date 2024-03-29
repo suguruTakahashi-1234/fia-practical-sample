@@ -32,6 +32,7 @@
 
 /* Begin PBXFileReference section */
 		441DA6B12BA9E38B0035A2ED /* StagingLaunchPerformanceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StagingLaunchPerformanceTests.swift; sourceTree = "<group>"; };
+		443C0FE22BB71E1800D07E37 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		4471BCB22B81F08800218534 /* Staging.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Staging.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4471BCB52B81F08800218534 /* StagingApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StagingApp.swift; sourceTree = "<group>"; };
 		4471BCB92B81F08900218534 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -90,6 +91,7 @@
 				4471BCB52B81F08800218534 /* StagingApp.swift */,
 				4471BCBB2B81F08900218534 /* Staging.entitlements */,
 				4483802E2B918A6E006A0BC7 /* GoogleService-Info.plist */,
+				443C0FE22BB71E1800D07E37 /* Info.plist */,
 				4471BCB92B81F08900218534 /* Assets.xcassets */,
 				44CBBA582BB406F800FE692F /* InfoPlist.xcstrings */,
 				4471BCBC2B81F08900218534 /* Preview Content */,
@@ -413,6 +415,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Staging/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "DIサンプル(検証)";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
@@ -454,6 +457,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Staging/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "DIサンプル(検証)";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;

@@ -15,8 +15,8 @@ private extension String {
 }
 
 let swiftFlags = [
-    "-Xfrontend", "-warn-long-expression-type-checking=100",
-    "-Xfrontend", "-warn-long-function-bodies=100",
+    "-Xfrontend", "-warn-long-expression-type-checking=300",
+    "-Xfrontend", "-warn-long-function-bodies=300",
     "-enable-actor-data-race-checks",
 ]
 

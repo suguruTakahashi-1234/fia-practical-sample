@@ -1,5 +1,5 @@
 # 更新した場合は make mint-bootstrap を実行する
 uber/mockolo@2.0.1
-krzysztofzablocki/Sourcery@2.1.8
+krzysztofzablocki/Sourcery@2.2.2
 nicklockwood/SwiftFormat@0.53.5 # バージョンを変更した場合は .swiftformat ファイルを修正する
 peripheryapp/periphery@2.18.0

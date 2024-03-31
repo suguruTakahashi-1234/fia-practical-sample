@@ -12,5 +12,12 @@ public enum BuildScheme: Sendable {
     case production
 }
 
+public extension BuildScheme {
+    /// Find Call Hierarchy によって .testing の分岐を調べるときに便利なため定義している
+    var isTesting: Bool {
+        self == .testing
+    }
+}
+
 /// for test
 extension BuildScheme: RandomValueProvidableForEnum {}

@@ -8,13 +8,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "DI Sample(Dev)"
+            "value" : "DI Sample-D"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "DIサンプル(開発)"
+            "value" : "DIサンプル-D"
           }
         }
       }

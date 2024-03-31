@@ -1,0 +1,22 @@
+{
+  "sourceLanguage" : "ja",
+  "strings" : {
+    "language" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "en"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ja"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}

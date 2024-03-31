@@ -16,6 +16,7 @@ public enum DeviceInfoType: Sendable {
     case deviceName
     case deviceIdentifier
     case timezone
+    case preferredLanguages
     case language
     case launchAppCount
     case apnsToken

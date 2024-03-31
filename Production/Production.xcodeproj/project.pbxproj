@@ -37,6 +37,7 @@
 		4428A4012B7CBE9300C57F9A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4428A4032B7CBE9300C57F9A /* Production.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Production.entitlements; sourceTree = "<group>"; };
 		4428A4052B7CBE9300C57F9A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		443C0FE12BB71E0E00D07E37 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		4483802C2B918A45006A0BC7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		44ABAB122B9B5B760039ECF7 /* ProductionUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ProductionUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		44ABAB142B9B5B760039ECF7 /* ProductionUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductionUITests.swift; sourceTree = "<group>"; };
@@ -90,6 +91,7 @@
 				4428A3FD2B7CBE9200C57F9A /* ProductionApp.swift */,
 				4428A4032B7CBE9300C57F9A /* Production.entitlements */,
 				4483802C2B918A45006A0BC7 /* GoogleService-Info.plist */,
+				443C0FE12BB71E0E00D07E37 /* Info.plist */,
 				4428A4012B7CBE9300C57F9A /* Assets.xcassets */,
 				44CBBA5A2BB4079600FE692F /* InfoPlist.xcstrings */,
 				4428A4042B7CBE9300C57F9A /* Preview Content */,
@@ -412,6 +414,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Production/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "DIサンプル";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
@@ -453,6 +456,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Production/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "DIサンプル";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;

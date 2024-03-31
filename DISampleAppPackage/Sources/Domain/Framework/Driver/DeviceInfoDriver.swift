@@ -87,8 +87,13 @@ public final class DeviceInfoDriver<DeviceNameDriver: DeviceNameDriverProtocol>:
         TimeZone.current.identifier
     }
 
+    /// ex) preferredLanguages
+    public var preferredLanguages: String {
+        "\(Locale.preferredLanguages)"
+    }
+
     /// ex) en
     public var language: String {
-        Locale.current.language.languageCode?.identifier ?? "unknown"
+        String(localized: "language", bundle: .module)
     }
 }

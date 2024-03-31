@@ -16,4 +16,14 @@
    <FileRef
       location = "group:PreviewCatalog/PreviewCatalog.xcodeproj">
    </FileRef>
+   <Group
+      location = "container:"
+      name = "TestPlan">
+      <FileRef
+         location = "group:UITestPlan.xctestplan">
+      </FileRef>
+      <FileRef
+         location = "group:ViewSnapshotTestPlan.xctestplan">
+      </FileRef>
+   </Group>
 </Workspace>

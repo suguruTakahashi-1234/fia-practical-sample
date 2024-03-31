@@ -32,7 +32,7 @@ mockolo-run:
 
 .PHONY: sourcery-presentation-code-gen
 sourcery-presentation-code-gen:
-	./Sourcery/Script/presentation_code_gen.sh $(VIEW) $(ROUTER)
+	./sourcery/script/presentation_code_gen.sh $(VIEW) $(ROUTER)
 
 .PHONY: presentation-code-gen
 presentation-code-gen:
@@ -41,15 +41,15 @@ presentation-code-gen:
 
 .PHONY: swift-docc-gen
 swift-docc-gen:
-	./Swift-DocC/Script/docc_gen.sh $(PACKAGE_NAME)
+	./swift_docc/script/docc_gen.sh $(PACKAGE_NAME)
 
 .PHONY: periphery-scan
 periphery-scan:
-	./Periphery/Script/periphery_scan.sh $(CURDIR)
+	./periphery/script/periphery_scan.sh $(CURDIR)
 
 .PHONY: spm-dependencies-mermaid-gen
 spm-dependencies-mermaid-gen:
-	./Depermaid/Script/spm_dependencies_mermaid_gen.sh
+	./depermaid/script/spm_dependencies_mermaid_gen.sh
 
 .PHONY: document-update
 document-update:

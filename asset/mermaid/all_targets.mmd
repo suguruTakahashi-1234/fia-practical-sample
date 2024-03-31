@@ -1,8 +1,8 @@
 flowchart TD
-    DependencyInjectorLayer-->DeviceFramework
-    DependencyInjectorLayer-->FirebaseFramework
-    DependencyInjectorLayer-->LicenseFramework
-    DependencyInjectorLayer-->PresentationLayer
+    DependencyInjectionLayer-->DeviceFramework
+    DependencyInjectionLayer-->FirebaseFramework
+    DependencyInjectionLayer-->LicenseFramework
+    DependencyInjectionLayer-->PresentationLayer
     DeviceFramework-->DeviceKit[[DeviceKit]]
     DeviceFramework-->DomainLayer
     DomainLayer
@@ -14,7 +14,7 @@ flowchart TD
     FrameworkTest{{FrameworkTest}}-->FirebaseFramework
     FrameworkTest{{FrameworkTest}}-->LicenseFramework
     FrameworkTest{{FrameworkTest}}-->Testing[[Testing]]
-    InteractorTest{{InteractorTest}}-->DependencyInjectorLayer
+    InteractorTest{{InteractorTest}}-->DependencyInjectionLayer
     InteractorTest{{InteractorTest}}-->Testing[[Testing]]
     LicenseFramework-->DomainLayer
     PresentationLayer-->DomainLayer

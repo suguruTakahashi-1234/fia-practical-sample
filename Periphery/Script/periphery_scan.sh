@@ -7,14 +7,14 @@ fi
 
 di_scheme="DependencyInjectorLayer"
 root_path=$1
-periphery_path="$root_path/Periphery"
+periphery_path="$root_path/periphery"
 periphery_build_path="$periphery_path/build"
 output_file="$periphery_path/result.txt"
 index_store_path="$periphery_build_path/Index.noindex/DataStore/"
 mint_package_path="$root_path/DISampleAppPackage"
 
 # periphery を実行すると MacOS でビルドを行うが、アプリ内部で UIKit など、iOS 依存なコードがあるとビルドできないため、一旦 xcodebuild コマンドでプラットフォームを指定して、ビルドする必要がある
-# 失敗する場合は Periphery/build ディレクトリを削除してから、また、make コマンドを実行してください
+# 失敗する場合は periphery/build ディレクトリを削除してから、また、make コマンドを実行してください
 xcodebuild -scheme $di_scheme -destination 'platform=iOS Simulator,OS=17.4,name=iPhone 15 Pro' -derivedDataPath $periphery_build_path clean build
 
 # periphery の仕様なのか、ディレクトリを移動しないと SwiftPM マルチモジュール かつ Workspace で構成されるプロジェクト対応できない

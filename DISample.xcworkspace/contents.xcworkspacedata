@@ -22,5 +22,8 @@
       <FileRef
          location = "group:UITestPlan.xctestplan">
       </FileRef>
+      <FileRef
+         location = "group:ViewSnapshotTestPlan.xctestplan">
+      </FileRef>
    </Group>
 </Workspace>

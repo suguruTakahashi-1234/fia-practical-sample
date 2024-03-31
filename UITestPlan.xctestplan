@@ -15,7 +15,7 @@
     {
       "parallelizable" : true,
       "target" : {
-        "containerPath" : "container:..\/Development\/Development.xcodeproj",
+        "containerPath" : "container:Development.xcodeproj",
         "identifier" : "44ABAB202B9B60AC0039ECF7",
         "name" : "DevelopmentUITests"
       }
@@ -29,6 +29,7 @@
       }
     },
     {
+      "enabled" : false,
       "parallelizable" : true,
       "target" : {
         "containerPath" : "container:..\/Production\/Production.xcodeproj",

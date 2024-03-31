@@ -1,0 +1,25 @@
+{
+  "configurations" : [
+    {
+      "id" : "BA887990-D6B3-4F27-A82A-094EF9EA06CA",
+      "name" : "ja",
+      "options" : {
+        "language" : "ja"
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "testTimeoutsEnabled" : true
+  },
+  "testTargets" : [
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:",
+        "identifier" : "ViewSnapshotTest",
+        "name" : "ViewSnapshotTest"
+      }
+    }
+  ],
+  "version" : 1
+}

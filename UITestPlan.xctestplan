@@ -37,8 +37,6 @@
     {
       "parallelizable" : true,
       "skippedTests" : [
-        "ProductionFirstLaunchUITests",
-        "ProductionUITests",
         "ProductiontLaunchPerformanceTests"
       ],
       "target" : {

@@ -228,6 +228,7 @@ private extension PackageDescription.Target.PluginUsage {
 
 let package = Package(
     name: "DISampleAppPackage",
+    defaultLocalization: "ja",
     platforms: [
         .iOS(.v17),
         .macOS(.v14),

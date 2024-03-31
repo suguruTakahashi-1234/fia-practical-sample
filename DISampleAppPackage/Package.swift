@@ -159,6 +159,16 @@ enum TargetType: CaseIterable {
 
     var resources: [Resource]? {
         switch self {
+        case .domain:
+            [
+                // この記述がなくても動くが SPM の CLI 上の warning を出なくするために記述している
+                .process("Resources"),
+            ]
+        case .presentation:
+            [
+                // この記述がなくても動くが SPM の CLI 上の warning を出なくするために記述している
+                .process("Resources"),
+            ]
         case .framework(.firebase):
             [
                 // Staging 環境の GoogleService-Info.plist のコピー (testTarget でインテグレーションテストをしたいときに参照する)
@@ -183,6 +193,7 @@ enum TestTargetType: CaseIterable {
     private var exclude: [String] {
         switch self {
         case .viewSnapshotTest:
+            // この記述がなくても動くが SPM の CLI 上の warning を出なくするために記述している
             ["__Snapshots__"]
         default:
             []

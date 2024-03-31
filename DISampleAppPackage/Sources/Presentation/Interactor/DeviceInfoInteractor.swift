@@ -39,6 +39,8 @@ public final class DeviceInfoInteractor<Dependency: DeviceInfoUseCaseDependency>
             "\(dependency.deviceInfoDriver.osType) \(dependency.deviceInfoDriver.osVersion)"
         case .timezone:
             dependency.deviceInfoDriver.timezone
+        case .preferredLanguages:
+            dependency.deviceInfoDriver.preferredLanguages
         case .language:
             dependency.deviceInfoDriver.language
         case .launchAppCount:

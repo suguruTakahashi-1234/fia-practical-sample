@@ -671,7 +671,7 @@ public final class LicenseListPresenterDependencyMock: LicenseListPresenterDepen
 
 public final class DeviceInfoDriverProtocolMock: DeviceInfoDriverProtocol {
     public init() { }
-    public init(appVersion: String = "", appBuildNumber: String = "", bundleId: String = "", deviceName: String = "", deviceIdentifier: String = "", osType: String = "", osVersion: String = "", isSimulator: Bool = false, isPreview: Bool = false, timezone: String = "", language: String = "") {
+    public init(appVersion: String = "", appBuildNumber: String = "", bundleId: String = "", deviceName: String = "", deviceIdentifier: String = "", osType: String = "", osVersion: String = "", isSimulator: Bool = false, isPreview: Bool = false, timezone: String = "", preferredLanguages: String = "", language: String = "") {
         self.appVersion = appVersion
         self.appBuildNumber = appBuildNumber
         self.bundleId = bundleId
@@ -682,6 +682,7 @@ public final class DeviceInfoDriverProtocolMock: DeviceInfoDriverProtocol {
         self.isSimulator = isSimulator
         self.isPreview = isPreview
         self.timezone = timezone
+        self.preferredLanguages = preferredLanguages
         self.language = language
     }
 
@@ -715,6 +716,9 @@ public final class DeviceInfoDriverProtocolMock: DeviceInfoDriverProtocol {
 
     public private(set) var timezoneSetCallCount = 0
     public var timezone: String = "" { didSet { timezoneSetCallCount += 1 } }
+
+    public private(set) var preferredLanguagesSetCallCount = 0
+    public var preferredLanguages: String = "" { didSet { preferredLanguagesSetCallCount += 1 } }
 
     public private(set) var languageSetCallCount = 0
     public var language: String = "" { didSet { languageSetCallCount += 1 } }

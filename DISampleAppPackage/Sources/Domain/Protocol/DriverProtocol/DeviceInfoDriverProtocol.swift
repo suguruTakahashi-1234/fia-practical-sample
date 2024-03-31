@@ -49,7 +49,11 @@ public protocol DeviceInfoDriverProtocol: AnyObject {
     /// ex) Asia/Tokyo
     var timezone: String { get }
 
-    /// Locale.current.language.languageCode?.identifier
-    /// ex) en
+    /// Locale.preferredLanguages
+    /// ex) ["ja-JP", "en-JP"]
+    var preferredLanguages: String { get }
+
+    /// String(localized: "language", bundle: .module) for Localizable.xcstrings
+    /// ex) ja
     var language: String { get }
 }

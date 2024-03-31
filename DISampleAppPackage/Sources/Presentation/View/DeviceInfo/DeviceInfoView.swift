@@ -34,7 +34,7 @@ public struct DeviceInfoView<Router: AppRootWireframe, Dependency: DeviceInfoPre
         }
         .navigationTitle(String(localized: "デバイス情報", bundle: .module))
         .alert(presenter.copiedAlertTitle, isPresented: $presenter.shouldShowCopyAlert) {
-            Button("OK", action: {})
+            Button(String(localized: "OK", bundle: .module), action: {})
         }
         .task {
             await presenter.onAppear()

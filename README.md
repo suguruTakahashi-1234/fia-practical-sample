@@ -8,16 +8,16 @@
 
 ### My Targets
 
-![My Targets Diagram](./assets/images/my_targets.svg)
+![My Targets Diagram](./asset/image/my_targets.svg)
 
 ### Including Test Targets
 
-![Including Test Targets](./assets/images/test_targets.svg)
+![Including Test Targets](./asset/image/test_targets.svg)
 
 ### Including Library
 
-![Including Library](./assets/images/library_targets.svg)
+![Including Library](./asset/image/library_targets.svg)
 
 ### Including All
 
-![Including All](./assets/images/all_targets.svg)
+![Including All](./asset/image/all_targets.svg)

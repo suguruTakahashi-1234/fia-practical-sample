@@ -1,8 +1,8 @@
 #!/bin/bash
 
 tools_package="./DISampleAppPackage"
-mermaid_output_path="./assets/mermaid"
-image_output_path="./assets/images"
+mermaid_output_path="./asset/mermaid"
+image_output_path="./asset/image"
 
 generate_diagram() {
     local input_options=$1

@@ -1,0 +1,16 @@
+flowchart TD
+    DependencyInjectionLayer-->DeviceFramework
+    DependencyInjectionLayer-->FirebaseFramework
+    DependencyInjectionLayer-->LicenseFramework
+    DependencyInjectionLayer-->PresentationLayer
+    DeviceFramework-->DomainLayer
+    DomainLayer
+    FirebaseFramework-->DomainLayer
+    FrameworkTest{{FrameworkTest}}-->DeviceFramework
+    FrameworkTest{{FrameworkTest}}-->FirebaseFramework
+    FrameworkTest{{FrameworkTest}}-->LicenseFramework
+    InteractorTest{{InteractorTest}}-->DependencyInjectionLayer
+    LicenseFramework-->DomainLayer
+    PresentationLayer-->DomainLayer
+    PresenterTest{{PresenterTest}}-->PresentationLayer
+    PreviewCatalogLayer-->PresentationLayer

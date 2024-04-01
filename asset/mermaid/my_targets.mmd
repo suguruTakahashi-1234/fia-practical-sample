@@ -1,0 +1,10 @@
+flowchart TD
+    DependencyInjectionLayer-->DeviceFramework
+    DependencyInjectionLayer-->FirebaseFramework
+    DependencyInjectionLayer-->LicenseFramework
+    DependencyInjectionLayer-->PresentationLayer
+    DeviceFramework-->DomainLayer
+    DomainLayer
+    FirebaseFramework-->DomainLayer
+    LicenseFramework-->DomainLayer
+    PresentationLayer-->DomainLayer

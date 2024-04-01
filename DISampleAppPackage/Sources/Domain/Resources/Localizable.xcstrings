@@ -16,6 +16,54 @@
           }
         }
       }
+    },
+    "普通の文字列" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "medium length string, medium length string"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "普通の文字列、普通の文字列、普通の文字列"
+          }
+        }
+      }
+    },
+    "短い文字列" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "short str"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "短い文字列"
+          }
+        }
+      }
+    },
+    "長い文字列" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "long length string, long string, long string, long string, long string, long string, long string, long string, long string, long string, long string"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "長い文字列、長い文字列、長い文字列、長い文字列、長い文字列、長い文字列、長い文字列、長い文字列、長い文字列、長い文字列、長い文字列、長い文字列、長い文字列、長い文字列、長い文字列、長い文字列、長い文字列、長い文字列、長い文字列"
+          }
+        }
+      }
     }
   },
   "version" : "1.0"

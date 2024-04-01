@@ -1,0 +1,16 @@
+flowchart TD
+    DependencyInjectionLayer-->DeviceFramework
+    DependencyInjectionLayer-->FirebaseFramework
+    DependencyInjectionLayer-->LicenseFramework
+    DependencyInjectionLayer-->PresentationLayer
+    DeviceFramework-->DeviceKit[[DeviceKit]]
+    DeviceFramework-->DomainLayer
+    DomainLayer
+    FirebaseFramework-->DomainLayer
+    FirebaseFramework-->FirebaseAnalytics[[FirebaseAnalytics]]
+    FirebaseFramework-->FirebaseCrashlytics[[FirebaseCrashlytics]]
+    FirebaseFramework-->FirebaseRemoteConfig[[FirebaseRemoteConfig]]
+    LicenseFramework-->DomainLayer
+    PresentationLayer-->DomainLayer
+    PresentationLayer-->PreviewSnapshots[[PreviewSnapshots]]
+    PreviewCatalogLayer-->PresentationLayer

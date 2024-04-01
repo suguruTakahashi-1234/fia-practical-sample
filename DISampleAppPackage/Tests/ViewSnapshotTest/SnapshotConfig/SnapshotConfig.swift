@@ -13,6 +13,10 @@ enum SnapshotConfig {
     ///  一致率 ( 0.0-1.0 = 0-100% )
     static let precision: Float = 1.0
 
+    static var currentLanguage: String {
+        Locale.preferredLanguages.first ?? "unknown"
+    }
+
     enum DeviceType: String, CaseIterable {
         case iPhoneSe = "iPhone-SE"
         case iPhone8 = "iPhone-8"
@@ -97,38 +101,91 @@ enum SnapshotConfig {
     }
 
     @MainActor
-    static func previewTest(_ previews: (some SnapshotTestable).Type, device: SnapshotConfig.DeviceType = .defaultDevice, file: StaticString = #filePath, function: String = #function, line: Int = #line) {
+    static func previewTest(_ previews: (some SnapshotTestable).Type, device: SnapshotConfig.DeviceType = .defaultDevice, file: StaticString = #filePath, line: Int = #line) {
+        guard currentLanguage == "ja" else {
+            return
+        }
         previews.snapshots.assertSnapshots(
             as: .image(precision: SnapshotConfig.precision, layout: .device(config: device.viewImageConfig)),
+            named: nil,
             file: file,
-            testName: function.replacingOccurrences(of: "preview", with: ""),
+            testName: "\(type(of: previews))".sliceToViewName,
             line: UInt(line)
         )
     }
 
     @MainActor
-    static func previewDeviceVariationTest(_ previews: (some SnapshotTestable).Type, file: StaticString = #filePath, function: String = #function, line: Int = #line) {
+    static func previewDeviceVariationTest(_ previews: (some SnapshotTestable).Type, file: StaticString = #filePath, line: Int = #line) {
+        guard currentLanguage == "ja" else {
+            return
+        }
         for device in SnapshotConfig.DeviceType.allCases {
             previews.snapshots.assertSnapshots(
                 as: .image(precision: SnapshotConfig.precision, layout: .device(config: device.viewImageConfig)),
-                named: device.rawValue,
+                named: "\(device.rawValue)",
                 file: file,
-                testName: function.replacingOccurrences(of: "previewDeviceVariation", with: ""),
+                testName: "\(type(of: previews))".sliceToViewName + "-Device",
                 line: UInt(line)
             )
         }
     }
 
     @MainActor
-    static func previewContentSizeVariationTest(_ previews: (some SnapshotTestable).Type, device: SnapshotConfig.DeviceType = .defaultDevice, file: StaticString = #filePath, function: String = #function, line: Int = #line) {
+    static func previewContentSizeVariationTest(_ previews: (some SnapshotTestable).Type, device: SnapshotConfig.DeviceType = .defaultDevice, file: StaticString = #filePath, line: Int = #line) {
+        guard currentLanguage == "ja" else {
+            return
+        }
         for contentSizeType in SnapshotConfig.ContentSizeType.allCases {
             previews.snapshots.assertSnapshots(
                 as: .image(precision: SnapshotConfig.precision, layout: .device(config: device.viewImageConfig), traits: .init(preferredContentSizeCategory: contentSizeType.size)),
-                named: "\(device.rawValue)-\(contentSizeType.rawValue)",
+                named: "\(contentSizeType.rawValue)",
                 file: file,
-                testName: function.replacingOccurrences(of: "previewContentSizeVariation", with: ""),
+                testName: "\(type(of: previews))".sliceToViewName + "-ContentSize",
                 line: UInt(line)
             )
+        }
+    }
+
+    @MainActor
+    static func previewDarkModeTest(_ previews: (some SnapshotTestable).Type, device: SnapshotConfig.DeviceType = .defaultDevice, file: StaticString = #filePath, line: Int = #line) {
+        guard currentLanguage == "ja" else {
+            return
+        }
+        for colorScheme in ColorScheme.allCases.filter({ $0 != .light }) {
+            previews.snapshots.assertSnapshots(
+                as: .image(precision: SnapshotConfig.precision, layout: .device(config: device.viewImageConfig), traits: .init(userInterfaceStyle: colorScheme.asUIUserInterfaceStyle)),
+                named: "\("\(colorScheme)".initialUppercased)Mode",
+                file: file,
+                testName: "\(type(of: previews))".sliceToViewName + "-ColorThema",
+                line: UInt(line)
+            )
+        }
+    }
+
+    @MainActor
+    static func previewLanguageVariationTest(_ previews: (some SnapshotTestable).Type, device: SnapshotConfig.DeviceType = .defaultDevice, file: StaticString = #filePath, line: Int = #line) {
+        guard currentLanguage != "ja" else {
+            return
+        }
+        previews.snapshots.assertSnapshots(
+            as: .image(precision: SnapshotConfig.precision, layout: .device(config: device.viewImageConfig)),
+            named: currentLanguage,
+            file: file,
+            testName: "\(type(of: previews))".sliceToViewName + "-Language",
+            line: UInt(line)
+        )
+    }
+}
+
+private extension ColorScheme {
+    var asUIUserInterfaceStyle: UIUserInterfaceStyle {
+        switch self {
+        case .light:
+            .light
+        case .dark:
+            .dark
+        @unknown default:
+            .light
         }
     }
 }

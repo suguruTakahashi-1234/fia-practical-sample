@@ -8,7 +8,7 @@ import PreviewSnapshotsTesting
 import Testing
 
 @Suite struct LicenseListViewSnapshotTest {
-    @Test @MainActor func previewLicenseListView() {
+    @Test @MainActor func previewTest() {
         SnapshotConfig.previewTest(LicenseListView_Previews.self)
     }
 }

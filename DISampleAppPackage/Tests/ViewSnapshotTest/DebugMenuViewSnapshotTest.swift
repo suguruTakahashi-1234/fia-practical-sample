@@ -4,7 +4,7 @@ import PreviewSnapshotsTesting
 import Testing
 
 @Suite struct DebugMenuViewSnapshotTest {
-    @Test @MainActor func previewDebugMenuView() {
+    @Test @MainActor func previewTest() {
         SnapshotConfig.previewTest(DebugMenuView_Previews.self)
     }
 }

@@ -8,7 +8,7 @@ import PreviewSnapshotsTesting
 import Testing
 
 @Suite struct AppRootViewSnapshotTest {
-    @Test @MainActor func previewAppRootView() {
+    @Test @MainActor func previewTest() {
         SnapshotConfig.previewTest(AppRootView_Previews.self)
     }
 }

@@ -3,7 +3,7 @@ import PreviewSnapshotsTesting
 import Testing
 
 @Suite struct {{ argument.screenName }}ViewSnapshotTest {
-    @Test @MainActor func preview{{ argument.screenName }}View() {
+    @Test @MainActor func previewTest() {
         SnapshotConfig.previewTest({{ argument.screenName }}View_Previews.self)
     }
 }

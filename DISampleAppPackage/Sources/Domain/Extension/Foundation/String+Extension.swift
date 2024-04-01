@@ -70,6 +70,16 @@ public extension String {
         return components.dropLast().joined(separator: ".")
     }
 
+    /// ex) "LicenseDetailView_Previews" -> "LicenseDetailView"
+    var sliceToViewName: String {
+        if let range = range(of: "View") {
+            String(self[startIndex..<range.upperBound])
+        } else {
+            // "View"が見つからない場合は元の文字列をそのまま返す
+            self
+        }
+    }
+
     /// 文字列数をトリミングする
     /// - Parameters:
     ///   - maxLength: 最大文字列長
@@ -106,15 +116,18 @@ extension String: RandomValueProvidable {
 
 extension String: SizeValueProvidable {
     public static var sizeS: String {
-        "short str"
+        // "short str"
+        String(localized: "短い文字列", bundle: .module)
     }
 
     public static var sizeM: String {
-        "medium length string, medium length string"
+        // "medium length string, medium length string"
+        String(localized: "普通の文字列", bundle: .module)
     }
 
     public static var sizeL: String {
-        "long length string, long string, long string, long string, long string, long string, long string, long string, long string, long string, long string"
+        // "long length string, long string, long string, long string, long string, long string, long string, long string, long string, long string, long string"
+        String(localized: "長い文字列", bundle: .module)
     }
 }
 

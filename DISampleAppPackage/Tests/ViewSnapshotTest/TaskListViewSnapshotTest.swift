@@ -4,7 +4,7 @@ import PreviewSnapshotsTesting
 import Testing
 
 @Suite struct TaskListViewSnapshotTest {
-    @Test @MainActor func previewTaskListView() {
+    @Test @MainActor func previewTest() {
         SnapshotConfig.previewTest(TaskListView_Previews.self)
     }
 }

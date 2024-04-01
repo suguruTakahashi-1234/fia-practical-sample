@@ -6,6 +6,13 @@
       "options" : {
         "language" : "ja"
       }
+    },
+    {
+      "id" : "DFFACBBF-76FE-44F5-90F0-AB1AEBC7F2DD",
+      "name" : "en",
+      "options" : {
+        "language" : "en"
+      }
     }
   ],
   "defaultOptions" : {

@@ -116,17 +116,14 @@ extension String: RandomValueProvidable {
 
 extension String: SizeValueProvidable {
     public static var sizeS: String {
-        // "short str"
         String(localized: "短い文字列", bundle: .module)
     }
 
     public static var sizeM: String {
-        // "medium length string, medium length string"
         String(localized: "普通の文字列", bundle: .module)
     }
 
     public static var sizeL: String {
-        // "long length string, long string, long string, long string, long string, long string, long string, long string, long string, long string, long string"
         String(localized: "長い文字列", bundle: .module)
     }
 }

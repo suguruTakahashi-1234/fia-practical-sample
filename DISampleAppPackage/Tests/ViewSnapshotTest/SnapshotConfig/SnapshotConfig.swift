@@ -131,4 +131,30 @@ enum SnapshotConfig {
             )
         }
     }
+
+    @MainActor
+    static func previewDarkModeTest(_ previews: (some SnapshotTestable).Type, device: SnapshotConfig.DeviceType = .defaultDevice, file: StaticString = #filePath, function: String = #function, line: Int = #line) {
+        for colorScheme in ColorScheme.allCases.filter({ $0 != .light }) {
+            previews.snapshots.assertSnapshots(
+                as: .image(precision: SnapshotConfig.precision, layout: .device(config: device.viewImageConfig), traits: .init(userInterfaceStyle: colorScheme.asUIUserInterfaceStyle)),
+                named: "\(colorScheme)".initialUppercased + "Mode",
+                file: file,
+                testName: function.replacingOccurrences(of: "previewDarkMode", with: ""),
+                line: UInt(line)
+            )
+        }
+    }
+}
+
+private extension ColorScheme {
+    var asUIUserInterfaceStyle: UIUserInterfaceStyle {
+        switch self {
+        case .light:
+            .light
+        case .dark:
+            .dark
+        @unknown default:
+            .light
+        }
+    }
 }

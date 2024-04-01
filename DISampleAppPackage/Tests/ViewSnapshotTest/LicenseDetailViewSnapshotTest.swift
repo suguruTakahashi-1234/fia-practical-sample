@@ -21,4 +21,9 @@ import Testing
     @Test @MainActor func previewContentSizeVariationLicenseDetailView() {
         SnapshotConfig.previewContentSizeVariationTest(LicenseDetailView_Previews.self)
     }
+
+    /// ダークモードでテストしたい場合
+    @Test @MainActor func previewDarkModeLicenseDetailView() {
+        SnapshotConfig.previewDarkModeTest(LicenseDetailView_Previews.self)
+    }
 }

@@ -1,3 +1,15 @@
 🌱 Finding latest version of periphery
 🌱 Running periphery 2.18.0...
 * Inspecting project...
+* Indexing...
+* Analyzing...
+
+DISampleAppPackage/Sources/Presentation/View/DeviceInfo/DeviceInfoView.swift:9:17: warning: Property 'router' is assigned, but never used
+DISampleAppPackage/Sources/Presentation/View/Onboarding/OnboardingView.swift:16:17: warning: Property 'router' is assigned, but never used
+DISampleAppPackage/Sources/Presentation/View/TaskList/TaskListView.swift:9:17: warning: Property 'router' is assigned, but never used
+
+* Seeing false positives?
+ - Periphery only analyzes files that are members of the targets you specify.
+   References to declarations identified as unused may reside in files that are members of other targets, e.g test targets.
+ - Periphery is a very precise tool, false positives often turn out to be correct after further investigation.
+ - If it really is a false positive, please report it - https://github.com/peripheryapp/periphery/issues.

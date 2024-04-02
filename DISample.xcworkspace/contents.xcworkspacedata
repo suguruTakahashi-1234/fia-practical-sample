@@ -26,4 +26,38 @@
          location = "group:ViewSnapshotTestPlan.xctestplan">
       </FileRef>
    </Group>
+   <Group
+      location = "container:"
+      name = "RepositoryRoot">
+      <FileRef
+         location = "group:asset">
+      </FileRef>
+      <FileRef
+         location = "group:ci_scripts">
+      </FileRef>
+      <FileRef
+         location = "group:depermaid">
+      </FileRef>
+      <FileRef
+         location = "group:periphery">
+      </FileRef>
+      <FileRef
+         location = "group:sourcery">
+      </FileRef>
+      <FileRef
+         location = "group:swift_docc">
+      </FileRef>
+      <FileRef
+         location = "group:Makefile">
+      </FileRef>
+      <FileRef
+         location = "group:Mintfile">
+      </FileRef>
+      <FileRef
+         location = "group:README.md">
+      </FileRef>
+      <FileRef
+         location = "group:renovate.json5">
+      </FileRef>
+   </Group>
 </Workspace>

@@ -38,4 +38,7 @@ swift run --package-path $mint_package_path mint run periphery scan \
 # 出力に環境依存な root_path が付与されるため、それを削除する
 sed "s|${root_path}/||g" $output_file > temp_file && mv temp_file $output_file
 
+# 毎回完全にclean buildしたいため、削除する、また削除しないと Xcode で検索かけたときに一致する対象が増えてしまうため
+rm -rf "$periphery_build_path"
+
 echo "Periphery Scan Completed!!!!"

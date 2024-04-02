@@ -18,16 +18,6 @@
    </FileRef>
    <Group
       location = "container:"
-      name = "TestPlan">
-      <FileRef
-         location = "group:UITestPlan.xctestplan">
-      </FileRef>
-      <FileRef
-         location = "group:ViewSnapshotTestPlan.xctestplan">
-      </FileRef>
-   </Group>
-   <Group
-      location = "container:"
       name = "RepositoryRoot">
       <FileRef
          location = "group:asset">
@@ -46,6 +36,9 @@
       </FileRef>
       <FileRef
          location = "group:swift_docc">
+      </FileRef>
+      <FileRef
+         location = "group:xc_test_plan">
       </FileRef>
       <FileRef
          location = "group:Makefile">

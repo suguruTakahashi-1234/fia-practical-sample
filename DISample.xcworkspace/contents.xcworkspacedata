@@ -38,6 +38,9 @@
          location = "group:swift_docc">
       </FileRef>
       <FileRef
+         location = "group:xc_config">
+      </FileRef>
+      <FileRef
          location = "group:xc_test_plan">
       </FileRef>
       <FileRef

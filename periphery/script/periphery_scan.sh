@@ -8,7 +8,7 @@ fi
 di_scheme="DependencyInjectionLayer"
 root_path=$1
 periphery_path="$root_path/periphery"
-periphery_build_path="$periphery_path/build"
+periphery_build_path="$root_path/build_for_periphery" # periphery/ 配下に build_path を設定 かつ Xcode で参照フォルダにするとなぜかビルドに失敗するので、ルート直下に配置している
 output_file="$periphery_path/result.txt"
 index_store_path="$periphery_build_path/Index.noindex/DataStore/"
 mint_package_path="$root_path/DISampleAppPackage"
@@ -37,5 +37,8 @@ swift run --package-path $mint_package_path mint run periphery scan \
 
 # 出力に環境依存な root_path が付与されるため、それを削除する
 sed "s|${root_path}/||g" $output_file > temp_file && mv temp_file $output_file
+
+# 毎回完全にclean buildしたいため、削除する、また削除しないと Xcode で検索かけたときに一致する対象が増えてしまうため
+rm -rf "$periphery_build_path"
 
 echo "Periphery Scan Completed!!!!"

@@ -14,7 +14,7 @@
       shouldUseLaunchSchemeArgsEnv = "YES">
       <TestPlans>
          <TestPlanReference
-            reference = "container:../xc_test_plan/UITestPlan.xctestplan"
+            reference = "container:../TestPlans/UITestPlan.xctestplan"
             default = "YES">
          </TestPlanReference>
       </TestPlans>

@@ -40,7 +40,7 @@
         "ProductiontLaunchPerformanceTests"
       ],
       "target" : {
-        "containerPath" : "container:Production.xcodeproj",
+        "containerPath" : "container:..\/Production\/Production.xcodeproj",
         "identifier" : "44ABAB112B9B5B760039ECF7",
         "name" : "ProductionUITests"
       }

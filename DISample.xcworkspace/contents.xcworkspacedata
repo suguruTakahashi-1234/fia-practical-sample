@@ -26,6 +26,9 @@
          location = "group:ci_scripts">
       </FileRef>
       <FileRef
+         location = "group:Configs">
+      </FileRef>
+      <FileRef
          location = "group:depermaid">
       </FileRef>
       <FileRef
@@ -38,10 +41,7 @@
          location = "group:swift_docc">
       </FileRef>
       <FileRef
-         location = "group:xc_config">
-      </FileRef>
-      <FileRef
-         location = "group:xc_test_plan">
+         location = "group:TestPlans">
       </FileRef>
       <FileRef
          location = "group:Makefile">

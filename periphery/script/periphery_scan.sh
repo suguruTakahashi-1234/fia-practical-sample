@@ -8,7 +8,7 @@ fi
 di_scheme="DependencyInjectionLayer"
 root_path=$1
 periphery_path="$root_path/periphery"
-periphery_build_path="$periphery_path/build"
+periphery_build_path="$root_path/build_for_periphery" # periphery/ 配下に build_path を設定 かつ Xcode で参照フォルダにするとなぜかビルドに失敗するので、ルート直下に配置している
 output_file="$periphery_path/result.txt"
 index_store_path="$periphery_build_path/Index.noindex/DataStore/"
 mint_package_path="$root_path/DISampleAppPackage"

@@ -1,0 +1,19 @@
+//
+//  Created by {{ argument.userName }} on {{ argument.date }}
+//  Copyright {{ argument.userName }}. All rights reserved.
+//
+
+import DomainLayer
+import Testing
+
+struct {{ argument.driverName }}DriverTest {
+    var {{ argument.camelCaseDriverName }}Driver: {{ argument.driverName }}Driver!
+
+    init() {
+        {{ argument.camelCaseDriverName }}Driver = .init()
+    }
+
+    @Test("初期化したとき") func initialize() {
+        #expect(true, "エラーが発生しないこと")
+    }
+}

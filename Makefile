@@ -39,6 +39,15 @@ presentation-code-gen:
 	$(MAKE) sourcery-presentation-code-gen
 	$(MAKE) mockolo-run
 
+.PHONY: sourcery-driver-code-gen
+sourcery-driver-code-gen:
+	./sourcery/script/driver_code_gen.sh $(DRIVER)
+
+.PHONY: driver-code-gen
+driver-code-gen:
+	$(MAKE) sourcery-driver-code-gen
+	$(MAKE) mockolo-run
+
 .PHONY: swift-docc-gen
 swift-docc-gen:
 	./swift_docc/script/docc_gen.sh $(PACKAGE_NAME)

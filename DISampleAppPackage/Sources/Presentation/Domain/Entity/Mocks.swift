@@ -63,7 +63,6 @@ public final class AppRootRouterDependencyMock: AppRootRouterDependency {
         get { return _libraryLicenseDriver }
         set { _libraryLicenseDriver = newValue }
     }
-    public typealias ClipboardDriverProtocolAT = ClipboardDriver
 
     public private(set) var deviceInfoDriverSetCallCount = 0
     private var _deviceInfoDriver: DeviceInfoDriverProtocolAT!  { didSet { deviceInfoDriverSetCallCount += 1 } }
@@ -71,6 +70,7 @@ public final class AppRootRouterDependencyMock: AppRootRouterDependency {
         get { return _deviceInfoDriver }
         set { _deviceInfoDriver = newValue }
     }
+    public typealias ClipboardDriverProtocolAT = ClipboardDriver
 
     public private(set) var clipboardDriverSetCallCount = 0
     private var _clipboardDriver: ClipboardDriverProtocolAT!  { didSet { clipboardDriverSetCallCount += 1 } }
@@ -140,7 +140,6 @@ public final class DeviceInfoPresenterDependencyMock: DeviceInfoPresenterDepende
         set { _buildEnvDriver = newValue }
     }
     public typealias DeviceInfoDriverProtocolAT = DeviceInfoDriver<DeviceNameDriverProtocolMock>
-    public typealias ClipboardDriverProtocolAT = ClipboardDriver
 
     public private(set) var deviceInfoDriverSetCallCount = 0
     private var _deviceInfoDriver: DeviceInfoDriverProtocolAT!  { didSet { deviceInfoDriverSetCallCount += 1 } }
@@ -148,6 +147,7 @@ public final class DeviceInfoPresenterDependencyMock: DeviceInfoPresenterDepende
         get { return _deviceInfoDriver }
         set { _deviceInfoDriver = newValue }
     }
+    public typealias ClipboardDriverProtocolAT = ClipboardDriver
 
     public private(set) var clipboardDriverSetCallCount = 0
     private var _clipboardDriver: ClipboardDriverProtocolAT!  { didSet { clipboardDriverSetCallCount += 1 } }

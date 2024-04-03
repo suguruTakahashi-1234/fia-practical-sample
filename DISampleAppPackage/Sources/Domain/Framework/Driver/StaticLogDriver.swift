@@ -15,8 +15,8 @@ public final class StaticLogDriver {
     private init() {}
 
     public static func setDriver(firebaseAnalyticsLogDriver: any FirebaseAnalyticsLogDriverProtocol, firebaseCrashlyticsLogDriver: any FirebaseCrashlyticsLogDriverProtocol) {
-        Self.firebaseAnalyticsLogDriver = firebaseAnalyticsLogDriver
-        Self.firebaseCrashlyticsLogDriver = firebaseCrashlyticsLogDriver
+        StaticLogDriver.firebaseAnalyticsLogDriver = firebaseAnalyticsLogDriver
+        StaticLogDriver.firebaseCrashlyticsLogDriver = firebaseCrashlyticsLogDriver
     }
 
     public static func log(_ event: LogEventType, level: LogLevel = .notice, file: String = #filePath, function: String = #function, line: Int = #line) {

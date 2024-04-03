@@ -46,6 +46,7 @@ public struct SettingView<Router: AppRootWireframe, Dependency: SettingPresenter
                     )
                 }
             }
+            .isHidden(!presenter.isDebugBuild, remove: true)
         }
         .navigationTitle(String(localized: "設定", bundle: .module))
         .task {
@@ -68,7 +69,10 @@ struct SettingView_Previews: PreviewProvider, SnapshotTestable {
 
     static var snapshots: PreviewSnapshots<AppRootRouterDependencyMock> {
         .init(
-            configurations: standard,
+            configurations: [
+                UITestPreviewType.standard.configuration,
+                UITestPreviewType.releaseBuildConfiguration.configuration,
+            ],
             configure: { state in
                 SettingView(router: AppRootRouter.empty, dependency: state)
                     .navigationStacked()

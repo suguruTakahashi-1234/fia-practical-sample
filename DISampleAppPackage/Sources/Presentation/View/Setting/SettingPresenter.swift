@@ -6,6 +6,10 @@ import Foundation
 final class SettingPresenter<Dependency: SettingPresenterDependency> {
     private let dependency: Dependency
 
+    var isDebugBuild: Bool {
+        dependency.buildEnvDriver.buildConfiguration.isDebug
+    }
+
     init(dependency: Dependency) {
         dependency.logDriver.initLog()
 

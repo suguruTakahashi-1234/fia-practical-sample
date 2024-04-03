@@ -10,4 +10,11 @@ public enum BuildConfiguration: Sendable {
     case release
 }
 
+public extension BuildConfiguration {
+    /// Find Call Hierarchy によって調べるときに便利なため定義している
+    var isDebug: Bool {
+        self == .debug
+    }
+}
+
 extension BuildConfiguration: RandomValueProvidableForEnum {}

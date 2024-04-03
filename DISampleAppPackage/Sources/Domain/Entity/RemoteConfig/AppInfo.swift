@@ -16,7 +16,7 @@ public struct AppInfo: RemoteConfigurable, Sendable {
 }
 
 public extension AppInfo {
-    static var defaultValue: Self {
+    static var defaultValue: AppInfo {
         AppInfo(
             appUpdateInfo: AppUpdateInfo(minimumRequiredAppVersion: "0.0.0", appUpdateUrl: ""),
             maintenanceInfo: MaintenanceInfo(isMaintenance: false, maintenanceAlertTitle: "", maintenanceAlertMessage: "")

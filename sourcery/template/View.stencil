@@ -48,7 +48,9 @@ struct {{ argument.screenName }}View_Previews: PreviewProvider, SnapshotTestable
 
     static var snapshots: PreviewSnapshots<{{ argument.routerName }}RouterDependencyMock> {
         .init(
-            configurations: standard,
+            configurations: [
+                UITestPreviewType.standard.configuration,
+            ],
             configure: { state in
                 {{ argument.screenName }}View(router: {{ argument.routerName }}Router.empty, dependency: state)
                     .navigationStacked()

@@ -1,3 +1,8 @@
+//
+//  Created by {{ argument.userName }} on {{ argument.date }}
+//  Copyright {{ argument.userName }}. All rights reserved.
+//
+
 @testable import PresentationLayer
 import PreviewSnapshotsTesting
 import Testing

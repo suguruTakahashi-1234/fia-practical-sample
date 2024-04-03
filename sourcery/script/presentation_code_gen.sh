@@ -15,6 +15,9 @@ output_presentation_dir="${source_dir}/View/${screen_name}"
 output_router_dir="${source_dir}/Rooter/${router_name}"
 output_test_dir="${sourcery_package_path}/Tests"
 
+current_user=$(whoami)
+current_date=$(date "+%Y/%m/%d")
+
 # --force-parse のオプションが拡張子を別にしないと効かないため、それを回避するためのワークアラウンド処理
 remove_sourcery_header() {
     local target_directory="$1"
@@ -23,7 +26,7 @@ remove_sourcery_header() {
         head=$(head -n 1 "$file")
         if echo "$head" | grep -q "// Generated using Sourcery"; then
             echo "Updating file: $file"
-            tail -n +3 "$file" > "$file.tmp" && mv "$file.tmp" "$file"
+            tail -n +4 "$file" > "$file.tmp" && mv "$file.tmp" "$file"
         fi
     done
 }
@@ -40,7 +43,7 @@ do
               --sources "$source_dir" \
               --templates "$template_path/${component}.stencil" \
               --output "$output_presentation_dir/${screen_name}${component}.swift" \
-              --args "screenName=$screen_name",routerName="$router_name"
+              --args "screenName=$screen_name","routerName=$router_name","userName=$current_user","date=$current_date"
 done
 remove_sourcery_header "$output_presentation_dir"
 
@@ -51,7 +54,7 @@ swift run --package-path "$sourcery_package_path" mint run sourcery --disableCac
           --sources "$source_dir" \
           --templates "$template_path/${component}.stencil" \
           --output "$output_router_dir/${router_name}${component}.swift" \
-          --args screenName="$screen_name",routerName="$router_name"
+          --args "screenName=$screen_name","routerName=$router_name","userName=$current_user","date=$current_date"
 done
 remove_sourcery_header "$output_router_dir"
 
@@ -62,7 +65,7 @@ do
                 --sources "$source_dir" \
                 --templates "$template_path/${component}.stencil" \
                 --output "$output_test_dir/${component}/${screen_name}${component}.swift" \
-                --args "screenName=$screen_name",routerName="$router_name"
+                --args "screenName=$screen_name","routerName=$router_name","userName=$current_user","date=$current_date"
 done
 remove_sourcery_header "$output_test_dir"
 

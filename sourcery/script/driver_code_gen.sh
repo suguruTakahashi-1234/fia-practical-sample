@@ -11,6 +11,7 @@ driver_name="$1"
 camel_case_driver_name=$(echo "$driver_name" | awk '{print tolower(substr($0, 1, 1)) substr($0, 2)}')
 template_path="./sourcery/template"
 source_dir="${sourcery_package_path}/Sources/Domain"
+
 output_driver_dir="${source_dir}/Framework/Driver"
 output_driver_protocol_dir="${source_dir}/Protocol/DriverProtocol"
 output_driver_provider_dir="${source_dir}/Protocol/Provider"

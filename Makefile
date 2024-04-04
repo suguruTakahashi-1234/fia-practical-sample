@@ -48,6 +48,15 @@ driver-code-gen:
 	$(MAKE) sourcery-driver-code-gen
 	$(MAKE) mockolo-run
 
+.PHONY: sourcery-use-case-code-gen
+sourcery-use-case-code-gen:
+	./sourcery/script/use_case_code_gen.sh $(USECASE)
+
+.PHONY: use-case-code-gen
+use-case-code-gen:
+	$(MAKE) sourcery-use-case-code-gen
+	$(MAKE) mockolo-run
+
 .PHONY: swift-docc-gen
 swift-docc-gen:
 	./swift_docc/script/docc_gen.sh $(PACKAGE_NAME)

@@ -1,0 +1,24 @@
+//
+//  Created by {{ argument.userName }} on {{ argument.date }}
+//  Copyright {{ argument.userName }}. All rights reserved.
+//
+
+import DependencyInjectionLayer
+import DomainLayer
+@testable import PresentationLayer
+import Testing
+
+@MainActor
+struct {{ argument.useCaseName }}InteractorTest {
+    var interactor: {{ argument.useCaseName }}Interactor<AppRootDependencyInjector>!
+    var dependencyInjector: AppRootDependencyInjector!
+
+    init() {
+        dependencyInjector = .init(buildScheme: .testing)
+        interactor = .init(dependency: dependencyInjector)
+    }
+
+    @Test("初期化したとき") func initialize() {
+        #expect(true, "エラーが発生しないこと")
+    }
+}

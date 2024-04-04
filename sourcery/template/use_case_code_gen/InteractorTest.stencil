@@ -8,6 +8,8 @@ import DomainLayer
 @testable import PresentationLayer
 import Testing
 
+// TODO: Adapt {{ argument.useCaseName }}UseCaseDependency to PresenterDependency Protocol for using {{ argument.useCaseName }}UseCaseDependency
+
 @MainActor
 struct {{ argument.useCaseName }}InteractorTest {
     var interactor: {{ argument.useCaseName }}Interactor<AppRootDependencyInjector>!

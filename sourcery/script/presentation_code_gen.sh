@@ -9,7 +9,7 @@ fi
 sourcery_package_path="./DISampleAppPackage"
 screen_name="$1"
 router_name="$2"
-template_path="./sourcery/template"
+template_path="./sourcery/template/presentation_code_gen"
 source_dir="${sourcery_package_path}/Sources/Presentation"
 
 output_presentation_dir="${source_dir}/View/${screen_name}"

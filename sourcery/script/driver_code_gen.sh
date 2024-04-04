@@ -9,7 +9,7 @@ fi
 sourcery_package_path="./DISampleAppPackage"
 driver_name="$1"
 camel_case_driver_name=$(echo "$driver_name" | awk '{print tolower(substr($0, 1, 1)) substr($0, 2)}')
-template_path="./sourcery/template"
+template_path="./sourcery/template/driver_code_gen"
 source_dir="${sourcery_package_path}/Sources/Domain"
 
 output_driver_dir="${source_dir}/Framework/Driver"

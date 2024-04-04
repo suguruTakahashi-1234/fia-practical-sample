@@ -145,6 +145,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 446C33EF2B83018400B3DD37 /* Build configuration list for PBXNativeTarget "Development" */;
 			buildPhases = (
+				4480838F2BBEAEE600301781 /* ShellScript */,
 				446C33DC2B83018300B3DD37 /* Sources */,
 				446C33DD2B83018300B3DD37 /* Frameworks */,
 				446C33DE2B83018300B3DD37 /* Resources */,
@@ -239,6 +240,27 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		4480838F2BBEAEE600301781 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				$SRCROOT/DISampleAppPackage/Sources/Presentation/Domain/Entity/Mocks.swift,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "echo $SRCROOT\n\nswift run --package-path $SRCROOT/../DISampleAppPackage mint run mockolo -s $SRCROOT/../DISampleAppPackage/Sources -d $SRCROOT/../DISampleAppPackage/Sources/Presentation/Domain/Entity/Mocks.swift --custom-imports DomainLayer Combine -x Images Strings --mock-final\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		446C33DC2B83018300B3DD37 /* Sources */ = {

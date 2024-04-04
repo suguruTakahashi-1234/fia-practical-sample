@@ -47,7 +47,9 @@ struct AppRootView_Previews: PreviewProvider, SnapshotTestable {
 
     static var snapshots: PreviewSnapshots<AppRootRouterDependencyMock> {
         PreviewSnapshots(
-            configurations: standard,
+            configurations: [
+                UITestPreviewType.standard.configuration,
+            ],
             configure: { state in
                 AppRootView(router: AppRootRouter.empty, dependency: state)
             }

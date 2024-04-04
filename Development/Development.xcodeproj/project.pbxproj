@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		441DA6B02BA9E34A0035A2ED /* DevelopmentLaunchPerformanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441DA6AF2BA9E34A0035A2ED /* DevelopmentLaunchPerformanceTests.swift */; };
-		4457B8182BBBEBD0009174F5 /* AppVersion.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 4457B8162BBBEBD0009174F5 /* AppVersion.xcconfig */; };
 		446C33E42B83018300B3DD37 /* DevelopmentApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 446C33E32B83018300B3DD37 /* DevelopmentApp.swift */; };
 		446C33E82B83018400B3DD37 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 446C33E72B83018400B3DD37 /* Assets.xcassets */; };
 		446C33EC2B83018400B3DD37 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 446C33EB2B83018400B3DD37 /* Preview Assets.xcassets */; };
@@ -227,7 +226,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				44CBBA572BB406A000FE692F /* InfoPlist.xcstrings in Resources */,
-				4457B8182BBBEBD0009174F5 /* AppVersion.xcconfig in Resources */,
 				446C33EC2B83018400B3DD37 /* Preview Assets.xcassets in Resources */,
 				446C33E82B83018400B3DD37 /* Assets.xcassets in Resources */,
 			);

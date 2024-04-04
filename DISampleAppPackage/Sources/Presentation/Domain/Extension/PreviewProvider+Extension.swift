@@ -6,7 +6,7 @@
 import PreviewSnapshots
 import SwiftUI
 
-private extension UITestPreviewType {
+public extension UITestPreviewType {
     var mock: AppRootRouterDependencyMock {
         switch self {
         case .empty:
@@ -21,6 +21,8 @@ private extension UITestPreviewType {
             .sizeM
         case .large:
             .sizeL
+        case .releaseBuildConfiguration:
+            .releaseBuildConfiguration
         }
     }
 
@@ -30,34 +32,11 @@ private extension UITestPreviewType {
 }
 
 public extension PreviewProvider {
-    static var empty: [PreviewSnapshots<AppRootRouterDependencyMock>.Configuration] {
-        [
-            UITestPreviewType.empty.configuration,
-        ]
-    }
-
-    static var standard: [PreviewSnapshots<AppRootRouterDependencyMock>.Configuration] {
-        [
-            UITestPreviewType.standard.configuration,
-        ]
-    }
-
-    static var placeholder: [PreviewSnapshots<AppRootRouterDependencyMock>.Configuration] {
-        [
-            UITestPreviewType.placeholder.configuration,
-        ]
-    }
-
     static var allSizes: [PreviewSnapshots<AppRootRouterDependencyMock>.Configuration] {
         [
             UITestPreviewType.small.configuration,
             UITestPreviewType.medium.configuration,
             UITestPreviewType.large.configuration,
-            UITestPreviewType.placeholder.configuration,
         ]
-    }
-
-    static var allSizesWithEmpty: [PreviewSnapshots<AppRootRouterDependencyMock>.Configuration] {
-        allSizes + empty
     }
 }

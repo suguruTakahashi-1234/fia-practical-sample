@@ -1,0 +1,18 @@
+//
+//  Created by {{ argument.userName }} on {{ argument.date }}
+//  Copyright {{ argument.userName }}. All rights reserved.
+//
+
+import DomainLayer
+import Foundation
+
+@MainActor
+public final class {{ argument.useCaseName }}Interactor<Dependency: {{ argument.useCaseName }}UseCaseDependency>: {{ argument.useCaseName }}UseCase {
+    private let dependency: Dependency
+
+    public init(dependency: Dependency) {
+        dependency.logDriver.initLog()
+
+        self.dependency = dependency
+    }
+}

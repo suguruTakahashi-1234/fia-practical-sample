@@ -9,11 +9,15 @@ fi
 sourcery_package_path="./DISampleAppPackage"
 screen_name="$1"
 router_name="$2"
-template_path="./sourcery/template"
+template_path="./sourcery/template/presentation_code_gen"
 source_dir="${sourcery_package_path}/Sources/Presentation"
+
 output_presentation_dir="${source_dir}/View/${screen_name}"
 output_router_dir="${source_dir}/Rooter/${router_name}"
 output_test_dir="${sourcery_package_path}/Tests"
+
+current_user=$(whoami)
+current_date=$(date "+%Y/%m/%d")
 
 # --force-parse のオプションが拡張子を別にしないと効かないため、それを回避するためのワークアラウンド処理
 remove_sourcery_header() {
@@ -23,7 +27,7 @@ remove_sourcery_header() {
         head=$(head -n 1 "$file")
         if echo "$head" | grep -q "// Generated using Sourcery"; then
             echo "Updating file: $file"
-            tail -n +3 "$file" > "$file.tmp" && mv "$file.tmp" "$file"
+            tail -n +4 "$file" > "$file.tmp" && mv "$file.tmp" "$file"
         fi
     done
 }
@@ -40,7 +44,7 @@ do
               --sources "$source_dir" \
               --templates "$template_path/${component}.stencil" \
               --output "$output_presentation_dir/${screen_name}${component}.swift" \
-              --args "screenName=$screen_name",routerName="$router_name"
+              --args "screenName=$screen_name","routerName=$router_name","userName=$current_user","date=$current_date"
 done
 remove_sourcery_header "$output_presentation_dir"
 
@@ -51,7 +55,7 @@ swift run --package-path "$sourcery_package_path" mint run sourcery --disableCac
           --sources "$source_dir" \
           --templates "$template_path/${component}.stencil" \
           --output "$output_router_dir/${router_name}${component}.swift" \
-          --args screenName="$screen_name",routerName="$router_name"
+          --args "screenName=$screen_name","routerName=$router_name","userName=$current_user","date=$current_date"
 done
 remove_sourcery_header "$output_router_dir"
 
@@ -62,7 +66,7 @@ do
                 --sources "$source_dir" \
                 --templates "$template_path/${component}.stencil" \
                 --output "$output_test_dir/${component}/${screen_name}${component}.swift" \
-                --args "screenName=$screen_name",routerName="$router_name"
+                --args "screenName=$screen_name","routerName=$router_name","userName=$current_user","date=$current_date"
 done
 remove_sourcery_header "$output_test_dir"
 

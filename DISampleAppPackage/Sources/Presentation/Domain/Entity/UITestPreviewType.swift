@@ -12,6 +12,7 @@ public enum UITestPreviewType {
     case small
     case medium
     case large
+    case releaseBuildConfiguration
 }
 
 public extension UITestPreviewType {
@@ -29,6 +30,8 @@ public extension UITestPreviewType {
             "Size-M"
         case .large:
             "Size-L"
+        case .releaseBuildConfiguration:
+            "Release-Build-Configuration"
         }
     }
 }

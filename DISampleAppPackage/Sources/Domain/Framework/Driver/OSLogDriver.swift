@@ -43,15 +43,15 @@ public final class OSLogDriver: OSLogDriverProtocol {
 
         switch level {
         case .debug:
-            Self._logger.debug("\(logDescription)")
+            OSLogDriver._logger.debug("\(logDescription)")
         case .info:
-            Self._logger.info("\(logDescription)")
+            OSLogDriver._logger.info("\(logDescription)")
         case .notice:
-            Self._logger.notice("\(logDescription)")
+            OSLogDriver._logger.notice("\(logDescription)")
         case .error:
-            Self._logger.error("\(logDescription)")
+            OSLogDriver._logger.error("\(logDescription)")
         case .fault:
-            Self._logger.fault("\(logDescription)")
+            OSLogDriver._logger.fault("\(logDescription)")
         }
     }
 }

@@ -14,7 +14,7 @@ public struct VariantTest: RemoteConfigurable, Sendable {
 }
 
 public extension VariantTest {
-    static var defaultValue: Self {
+    static var defaultValue: VariantTest {
         VariantTest(isEnabledNewFeature: false)
     }
 }

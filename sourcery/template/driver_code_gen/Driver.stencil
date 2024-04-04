@@ -1,0 +1,16 @@
+//
+//  Created by {{ argument.userName }} on {{ argument.date }}
+//  Copyright {{ argument.userName }}. All rights reserved.
+//
+
+import Foundation
+
+public final class {{ argument.driverName }}Driver: {{ argument.driverName }}DriverProtocol {
+    public init() {
+        OSLogDriver.initLog()
+    }
+
+    deinit {
+        OSLogDriver.deinitLog()
+    }
+}

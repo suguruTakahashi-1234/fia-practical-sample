@@ -13,7 +13,8 @@ public macro OptionSet<RawType>() = #externalMacro(module: "SwiftMacros", type: 
 // MARK: - sample(使う予定はないです)
 
 @OptionSet<Int>
-public enum SundaeToppings {
+// swiftformat:disable enumNamespaces
+public struct SundaeToppings {
     private enum Options: Int {
         case nuts
         case cherry

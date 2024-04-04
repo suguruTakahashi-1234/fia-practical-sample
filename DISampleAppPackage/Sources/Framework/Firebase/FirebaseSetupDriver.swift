@@ -30,10 +30,16 @@ public final class FirebaseSetupDriver<BuildEnvDriver: BuildEnvDriverProtocol>: 
                 fatalError("Unable to find \(fileName).plist in the bundle.")
             }
 
-            // Bundle ID などが一致しないと warning が表示されるがテスト中に問題なければ、一旦、それでよし
-            FirebaseApp.configure(options: firebaseOptions)
+            // テスト時などで 2回 configure が呼ばれるとエラーになるのでそれを回避するために FirebaseApp.app() == nil を判定している
+            if FirebaseApp.app() == nil {
+                // Bundle ID などが一致しないと warning が表示されるがテスト中に問題なければ、一旦、それでよし
+                FirebaseApp.configure(options: firebaseOptions)
+            }
         } else {
-            FirebaseApp.configure()
+            // テスト時などで 2回 configure が呼ばれるとエラーになるのでそれを回避するために FirebaseApp.app() == nil を判定している
+            if FirebaseApp.app() == nil {
+                FirebaseApp.configure()
+            }
         }
     }
 }

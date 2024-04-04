@@ -1,0 +1,13 @@
+//
+//  Created by {{ argument.userName }} on {{ argument.date }}
+//  Copyright {{ argument.userName }}. All rights reserved.
+//
+
+import Foundation
+
+/// @mockable(typealias: {{ argument.driverName }}DriverProtocolAT = {{ argument.driverName }}DriverProtocolMock;)
+public protocol {{ argument.driverName }}DriverProvider {
+    associatedtype {{ argument.driverName }}DriverProtocolAT: {{ argument.driverName }}DriverProtocol
+
+    var {{ argument.camelCaseDriverName }}Driver: {{ argument.driverName }}DriverProtocolAT { get }
+}

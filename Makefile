@@ -5,7 +5,7 @@ MOCKOLO_OUTPUT_PATH := ./$(PACKAGE_NAME)/Sources/Presentation/Domain/Entity/Mock
 # help コマンド
 .PHONY: help
 help:
-	@awk 'BEGIN {FS = ":"} /^[a-zA-Z0-9_-]+:/ {if ($$2 == "") print "make " $$1}' Makefile
+	@awk 'BEGIN {comment = ""} /^#/ {comment = substr($$0, 3)} /^[a-zA-Z0-9_-]+:/ {if (length(comment) > 0) {printf "%-40s %s\n", "make " substr($$0, 1, index($$0, ":")-1), comment; comment = ""}}' Makefile
 
 # プロジェクトのセットアップ
 .PHONY: setup
@@ -54,19 +54,19 @@ swiftformat-dryrun:
 mockolo-run:
 	swift run --package-path $(PACKAGE_NAME) mint run mockolo -s $(MOCKOLO_SCAN_PATH) -d $(MOCKOLO_OUTPUT_PATH) --custom-imports DomainLayer Combine -x Images Strings --mock-final
 
-# Presentation 層のコード生成
+# Presentation 層のコード生成 ex) make presentation-code-gen VIEW=Hoge ROUTER=AppRoot
 .PHONY: presentation-code-gen
 presentation-code-gen:
 	./sourcery/script/presentation_code_gen.sh $(VIEW) $(ROUTER)
 	$(MAKE) mockolo-run
 
-# Driver のコード生成
+# Driver のコード生成 ex) make driver-code-gen DRIVER=Hoge
 .PHONY: driver-code-gen
 driver-code-gen:
 	./sourcery/script/driver_code_gen.sh $(DRIVER)
 	$(MAKE) mockolo-run
 
-# UseCase のコード生成
+# UseCase のコード生成 ex) make use-case-code-gen USECASE=Hoge
 .PHONY: use-case-code-gen
 use-case-code-gen:
 	./sourcery/script/use_case_code_gen.sh $(USECASE)
@@ -87,10 +87,9 @@ periphery-scan:
 spm-dependencies-mermaid-gen:
 	./depermaid/script/spm_dependencies_mermaid_gen.sh
 
-# ドキュメントのアップデート
+# ドキュメントのアップデート(Swift-DocC, Periphery, Mermaid)
 .PHONY: document-update
 document-update:
 	$(MAKE) swift-docc-gen
 	$(MAKE) periphery-scan
 	$(MAKE) spm-dependencies-mermaid-gen
-

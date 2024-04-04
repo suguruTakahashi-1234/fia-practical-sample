@@ -54,34 +54,22 @@ swiftformat-dryrun:
 mockolo-run:
 	swift run --package-path $(PACKAGE_NAME) mint run mockolo -s $(MOCKOLO_SCAN_PATH) -d $(MOCKOLO_OUTPUT_PATH) --custom-imports DomainLayer Combine -x Images Strings --mock-final
 
-.PHONY: sourcery-presentation-code-gen
-sourcery-presentation-code-gen:
-	./sourcery/script/presentation_code_gen.sh $(VIEW) $(ROUTER)
-
 # Presentation 層のコード生成
 .PHONY: presentation-code-gen
 presentation-code-gen:
-	$(MAKE) sourcery-presentation-code-gen
+	./sourcery/script/presentation_code_gen.sh $(VIEW) $(ROUTER)
 	$(MAKE) mockolo-run
-
-.PHONY: sourcery-driver-code-gen
-sourcery-driver-code-gen:
-	./sourcery/script/driver_code_gen.sh $(DRIVER)
 
 # Driver のコード生成
 .PHONY: driver-code-gen
 driver-code-gen:
-	$(MAKE) sourcery-driver-code-gen
+	./sourcery/script/driver_code_gen.sh $(DRIVER)
 	$(MAKE) mockolo-run
-
-.PHONY: sourcery-use-case-code-gen
-sourcery-use-case-code-gen:
-	./sourcery/script/use_case_code_gen.sh $(USECASE)
 
 # UseCase のコード生成
 .PHONY: use-case-code-gen
 use-case-code-gen:
-	$(MAKE) sourcery-use-case-code-gen
+	./sourcery/script/use_case_code_gen.sh $(USECASE)
 	$(MAKE) mockolo-run
 
 # Swift-DocC によるドキュメント生成

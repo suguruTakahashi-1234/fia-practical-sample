@@ -25,9 +25,17 @@ struct LicenseListPresenterTest {
         #expect(presenter.selectedLicense.isNil, "ライセンスは選択されていないこと")
     }
 
-    @Test("画面を表示したとき") func onAppear() async {
+    @Test("画面を表示したとき-ライセンスが存在するとき") func onAppear() async {
         await presenter.onAppear()
-        #expect(presenter.licenseList.isNotEmpty, "ライセンス一覧は取得済みであること")
+        #expect(!presenter.isEmptyLicense, "ライセンス一覧が存在すること")
+    }
+
+    @Test("画面を表示したとき-ライセンスが存在しないとき") mutating func onAppearIsEmptyLicense() async {
+        dependencyInjector = .empty
+        presenter = .init(dependency: dependencyInjector)
+
+        await presenter.onAppear()
+        #expect(presenter.isEmptyLicense, "ライセンス一覧は取得済みであること")
     }
 
     @Test("画面を閉じたとき") func onDisappear() {

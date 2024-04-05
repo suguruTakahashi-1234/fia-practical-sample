@@ -11,6 +11,10 @@ final class LicenseListPresenter<Dependency: LicenseListPresenterDependency> {
     private(set) var licenseList: [License] = []
     var selectedLicense: License?
 
+    var isEmptyLicense: Bool {
+        licenseList.isEmpty
+    }
+
     private let dependency: Dependency
 
     init(dependency: Dependency) {

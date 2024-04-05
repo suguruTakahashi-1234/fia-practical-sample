@@ -34,4 +34,23 @@ public extension UITestPreviewType {
             "Release-Build-Configuration"
         }
     }
+
+    var mock: AppRootRouterDependencyMock {
+        switch self {
+        case .empty:
+            .empty
+        case .standard:
+            .randomForSnapshotTest
+        case .placeholder:
+            .placeholder
+        case .small:
+            .sizeS
+        case .medium:
+            .sizeM
+        case .large:
+            .sizeL
+        case .releaseBuildConfiguration:
+            .releaseBuildConfiguration
+        }
+    }
 }

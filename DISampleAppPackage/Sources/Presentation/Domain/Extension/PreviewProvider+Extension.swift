@@ -7,25 +7,6 @@ import PreviewSnapshots
 import SwiftUI
 
 public extension UITestPreviewType {
-    var mock: AppRootRouterDependencyMock {
-        switch self {
-        case .empty:
-            .empty
-        case .standard:
-            .randomForSnapshotTest
-        case .placeholder:
-            .placeholder
-        case .small:
-            .sizeS
-        case .medium:
-            .sizeM
-        case .large:
-            .sizeL
-        case .releaseBuildConfiguration:
-            .releaseBuildConfiguration
-        }
-    }
-
     var configuration: PreviewSnapshots<AppRootRouterDependencyMock>.Configuration {
         .init(name: name, state: mock)
     }

@@ -50,10 +50,19 @@
          location = "group:Mintfile">
       </FileRef>
       <FileRef
-         location = "group:README.md">
+         location = "group:renovate.json5">
       </FileRef>
       <FileRef
-         location = "group:renovate.json5">
+         location = "group:CODE_OF_CONDUCT.md">
+      </FileRef>
+      <FileRef
+         location = "group:CONTRIBUTING.md">
+      </FileRef>
+      <FileRef
+         location = "group:LICENSE.md">
+      </FileRef>
+      <FileRef
+         location = "group:README.md">
       </FileRef>
    </Group>
 </Workspace>

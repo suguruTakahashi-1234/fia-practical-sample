@@ -19,14 +19,22 @@ public struct LicenseListView<Router: AppRootWireframe, Dependency: LicenseListP
     }
 
     public var body: some View {
-        List {
-            Section("") {
-                ForEach(presenter.licenseList) { license in
-                    Button {
-                        presenter.onTapLicense(license: license)
-                    } label: {
-                        Text(license.name)
-                            .frame(maxWidth: .infinity, alignment: .leading)
+        VStack {
+            if presenter.isEmptyLicense {
+                Text(String(localized: "ライセンスはありません", bundle: .module))
+                    .padding()
+                Spacer()
+            } else {
+                List {
+                    Section("") {
+                        ForEach(presenter.licenseList) { license in
+                            Button {
+                                presenter.onTapLicense(license: license)
+                            } label: {
+                                Text(license.name)
+                                    .frame(maxWidth: .infinity, alignment: .leading)
+                            }
+                        }
                     }
                 }
             }
@@ -56,7 +64,9 @@ struct LicenseListView_Previews: PreviewProvider, SnapshotTestable {
 
     static var snapshots: PreviewSnapshots<AppRootRouterDependencyMock> {
         .init(
-            configurations: allSizes,
+            configurations: allSizes + [
+                UITestPreviewType.empty.configuration,
+            ],
             configure: { state in
                 LicenseListView(router: AppRootRouter.empty, dependency: state)
                     .navigationStacked()

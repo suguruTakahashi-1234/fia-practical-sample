@@ -101,12 +101,13 @@ enum SnapshotConfig {
     }
 
     @MainActor
-    static func previewTest(_ previews: (some SnapshotTestable).Type, device: SnapshotConfig.DeviceType = .defaultDevice, file: StaticString = #filePath, line: Int = #line) {
+    static func previewTest(_ previews: (some SnapshotTestable).Type, device: SnapshotConfig.DeviceType = .defaultDevice, shouldWait: Bool = false, file: StaticString = #filePath, line: Int = #line) {
         guard currentLanguage == "ja" else {
             return
         }
+        // Combine などの処理がある場合は wait をいれないと期待値通りの View の状態にならない
         previews.snapshots.assertSnapshots(
-            as: .image(precision: SnapshotConfig.precision, layout: .device(config: device.viewImageConfig)),
+            as: shouldWait ? .wait(for: 0.01, on: .image(precision: SnapshotConfig.precision, layout: .device(config: device.viewImageConfig))) : .image(precision: SnapshotConfig.precision, layout: .device(config: device.viewImageConfig)),
             named: nil,
             file: file,
             testName: "\(type(of: previews))".sliceToViewName,

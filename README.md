@@ -34,7 +34,7 @@
 
 #### Workflow
 
-[![GitHub Actions Workflow Status (tag_and_release_note_gen)](https://img.shields.io/github/actions/workflow/status/suguruTakahashi-1234/DISample/tag_and_release_note_gen)](https://github.com/suguruTakahashi-1234/DISample/actions)
+[![GitHub Actions Workflow Status (tag_and_release_note_gen)](https://img.shields.io/github/actions/workflow/status/suguruTakahashi-1234/DISample/tag_and_release_note_gen.yml)](https://github.com/suguruTakahashi-1234/DISample/actions/workflows/tag_and_release_note_gen.yml)
 [![GitHub Actions Workflow Status (pages-build-deployment)](https://img.shields.io/github/actions/workflow/status/suguruTakahashi-1234/DISample/pages/pages-build-deployment)](https://github.com/suguruTakahashi-1234/DISample/actions/workflows/pages/pages-build-deployment)
 
 ## Development

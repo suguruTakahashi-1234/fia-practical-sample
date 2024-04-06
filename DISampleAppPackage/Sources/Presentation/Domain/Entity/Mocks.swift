@@ -653,6 +653,22 @@ public final class CommonPresenterDependencyMock: CommonPresenterDependency {
     }
 }
 
+public final class DebugShortcutViewListPresenterDependencyMock: DebugShortcutViewListPresenterDependency {
+    public init() { }
+    public init(logDriver: LogDriverProtocolAT) {
+        self._logDriver = logDriver
+    }
+
+    public typealias LogDriverProtocolAT = LogDriver<LogDriverDependencyMock>
+
+    public private(set) var logDriverSetCallCount = 0
+    private var _logDriver: LogDriverProtocolAT!  { didSet { logDriverSetCallCount += 1 } }
+    public var logDriver: LogDriverProtocolAT {
+        get { return _logDriver }
+        set { _logDriver = newValue }
+    }
+}
+
 public final class LicenseDetailPresenterDependencyMock: LicenseDetailPresenterDependency {
     public init() { }
     public init(logDriver: LogDriverProtocolAT) {

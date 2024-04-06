@@ -4,13 +4,6 @@ import SwiftUI
 
 // MARK: - Entity
 
-public enum DebugShowViewType {
-    case deviceInfo
-    case onboarding
-//    case viewList
-//    case changeDataStore
-}
-
 public enum DebugActionType {
     case forceCrash
     case clearUserDefaults
@@ -31,12 +24,22 @@ public struct DebugMenuView<Router: AppRootWireframe, Dependency: DebugMenuPrese
     public var body: some View {
         List {
             Section("") {
-                ForEach(DebugShowViewType.allCases) { debugMenu in
-                    NavigationLink {
-                        debugMenu.contentView(router: router)
-                    } label: {
-                        debugMenu.label
-                    }
+                NavigationLink {
+                    router.createDebugShortcutViewListView()
+                } label: {
+                    Label(
+                        title: { Text("画面一覧", bundle: .module) },
+                        icon: { SFSymbols.rectangleOnRectangle.image }
+                    )
+                }
+
+                NavigationLink {
+                    SFSymbolsListView()
+                } label: {
+                    Label(
+                        title: { Text("アイコン一覧", bundle: .module) },
+                        icon: { SFSymbols.squareGrid2x2.image }
+                    )
                 }
             }
 
@@ -87,64 +90,6 @@ private extension DebugActionType {
         switch self {
         default:
             name
-        }
-    }
-}
-
-// MARK: - Extension DebugMenuType
-
-/// for ForEach
-extension DebugShowViewType: CaseIterable, Identifiable {
-    public var id: String {
-        "\(self)"
-    }
-}
-
-private extension DebugShowViewType {
-    var name: String {
-        switch self {
-        case .deviceInfo:
-            String(localized: "デバイス情報", bundle: .module)
-        case .onboarding:
-            String(localized: "オンボーディング", bundle: .module)
-//        case .viewList:
-//            "デバッグ画面一覧"
-//        case .changeDataStore:
-//            "内部データの変更"
-        }
-    }
-
-    var image: some View {
-        switch self {
-        case .deviceInfo:
-            SFSymbols.iphoneGen3.image
-        case .onboarding:
-            SFSymbols.book.image
-//        case .viewList:
-//            SFSymbols.rectangleGrid1x2.image
-//        case .changeDataStore:
-//            SFSymbols.squareAndPencil.image
-        }
-    }
-
-    var label: some View {
-        Label(
-            title: { Text(name) },
-            icon: { self.image }
-        )
-    }
-
-    @MainActor @ViewBuilder
-    func contentView(router: some AppRootWireframe) -> some View {
-        switch self {
-        case .deviceInfo:
-            router.createDeviceInfoView()
-        case .onboarding:
-            router.createOnboardingView()
-//        case .viewList:
-//            router.createDeviceInfoView()
-//        case .changeDataStore:
-//            router.createDeviceInfoView()
         }
     }
 }

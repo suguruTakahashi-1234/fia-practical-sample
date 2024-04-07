@@ -18,7 +18,7 @@ generate_diagram() {
     sed -i '' '$d' "$output_file_mmd"
     sed -i '' '$d' "$output_file_mmd"
 
-    # Mermaid CLI を使って SVG 画像を生成
+    # Mermaid CLI を使って SVG 画像を生成(本来は README.md に直接埋め込みたいがいいやり方が思いつかなかったためこのようにしている)
     npx @mermaid-js/mermaid-cli -i "$output_file_mmd" -o "$output_file_svg"
 }
 

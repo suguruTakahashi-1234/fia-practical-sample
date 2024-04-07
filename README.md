@@ -47,20 +47,23 @@
 ![npm](https://img.shields.io/badge/npm-10.5.0+-brightgreen?logo=npm)
 
 - macOS
-  - 14.4.1 or later
+  - 14.4.1 or Later
 - [Xcode](https://xcodereleases.com/)
-  - 15.3 or later, with Swift 5.10
-- npm (Install using your preferred method, e.g., [nodebrew](https://github.com/hokaccha/nodebrew))
-  - 10.5.0 or later
+  - 15.3 or Later, with Swift 5.10
+  - Download from https://xcodereleases.com
+- npm
+  - 10.5.0 or Later
+  - Install using your preferred method, e.g., [nodebrew](https://github.com/hokaccha/nodebrew)
+  - Used to run npx [mermaid-cli](https://github.com/mermaid-js/mermaid-cli)
 
 ### Support Platform
 
 ![Support Platform](https://img.shields.io/badge/Platform-iOS17.4+|iPadOS17.4+-brightgreen)
 
 - iOS
-  - 17.4 or later
+  - 17.4 or Later
 - iPadOS
-  - 17.4 or later
+  - 17.4 or Later
 
 ## Getting Started
 

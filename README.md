@@ -1,7 +1,7 @@
 # DISample
 
 #### Repository About
-[![GitHub license](https://img.shields.io/github/license/suguruTakahashi-1234/DISample)](https://github.com/suguruTakahashi-1234/DISample/blob/main/LICENSE)
+[![GitHub license](https://img.shields.io/github/license/suguruTakahashi-1234/DISample)](https://github.com/suguruTakahashi-1234/DISample/blob/main/LICENSE.md)
 [![GitHub Repo stars](https://img.shields.io/github/stars/suguruTakahashi-1234/DISample)](https://github.com/suguruTakahashi-1234/DISample/stargazers)
 [![GitHub watchers](https://img.shields.io/github/watchers/suguruTakahashi-1234/DISample)](https://github.com/suguruTakahashi-1234/DISample/watchers)
 [![GitHub forks](https://img.shields.io/github/forks/suguruTakahashi-1234/DISample)](https://github.com/suguruTakahashi-1234/DISample/network/members)
@@ -17,14 +17,14 @@
 [![GitHub closed issues](https://img.shields.io/github/issues-closed-raw/suguruTakahashi-1234/DISample)](https://github.com/suguruTakahashi-1234/DISample/issues?q=is%3Aissue+is%3Aclosed)
 [![GitHub closed pull requests](https://img.shields.io/github/issues-pr-closed-raw/suguruTakahashi-1234/DISample)](https://github.com/suguruTakahashi-1234/DISample/pulls?q=is%3Apr+is%3Aclosed)
 
-#### Release
+#### Release & Tag
 
 [![GitHub Tag](https://img.shields.io/github/v/tag/suguruTakahashi-1234/DISample)](https://github.com/suguruTakahashi-1234/DISample/tags)
 [![GitHub release (latest by date)](https://img.shields.io/github/v/release/suguruTakahashi-1234/DISample)](https://github.com/suguruTakahashi-1234/DISample/releases)
 [![GitHub Release Date](https://img.shields.io/github/release-date/suguruTakahashi-1234/DISample)](https://github.com/suguruTakahashi-1234/DISample/releases)
 [![GitHub commits since latest release](https://img.shields.io/github/commits-since/suguruTakahashi-1234/DISample/latest)](https://github.com/suguruTakahashi-1234/DISample)
 
-#### Activity
+#### Commit Activity
 
 [![GitHub last commit](https://img.shields.io/github/last-commit/suguruTakahashi-1234/DISample)](https://github.com/suguruTakahashi-1234/DISample/commits)
 [![GitHub commit activity (Week)](https://img.shields.io/github/commit-activity/w/suguruTakahashi-1234/DISample)](https://github.com/suguruTakahashi-1234/DISample)
@@ -32,9 +32,9 @@
 [![GitHub commit activity (Year)](https://img.shields.io/github/commit-activity/y/suguruTakahashi-1234/DISample)](https://github.com/suguruTakahashi-1234/DISample)
 [![GitHub commit activity (Total)](https://img.shields.io/github/commit-activity/t/suguruTakahashi-1234/DISample)](https://github.com/suguruTakahashi-1234/DISample/commits)
 
-#### Workflow
+#### Workflow Status
 
-[![GitHub Actions Workflow Status (tag_and_release_note_gen)](https://img.shields.io/github/actions/workflow/status/suguruTakahashi-1234/DISample/tag_and_release_note_gen)](https://github.com/suguruTakahashi-1234/DISample/actions)
+[![GitHub Actions Workflow Status (tag_and_release_note_gen)](https://img.shields.io/github/actions/workflow/status/suguruTakahashi-1234/DISample/tag_and_release_note_gen.yml)](https://github.com/suguruTakahashi-1234/DISample/actions/workflows/tag_and_release_note_gen.yml)
 [![GitHub Actions Workflow Status (pages-build-deployment)](https://img.shields.io/github/actions/workflow/status/suguruTakahashi-1234/DISample/pages/pages-build-deployment)](https://github.com/suguruTakahashi-1234/DISample/actions/workflows/pages/pages-build-deployment)
 
 ## Development
@@ -48,9 +48,9 @@
 
 - macOS
   - 14.4.1 or later
-- Xcode
+- [Xcode](https://xcodereleases.com/)
   - 15.3 or later, with Swift 5.10
-- npm (Install using your preferred method, e.g., nodebrew)
+- npm (Install using your preferred method, e.g., [nodebrew](https://github.com/hokaccha/nodebrew))
   - 10.5.0 or later
 
 ### Support Platform
@@ -113,9 +113,7 @@ $ make spm-dependencies-mermaid-gen
 
 ## Documents
 
-### Swift-DocC
-
-- [DomainLayer](https://sugurutakahashi-1234.github.io/DISample/documentation/domainlayer/)
+- [Swift-DocC (Only DomainLayer)](https://sugurutakahashi-1234.github.io/DISample/documentation/domainlayer/)
 
 ## Contributing
 
@@ -127,7 +125,7 @@ Please check out our [CONTRIBUTING](CONTRIBUTING.md) and [CODE_OF_CONDUCT](CODE_
 
 ## License
 
-[![GitHub license](https://img.shields.io/github/license/suguruTakahashi-1234/DISample)](https://github.com/suguruTakahashi-1234/DISample/blob/main/LICENSE)
+[![GitHub license](https://img.shields.io/github/license/suguruTakahashi-1234/DISample)](https://github.com/suguruTakahashi-1234/DISample/blob/main/LICENSE.md)
 
 See the [LICENSE](LICENSE.md) file for license rights and limitations (MIT).
 

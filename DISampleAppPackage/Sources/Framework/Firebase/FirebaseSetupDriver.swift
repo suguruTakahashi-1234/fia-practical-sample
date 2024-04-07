@@ -23,7 +23,7 @@ public final class FirebaseSetupDriver<BuildEnvDriver: BuildEnvDriverProtocol>: 
     }
 
     public func configure() {
-        if buildEnvDriver.buildScheme.isTesting {
+        if buildEnvDriver.buildScheme == .testing {
             let fileName: String = "GoogleService-Info-For-Testing" // Staging 環境の GoogleService-Info.plist のコピー
             guard let filePath = Bundle.module.path(forResource: fileName, ofType: "plist"), let firebaseOptions = FirebaseOptions(contentsOfFile: filePath) else {
                 OSLogDriver.errorLog("Unable to find \(fileName).plist in the bundle.")

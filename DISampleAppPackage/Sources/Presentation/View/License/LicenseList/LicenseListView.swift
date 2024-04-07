@@ -58,10 +58,6 @@ public struct LicenseListView<Router: AppRootWireframe, Dependency: LicenseListP
 import PreviewSnapshots
 
 struct LicenseListView_Previews: PreviewProvider, SnapshotTestable {
-    static var previews: some View {
-        snapshots.previews.previewLayout(.sizeThatFits)
-    }
-
     static var snapshots: PreviewSnapshots<AppRootRouterDependencyMock> {
         .init(
             configurations: allSizes + [

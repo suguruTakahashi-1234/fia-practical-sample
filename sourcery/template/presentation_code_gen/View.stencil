@@ -47,10 +47,6 @@ public struct {{ argument.screenName }}View<Router: {{ argument.routerName }}Wir
 import PreviewSnapshots
 
 struct {{ argument.screenName }}View_Previews: PreviewProvider, SnapshotTestable {
-    static var previews: some View {
-        snapshots.previews.previewLayout(.sizeThatFits)
-    }
-
     static var snapshots: PreviewSnapshots<{{ argument.routerName }}RouterDependencyMock> {
         .init(
             configurations: [

@@ -15,7 +15,10 @@ public protocol AppRootWireframe {
     associatedtype LicenseDetailPresenterDependencyAT: LicenseDetailPresenterDependency
     associatedtype DeviceInfoPresenterDependencyAT: DeviceInfoPresenterDependency
     associatedtype TaskListPresenterDependencyAT: TaskListPresenterDependency
+
+    /// for Debug
     associatedtype DebugMenuPresenterDependencyAT: DebugMenuPresenterDependency
+    associatedtype DebugShortcutViewListPresenterDependencyAT: DebugShortcutViewListPresenterDependency
 
     func createOnboardingView() -> OnboardingView<AppRootWireframeAT, OnboardingPresenterDependencyAT>
     func createHomeTabView() -> HomeTabView<AppRootWireframeAT, HomeTabPresenterDependencyAT>
@@ -24,5 +27,8 @@ public protocol AppRootWireframe {
     func createLicenseDetailView(license: License) -> LicenseDetailView<LicenseDetailPresenterDependencyAT>
     func createDeviceInfoView() -> DeviceInfoView<AppRootWireframeAT, DeviceInfoPresenterDependencyAT>
     func createTaskListView() -> TaskListView<AppRootWireframeAT, TaskListPresenterDependencyAT>
+
+    /// for Debug
     func createDebugMenuView() -> DebugMenuView<AppRootWireframeAT, DebugMenuPresenterDependencyAT>
+    func createDebugShortcutViewListView() -> DebugShortcutViewListView<AppRootWireframeAT, DebugShortcutViewListPresenterDependencyAT>
 }

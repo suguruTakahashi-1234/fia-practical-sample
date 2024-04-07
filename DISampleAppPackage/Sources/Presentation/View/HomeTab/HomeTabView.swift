@@ -65,10 +65,6 @@ private extension HomeTab {
 import PreviewSnapshots
 
 struct HomeTabView_Previews: PreviewProvider, SnapshotTestable {
-    static var previews: some View {
-        snapshots.previews.previewLayout(.sizeThatFits)
-    }
-
     static var snapshots: PreviewSnapshots<HomeTab> {
         .init(
             configurations: HomeTab.allCases.map { tab in .init(name: "\(tab)".initialUppercased, state: tab) },

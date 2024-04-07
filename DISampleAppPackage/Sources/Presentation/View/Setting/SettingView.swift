@@ -63,10 +63,6 @@ public struct SettingView<Router: AppRootWireframe, Dependency: SettingPresenter
 import PreviewSnapshots
 
 struct SettingView_Previews: PreviewProvider, SnapshotTestable {
-    static var previews: some View {
-        snapshots.previews.previewLayout(.sizeThatFits)
-    }
-
     static var snapshots: PreviewSnapshots<AppRootRouterDependencyMock> {
         .init(
             configurations: [

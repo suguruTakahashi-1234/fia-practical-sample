@@ -36,10 +36,6 @@ public struct LicenseDetailView<Dependency: LicenseDetailPresenterDependency>: V
 import PreviewSnapshots
 
 struct LicenseDetailView_Previews: PreviewProvider, SnapshotTestable {
-    static var previews: some View {
-        snapshots.previews.previewLayout(.sizeThatFits)
-    }
-
     static var snapshots: PreviewSnapshots<License> {
         .init(
             configurations: [

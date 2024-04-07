@@ -40,6 +40,13 @@ public enum SFSymbols: String {
     }
 }
 
+/// for Preview
+extension SFSymbols: Identifiable, CaseIterable {
+    public var id: String {
+        name
+    }
+}
+
 // MARK: - View
 
 @MainActor
@@ -64,14 +71,17 @@ public struct SFSymbolsListView: View {
 
 // MARK: - Preview
 
-/// for Preview
-extension SFSymbols: Identifiable, CaseIterable {
-    public var id: String {
-        name
-    }
-}
+import PreviewSnapshots
 
 #Preview {
     SFSymbolsListView()
         .navigationStacked()
+}
+
+/// 上記と同等の Preview であり、スナップショットテストが可能である
+struct SFSymbolsListView_Previews: PreviewProvider, SimpleSnapshotTestable {
+    static var snapshot: some View {
+        SFSymbolsListView()
+            .navigationStacked()
+    }
 }

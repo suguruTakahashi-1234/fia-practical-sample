@@ -86,10 +86,6 @@ private extension OnboardingStep {
 import PreviewSnapshots
 
 struct OnboardingView_Previews: PreviewProvider, SnapshotTestable {
-    static var previews: some View {
-        snapshots.previews.previewLayout(.sizeThatFits)
-    }
-
     static var snapshots: PreviewSnapshots<(AppRootRouterDependencyMock, OnboardingStep)> {
         .init(
             configurations: OnboardingStep.allCases.map { onboardingStep in .init(name: "\(onboardingStep)".initialUppercased, state: (.random, onboardingStep)) },

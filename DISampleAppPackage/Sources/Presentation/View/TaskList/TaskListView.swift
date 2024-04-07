@@ -34,10 +34,6 @@ public struct TaskListView<Router: AppRootWireframe, Dependency: TaskListPresent
 import PreviewSnapshots
 
 struct TaskListView_Previews: PreviewProvider, SnapshotTestable {
-    static var previews: some View {
-        snapshots.previews.previewLayout(.sizeThatFits)
-    }
-
     static var snapshots: PreviewSnapshots<AppRootRouterDependencyMock> {
         .init(
             configurations: [

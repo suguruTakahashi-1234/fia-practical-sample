@@ -117,10 +117,6 @@ private extension DebugShortcutViewType {
 import PreviewSnapshots
 
 struct DebugShortcutViewListView_Previews: PreviewProvider, SnapshotTestable {
-    static var previews: some View {
-        snapshots.previews.previewLayout(.sizeThatFits)
-    }
-
     static var snapshots: PreviewSnapshots<AppRootRouterDependencyMock> {
         .init(
             configurations: [

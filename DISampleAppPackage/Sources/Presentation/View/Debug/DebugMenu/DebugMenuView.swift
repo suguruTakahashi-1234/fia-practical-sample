@@ -99,10 +99,6 @@ private extension DebugActionType {
 import PreviewSnapshots
 
 struct DebugMenuView_Previews: PreviewProvider, SnapshotTestable {
-    static var previews: some View {
-        snapshots.previews.previewLayout(.sizeThatFits)
-    }
-
     static var snapshots: PreviewSnapshots<AppRootRouterDependencyMock> {
         .init(
             configurations: [

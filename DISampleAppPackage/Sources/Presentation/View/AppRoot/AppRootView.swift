@@ -41,10 +41,6 @@ public struct AppRootView<Router: AppRootWireframe, Dependency: AppRootPresenter
 import PreviewSnapshots
 
 struct AppRootView_Previews: PreviewProvider, SnapshotTestable {
-    static var previews: some View {
-        snapshots.previews.fixedSize(horizontal: false, vertical: false)
-    }
-
     static var snapshots: PreviewSnapshots<AppRootRouterDependencyMock> {
         PreviewSnapshots(
             configurations: [

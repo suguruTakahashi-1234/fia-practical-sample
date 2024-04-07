@@ -65,10 +65,6 @@ extension DeviceInfoType: Identifiable {
 import PreviewSnapshots
 
 struct DeviceInfoView_Previews: PreviewProvider, SnapshotTestable {
-    static var previews: some View {
-        snapshots.previews.previewLayout(.sizeThatFits)
-    }
-
     static var snapshots: PreviewSnapshots<AppRootRouterDependencyMock> {
         .init(
             configurations: [

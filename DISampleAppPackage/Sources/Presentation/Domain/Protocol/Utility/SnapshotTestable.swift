@@ -4,10 +4,18 @@
 //
 
 import PreviewSnapshots
+import SwiftUI
 
 public protocol SnapshotTestable {
     associatedtype State
 
     @MainActor
     static var snapshots: PreviewSnapshots<State> { get }
+}
+
+public extension SnapshotTestable {
+    @MainActor
+    static var previews: some View {
+        snapshots.previews.previewLayout(.sizeThatFits)
+    }
 }

@@ -43,7 +43,7 @@ jobs:
       env:
         SLACK_TITLE: Generate Tag & Release Note / Success
         SLACK_COLOR: good
-        SLACK_MESSAGE: "$(RELEASE_NOTE_URL)"
+        SLACK_MESSAGE: "${{ env.RELEASE_NOTE_URL }}"
 
     # Failure
     - name: Slack Notification on Failure

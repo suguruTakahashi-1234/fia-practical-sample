@@ -1,4 +1,6 @@
-# DISample
+# FITA Sample App
+
+This is a sample application that adopts the [Framework-Independent Testable Architecture (FITA)](#framework-independent-testable-architecture-fita).
 
 English | [日本語](README.ja.md)
 
@@ -94,11 +96,25 @@ The process being executed by `make setup` is described in the [Makefile](Makefi
 
 ## Architecture
 
-🏗️ Coming Soon...！
+### Framework-Independent Testable Architecture (FITA)
+
+zzzz
+
+![](./asset/drawio/architecture.drawio.svg)
+
+### Advantages and Disadvantages of FITA
+
+#### Advantages
+
+- xxx
+
+#### Disadvantages
+
+- yyy
 
 ### Swift Package Manager Dependencies Diagrams
 
-By executing the following command, a Mermaid file for Swift Package Manager dependencies will be generated (by [depermaid](https://github.com/daikimat/depermaid)).
+By executing the following make command, Mermaid files for Swift Package Manager dependencies will be generated (by [depermaid](https://github.com/daikimat/depermaid)).
 
 ```shell
 $ make spm-dependencies-mermaid-gen

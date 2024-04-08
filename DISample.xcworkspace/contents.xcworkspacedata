@@ -64,5 +64,8 @@
       <FileRef
          location = "group:README.md">
       </FileRef>
+      <FileRef
+         location = "group:README.ja.md">
+      </FileRef>
    </Group>
 </Workspace>

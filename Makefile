@@ -80,7 +80,8 @@ swift-docc-preview:
 # Swift-DocC によるドキュメント生成
 .PHONY: swift-docc-gen
 swift-docc-gen:
-	./swift_docc/script/docc_gen.sh $(PACKAGE_NAME)
+	./swift_docc/script/docc_gen.sh
+	$(MAKE) swift-docc-preview
 
 # Periphery によるコードの静的解析
 .PHONY: periphery-scan

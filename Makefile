@@ -72,7 +72,7 @@ use-case-code-gen:
 	./sourcery/script/use_case_code_gen.sh $(USECASE)
 	$(MAKE) mockolo-run
 
-# Swift-DocC によるドキュメント生成
+# Swift-DocC によるドキュメントのローカル環境でのプレビュー
 .PHONY: swift-docc-preview
 swift-docc-preview:
 	swift package --package-path $(PACKAGE_NAME) --disable-sandbox preview-documentation --target DomainLayer

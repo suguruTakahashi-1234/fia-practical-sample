@@ -20,7 +20,7 @@ rm -rf "$periphery_build_path"
 # 失敗する場合は periphery/build ディレクトリを削除してから、また、make コマンドを実行してください
 xcodebuild -scheme $di_scheme -destination 'platform=iOS Simulator,OS=17.4,name=iPhone 15 Pro' -derivedDataPath $periphery_build_path clean build
 
-# periphery の仕様なのか、ディレクトリを移動しないと SwiftPM マルチモジュール かつ Workspace で構成されるプロジェクト対応できない
+# periphery の仕様なのか、Package.swift が存在するディレクトリを移動しないと SwiftPM マルチモジュール かつ Workspace で構成されるプロジェクトで periphery scan がうまく動いてくれない
 cd "${mint_package_path}"
 
 # Swift パッケージを指定したパスで実行し、periphery を使用してプロジェクトをスキャン

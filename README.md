@@ -36,7 +36,8 @@ English | [日本語](README.ja.md)
 
 #### Workflow Status
 
-[![GitHub Actions Workflow Status (tag_and_release_note_gen)](https://img.shields.io/github/actions/workflow/status/suguruTakahashi-1234/DISample/tag_and_release_note_gen.yml)](https://github.com/suguruTakahashi-1234/DISample/actions/workflows/tag_and_release_note_gen.yml)
+[![GitHub Actions Workflow Status (tag_and_release_note_gen.yml)](https://img.shields.io/github/actions/workflow/status/suguruTakahashi-1234/DISample/tag_and_release_note_gen.yml)](https://github.com/suguruTakahashi-1234/DISample/actions/workflows/tag_and_release_note_gen.yml)
+[![GitHub Actions Workflow Status (swift_docc_hosting.yml)](https://img.shields.io/github/actions/workflow/status/suguruTakahashi-1234/DISample/swift_docc_hosting.yml)](https://github.com/suguruTakahashi-1234/DISample/actions/workflows/swift_docc_hosting.yml)
 [![GitHub Actions Workflow Status (pages-build-deployment)](https://img.shields.io/github/actions/workflow/status/suguruTakahashi-1234/DISample/pages/pages-build-deployment)](https://github.com/suguruTakahashi-1234/DISample/actions/workflows/pages/pages-build-deployment)
 
 ## Development

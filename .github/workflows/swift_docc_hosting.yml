@@ -28,7 +28,7 @@ jobs:
           generate-documentation --target DomainLayer \
           --disable-indexing \
           --transform-for-static-hosting \
-          --hosting-base-path DISample
+          --hosting-base-path DISample \
           --output-path ./docs
       - uses: actions/upload-pages-artifact@v3
         with:

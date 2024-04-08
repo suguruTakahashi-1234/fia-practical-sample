@@ -33,7 +33,7 @@ swift run --package-path $mint_package_path mint run periphery scan \
     --retain-swift-ui-previews \
     --retain-public \
     --targets "DomainLayer" "PresentationLayer" "DependencyInjectionLayer" "DeviceFramework" "FirebaseFramework" "LicenseFramework" \
-    > $output_file
+    | tee $output_file
 
 # 出力に環境依存な root_path がoutputファイルに付与されるため、それを削除する
 sed -i '' "s|${root_path}/||g" $output_file

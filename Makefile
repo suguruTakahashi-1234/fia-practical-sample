@@ -72,10 +72,16 @@ use-case-code-gen:
 	./sourcery/script/use_case_code_gen.sh $(USECASE)
 	$(MAKE) mockolo-run
 
-# Swift-DocC によるドキュメント生成
+# Swift-DocC によるドキュメントのローカル環境でのプレビュー
+.PHONY: swift-docc-preview
+swift-docc-preview:
+	swift package --package-path $(PACKAGE_NAME) --disable-sandbox preview-documentation --target DomainLayer
+
+# Swift-DocC によるドキュメント生成（Hosting を GitHub Actions に移行したため実行することは基本的にないが、検証時にローカル環境で確認するときに使用する）
 .PHONY: swift-docc-gen
 swift-docc-gen:
-	./swift_docc/script/docc_gen.sh $(PACKAGE_NAME)
+	./swift_docc/script/docc_gen.sh
+	$(MAKE) swift-docc-preview
 
 # Periphery によるコードの静的解析
 .PHONY: periphery-scan

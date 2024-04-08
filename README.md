@@ -1,5 +1,7 @@
 # DISample
 
+English | [日本語](README.ja.md)
+
 #### Repository About
 [![GitHub license](https://img.shields.io/github/license/suguruTakahashi-1234/DISample)](https://github.com/suguruTakahashi-1234/DISample/blob/main/LICENSE.md)
 [![GitHub Repo stars](https://img.shields.io/github/stars/suguruTakahashi-1234/DISample)](https://github.com/suguruTakahashi-1234/DISample/stargazers)
@@ -34,7 +36,8 @@
 
 #### Workflow Status
 
-[![GitHub Actions Workflow Status (tag_and_release_note_gen)](https://img.shields.io/github/actions/workflow/status/suguruTakahashi-1234/DISample/tag_and_release_note_gen.yml)](https://github.com/suguruTakahashi-1234/DISample/actions/workflows/tag_and_release_note_gen.yml)
+[![GitHub Actions Workflow Status (tag_and_release_note_gen.yml)](https://img.shields.io/github/actions/workflow/status/suguruTakahashi-1234/DISample/tag_and_release_note_gen.yml)](https://github.com/suguruTakahashi-1234/DISample/actions/workflows/tag_and_release_note_gen.yml)
+[![GitHub Actions Workflow Status (swift_docc_hosting.yml)](https://img.shields.io/github/actions/workflow/status/suguruTakahashi-1234/DISample/swift_docc_hosting.yml)](https://github.com/suguruTakahashi-1234/DISample/actions/workflows/swift_docc_hosting.yml)
 [![GitHub Actions Workflow Status (pages-build-deployment)](https://img.shields.io/github/actions/workflow/status/suguruTakahashi-1234/DISample/pages/pages-build-deployment)](https://github.com/suguruTakahashi-1234/DISample/actions/workflows/pages/pages-build-deployment)
 
 ## Development
@@ -47,20 +50,30 @@
 ![npm](https://img.shields.io/badge/npm-10.5.0+-brightgreen?logo=npm)
 
 - macOS
-  - 14.4.1 or later
+  - 14.4.1 or Later
 - [Xcode](https://xcodereleases.com/)
-  - 15.3 or later, with Swift 5.10
-- npm (Install using your preferred method, e.g., [nodebrew](https://github.com/hokaccha/nodebrew))
-  - 10.5.0 or later
+  - 15.3 or Later, with Swift 5.10
+  - Download from https://xcodereleases.com
+- npm
+  - 10.5.0 or Later
+  - Install using your preferred method, e.g., [nodebrew](https://github.com/hokaccha/nodebrew)
+  - Used to run npx [mermaid-cli](https://github.com/mermaid-js/mermaid-cli)
 
-### Support Platform
+### Supported Platform
 
-![Support Platform](https://img.shields.io/badge/Platform-iOS17.4+|iPadOS17.4+-brightgreen)
+![Supported Platform](https://img.shields.io/badge/Platform-iOS17.4+|iPadOS17.4+-brightgreen)
 
 - iOS
-  - 17.4 or later
+  - 17.4 or Later
 - iPadOS
-  - 17.4 or later
+  - 17.4 or Later
+
+### Supported Language
+
+![Supported Language](https://img.shields.io/badge/Language-ja|en-brightgreen)
+
+- Japanese (default)
+- English
 
 ## Getting Started
 

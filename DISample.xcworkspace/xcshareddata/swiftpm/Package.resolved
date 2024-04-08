@@ -1,5 +1,5 @@
 {
-  "originHash" : "5b45d34f900c26a6af079c69acf0f9c52e6a287734b471d9ffbd10472688171c",
+  "originHash" : "70068becb693caaa334709c7cedcbd0de097bd02f9b1902c3bb352f04b685ff8",
   "pins" : [
     {
       "identity" : "abseil-cpp-binary",
@@ -249,8 +249,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/apple/swift-testing.git",
       "state" : {
-        "revision" : "8097dd8bcf7f2ed85f8aa8883635ce413012f53b",
-        "version" : "0.6.0"
+        "revision" : "97d1f8a4e91794ec6bbf1ecb252ab31b1e255052",
+        "version" : "0.7.0"
       }
     },
     {

@@ -1,0 +1,57 @@
+name: Host Swift-DocC
+
+on:
+  push:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+# Allow one concurrent deployment
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
+# Ref: GitHub ActionsでDocCをビルドしてGitHub Pagesにデプロイする方法 - https://qiita.com/matsuji/items/4c91af0b727038e385bb
+
+jobs:
+  # Build job
+  build:
+    # https://github.com/actions/runner-images
+    runs-on: macos-14
+    env:
+      DEVELOPER_DIR: /Applications/Xcode_15.3.app/Contents/Developer
+    steps:
+      - uses: actions/checkout@v4
+      - name: build docc
+        # Ref: https://apple.github.io/swift-docc-plugin/documentation/swiftdoccplugin/publishing-to-github-pages/#Generating-the-Documentation-Site
+        run: |
+          swift package --package-path DISampleAppPackage --allow-writing-to-directory ./docs \
+          generate-documentation --target DomainLayer \
+          --disable-indexing \
+          --transform-for-static-hosting \
+          --hosting-base-path DISample
+          --output-path ./docs
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: docs
+
+  # Ref: https://github.com/actions/deploy-pages
+  deploy:
+    # Add a dependency to the build job
+    needs: build
+
+    # Grant GITHUB_TOKEN the permissions required to make a Pages deployment
+    permissions:
+        pages: write      # to deploy to Pages
+        id-token: write   # to verify the deployment originates from an appropriate source
+
+    # Deploy to the github-pages environment
+    environment:
+        name: github-pages
+        url: ${{ steps.deployment.outputs.page_url }}
+
+    # Specify runner + deployment step
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

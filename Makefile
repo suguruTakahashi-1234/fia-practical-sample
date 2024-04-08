@@ -73,6 +73,11 @@ use-case-code-gen:
 	$(MAKE) mockolo-run
 
 # Swift-DocC によるドキュメント生成
+.PHONY: swift-docc-preview
+swift-docc-preview:
+	swift package --package-path $(PACKAGE_NAME) --disable-sandbox preview-documentation --target DomainLayer
+
+# Swift-DocC によるドキュメント生成
 .PHONY: swift-docc-gen
 swift-docc-gen:
 	./swift_docc/script/docc_gen.sh $(PACKAGE_NAME)

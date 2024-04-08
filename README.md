@@ -56,14 +56,21 @@
   - Install using your preferred method, e.g., [nodebrew](https://github.com/hokaccha/nodebrew)
   - Used to run npx [mermaid-cli](https://github.com/mermaid-js/mermaid-cli)
 
-### Support Platform
+### Supported Platform
 
-![Support Platform](https://img.shields.io/badge/Platform-iOS17.4+|iPadOS17.4+-brightgreen)
+![Supported Platform](https://img.shields.io/badge/Platform-iOS17.4+|iPadOS17.4+-brightgreen)
 
 - iOS
   - 17.4 or Later
 - iPadOS
   - 17.4 or Later
+
+### Supported Language
+
+![Supported Language](https://img.shields.io/badge/Language-ja|en-brightgreen)
+
+- Japanese (default)
+- English
 
 ## Getting Started
 

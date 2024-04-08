@@ -5,6 +5,11 @@ on:
     branches: [ "main" ]
   workflow_dispatch:
 
+# Allow one concurrent deployment
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
 # Ref: GitHub ActionsでDocCをビルドしてGitHub Pagesにデプロイする方法 - https://qiita.com/matsuji/items/4c91af0b727038e385bb
 
 jobs:

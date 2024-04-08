@@ -77,7 +77,7 @@ use-case-code-gen:
 swift-docc-preview:
 	swift package --package-path $(PACKAGE_NAME) --disable-sandbox preview-documentation --target DomainLayer
 
-# Swift-DocC によるドキュメント生成（Hosting を GitHub Actions に移行したため実行することは基本的にないが、検証時にローカル環境で確認するときに使用する）
+# Swift-DocC によるドキュメント生成（GitHub Actions に移行済み、検証時のみ使用する）
 .PHONY: swift-docc-gen
 swift-docc-gen:
 	./swift_docc/script/docc_gen.sh
@@ -93,9 +93,8 @@ periphery-scan:
 spm-dependencies-mermaid-gen:
 	./depermaid/script/spm_dependencies_mermaid_gen.sh
 
-# ドキュメントのアップデート(Swift-DocC, Periphery, Mermaid)
+# ドキュメントのアップデート(Periphery, Mermaid)
 .PHONY: document-update
 document-update:
-	$(MAKE) swift-docc-gen
 	$(MAKE) periphery-scan
 	$(MAKE) spm-dependencies-mermaid-gen

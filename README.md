@@ -54,13 +54,14 @@ English | [日本語](README.ja.md)
   - 15.3 or Later, with Swift 5.10
   - Download from https://xcodereleases.com
 - npm
-  - 10.5.0 or Later
+  - 10.5.1 or Later
   - Install using your preferred method, e.g., [nodebrew](https://github.com/hokaccha/nodebrew)
   - Used to run npx [mermaid-cli](https://github.com/mermaid-js/mermaid-cli)
 
 ### Supported Platform
 
-![Supported Platform](https://img.shields.io/badge/Platform-iOS17.4+|iPadOS17.4+-brightgreen)
+![Supported Platform (iOS)](https://img.shields.io/badge/iOS-17.4+-brightgreen)
+![Supported Platform (iPad)](https://img.shields.io/badge/iPadOS-17.4+-brightgreen)
 
 - iOS
   - 17.4 or Later
@@ -68,8 +69,6 @@ English | [日本語](README.ja.md)
   - 17.4 or Later
 
 ### Supported Language
-
-![Supported Language](https://img.shields.io/badge/Language-ja|en-brightgreen)
 
 - Japanese (default)
 - English
@@ -83,11 +82,15 @@ $ git clone https://github.com/suguruTakahashi-1234/DISample.git
 $ cd DISample
 ```
 
-#### `make setup`
+#### Setup
+
+Running `make setup` command will apply the [Mint](https://github.com/yonaskolb/Mint) and [githooks](https://git-scm.com/docs/githooks) settings, then open `.xcworkspace` and start Xcode.
 
 ```shell
 $ make setup
 ```
+
+The process being executed by `make setup` is described in the [Makefile](Makefile), and `make help` will give you a list of make commands.
 
 ## Architecture
 
@@ -121,7 +124,14 @@ $ make spm-dependencies-mermaid-gen
 
 ### Xcode Cloud
 
-🏗️ Coming Soon...！
+Please check Xcode Cloud settings via Xcode or [App Store Connect](https://appstoreconnect.apple.com/).
+
+Currently, Xcode Cloud settings support only GUI operations, and configuration files cannot be exported, nor can they be managed on GitHub.
+
+### GitHub Actions
+
+- [Host Swift-DocC](https://github.com/suguruTakahashi-1234/DISample/actions/workflows/swift_docc_hosting.yml)
+- [Generate Tag & Release Note](https://github.com/suguruTakahashi-1234/DISample/actions/workflows/tag_and_release_note_gen.yml)
 
 ## Documents
 

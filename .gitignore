@@ -25,3 +25,6 @@ xcuserdata/
 
 ## Periphery
 build_for_periphery/
+
+## Swift-DocC
+docs/

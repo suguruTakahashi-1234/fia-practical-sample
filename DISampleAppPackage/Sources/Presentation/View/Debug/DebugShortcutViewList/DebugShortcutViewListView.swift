@@ -17,11 +17,11 @@ public enum DebugShortcutViewType {
 // MARK: - View
 
 @MainActor
-public struct DebugShortcutViewListView<Router: AppRootWireframe, Dependency: DebugShortcutViewListPresenterDependency>: View {
-    private let router: Router
+public struct DebugShortcutViewListView<Dependency: AppRootRouterDependency>: View {
+    private let router: AppRootRouter<Dependency>
     @State private var presenter: DebugShortcutViewListPresenter<Dependency>
 
-    public init(router: Router, dependency: Dependency) {
+    public init(router: AppRootRouter<Dependency>, dependency: Dependency) {
         self.router = router
         presenter = DebugShortcutViewListPresenter(dependency: dependency)
     }
@@ -96,7 +96,7 @@ private extension DebugShortcutViewType {
     }
 
     @MainActor @ViewBuilder
-    func contentView(router: some AppRootWireframe) -> some View {
+    func contentView(router: AppRootRouter<some AppRootRouterDependency>) -> some View {
         switch self {
         case .deviceInfo:
             router.createDeviceInfoView()

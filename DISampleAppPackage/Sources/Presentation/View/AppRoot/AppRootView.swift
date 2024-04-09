@@ -9,11 +9,11 @@ import SwiftUI
 // MARK: - View
 
 @MainActor
-public struct AppRootView<Router: AppRootWireframe, Dependency: AppRootPresenterDependency>: View {
-    private let router: Router
+public struct AppRootView<Dependency: AppRootRouterDependency>: View {
+    private let router: AppRootRouter<Dependency>
     @State private var presenter: AppRootPresenter<Dependency>
 
-    public init(router: Router, dependency: Dependency) {
+    public init(router: AppRootRouter<Dependency>, dependency: Dependency) {
         self.router = router
         presenter = AppRootPresenter(dependency: dependency)
     }

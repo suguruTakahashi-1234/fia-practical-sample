@@ -12,11 +12,11 @@ public enum DebugActionType {
 // MARK: - View
 
 @MainActor
-public struct DebugMenuView<Router: AppRootWireframe, Dependency: DebugMenuPresenterDependency>: View {
-    private let router: Router
+public struct DebugMenuView<Dependency: AppRootRouterDependency>: View {
+    private let router: AppRootRouter<Dependency>
     @State private var presenter: DebugMenuPresenter<Dependency>
 
-    public init(router: Router, dependency: Dependency) {
+    public init(router: AppRootRouter<Dependency>, dependency: Dependency) {
         self.router = router
         _presenter = .init(wrappedValue: DebugMenuPresenter(dependency: dependency))
     }

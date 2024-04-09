@@ -5,11 +5,11 @@ import SwiftUI
 // MARK: - View
 
 @MainActor
-public struct TaskListView<Router: AppRootWireframe, Dependency: TaskListPresenterDependency>: View {
-    private let router: Router
+public struct TaskListView<Dependency: AppRootRouterDependency>: View {
+    private let router: AppRootRouter<Dependency>
     @State private var presenter: TaskListPresenter<Dependency>
 
-    public init(router: Router, dependency: Dependency) {
+    public init(router: AppRootRouter<Dependency>, dependency: Dependency) {
         self.router = router
         presenter = TaskListPresenter(dependency: dependency)
     }

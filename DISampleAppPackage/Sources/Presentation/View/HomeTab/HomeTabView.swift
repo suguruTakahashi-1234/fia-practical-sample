@@ -5,13 +5,13 @@ import SwiftUI
 // MARK: - View
 
 @MainActor
-public struct HomeTabView<Router: AppRootWireframe, Dependency: HomeTabPresenterDependency>: View {
-    private let router: Router
+public struct HomeTabView<Dependency: AppRootRouterDependency>: View {
+    private let router: AppRootRouter<Dependency>
     @State private var presenter: HomeTabPresenter<Dependency>
 
     /// Previews で検証できるように init の引数に tab を設定している（要検討）
     /// SwiftUI の TabView のタップは Binding による更新なので仕方のない側面もある
-    public init(router: Router, dependency: Dependency, homeTab: HomeTab = .task) {
+    public init(router: AppRootRouter<Dependency>, dependency: Dependency, homeTab: HomeTab = .task) {
         self.router = router
         presenter = HomeTabPresenter(dependency: dependency, homeTab: homeTab)
     }
@@ -50,7 +50,7 @@ private extension HomeTab {
     }
 
     @MainActor @ViewBuilder
-    func contentView(router: some AppRootWireframe) -> some View {
+    func contentView(router: AppRootRouter<some AppRootRouterDependency>) -> some View {
         switch self {
         case .task:
             router.createTaskListView()

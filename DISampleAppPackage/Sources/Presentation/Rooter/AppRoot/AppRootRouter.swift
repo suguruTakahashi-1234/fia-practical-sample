@@ -6,8 +6,8 @@
 import DomainLayer
 
 @MainActor
-public final class AppRootRouter<Dependency: AppRootRouterDependency>: AppRootWireframe {
-    private let dependency: Dependency
+public final class AppRootRouter<Dependency: AppRootRouterDependency> {
+    public let dependency: Dependency
 
     public init(dependency: Dependency) {
         dependency.logDriver.initLog()
@@ -15,46 +15,47 @@ public final class AppRootRouter<Dependency: AppRootRouterDependency>: AppRootWi
         self.dependency = dependency
     }
 
-    public func createAppRootView() -> AppRootView<AppRootRouter, Dependency> {
-        AppRootView(router: self, dependency: dependency)
+    public func createAppRootView() -> AppRootView<Dependency> {
+        AppRootView(router: self)
     }
 
-    public func createOnboardingView() -> OnboardingView<AppRootRouter, Dependency> {
-        OnboardingView(router: self, dependency: dependency)
+    public func createOnboardingView() -> OnboardingView<Dependency> {
+        OnboardingView(router: self)
     }
 
-    public func createHomeTabView() -> HomeTabView<AppRootRouter, Dependency> {
-        HomeTabView(router: self, dependency: dependency)
+    public func createHomeTabView() -> HomeTabView<Dependency> {
+        HomeTabView(router: self)
     }
 
-    public func createTaskListView() -> TaskListView<AppRootRouter, Dependency> {
-        TaskListView(router: self, dependency: dependency)
+    public func createTaskListView() -> TaskListView<Dependency> {
+        TaskListView(router: self)
     }
 
-    public func createLicenseListView() -> LicenseListView<AppRootRouter, Dependency> {
-        LicenseListView(router: self, dependency: dependency)
+    public func createLicenseListView() -> LicenseListView<Dependency> {
+        LicenseListView(router: self)
     }
 
     public func createLicenseDetailView(license: License) -> LicenseDetailView<Dependency> {
+        // その画面から遷移はなく router を使うことが明らかでない場合はわざわざ router を View に渡す必要はない例
         LicenseDetailView(dependency: dependency, license: license)
     }
 
-    public func createSettingView() -> SettingView<AppRootRouter, Dependency> {
-        SettingView(router: self, dependency: dependency)
+    public func createSettingView() -> SettingView<Dependency> {
+        SettingView(router: self)
     }
 
-    public func createDeviceInfoView() -> DeviceInfoView<AppRootRouter, Dependency> {
-        DeviceInfoView(router: self, dependency: dependency)
+    public func createDeviceInfoView() -> DeviceInfoView<Dependency> {
+        DeviceInfoView(router: self)
     }
 
     // MARK: - for Debug
 
-    public func createDebugMenuView() -> DebugMenuView<AppRootRouter, Dependency> {
-        DebugMenuView(router: self, dependency: dependency)
+    public func createDebugMenuView() -> DebugMenuView<Dependency> {
+        DebugMenuView(router: self)
     }
 
-    public func createDebugShortcutViewListView() -> DebugShortcutViewListView<AppRootRouter, Dependency> {
-        DebugShortcutViewListView(router: self, dependency: dependency)
+    public func createDebugShortcutViewListView() -> DebugShortcutViewListView<Dependency> {
+        DebugShortcutViewListView(router: self)
     }
 }
 

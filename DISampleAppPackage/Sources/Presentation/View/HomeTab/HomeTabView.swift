@@ -5,15 +5,15 @@ import SwiftUI
 // MARK: - View
 
 @MainActor
-public struct HomeTabView<Router: AppRootWireframe, Dependency: HomeTabPresenterDependency>: View {
-    private let router: Router
+public struct HomeTabView<Dependency: AppRootRouterDependency>: View {
+    private let router: AppRootRouter<Dependency>
     @State private var presenter: HomeTabPresenter<Dependency>
 
     /// Previews で検証できるように init の引数に tab を設定している（要検討）
     /// SwiftUI の TabView のタップは Binding による更新なので仕方のない側面もある
-    public init(router: Router, dependency: Dependency, homeTab: HomeTab = .task) {
+    public init(router: AppRootRouter<Dependency>, homeTab: HomeTab = .task) {
         self.router = router
-        presenter = HomeTabPresenter(dependency: dependency, homeTab: homeTab)
+        presenter = HomeTabPresenter(dependency: router.dependency, homeTab: homeTab)
     }
 
     public var body: some View {
@@ -50,7 +50,7 @@ private extension HomeTab {
     }
 
     @MainActor @ViewBuilder
-    func contentView(router: some AppRootWireframe) -> some View {
+    func contentView(router: AppRootRouter<some AppRootRouterDependency>) -> some View {
         switch self {
         case .task:
             router.createTaskListView()
@@ -69,7 +69,7 @@ struct HomeTabView_Previews: PreviewProvider, SnapshotTestable {
         .init(
             configurations: HomeTab.allCases.map { tab in .init(name: "\(tab)".initialUppercased, state: tab) },
             configure: { homeTab in
-                HomeTabView(router: AppRootRouter.empty, dependency: AppRootRouterDependencyMock.random, homeTab: homeTab)
+                HomeTabView(router: AppRootRouter.random, homeTab: homeTab)
             }
         )
     }

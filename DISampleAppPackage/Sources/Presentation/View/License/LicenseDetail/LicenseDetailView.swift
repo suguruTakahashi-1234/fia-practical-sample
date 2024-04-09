@@ -43,8 +43,8 @@ struct LicenseDetailView_Previews: PreviewProvider, SnapshotTestable {
                 .init(type: .medium, state: .sizeM),
                 .init(type: .large, state: .sizeL),
             ],
-            configure: { state in
-                LicenseDetailView(dependency: AppRootRouterDependencyMock.random, license: state)
+            configure: { license in
+                LicenseDetailView(dependency: AppRootRouterDependencyMock.random, license: license)
                     .navigationStacked()
             }
         )

@@ -12,13 +12,13 @@ public enum DebugActionType {
 // MARK: - View
 
 @MainActor
-public struct DebugMenuView<Router: AppRootWireframe, Dependency: DebugMenuPresenterDependency>: View {
-    private let router: Router
+public struct DebugMenuView<Dependency: AppRootRouterDependency>: View {
+    private let router: AppRootRouter<Dependency>
     @State private var presenter: DebugMenuPresenter<Dependency>
 
-    public init(router: Router, dependency: Dependency) {
+    public init(router: AppRootRouter<Dependency>) {
         self.router = router
-        _presenter = .init(wrappedValue: DebugMenuPresenter(dependency: dependency))
+        _presenter = .init(wrappedValue: DebugMenuPresenter(dependency: router.dependency))
     }
 
     public var body: some View {
@@ -104,8 +104,8 @@ struct DebugMenuView_Previews: PreviewProvider, SnapshotTestable {
             configurations: [
                 UITestPreviewType.standard.configuration,
             ],
-            configure: { state in
-                DebugMenuView(router: AppRootRouter.empty, dependency: state)
+            configure: { dependency in
+                DebugMenuView(router: AppRootRouter(dependency: dependency))
                     .navigationStacked()
             }
         )

@@ -5,13 +5,13 @@ import SwiftUI
 // MARK: - View
 
 @MainActor
-public struct DeviceInfoView<Router: AppRootWireframe, Dependency: DeviceInfoPresenterDependency>: View {
-    private let router: Router
+public struct DeviceInfoView<Dependency: AppRootRouterDependency>: View {
+    private let router: AppRootRouter<Dependency>
     @State private var presenter: DeviceInfoPresenter<Dependency>
 
-    public init(router: Router, dependency: Dependency) {
+    public init(router: AppRootRouter<Dependency>) {
         self.router = router
-        presenter = DeviceInfoPresenter(dependency: dependency)
+        presenter = DeviceInfoPresenter(dependency: router.dependency)
     }
 
     public var body: some View {
@@ -70,8 +70,8 @@ struct DeviceInfoView_Previews: PreviewProvider, SnapshotTestable {
             configurations: [
                 UITestPreviewType.standard.configuration,
             ],
-            configure: { state in
-                DeviceInfoView(router: AppRootRouter.empty, dependency: state)
+            configure: { dependency in
+                DeviceInfoView(router: AppRootRouter(dependency: dependency))
                     .navigationStacked()
             }
         )

@@ -5,13 +5,13 @@ import SwiftUI
 // MARK: - View
 
 @MainActor
-public struct TaskListView<Router: AppRootWireframe, Dependency: TaskListPresenterDependency>: View {
-    private let router: Router
+public struct TaskListView<Dependency: AppRootRouterDependency>: View {
+    private let router: AppRootRouter<Dependency>
     @State private var presenter: TaskListPresenter<Dependency>
 
-    public init(router: Router, dependency: Dependency) {
+    public init(router: AppRootRouter<Dependency>) {
         self.router = router
-        presenter = TaskListPresenter(dependency: dependency)
+        presenter = TaskListPresenter(dependency: router.dependency)
     }
 
     public var body: some View {
@@ -40,8 +40,8 @@ struct TaskListView_Previews: PreviewProvider, SnapshotTestable {
                 .init(name: "isEnabledNewFeature-True", state: .create(cacheDataStore: .init(remoteConfigUpdateErrorSubjecter: .init(), appInfoSubjecter: .init(.defaultValue), variantTestSubjecter: .init(.init(isEnabledNewFeature: true))))),
                 .init(name: "isEnabledNewFeature-False", state: .create(cacheDataStore: .init(remoteConfigUpdateErrorSubjecter: .init(), appInfoSubjecter: .init(.defaultValue), variantTestSubjecter: .init(.init(isEnabledNewFeature: false))))),
             ],
-            configure: { state in
-                TaskListView(router: AppRootRouter.empty, dependency: state)
+            configure: { dependency in
+                TaskListView(router: AppRootRouter(dependency: dependency))
                     .navigationStacked()
             }
         )

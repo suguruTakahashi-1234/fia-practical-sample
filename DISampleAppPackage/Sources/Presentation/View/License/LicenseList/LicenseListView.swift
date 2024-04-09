@@ -9,13 +9,13 @@ import SwiftUI
 // MARK: - View
 
 @MainActor
-public struct LicenseListView<Router: AppRootWireframe, Dependency: LicenseListPresenterDependency>: View {
-    private let router: Router
+public struct LicenseListView<Dependency: AppRootRouterDependency>: View {
+    private let router: AppRootRouter<Dependency>
     @State private var presenter: LicenseListPresenter<Dependency>
 
-    public init(router: Router, dependency: Dependency) {
+    public init(router: AppRootRouter<Dependency>) {
         self.router = router
-        presenter = LicenseListPresenter(dependency: dependency)
+        presenter = LicenseListPresenter(dependency: router.dependency)
     }
 
     public var body: some View {
@@ -63,8 +63,8 @@ struct LicenseListView_Previews: PreviewProvider, SnapshotTestable {
             configurations: allSizes + [
                 UITestPreviewType.empty.configuration,
             ],
-            configure: { state in
-                LicenseListView(router: AppRootRouter.empty, dependency: state)
+            configure: { dependency in
+                LicenseListView(router: AppRootRouter(dependency: dependency))
                     .navigationStacked()
             }
         )

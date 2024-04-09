@@ -9,13 +9,13 @@ import SwiftUI
 // MARK: - View
 
 @MainActor
-public struct AppRootView<Router: AppRootWireframe, Dependency: AppRootPresenterDependency>: View {
-    private let router: Router
+public struct AppRootView<Dependency: AppRootRouterDependency>: View {
+    private let router: AppRootRouter<Dependency>
     @State private var presenter: AppRootPresenter<Dependency>
 
-    public init(router: Router, dependency: Dependency) {
+    public init(router: AppRootRouter<Dependency>) {
         self.router = router
-        presenter = AppRootPresenter(dependency: dependency)
+        presenter = AppRootPresenter(dependency: router.dependency)
     }
 
     public var body: some View {
@@ -46,8 +46,8 @@ struct AppRootView_Previews: PreviewProvider, SnapshotTestable {
             configurations: [
                 UITestPreviewType.standard.configuration,
             ],
-            configure: { state in
-                AppRootView(router: AppRootRouter.empty, dependency: state)
+            configure: { dependency in
+                AppRootView(router: AppRootRouter(dependency: dependency))
             }
         )
     }

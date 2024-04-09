@@ -14,11 +14,11 @@ import SwiftUI
 // MARK: - View
 
 @MainActor
-public struct {{ argument.screenName }}View<Dependency: {{ argument.routerName }}Dependency>: View {
+public struct {{ argument.screenName }}View<Dependency: {{ argument.routerName }}RouterDependency>: View {
     private let router: {{ argument.routerName }}Router<Dependency>
     @State private var presenter: {{ argument.screenName }}Presenter<Dependency>
 
-    public init(router: {{ argument.routerName }}Router<Dependency>, dependency: Dependency) {
+    public init(router: {{ argument.routerName }}Router<Dependency>) {
         self.router = router
         presenter = {{ argument.screenName }}Presenter(dependency: router.dependency)
     }

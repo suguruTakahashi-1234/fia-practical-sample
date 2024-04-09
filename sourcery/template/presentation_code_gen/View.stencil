@@ -8,7 +8,7 @@ import SwiftUI
 
 // TODO: Add {{ argument.routerName }}Router
 //    public func create{{ argument.screenName }}View() -> {{ argument.screenName }}View<{{ argument.routerName }}Router, Dependency> {
-//        {{ argument.screenName }}View(router: self, dependency: dependency)
+//        {{ argument.screenName }}View(router: self)
 //    }
 
 // MARK: - View
@@ -20,7 +20,7 @@ public struct {{ argument.screenName }}View<Dependency: {{ argument.routerName }
 
     public init(router: {{ argument.routerName }}Router<Dependency>, dependency: Dependency) {
         self.router = router
-        presenter = {{ argument.screenName }}Presenter(dependency: dependency)
+        presenter = {{ argument.screenName }}Presenter(dependency: router.dependency)
     }
 
     public var body: some View {
@@ -47,8 +47,8 @@ struct {{ argument.screenName }}View_Previews: PreviewProvider, SnapshotTestable
             configurations: [
                 UITestPreviewType.standard.configuration,
             ],
-            configure: { state in
-                {{ argument.screenName }}View(router: {{ argument.routerName }}Router.empty, dependency: state)
+            configure: { dependency in
+                {{ argument.screenName }}View(router: {{ argument.routerName }}Router(dependency: dependency))
                     .navigationStacked()
             }
         )

@@ -9,9 +9,9 @@ public struct SettingView<Dependency: AppRootRouterDependency>: View {
     private let router: AppRootRouter<Dependency>
     @State private var presenter: SettingPresenter<Dependency>
 
-    public init(router: AppRootRouter<Dependency>, dependency: Dependency) {
+    public init(router: AppRootRouter<Dependency>) {
         self.router = router
-        presenter = SettingPresenter(dependency: dependency)
+        presenter = SettingPresenter(dependency: router.dependency)
     }
 
     public var body: some View {
@@ -69,8 +69,8 @@ struct SettingView_Previews: PreviewProvider, SnapshotTestable {
                 UITestPreviewType.standard.configuration,
                 UITestPreviewType.releaseBuildConfiguration.configuration,
             ],
-            configure: { state in
-                SettingView(router: AppRootRouter.empty, dependency: state)
+            configure: { dependency in
+                SettingView(router: AppRootRouter(dependency: dependency))
                     .navigationStacked()
             }
         )

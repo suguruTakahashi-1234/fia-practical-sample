@@ -16,45 +16,46 @@ public final class AppRootRouter<Dependency: AppRootRouterDependency> {
     }
 
     public func createAppRootView() -> AppRootView<Dependency> {
-        AppRootView(router: self, dependency: dependency)
+        AppRootView(router: self)
     }
 
     public func createOnboardingView() -> OnboardingView<Dependency> {
-        OnboardingView(router: self, dependency: dependency)
+        OnboardingView(router: self)
     }
 
     public func createHomeTabView() -> HomeTabView<Dependency> {
-        HomeTabView(router: self, dependency: dependency)
+        HomeTabView(router: self)
     }
 
     public func createTaskListView() -> TaskListView<Dependency> {
-        TaskListView(router: self, dependency: dependency)
+        TaskListView(router: self)
     }
 
     public func createLicenseListView() -> LicenseListView<Dependency> {
-        LicenseListView(router: self, dependency: dependency)
+        LicenseListView(router: self)
     }
 
     public func createLicenseDetailView(license: License) -> LicenseDetailView<Dependency> {
+        // その画面から遷移はなく router を使うことが明らかでない場合はわざわざ router を View に渡す必要はない例
         LicenseDetailView(dependency: dependency, license: license)
     }
 
     public func createSettingView() -> SettingView<Dependency> {
-        SettingView(router: self, dependency: dependency)
+        SettingView(router: self)
     }
 
     public func createDeviceInfoView() -> DeviceInfoView<Dependency> {
-        DeviceInfoView(router: self, dependency: dependency)
+        DeviceInfoView(router: self)
     }
 
     // MARK: - for Debug
 
     public func createDebugMenuView() -> DebugMenuView<Dependency> {
-        DebugMenuView(router: self, dependency: dependency)
+        DebugMenuView(router: self)
     }
 
     public func createDebugShortcutViewListView() -> DebugShortcutViewListView<Dependency> {
-        DebugShortcutViewListView(router: self, dependency: dependency)
+        DebugShortcutViewListView(router: self)
     }
 }
 

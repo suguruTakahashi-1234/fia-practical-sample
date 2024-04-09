@@ -18,9 +18,9 @@ public struct OnboardingView<Dependency: AppRootRouterDependency>: View {
 
     /// Previews で検証できるように init の引数に tab を設定している（要検討）
     /// SwiftUI の TabView のタップは Binding による更新なので仕方のない側面もある
-    public init(router: AppRootRouter<Dependency>, dependency: Dependency, onboardingStep: OnboardingStep = .introduction) {
+    public init(router: AppRootRouter<Dependency>, onboardingStep: OnboardingStep = .introduction) {
         self.router = router
-        presenter = OnboardingPresenter(dependency: dependency, onboardingStep: onboardingStep)
+        presenter = OnboardingPresenter(dependency: router.dependency, onboardingStep: onboardingStep)
     }
 
     public var body: some View {
@@ -90,7 +90,7 @@ struct OnboardingView_Previews: PreviewProvider, SnapshotTestable {
         .init(
             configurations: OnboardingStep.allCases.map { onboardingStep in .init(name: "\(onboardingStep)".initialUppercased, state: (.random, onboardingStep)) },
             configure: { dependency, onboardingStep in
-                OnboardingView(router: AppRootRouter.empty, dependency: dependency, onboardingStep: onboardingStep)
+                OnboardingView(router: AppRootRouter(dependency: dependency), onboardingStep: onboardingStep)
                     .navigationStacked()
             }
         )

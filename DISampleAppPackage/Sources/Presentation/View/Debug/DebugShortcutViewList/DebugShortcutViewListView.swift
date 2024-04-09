@@ -21,9 +21,9 @@ public struct DebugShortcutViewListView<Dependency: AppRootRouterDependency>: Vi
     private let router: AppRootRouter<Dependency>
     @State private var presenter: DebugShortcutViewListPresenter<Dependency>
 
-    public init(router: AppRootRouter<Dependency>, dependency: Dependency) {
+    public init(router: AppRootRouter<Dependency>) {
         self.router = router
-        presenter = DebugShortcutViewListPresenter(dependency: dependency)
+        presenter = DebugShortcutViewListPresenter(dependency: router.dependency)
     }
 
     public var body: some View {
@@ -122,8 +122,8 @@ struct DebugShortcutViewListView_Previews: PreviewProvider, SnapshotTestable {
             configurations: [
                 UITestPreviewType.standard.configuration,
             ],
-            configure: { state in
-                DebugShortcutViewListView(router: AppRootRouter.empty, dependency: state)
+            configure: { dependency in
+                DebugShortcutViewListView(router: AppRootRouter(dependency: dependency))
                     .navigationStacked()
             }
         )

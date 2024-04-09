@@ -52,9 +52,9 @@ English | [日本語](README.ja.md)
 
 - macOS
   - 14.4.1 or Later
-- [Xcode](https://xcodereleases.com/)
+- Xcode
   - 15.3 or Later, with Swift 5.10
-  - Download from https://xcodereleases.com
+  - Download from [Xcode Releases](https://xcodereleases.com)
 - npm
   - 10.5.1 or Later
   - Install using your preferred method, e.g., [nodebrew](https://github.com/hokaccha/nodebrew)
@@ -114,7 +114,7 @@ zzzz
 
 ### Swift Package Manager Dependencies Diagrams
 
-By executing the following make command, Mermaid files for Swift Package Manager dependencies will be generated (by [depermaid](https://github.com/daikimat/depermaid)).
+By executing the following make command, Mermaid files for Swift Package Manager dependencies will be generated (by [depermaid](https://github.com/daikimat/depermaid), [mermaid-cli](https://github.com/mermaid-js/mermaid-cli)).
 
 ```shell
 $ make spm-dependencies-mermaid-gen
@@ -142,7 +142,7 @@ $ make spm-dependencies-mermaid-gen
 
 Please check Xcode Cloud settings via Xcode or [App Store Connect](https://appstoreconnect.apple.com/).
 
-Currently, Xcode Cloud settings support only GUI operations, and configuration files cannot be exported, nor can they be managed on GitHub.
+Currently, Xcode Cloud configuration supports only GUI operations, and configuration files cannot be exported or managed via GitHub.
 
 ### GitHub Actions
 
@@ -151,7 +151,7 @@ Currently, Xcode Cloud settings support only GUI operations, and configuration f
 
 ## Documents
 
-- [Swift-DocC (Only DomainLayer)](https://sugurutakahashi-1234.github.io/DISample/documentation/domainlayer/)
+- [Swift-DocC](https://sugurutakahashi-1234.github.io/DISample/documentation/domainlayer/) (Only DomainLayer)
 
 ## Contributing
 

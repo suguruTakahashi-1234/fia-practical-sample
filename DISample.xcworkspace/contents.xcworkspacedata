@@ -20,13 +20,16 @@
       location = "container:"
       name = "RepositoryRoot">
       <FileRef
+         location = "group:Configs">
+      </FileRef>
+      <FileRef
+         location = "group:TestPlans">
+      </FileRef>
+      <FileRef
          location = "group:asset">
       </FileRef>
       <FileRef
          location = "group:ci_scripts">
-      </FileRef>
-      <FileRef
-         location = "group:Configs">
       </FileRef>
       <FileRef
          location = "group:depermaid">
@@ -39,9 +42,6 @@
       </FileRef>
       <FileRef
          location = "group:swift_docc">
-      </FileRef>
-      <FileRef
-         location = "group:TestPlans">
       </FileRef>
       <FileRef
          location = "group:Makefile">

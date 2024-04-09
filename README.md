@@ -1,8 +1,9 @@
+
+English | [日本語](README.ja.md)
+
 # FITA Sample App
 
 This is a sample application that adopts the [Framework-Independent Testable Architecture (FITA)](#framework-independent-testable-architecture-fita).
-
-English | [日本語](README.ja.md)
 
 #### Repository About
 [![GitHub license](https://img.shields.io/github/license/suguruTakahashi-1234/DISample)](https://github.com/suguruTakahashi-1234/DISample/blob/main/LICENSE.md)

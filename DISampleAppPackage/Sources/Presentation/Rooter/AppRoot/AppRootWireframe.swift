@@ -5,9 +5,13 @@
 
 import DomainLayer
 
+/// Wireframe
+///
+/// - Wireframe をまとめたプロトコルは今のところ作成する必要はなさそうである。AppRootRouter が Presentation 層にあるため、それぞれの Wireframe の Mock も必要なく、スタブも AppRootRouter.empty で間に合っている。
 @MainActor
 public protocol AppRootWireframe {
     associatedtype AppRootWireframeAT: AppRootWireframe
+
     associatedtype OnboardingPresenterDependencyAT: OnboardingPresenterDependency
     associatedtype HomeTabPresenterDependencyAT: HomeTabPresenterDependency
     associatedtype SettingPresenterDependencyAT: SettingPresenterDependency

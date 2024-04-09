@@ -1,6 +1,9 @@
-# DISample
 
 English | [日本語](README.ja.md)
+
+# FITA Sample App
+
+This is a sample application that adopts the [Framework-Independent Testable Architecture (FITA)](#framework-independent-testable-architecture-fita).
 
 #### Repository About
 [![GitHub license](https://img.shields.io/github/license/suguruTakahashi-1234/DISample)](https://github.com/suguruTakahashi-1234/DISample/blob/main/LICENSE.md)
@@ -38,7 +41,6 @@ English | [日本語](README.ja.md)
 
 [![GitHub Actions Workflow Status (tag_and_release_note_gen.yml)](https://img.shields.io/github/actions/workflow/status/suguruTakahashi-1234/DISample/tag_and_release_note_gen.yml)](https://github.com/suguruTakahashi-1234/DISample/actions/workflows/tag_and_release_note_gen.yml)
 [![GitHub Actions Workflow Status (swift_docc_hosting.yml)](https://img.shields.io/github/actions/workflow/status/suguruTakahashi-1234/DISample/swift_docc_hosting.yml)](https://github.com/suguruTakahashi-1234/DISample/actions/workflows/swift_docc_hosting.yml)
-[![GitHub Actions Workflow Status (pages-build-deployment)](https://img.shields.io/github/actions/workflow/status/suguruTakahashi-1234/DISample/pages/pages-build-deployment)](https://github.com/suguruTakahashi-1234/DISample/actions/workflows/pages/pages-build-deployment)
 
 ## Development
 
@@ -51,17 +53,18 @@ English | [日本語](README.ja.md)
 
 - macOS
   - 14.4.1 or Later
-- [Xcode](https://xcodereleases.com/)
+- Xcode
   - 15.3 or Later, with Swift 5.10
-  - Download from https://xcodereleases.com
+  - Download from [Xcode Releases](https://xcodereleases.com)
 - npm
-  - 10.5.0 or Later
+  - 10.5.1 or Later
   - Install using your preferred method, e.g., [nodebrew](https://github.com/hokaccha/nodebrew)
   - Used to run npx [mermaid-cli](https://github.com/mermaid-js/mermaid-cli)
 
 ### Supported Platform
 
-![Supported Platform](https://img.shields.io/badge/Platform-iOS17.4+|iPadOS17.4+-brightgreen)
+![Supported Platform (iOS)](https://img.shields.io/badge/iOS-17.4+-brightgreen)
+![Supported Platform (iPad)](https://img.shields.io/badge/iPadOS-17.4+-brightgreen)
 
 - iOS
   - 17.4 or Later
@@ -69,8 +72,6 @@ English | [日本語](README.ja.md)
   - 17.4 or Later
 
 ### Supported Language
-
-![Supported Language](https://img.shields.io/badge/Language-ja|en-brightgreen)
 
 - Japanese (default)
 - English
@@ -84,19 +85,37 @@ $ git clone https://github.com/suguruTakahashi-1234/DISample.git
 $ cd DISample
 ```
 
-#### `make setup`
+#### Setup
+
+Running `make setup` command will apply the [Mint](https://github.com/yonaskolb/Mint) and [githooks](https://git-scm.com/docs/githooks) settings, then open `.xcworkspace` and start Xcode.
 
 ```shell
 $ make setup
 ```
 
+The process being executed by `make setup` is described in the [Makefile](Makefile), and `make help` will give you a list of make commands.
+
 ## Architecture
 
-🏗️ Coming Soon...！
+### Framework-Independent Testable Architecture (FITA)
+
+zzzz
+
+![](./asset/drawio/architecture.drawio.svg)
+
+### Advantages and Disadvantages of FITA
+
+#### Advantages
+
+- xxx
+
+#### Disadvantages
+
+- yyy
 
 ### Swift Package Manager Dependencies Diagrams
 
-By executing the following command, a Mermaid file for Swift Package Manager dependencies will be generated (by [depermaid](https://github.com/daikimat/depermaid)).
+By executing the following make command, Mermaid files for Swift Package Manager dependencies will be generated (by [depermaid](https://github.com/daikimat/depermaid), [mermaid-cli](https://github.com/mermaid-js/mermaid-cli)).
 
 ```shell
 $ make spm-dependencies-mermaid-gen
@@ -122,11 +141,18 @@ $ make spm-dependencies-mermaid-gen
 
 ### Xcode Cloud
 
-🏗️ Coming Soon...！
+Please check Xcode Cloud settings via Xcode or [App Store Connect](https://appstoreconnect.apple.com/).
+
+Currently, Xcode Cloud configuration supports only GUI operations, and configuration files cannot be exported or managed via GitHub.
+
+### GitHub Actions
+
+- [Host Swift-DocC](https://github.com/suguruTakahashi-1234/DISample/actions/workflows/swift_docc_hosting.yml)
+- [Generate Tag & Release Note](https://github.com/suguruTakahashi-1234/DISample/actions/workflows/tag_and_release_note_gen.yml)
 
 ## Documents
 
-- [Swift-DocC (Only DomainLayer)](https://sugurutakahashi-1234.github.io/DISample/documentation/domainlayer/)
+- [Swift-DocC](https://sugurutakahashi-1234.github.io/DISample/documentation/domainlayer/) (Only DomainLayer)
 
 ## Contributing
 

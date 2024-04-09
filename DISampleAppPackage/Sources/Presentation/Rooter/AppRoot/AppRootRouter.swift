@@ -5,7 +5,6 @@
 
 import DomainLayer
 
-/// Note: Wireframeをまとめたプロトコルは今のところ作成する必要はなさそう。AppRootRouterがPresentation層にあるため、それぞれのWireframeのMockも必要なく、スタブもAppRootRouter.emptyで間に合っている
 @MainActor
 public final class AppRootRouter<Dependency: AppRootRouterDependency>: AppRootWireframe {
     private let dependency: Dependency

@@ -1,4 +1,4 @@
 
 # Code of conduct
 
-🏗️ Coming Soon...！
+🚧 Coming Soon...！

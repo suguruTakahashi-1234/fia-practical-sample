@@ -1,4 +1,4 @@
 
 # Contributing
 
-🏗️ Coming Soon...！
+🚧 Coming Soon...！

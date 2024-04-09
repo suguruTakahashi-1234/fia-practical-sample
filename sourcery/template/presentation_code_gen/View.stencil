@@ -7,9 +7,9 @@ import DomainLayer
 import SwiftUI
 
 // TODO: Add {{ argument.routerName }}Router
-//    public func create{{ argument.screenName }}View() -> {{ argument.screenName }}View<Dependency> {
-//        {{ argument.screenName }}View(router: self)
-//    }
+//public func create{{ argument.screenName }}View() -> {{ argument.screenName }}View<Dependency> {
+//    {{ argument.screenName }}View(router: self)
+//}
 
 // MARK: - View
 

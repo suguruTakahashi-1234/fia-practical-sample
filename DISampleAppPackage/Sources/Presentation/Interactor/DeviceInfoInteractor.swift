@@ -6,9 +6,9 @@
 import DomainLayer
 import Foundation
 
-/// Interactor は 実質的に Presenter の切り出しなので問題ない
+/// Interactor は 実質的に Presenter の切り出しなので @MainActor で問題ない
 @MainActor
-public final class DeviceInfoInteractor<Dependency: DeviceInfoUseCaseDependency>: DeviceInfoUseCase {
+public final class DeviceInfoInteractor<Dependency: DeviceInfoInteractorDependency>: DeviceInfoUseCase {
     private let dependency: Dependency
 
     public init(dependency: Dependency) {

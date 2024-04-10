@@ -1,18 +1,19 @@
 #!/bin/bash
 
 # 引数の数の確認
-if [ "$#" -ne 1 ]; then
-    echo "Need args: $0 <UseCase>"
+if [ "$#" -ne 2 ]; then
+    echo "Need args: $0 <Router> <UseCase>"
     exit 1
 fi
 
 sourcery_package_path="./DISampleAppPackage"
-use_case_name="$1"
+router_name="$1"
+use_case_name="$2"
 template_path="./sourcery/template/use_case_code_gen"
 source_dir="${sourcery_package_path}/Sources"
 
 output_use_case_dir="${source_dir}/Domain/Protocol/UseCase"
-output_use_case_dependency_dir="${source_dir}/Domain/Protocol/UseCase"
+output_interactor_dependency_dir="${source_dir}/Presentation/Interactor"
 output_interactor_dir="${source_dir}/Presentation/Interactor"
 output_interactor_test_dir="${sourcery_package_path}/Tests/InteractorTest"
 
@@ -34,7 +35,7 @@ remove_sourcery_header() {
 
 # 出力ディレクトリが存在しない場合は作成
 mkdir -p "$output_use_case_dir"
-mkdir -p "$output_use_case_dependency_dir"
+mkdir -p "$output_interactor_dependency_dir"
 mkdir -p "$output_interactor_dir"
 mkdir -p "$output_interactor_test_dir"
 
@@ -47,14 +48,14 @@ swift run --package-path "$sourcery_package_path" mint run sourcery \
 
 remove_sourcery_header "$output_use_case_dir"
 
-# UseCaseDependency
+# InteractorDependency
 swift run --package-path "$sourcery_package_path" mint run sourcery \
           --sources "$source_dir" \
-          --templates "$template_path/UseCaseDependency.stencil" \
-          --output "$output_use_case_dependency_dir/${use_case_name}UseCaseDependency.swift" \
+          --templates "$template_path/InteractorDependency.stencil" \
+          --output "$output_interactor_dependency_dir/${use_case_name}InteractorDependency.swift" \
           --args "useCaseName=$use_case_name","userName=$current_user","date=$current_date"
 
-remove_sourcery_header "$output_use_case_dependency_dir"
+remove_sourcery_header "$output_interactor_dependency_dir"
 
 # Interactor
 swift run --package-path "$sourcery_package_path" mint run sourcery \
@@ -70,7 +71,7 @@ swift run --package-path "$sourcery_package_path" mint run sourcery \
           --sources "$source_dir" \
           --templates "$template_path/InteractorTest.stencil" \
           --output "$output_interactor_test_dir/${use_case_name}InteractorTest.swift" \
-          --args "useCaseName=$use_case_name","userName=$current_user","date=$current_date"
+          --args "useCaseName=$use_case_name","routerName=$router_name","userName=$current_user","date=$current_date"
 
 remove_sourcery_header "$output_interactor_test_dir"
 

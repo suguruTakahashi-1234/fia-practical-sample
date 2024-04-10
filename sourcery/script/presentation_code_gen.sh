@@ -2,13 +2,13 @@
 
 # 引数の数の確認
 if [ "$#" -ne 2 ]; then
-    echo "Need args: $0 <View> <Router>"
+    echo "Need args: $0 <Router> <View>"
     exit 1
 fi
 
 sourcery_package_path="./DISampleAppPackage"
-screen_name="$1"
-router_name="$2"
+router_name="$1"
+screen_name="$2"
 template_path="./sourcery/template/presentation_code_gen"
 source_dir="${sourcery_package_path}/Sources/Presentation"
 

@@ -54,10 +54,10 @@ swiftformat-dryrun:
 mockolo-run:
 	swift run --package-path $(PACKAGE_NAME) mint run mockolo -s $(MOCKOLO_SCAN_PATH) -d $(MOCKOLO_OUTPUT_PATH) --custom-imports DomainLayer Combine -x Images Strings --mock-final
 
-# Presentation 層のコード生成 ex) make presentation-code-gen VIEW=Hoge ROUTER=AppRoot
+# Presentation 層のコード生成 ex) make presentation-code-gen ROUTER=AppRoot VIEW=Hoge
 .PHONY: presentation-code-gen
 presentation-code-gen:
-	./sourcery/script/presentation_code_gen.sh $(VIEW) $(ROUTER)
+	./sourcery/script/presentation_code_gen.sh $(ROUTER) $(VIEW)
 	$(MAKE) mockolo-run
 
 # Driver のコード生成 ex) make driver-code-gen DRIVER=Hoge
@@ -66,10 +66,10 @@ driver-code-gen:
 	./sourcery/script/driver_code_gen.sh $(DRIVER)
 	$(MAKE) mockolo-run
 
-# UseCase のコード生成 ex) make use-case-code-gen USECASE=Hoge
+# UseCase のコード生成 ex) make use-case-code-gen ROUTER=AppRoot USECASE=Hoge
 .PHONY: use-case-code-gen
 use-case-code-gen:
-	./sourcery/script/use_case_code_gen.sh $(USECASE)
+	./sourcery/script/use_case_code_gen.sh $(ROUTER) $(USECASE)
 	$(MAKE) mockolo-run
 
 # Swift-DocC によるドキュメントのローカル環境でのプレビュー

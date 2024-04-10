@@ -6,4 +6,4 @@
 import Foundation
 
 /// @mockable(typealias: xxxAT = xxxMock;)
-public protocol {{ argument.useCaseName }}UseCaseDependency: LogDriverProvider {}
+public protocol {{ argument.useCaseName }}InteractorDependency: LogDriverProvider {}

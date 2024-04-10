@@ -10,7 +10,7 @@ import Testing
 /// AppRootRouterDependencyMock を用いた場合のサンプル(本物の AppRootDependencyInjector を使わなくてもよい場合)
 /// Development での Unit テストで記述することもできるが、そうすると Development を scheme に指定したときに、SwiftUI のプレビューの生成に失敗するので、本物の AppRootDependencyInjector を使わなくてもよい場合は SPM 側のテストで記述することを推奨する
 @MainActor
-struct DependencyMockDeviceInfoInteractorTest {
+struct DeviceInfoInteractorDependencyInjectorMockTest {
     var interactor: DeviceInfoInteractor<AppRootRouterDependencyMock>!
     var dependencyInjector: AppRootRouterDependencyMock!
 

@@ -8,7 +8,7 @@ import DomainLayer
 @testable import PresentationLayer
 import Testing
 
-// TODO: Adapt {{ argument.useCaseName }}UseCaseDependency to PresenterDependency Protocol for using {{ argument.useCaseName }}UseCase
+// TODO: Adapt {{ argument.useCaseName }}InteractorDependency to PresenterDependency Protocol for using {{ argument.useCaseName }}UseCase
 
 @MainActor
 struct {{ argument.useCaseName }}InteractorTest {

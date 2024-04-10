@@ -11,7 +11,7 @@ import LicenseFramework
 import PresentationLayer
 
 /// ※ UseCase は Presenter の拡張のため DI 層では保持しない
-public final class AppRootDependencyInjector: AppRootRouterDependency, AppRootDependencyInjectorDependency {
+public final class AppRootRouterDependencyInjector: AppRootRouterDependency, AppRootRouterDependencyInjectorDependency {
     /// Internal DependencyInjector
     public final class LogDriverDependencyInjector: LogDriverDependency {
         public let osLogDriver: OSLogDriver
@@ -102,7 +102,7 @@ public final class AppRootDependencyInjector: AppRootRouterDependency, AppRootDe
 /// ここで使われる Driver は DependencyInjector 内でのみ使用されるため、本来必要のない protocol であるが、private な範囲で使用することを明確化するためにあえて定義している
 /// mockable のアノテーションをつけることで生成される Mock ファイルが Presentation 層のため、依存の関係上 mockable とすることはできない
 /// periphery:ignore
-private protocol AppRootDependencyInjectorDependency: AnyObject {
+private protocol AppRootRouterDependencyInjectorDependency: AnyObject {
     associatedtype DeviceNameDriverProtocolAT = DeviceNameDriverProtocol
     associatedtype FirebaseSetupDriverProtocolAT: FirebaseSetupDriverProtocol
     associatedtype FirebaseRemoteConfigDriverProtocolAT: FirebaseRemoteConfigDriverProtocol

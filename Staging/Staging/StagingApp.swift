@@ -10,11 +10,11 @@ import SwiftUI
 
 @main
 struct StagingApp: App {
-    private let router: AppRootRouter<AppRootDependencyInjector>
+    private let router: AppRootRouter<AppRootRouterDependencyInjector>
 
     init() {
         LocalDataStore.allClearForFirstLaunchUITest()
-        router = AppRootRouter(dependency: AppRootDependencyInjector(buildScheme: .staging))
+        router = AppRootRouter(dependency: AppRootRouterDependencyInjector(buildScheme: .staging))
     }
 
     var body: some Scene {

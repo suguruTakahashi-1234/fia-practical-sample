@@ -8,12 +8,12 @@ import DomainLayer
 @testable import PresentationLayer
 import Testing
 
-/// AppRootDependencyInjector を用いた場合のサンプル(本物の AppRootDependencyInjector を使わないと検証できない場合)
-/// 本物の AppRootDependencyInjector を使う場合は Staging や Production での Unit テストで記述することが可能であり、BuildScheme を testing にした場合は正しく GoogleService-Info.plist を読み込むことができないため、そちらを推奨する
+/// AppRootRouterDependencyInjector を用いた場合のサンプル(本物の AppRootRouterDependencyInjector を使わないと検証できない場合)
+/// 本物の AppRootRouterDependencyInjector を使う場合は Staging や Production での Unit テストで記述することが可能であり、BuildScheme を testing にした場合は正しく GoogleService-Info.plist を読み込むことができないため、そちらを推奨する
 @MainActor
 struct DeviceInfoInteractorDependencyInjectorActualTest {
-    var interactor: DeviceInfoInteractor<AppRootDependencyInjector>!
-    var dependencyInjector: AppRootDependencyInjector!
+    var interactor: DeviceInfoInteractor<AppRootRouterDependencyInjector>!
+    var dependencyInjector: AppRootRouterDependencyInjector!
 
     init() {
         dependencyInjector = .init(buildScheme: .testing)

@@ -9,7 +9,7 @@ final class DeviceInfoPresenter<Dependency: DeviceInfoPresenterDependency> {
     private(set) var selectedDeviceInfoType: DeviceInfoType?
 
     /// UseCase の Mock を使用する場合はここを書き換える（DI のコードは書き換えず Presenter で直接指定する）
-    private let deviceInfoUseCase: DeviceInfoUseCaseMock
+    private let deviceInfoUseCase: DeviceInfoInteractor<Dependency>
     private let dependency: Dependency
 
     @ObservationIgnored
@@ -24,7 +24,7 @@ final class DeviceInfoPresenter<Dependency: DeviceInfoPresenterDependency> {
         dependency.logDriver.initLog()
 
         self.dependency = dependency
-        deviceInfoUseCase = DeviceInfoUseCaseMock()
+        deviceInfoUseCase = DeviceInfoInteractor(dependency: dependency)
     }
 
     deinit {

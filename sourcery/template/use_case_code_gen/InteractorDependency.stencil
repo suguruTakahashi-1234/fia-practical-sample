@@ -3,6 +3,7 @@
 //  Copyright {{ argument.userName }}. All rights reserved.
 //
 
+import DomainLayer
 import Foundation
 
 /// @mockable(typealias: xxxAT = xxxMock;)

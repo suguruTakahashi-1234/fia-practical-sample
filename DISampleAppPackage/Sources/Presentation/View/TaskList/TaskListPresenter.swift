@@ -15,7 +15,7 @@ final class TaskListPresenter<Dependency: TaskListPresenterDependency> {
 
         self.dependency = dependency
 
-        dependency.cacheDataStore.variantTestSubjecter
+        dependency.cacheDataStoreDriver.variantTestSubjecter
             .receive(on: RunLoop.main)
             .map { $0.isEnabledNewFeature }
             .assign(to: \.isEnabledNewFeature, on: self)

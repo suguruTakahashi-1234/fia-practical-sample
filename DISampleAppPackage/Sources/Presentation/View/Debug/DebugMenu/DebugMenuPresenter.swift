@@ -37,7 +37,7 @@ final class DebugMenuPresenter<Dependency: DebugMenuPresenterDependency> {
         case .forceCrash:
             fatalError("Force Crash!!")
         case .clearUserDefaults:
-            dependency.localDataStore.allClear()
+            dependency.localDataStoreDriver.allClear()
         }
     }
 }

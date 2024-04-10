@@ -8,7 +8,7 @@ import DomainLayer
 @preconcurrency import FirebaseRemoteConfig
 import Foundation
 
-public final class FirebaseRemoteConfigDriver<CacheDataStore: CacheDataStoreProtocol>: FirebaseRemoteConfigDriverProtocol {
+public final class FirebaseRemoteConfigDriver<CacheDataStore: CacheDataStoreDriverProtocol>: FirebaseRemoteConfigDriverProtocol {
     private let remoteConfig: FirebaseRemoteConfig.RemoteConfig = {
         // https://firebase.google.com/docs/remote-config/get-started?platform=ios
         let remoteConfig = RemoteConfig.remoteConfig()
@@ -21,15 +21,15 @@ public final class FirebaseRemoteConfigDriver<CacheDataStore: CacheDataStoreProt
 
     private let updatedRemoteConfigTypesSubject = PassthroughSubject<[RemoteConfigType], Never>()
 
-    private let cacheDataStore: CacheDataStore
+    private let cacheDataStoreDriver: CacheDataStore
 
     private var cancellables = Set<AnyCancellable>()
 
     @MainActor
-    public init(cacheDataStore: CacheDataStore) {
+    public init(cacheDataStoreDriver: CacheDataStore) {
         OSLogDriver.initLog()
 
-        self.cacheDataStore = cacheDataStore
+        self.cacheDataStoreDriver = cacheDataStoreDriver
 
         updatedRemoteConfigTypesSubject
             .flatMap { Publishers.Sequence(sequence: $0) }
@@ -42,9 +42,9 @@ public final class FirebaseRemoteConfigDriver<CacheDataStore: CacheDataStoreProt
                         try await self.remoteConfig.activate() // activate しないと最新の Remote Config 上の値を取得できない（fetchでは更新されない）
                         switch updatedRemoteConfigType {
                         case .appInfo:
-                            try self.cacheDataStore.appInfoSubjecter.send(self.getValue(remoteConfigType: updatedRemoteConfigType))
+                            try self.cacheDataStoreDriver.appInfoSubjecter.send(self.getValue(remoteConfigType: updatedRemoteConfigType))
                         case .variantTest:
-                            try self.cacheDataStore.variantTestSubjecter.send(self.getValue(remoteConfigType: updatedRemoteConfigType))
+                            try self.cacheDataStoreDriver.variantTestSubjecter.send(self.getValue(remoteConfigType: updatedRemoteConfigType))
                         }
                     } catch {
                         OSLogDriver.errorLog(error.toAppError)
@@ -75,14 +75,14 @@ public final class FirebaseRemoteConfigDriver<CacheDataStore: CacheDataStoreProt
             }
 
             if let error {
-                cacheDataStore.remoteConfigUpdateErrorSubjecter.send(AppError.customError("\(error)"))
+                cacheDataStoreDriver.remoteConfigUpdateErrorSubjecter.send(AppError.customError("\(error)"))
                 OSLogDriver.errorLog(error.toAppError)
                 return
             }
 
             guard let updatedRemoteConfig else {
                 OSLogDriver.debugLog("Unexpected")
-                cacheDataStore.remoteConfigUpdateErrorSubjecter.send(AppError.customError("Unexpected"))
+                cacheDataStoreDriver.remoteConfigUpdateErrorSubjecter.send(AppError.customError("Unexpected"))
                 assertionFailure("Unexpected")
                 return
             }
@@ -94,7 +94,7 @@ public final class FirebaseRemoteConfigDriver<CacheDataStore: CacheDataStoreProt
                 updatedRemoteConfigTypesSubject.send(remoteConfigTypes)
             } catch {
                 OSLogDriver.errorLog(error.toAppError)
-                cacheDataStore.remoteConfigUpdateErrorSubjecter.send(AppError.customError("\(error)"))
+                cacheDataStoreDriver.remoteConfigUpdateErrorSubjecter.send(AppError.customError("\(error)"))
             }
         }
     }
@@ -116,9 +116,9 @@ public final class FirebaseRemoteConfigDriver<CacheDataStore: CacheDataStoreProt
             try RemoteConfigType.allCases.forEach { remoteConfigType in
                 switch remoteConfigType {
                 case .appInfo:
-                    try cacheDataStore.appInfoSubjecter.send(getValue(remoteConfigType: remoteConfigType))
+                    try cacheDataStoreDriver.appInfoSubjecter.send(getValue(remoteConfigType: remoteConfigType))
                 case .variantTest:
-                    try cacheDataStore.variantTestSubjecter.send(getValue(remoteConfigType: remoteConfigType))
+                    try cacheDataStoreDriver.variantTestSubjecter.send(getValue(remoteConfigType: remoteConfigType))
                 }
             }
         } catch {

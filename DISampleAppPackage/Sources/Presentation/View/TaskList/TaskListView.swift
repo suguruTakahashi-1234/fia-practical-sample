@@ -37,8 +37,8 @@ struct TaskListView_Previews: PreviewProvider, SnapshotTestable {
     static var snapshots: PreviewSnapshots<AppRootRouterDependencyMock> {
         .init(
             configurations: [
-                .init(name: "isEnabledNewFeature-True", state: .create(cacheDataStore: .init(remoteConfigUpdateErrorSubjecter: .init(), appInfoSubjecter: .init(.defaultValue), variantTestSubjecter: .init(.init(isEnabledNewFeature: true))))),
-                .init(name: "isEnabledNewFeature-False", state: .create(cacheDataStore: .init(remoteConfigUpdateErrorSubjecter: .init(), appInfoSubjecter: .init(.defaultValue), variantTestSubjecter: .init(.init(isEnabledNewFeature: false))))),
+                .init(name: "isEnabledNewFeature-True", state: .create(cacheDataStoreDriver: .init(remoteConfigUpdateErrorSubjecter: .init(), appInfoSubjecter: .init(.defaultValue), variantTestSubjecter: .init(.init(isEnabledNewFeature: true))))),
+                .init(name: "isEnabledNewFeature-False", state: .create(cacheDataStoreDriver: .init(remoteConfigUpdateErrorSubjecter: .init(), appInfoSubjecter: .init(.defaultValue), variantTestSubjecter: .init(.init(isEnabledNewFeature: false))))),
             ],
             configure: { dependency in
                 TaskListView(router: AppRootRouter(dependency: dependency))

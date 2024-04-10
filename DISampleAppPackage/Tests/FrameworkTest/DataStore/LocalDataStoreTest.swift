@@ -8,36 +8,36 @@ import Foundation
 import Testing
 
 struct LocalDataStoreTest {
-    var localDataStore: LocalDataStore!
+    var localDataStoreDriver: LocalDataStoreDriver!
 
     init() {
-        localDataStore = .init()
+        localDataStoreDriver = .init()
     }
 
     @Test("値を更新したとき") func update() {
-        localDataStore.isCompletedOnboarding = true
-        localDataStore.isCompletedOnboarding = false
-        localDataStore.launchAppCount = .random
-        localDataStore.launchAppCount = .random
-        localDataStore.apnsToken = nil
-        localDataStore.apnsToken = Data()
-        localDataStore.apnsToken = nil
+        localDataStoreDriver.isCompletedOnboarding = true
+        localDataStoreDriver.isCompletedOnboarding = false
+        localDataStoreDriver.launchAppCount = .random
+        localDataStoreDriver.launchAppCount = .random
+        localDataStoreDriver.apnsToken = nil
+        localDataStoreDriver.apnsToken = Data()
+        localDataStoreDriver.apnsToken = nil
         #expect(true, "エラーが発生しないこと")
     }
 
     @Test("初期化したとき") func allClear() {
-        localDataStore.isCompletedOnboarding = true
-        localDataStore.launchAppCount = .random
-        localDataStore.apnsToken = Data()
+        localDataStoreDriver.isCompletedOnboarding = true
+        localDataStoreDriver.launchAppCount = .random
+        localDataStoreDriver.apnsToken = Data()
 
-        #expect(localDataStore.isCompletedOnboarding != false, "前提条件の確認 isCompletedOnboarding")
-        #expect(localDataStore.launchAppCount != 0, "前提条件の確認 launchAppCount")
-        #expect(localDataStore.apnsToken != nil, "前提条件の確認 apnsToken")
+        #expect(localDataStoreDriver.isCompletedOnboarding != false, "前提条件の確認 isCompletedOnboarding")
+        #expect(localDataStoreDriver.launchAppCount != 0, "前提条件の確認 launchAppCount")
+        #expect(localDataStoreDriver.apnsToken != nil, "前提条件の確認 apnsToken")
 
-        localDataStore.allClear()
+        localDataStoreDriver.allClear()
 
-        #expect(localDataStore.isCompletedOnboarding == false, "デフォルト値になっていること isCompletedOnboarding")
-        #expect(localDataStore.launchAppCount == 0, "デフォルト値になっていること launchAppCount")
-        #expect(localDataStore.apnsToken == nil, "デフォルト値になっていること apnsToken")
+        #expect(localDataStoreDriver.isCompletedOnboarding == false, "デフォルト値になっていること isCompletedOnboarding")
+        #expect(localDataStoreDriver.launchAppCount == 0, "デフォルト値になっていること launchAppCount")
+        #expect(localDataStoreDriver.apnsToken == nil, "デフォルト値になっていること apnsToken")
     }
 }

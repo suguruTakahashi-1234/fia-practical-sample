@@ -5,9 +5,9 @@
 
 import Foundation
 
-/// @mockable(typealias: LocalDataStoreProtocolAT = LocalDataStore)
-public protocol LocalDataStoreProvider {
-    associatedtype LocalDataStoreProtocolAT: LocalDataStoreProtocol
+/// @mockable(typealias: LocalDataStoreDriverProtocolAT = LocalDataStoreDriver)
+public protocol LocalDataStoreDriverProvider {
+    associatedtype LocalDataStoreDriverProtocolAT: LocalDataStoreDriverProtocol
 
-    var localDataStore: LocalDataStoreProtocolAT { get }
+    var localDataStoreDriver: LocalDataStoreDriverProtocolAT { get }
 }

@@ -32,7 +32,7 @@ final class OnboardingPresenter<Dependency: OnboardingPresenterDependency> {
         case .introduction:
             selectedStep = .start
         case .start:
-            dependency.localDataStore.isCompletedOnboarding = true
+            dependency.localDataStoreDriver.isCompletedOnboarding = true
         }
     }
 }

@@ -7,7 +7,7 @@ import Combine
 import Foundation
 
 /// @mockable
-public protocol LocalDataStoreProtocol: AnyObject {
+public protocol LocalDataStoreDriverProtocol: AnyObject {
     var isCompletedOnboardingPublisher: AnyPublisher<Bool, Never> { get }
 
     var launchAppCount: Int { get set }

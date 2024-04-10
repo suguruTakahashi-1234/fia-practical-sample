@@ -16,11 +16,11 @@ final class AppRootPresenter<Dependency: AppRootPresenterDependency> {
 
     init(dependency: Dependency) {
         self.dependency = dependency
-        isCompletedOnboarding = dependency.localDataStore.isCompletedOnboarding
+        isCompletedOnboarding = dependency.localDataStoreDriver.isCompletedOnboarding
 
         dependency.logDriver.initLog()
 
-        dependency.localDataStore.isCompletedOnboardingPublisher
+        dependency.localDataStoreDriver.isCompletedOnboardingPublisher
             .assign(to: \.isCompletedOnboarding, on: self)
             .store(in: &cancellables)
     }
@@ -32,8 +32,8 @@ final class AppRootPresenter<Dependency: AppRootPresenterDependency> {
     func onAppear() async {
         dependency.logDriver.onAppearLog()
 
-        dependency.logDriver.logging(.launchApp(.init(count: dependency.localDataStore.launchAppCount)))
-        dependency.localDataStore.launchAppCount = dependency.localDataStore.launchAppCount + 1
+        dependency.logDriver.logging(.launchApp(.init(count: dependency.localDataStoreDriver.launchAppCount)))
+        dependency.localDataStoreDriver.launchAppCount = dependency.localDataStoreDriver.launchAppCount + 1
     }
 
     func onDisappear() {

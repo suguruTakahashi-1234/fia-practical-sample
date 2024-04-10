@@ -44,9 +44,9 @@ public final class DeviceInfoInteractor<Dependency: DeviceInfoInteractorDependen
         case .language:
             dependency.deviceInfoDriver.language
         case .launchAppCount:
-            "\(dependency.localDataStore.launchAppCount)"
+            "\(dependency.localDataStoreDriver.launchAppCount)"
         case .apnsToken:
-            "\(dependency.localDataStore.apnsToken?.deviceTokenHexString ?? "not set")"
+            "\(dependency.localDataStoreDriver.apnsToken?.deviceTokenHexString ?? "not set")"
         }
     }
 }

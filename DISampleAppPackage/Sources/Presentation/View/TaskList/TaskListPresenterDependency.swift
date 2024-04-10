@@ -2,9 +2,9 @@
 import DomainLayer
 import Foundation
 
-/// @mockable(typealias: CacheDataStoreProtocolAT = CacheDataStoreProtocolMock;)
+/// @mockable(typealias: CacheDataStoreDriverProtocolAT = CacheDataStoreDriverProtocolMock;)
 public protocol TaskListPresenterDependency: CommonPresenterDependency {
-    associatedtype CacheDataStoreProtocolAT: CacheDataStoreProtocol
+    associatedtype CacheDataStoreDriverProtocolAT: CacheDataStoreDriverProtocol
 
-    var cacheDataStore: CacheDataStoreProtocolAT { get }
+    var cacheDataStoreDriver: CacheDataStoreDriverProtocolAT { get }
 }

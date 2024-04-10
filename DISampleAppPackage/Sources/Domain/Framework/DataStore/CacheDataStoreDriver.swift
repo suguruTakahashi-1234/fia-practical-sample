@@ -5,7 +5,7 @@
 
 import Combine
 
-public final class CacheDataStore: CacheDataStoreProtocol {
+public final class CacheDataStoreDriver: CacheDataStoreDriverProtocol {
     public let remoteConfigUpdateErrorSubjecter = PassthroughSubject<AppError, Never>()
     public let appInfoSubjecter = CurrentValueSubject<AppInfo, Never>(AppInfo.defaultValue)
     public let variantTestSubjecter = CurrentValueSubject<VariantTest, Never>(VariantTest.defaultValue)

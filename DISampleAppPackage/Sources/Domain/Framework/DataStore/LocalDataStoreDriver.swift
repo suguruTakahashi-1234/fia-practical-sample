@@ -6,7 +6,7 @@
 import Combine
 import Foundation
 
-public final class LocalDataStore: LocalDataStoreProtocol {
+public final class LocalDataStoreDriver: LocalDataStoreDriverProtocol {
     private let isCompletedOnboardingSubject = PassthroughSubject<Bool, Never>()
 
     public var isCompletedOnboardingPublisher: AnyPublisher<Bool, Never> {

@@ -30,14 +30,14 @@ struct TaskListPresenterTest {
 
     @Test("Firebase Remoto Config によって新実装モードがONになったとき") func isEnabledNewFeatureTrue() async {
         #expect(presenter.isEnabledNewFeature == false, "新実装モードがONになること（前提条件の確認）")
-        dependencyInjector.cacheDataStore.variantTestSubjecter.send(.init(isEnabledNewFeature: true))
+        dependencyInjector.cacheDataStoreDriver.variantTestSubjecter.send(.init(isEnabledNewFeature: true))
         try! await Task.sleep(nanoseconds: 500_000_000) // Combine による非同期処理なので 0.5 秒待たせているが swift-testing でもっとスマートにかけるかもしれない
         #expect(presenter.isEnabledNewFeature == true, "新実装モードがONになること")
     }
 
     @Test("Firebase Remoto Config によって新実装モードがOFFになったとき") func isEnabledNewFeatureFalse() {
         #expect(presenter.isEnabledNewFeature == false, "新実装モードがOFFになること（前提条件の確認）")
-        dependencyInjector.cacheDataStore.variantTestSubjecter.send(.init(isEnabledNewFeature: false))
+        dependencyInjector.cacheDataStoreDriver.variantTestSubjecter.send(.init(isEnabledNewFeature: false))
         #expect(presenter.isEnabledNewFeature == false, "新実装モードがOFFになること")
     }
 }

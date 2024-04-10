@@ -8,7 +8,7 @@ import Testing
 struct DeviceInfoPresenterDependencyTestMock: DeviceInfoPresenterDependency {
     var logDriver: LogDriverProtocolMock = .init()
 
-    var localDataStore: LocalDataStoreProtocolMock = .init()
+    var localDataStoreDriver: LocalDataStoreDriverProtocolMock = .init()
     var deviceInfoDriver: DeviceInfoDriverProtocolMock = .init()
     var buildEnvDriver: BuildEnvDriverProtocolMock = .init(buildScheme: .random, buildConfiguration: .random)
 

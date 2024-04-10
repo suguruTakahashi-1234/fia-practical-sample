@@ -26,8 +26,8 @@ public final class AppRootRouterDependencyInjector: AppRootRouterDependency, App
     }
 
     /// Data Store
-    public let cacheDataStore: CacheDataStore
-    public let localDataStore: LocalDataStore
+    public let cacheDataStoreDriver: CacheDataStoreDriver
+    public let localDataStoreDriver: LocalDataStoreDriver
 
     /// Internal Driver
     fileprivate let deviceNameDriver: DeviceNameDriver
@@ -40,7 +40,7 @@ public final class AppRootRouterDependencyInjector: AppRootRouterDependency, App
 
     /// Firenbase Driver
     fileprivate var firebaseSetupDriver: FirebaseSetupDriver<BuildEnvDriver>
-    fileprivate var firebaseRemoteConfigDriver: FirebaseRemoteConfigDriver<CacheDataStore>
+    fileprivate var firebaseRemoteConfigDriver: FirebaseRemoteConfigDriver<CacheDataStoreDriver>
 
     /// Log Driver
     public let logDriver: LogDriver<LogDriverDependencyInjector>
@@ -56,8 +56,8 @@ public final class AppRootRouterDependencyInjector: AppRootRouterDependency, App
         OSLogDriver.initLog()
 
         // DataStore
-        cacheDataStore = CacheDataStore()
-        localDataStore = LocalDataStore()
+        cacheDataStoreDriver = CacheDataStoreDriver()
+        localDataStoreDriver = LocalDataStoreDriver()
 
         // Internal Driver
         deviceNameDriver = DeviceNameDriver()
@@ -72,7 +72,7 @@ public final class AppRootRouterDependencyInjector: AppRootRouterDependency, App
         firebaseSetupDriver = FirebaseSetupDriver(buildEnvDriver: buildEnvDriver)
         // FirebaseApp.configure() を実行しなければ、その他の Firebase 関連の API が使用できずエラーが発生するため
         firebaseSetupDriver.configure()
-        firebaseRemoteConfigDriver = FirebaseRemoteConfigDriver(cacheDataStore: cacheDataStore)
+        firebaseRemoteConfigDriver = FirebaseRemoteConfigDriver(cacheDataStoreDriver: cacheDataStoreDriver)
 
         // Setup LogDriver
         osLogDriver = OSLogDriver()

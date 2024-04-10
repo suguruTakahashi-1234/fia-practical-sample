@@ -13,7 +13,7 @@ struct ProductionApp: App {
     private let router: AppRootRouter<AppRootRouterDependencyInjector>
 
     init() {
-        LocalDataStore.allClearForFirstLaunchUITest()
+        LocalDataStoreDriver.allClearForFirstLaunchUITest()
         router = AppRootRouter(dependency: AppRootRouterDependencyInjector(buildScheme: .production))
     }
 

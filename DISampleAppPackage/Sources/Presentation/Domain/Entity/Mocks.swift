@@ -12,20 +12,13 @@ import SwiftUI
 
 public final class DebugMenuPresenterDependencyMock: DebugMenuPresenterDependency {
     public init() { }
-    public init(localDataStore: LocalDataStoreProtocolAT, logDriver: LogDriverProtocolAT) {
-        self._localDataStore = localDataStore
+    public init(logDriver: LogDriverProtocolAT, localDataStoreDriver: LocalDataStoreDriverProtocolAT) {
         self._logDriver = logDriver
+        self._localDataStoreDriver = localDataStoreDriver
     }
 
-    public typealias LocalDataStoreProtocolAT = LocalDataStore
     public typealias LogDriverProtocolAT = LogDriver<LogDriverDependencyMock>
-
-    public private(set) var localDataStoreSetCallCount = 0
-    private var _localDataStore: LocalDataStoreProtocolAT!  { didSet { localDataStoreSetCallCount += 1 } }
-    public var localDataStore: LocalDataStoreProtocolAT {
-        get { return _localDataStore }
-        set { _localDataStore = newValue }
-    }
+    public typealias LocalDataStoreDriverProtocolAT = LocalDataStoreDriver
 
     public private(set) var logDriverSetCallCount = 0
     private var _logDriver: LogDriverProtocolAT!  { didSet { logDriverSetCallCount += 1 } }
@@ -33,28 +26,28 @@ public final class DebugMenuPresenterDependencyMock: DebugMenuPresenterDependenc
         get { return _logDriver }
         set { _logDriver = newValue }
     }
+
+    public private(set) var localDataStoreDriverSetCallCount = 0
+    private var _localDataStoreDriver: LocalDataStoreDriverProtocolAT!  { didSet { localDataStoreDriverSetCallCount += 1 } }
+    public var localDataStoreDriver: LocalDataStoreDriverProtocolAT {
+        get { return _localDataStoreDriver }
+        set { _localDataStoreDriver = newValue }
+    }
 }
 
 public final class DeviceInfoPresenterDependencyMock: DeviceInfoPresenterDependency {
     public init() { }
-    public init(localDataStore: LocalDataStoreProtocolAT, logDriver: LogDriverProtocolAT, buildEnvDriver: BuildEnvDriverProtocolAT, deviceInfoDriver: DeviceInfoDriverProtocolAT, clipboardDriver: ClipboardDriverProtocolAT) {
-        self._localDataStore = localDataStore
+    public init(logDriver: LogDriverProtocolAT, buildEnvDriver: BuildEnvDriverProtocolAT, localDataStoreDriver: LocalDataStoreDriverProtocolAT, deviceInfoDriver: DeviceInfoDriverProtocolAT, clipboardDriver: ClipboardDriverProtocolAT) {
         self._logDriver = logDriver
         self._buildEnvDriver = buildEnvDriver
+        self._localDataStoreDriver = localDataStoreDriver
         self._deviceInfoDriver = deviceInfoDriver
         self._clipboardDriver = clipboardDriver
     }
 
-    public typealias LocalDataStoreProtocolAT = LocalDataStore
     public typealias LogDriverProtocolAT = LogDriver<LogDriverDependencyMock>
     public typealias BuildEnvDriverProtocolAT = BuildEnvDriverProtocolMock
-
-    public private(set) var localDataStoreSetCallCount = 0
-    private var _localDataStore: LocalDataStoreProtocolAT!  { didSet { localDataStoreSetCallCount += 1 } }
-    public var localDataStore: LocalDataStoreProtocolAT {
-        get { return _localDataStore }
-        set { _localDataStore = newValue }
-    }
+    public typealias LocalDataStoreDriverProtocolAT = LocalDataStoreDriver
 
     public private(set) var logDriverSetCallCount = 0
     private var _logDriver: LogDriverProtocolAT!  { didSet { logDriverSetCallCount += 1 } }
@@ -68,6 +61,13 @@ public final class DeviceInfoPresenterDependencyMock: DeviceInfoPresenterDepende
     public var buildEnvDriver: BuildEnvDriverProtocolAT {
         get { return _buildEnvDriver }
         set { _buildEnvDriver = newValue }
+    }
+
+    public private(set) var localDataStoreDriverSetCallCount = 0
+    private var _localDataStoreDriver: LocalDataStoreDriverProtocolAT!  { didSet { localDataStoreDriverSetCallCount += 1 } }
+    public var localDataStoreDriver: LocalDataStoreDriverProtocolAT {
+        get { return _localDataStoreDriver }
+        set { _localDataStoreDriver = newValue }
     }
     public typealias DeviceInfoDriverProtocolAT = DeviceInfoDriver<DeviceNameDriverProtocolMock>
 
@@ -105,26 +105,26 @@ public final class HomeTabPresenterDependencyMock: HomeTabPresenterDependency {
 
 public final class OnboardingPresenterDependencyMock: OnboardingPresenterDependency {
     public init() { }
-    public init(localDataStore: LocalDataStoreProtocolAT, logDriver: LogDriverProtocolAT) {
-        self._localDataStore = localDataStore
+    public init(logDriver: LogDriverProtocolAT, localDataStoreDriver: LocalDataStoreDriverProtocolAT) {
         self._logDriver = logDriver
+        self._localDataStoreDriver = localDataStoreDriver
     }
 
-    public typealias LocalDataStoreProtocolAT = LocalDataStore
     public typealias LogDriverProtocolAT = LogDriver<LogDriverDependencyMock>
-
-    public private(set) var localDataStoreSetCallCount = 0
-    private var _localDataStore: LocalDataStoreProtocolAT!  { didSet { localDataStoreSetCallCount += 1 } }
-    public var localDataStore: LocalDataStoreProtocolAT {
-        get { return _localDataStore }
-        set { _localDataStore = newValue }
-    }
+    public typealias LocalDataStoreDriverProtocolAT = LocalDataStoreDriver
 
     public private(set) var logDriverSetCallCount = 0
     private var _logDriver: LogDriverProtocolAT!  { didSet { logDriverSetCallCount += 1 } }
     public var logDriver: LogDriverProtocolAT {
         get { return _logDriver }
         set { _logDriver = newValue }
+    }
+
+    public private(set) var localDataStoreDriverSetCallCount = 0
+    private var _localDataStoreDriver: LocalDataStoreDriverProtocolAT!  { didSet { localDataStoreDriverSetCallCount += 1 } }
+    public var localDataStoreDriver: LocalDataStoreDriverProtocolAT {
+        get { return _localDataStoreDriver }
+        set { _localDataStoreDriver = newValue }
     }
 }
 
@@ -155,19 +155,19 @@ public final class SettingPresenterDependencyMock: SettingPresenterDependency {
 
 public final class TaskListPresenterDependencyMock: TaskListPresenterDependency {
     public init() { }
-    public init(cacheDataStore: CacheDataStoreProtocolAT, logDriver: LogDriverProtocolAT) {
-        self._cacheDataStore = cacheDataStore
+    public init(cacheDataStoreDriver: CacheDataStoreDriverProtocolAT, logDriver: LogDriverProtocolAT) {
+        self._cacheDataStoreDriver = cacheDataStoreDriver
         self._logDriver = logDriver
     }
 
-    public typealias CacheDataStoreProtocolAT = CacheDataStoreProtocolMock
+    public typealias CacheDataStoreDriverProtocolAT = CacheDataStoreDriverProtocolMock
     public typealias LogDriverProtocolAT = LogDriver<LogDriverDependencyMock>
 
-    public private(set) var cacheDataStoreSetCallCount = 0
-    private var _cacheDataStore: CacheDataStoreProtocolAT!  { didSet { cacheDataStoreSetCallCount += 1 } }
-    public var cacheDataStore: CacheDataStoreProtocolAT {
-        get { return _cacheDataStore }
-        set { _cacheDataStore = newValue }
+    public private(set) var cacheDataStoreDriverSetCallCount = 0
+    private var _cacheDataStoreDriver: CacheDataStoreDriverProtocolAT!  { didSet { cacheDataStoreDriverSetCallCount += 1 } }
+    public var cacheDataStoreDriver: CacheDataStoreDriverProtocolAT {
+        get { return _cacheDataStoreDriver }
+        set { _cacheDataStoreDriver = newValue }
     }
 
     public private(set) var logDriverSetCallCount = 0
@@ -178,7 +178,7 @@ public final class TaskListPresenterDependencyMock: TaskListPresenterDependency 
     }
 }
 
-public final class CacheDataStoreProtocolMock: CacheDataStoreProtocol {
+public final class CacheDataStoreDriverProtocolMock: CacheDataStoreDriverProtocol {
     public init() { }
     public init(remoteConfigUpdateErrorSubjecter: PassthroughSubject<AppError, Never>, appInfoSubjecter: CurrentValueSubject<AppInfo, Never>, variantTestSubjecter: CurrentValueSubject<VariantTest, Never>) {
         self._remoteConfigUpdateErrorSubjecter = remoteConfigUpdateErrorSubjecter
@@ -211,33 +211,26 @@ public final class CacheDataStoreProtocolMock: CacheDataStoreProtocol {
 
 public final class AppRootRouterDependencyMock: AppRootRouterDependency {
     public init() { }
-    public init(cacheDataStore: CacheDataStoreProtocolAT, localDataStore: LocalDataStoreProtocolAT, logDriver: LogDriverProtocolAT, buildEnvDriver: BuildEnvDriverProtocolAT, libraryLicenseDriver: LibraryLicenseDriverProtocolAT, deviceInfoDriver: DeviceInfoDriverProtocolAT, clipboardDriver: ClipboardDriverProtocolAT) {
-        self._cacheDataStore = cacheDataStore
-        self._localDataStore = localDataStore
+    public init(cacheDataStoreDriver: CacheDataStoreDriverProtocolAT, logDriver: LogDriverProtocolAT, buildEnvDriver: BuildEnvDriverProtocolAT, localDataStoreDriver: LocalDataStoreDriverProtocolAT, libraryLicenseDriver: LibraryLicenseDriverProtocolAT, deviceInfoDriver: DeviceInfoDriverProtocolAT, clipboardDriver: ClipboardDriverProtocolAT) {
+        self._cacheDataStoreDriver = cacheDataStoreDriver
         self._logDriver = logDriver
         self._buildEnvDriver = buildEnvDriver
+        self._localDataStoreDriver = localDataStoreDriver
         self._libraryLicenseDriver = libraryLicenseDriver
         self._deviceInfoDriver = deviceInfoDriver
         self._clipboardDriver = clipboardDriver
     }
 
-    public typealias CacheDataStoreProtocolAT = CacheDataStoreProtocolMock
-    public typealias LocalDataStoreProtocolAT = LocalDataStore
+    public typealias CacheDataStoreDriverProtocolAT = CacheDataStoreDriverProtocolMock
     public typealias LogDriverProtocolAT = LogDriver<LogDriverDependencyMock>
     public typealias BuildEnvDriverProtocolAT = BuildEnvDriverProtocolMock
+    public typealias LocalDataStoreDriverProtocolAT = LocalDataStoreDriver
 
-    public private(set) var cacheDataStoreSetCallCount = 0
-    private var _cacheDataStore: CacheDataStoreProtocolAT!  { didSet { cacheDataStoreSetCallCount += 1 } }
-    public var cacheDataStore: CacheDataStoreProtocolAT {
-        get { return _cacheDataStore }
-        set { _cacheDataStore = newValue }
-    }
-
-    public private(set) var localDataStoreSetCallCount = 0
-    private var _localDataStore: LocalDataStoreProtocolAT!  { didSet { localDataStoreSetCallCount += 1 } }
-    public var localDataStore: LocalDataStoreProtocolAT {
-        get { return _localDataStore }
-        set { _localDataStore = newValue }
+    public private(set) var cacheDataStoreDriverSetCallCount = 0
+    private var _cacheDataStoreDriver: CacheDataStoreDriverProtocolAT!  { didSet { cacheDataStoreDriverSetCallCount += 1 } }
+    public var cacheDataStoreDriver: CacheDataStoreDriverProtocolAT {
+        get { return _cacheDataStoreDriver }
+        set { _cacheDataStoreDriver = newValue }
     }
 
     public private(set) var logDriverSetCallCount = 0
@@ -253,6 +246,13 @@ public final class AppRootRouterDependencyMock: AppRootRouterDependency {
     public var buildEnvDriver: BuildEnvDriverProtocolAT {
         get { return _buildEnvDriver }
         set { _buildEnvDriver = newValue }
+    }
+
+    public private(set) var localDataStoreDriverSetCallCount = 0
+    private var _localDataStoreDriver: LocalDataStoreDriverProtocolAT!  { didSet { localDataStoreDriverSetCallCount += 1 } }
+    public var localDataStoreDriver: LocalDataStoreDriverProtocolAT {
+        get { return _localDataStoreDriver }
+        set { _localDataStoreDriver = newValue }
     }
     public typealias DeviceInfoDriverProtocolAT = DeviceInfoDriver<DeviceNameDriverProtocolMock>
 
@@ -456,19 +456,19 @@ public final class LibraryLicenseDriverProtocolMock: LibraryLicenseDriverProtoco
     public var licenseList: [License] = [License]() { didSet { licenseListSetCallCount += 1 } }
 }
 
-public final class LocalDataStoreProviderMock: LocalDataStoreProvider {
+public final class LocalDataStoreDriverProviderMock: LocalDataStoreDriverProvider {
     public init() { }
-    public init(localDataStore: LocalDataStoreProtocolAT) {
-        self._localDataStore = localDataStore
+    public init(localDataStoreDriver: LocalDataStoreDriverProtocolAT) {
+        self._localDataStoreDriver = localDataStoreDriver
     }
 
-    public typealias LocalDataStoreProtocolAT = LocalDataStore
+    public typealias LocalDataStoreDriverProtocolAT = LocalDataStoreDriver
 
-    public private(set) var localDataStoreSetCallCount = 0
-    private var _localDataStore: LocalDataStoreProtocolAT!  { didSet { localDataStoreSetCallCount += 1 } }
-    public var localDataStore: LocalDataStoreProtocolAT {
-        get { return _localDataStore }
-        set { _localDataStore = newValue }
+    public private(set) var localDataStoreDriverSetCallCount = 0
+    private var _localDataStoreDriver: LocalDataStoreDriverProtocolAT!  { didSet { localDataStoreDriverSetCallCount += 1 } }
+    public var localDataStoreDriver: LocalDataStoreDriverProtocolAT {
+        get { return _localDataStoreDriver }
+        set { _localDataStoreDriver = newValue }
     }
 }
 
@@ -537,7 +537,7 @@ public final class LogDriverProviderMock: LogDriverProvider {
     }
 }
 
-public final class LocalDataStoreProtocolMock: LocalDataStoreProtocol {
+public final class LocalDataStoreDriverProtocolMock: LocalDataStoreDriverProtocol {
     public init() { }
     public init(launchAppCount: Int = 0, isCompletedOnboarding: Bool = false, apnsToken: Data? = nil) {
         self.launchAppCount = launchAppCount
@@ -571,26 +571,26 @@ public final class LocalDataStoreProtocolMock: LocalDataStoreProtocol {
 
 public final class AppRootPresenterDependencyMock: AppRootPresenterDependency {
     public init() { }
-    public init(localDataStore: LocalDataStoreProtocolAT, logDriver: LogDriverProtocolAT) {
-        self._localDataStore = localDataStore
+    public init(logDriver: LogDriverProtocolAT, localDataStoreDriver: LocalDataStoreDriverProtocolAT) {
         self._logDriver = logDriver
+        self._localDataStoreDriver = localDataStoreDriver
     }
 
-    public typealias LocalDataStoreProtocolAT = LocalDataStore
     public typealias LogDriverProtocolAT = LogDriver<LogDriverDependencyMock>
-
-    public private(set) var localDataStoreSetCallCount = 0
-    private var _localDataStore: LocalDataStoreProtocolAT!  { didSet { localDataStoreSetCallCount += 1 } }
-    public var localDataStore: LocalDataStoreProtocolAT {
-        get { return _localDataStore }
-        set { _localDataStore = newValue }
-    }
+    public typealias LocalDataStoreDriverProtocolAT = LocalDataStoreDriver
 
     public private(set) var logDriverSetCallCount = 0
     private var _logDriver: LogDriverProtocolAT!  { didSet { logDriverSetCallCount += 1 } }
     public var logDriver: LogDriverProtocolAT {
         get { return _logDriver }
         set { _logDriver = newValue }
+    }
+
+    public private(set) var localDataStoreDriverSetCallCount = 0
+    private var _localDataStoreDriver: LocalDataStoreDriverProtocolAT!  { didSet { localDataStoreDriverSetCallCount += 1 } }
+    public var localDataStoreDriver: LocalDataStoreDriverProtocolAT {
+        get { return _localDataStoreDriver }
+        set { _localDataStoreDriver = newValue }
     }
 }
 
@@ -628,23 +628,16 @@ public final class DebugShortcutViewListPresenterDependencyMock: DebugShortcutVi
 
 public final class DeviceInfoInteractorDependencyMock: DeviceInfoInteractorDependency {
     public init() { }
-    public init(localDataStore: LocalDataStoreProtocolAT, logDriver: LogDriverProtocolAT, buildEnvDriver: BuildEnvDriverProtocolAT, deviceInfoDriver: DeviceInfoDriverProtocolAT) {
-        self._localDataStore = localDataStore
+    public init(logDriver: LogDriverProtocolAT, buildEnvDriver: BuildEnvDriverProtocolAT, localDataStoreDriver: LocalDataStoreDriverProtocolAT, deviceInfoDriver: DeviceInfoDriverProtocolAT) {
         self._logDriver = logDriver
         self._buildEnvDriver = buildEnvDriver
+        self._localDataStoreDriver = localDataStoreDriver
         self._deviceInfoDriver = deviceInfoDriver
     }
 
-    public typealias LocalDataStoreProtocolAT = LocalDataStore
     public typealias LogDriverProtocolAT = LogDriver<LogDriverDependencyMock>
     public typealias BuildEnvDriverProtocolAT = BuildEnvDriverProtocolMock
-
-    public private(set) var localDataStoreSetCallCount = 0
-    private var _localDataStore: LocalDataStoreProtocolAT!  { didSet { localDataStoreSetCallCount += 1 } }
-    public var localDataStore: LocalDataStoreProtocolAT {
-        get { return _localDataStore }
-        set { _localDataStore = newValue }
-    }
+    public typealias LocalDataStoreDriverProtocolAT = LocalDataStoreDriver
 
     public private(set) var logDriverSetCallCount = 0
     private var _logDriver: LogDriverProtocolAT!  { didSet { logDriverSetCallCount += 1 } }
@@ -658,6 +651,13 @@ public final class DeviceInfoInteractorDependencyMock: DeviceInfoInteractorDepen
     public var buildEnvDriver: BuildEnvDriverProtocolAT {
         get { return _buildEnvDriver }
         set { _buildEnvDriver = newValue }
+    }
+
+    public private(set) var localDataStoreDriverSetCallCount = 0
+    private var _localDataStoreDriver: LocalDataStoreDriverProtocolAT!  { didSet { localDataStoreDriverSetCallCount += 1 } }
+    public var localDataStoreDriver: LocalDataStoreDriverProtocolAT {
+        get { return _localDataStoreDriver }
+        set { _localDataStoreDriver = newValue }
     }
     public typealias DeviceInfoDriverProtocolAT = DeviceInfoDriver<DeviceNameDriverProtocolMock>
 

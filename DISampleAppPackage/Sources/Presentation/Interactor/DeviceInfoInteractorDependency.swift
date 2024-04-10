@@ -3,10 +3,11 @@
 //  Copyright sugurutakahashi. All rights reserved.
 //
 
+import DomainLayer
 import Foundation
 
 /// @mockable(typealias: DeviceInfoDriverProtocolAT = DeviceInfoDriver<DeviceNameDriverProtocolMock>)
-public protocol DeviceInfoUseCaseDependency: LogDriverProvider, LocalDataStoreProvider, BuildEnvDriverProvider {
+public protocol DeviceInfoInteractorDependency: LogDriverProvider, LocalDataStoreProvider, BuildEnvDriverProvider {
     associatedtype DeviceInfoDriverProtocolAT: DeviceInfoDriverProtocol
 
     var deviceInfoDriver: DeviceInfoDriverProtocolAT { get }

@@ -1,5 +1,5 @@
 
-English | [日本語](README.md)
+[日本語](./README.md) | English
 
 # FITA Sample App
 
@@ -87,13 +87,13 @@ $ cd DISample
 
 #### Setup
 
-Running `make setup` command will apply the [Mint](https://github.com/yonaskolb/Mint) and [githooks](https://git-scm.com/docs/githooks) settings, then open `.xcworkspace` and start Xcode.
+The following `make setup` command will apply the settings in [Mint](https://github.com/yonaskolb/Mint) and [githooks](https://git-scm.com/docs/githooks) and open `. xcworkspace` and Xcode will be launched.
 
 ```shell
 $ make setup
 ```
 
-The process being executed by `make setup` is described in the [Makefile](Makefile), and `make help` will give you a list of make commands.
+The process that `make setup` executes is described in [Makefile](./Makefile), and a list of defined make commands is displayed by running `make help`.
 
 ## Architecture
 
@@ -178,13 +178,13 @@ Currently, Xcode Cloud configuration supports only GUI operations, and configura
 
 Thank you for your interest in contributing! 🌟
 
-Please check out our [CONTRIBUTING](CONTRIBUTING.md) and [CODE_OF_CONDUCT](CODE_OF_CONDUCT.md) for guidelines on how to contribute.
+Please check out our [CONTRIBUTING](./CONTRIBUTING.md) and [CODE_OF_CONDUCT](./CODE_OF_CONDUCT.md) for guidelines on how to contribute.
 
 ## License
 
 [![GitHub license](https://img.shields.io/github/license/suguruTakahashi-1234/DISample)](https://github.com/suguruTakahashi-1234/DISample/blob/main/LICENSE.md)
 
-See the [LICENSE](LICENSE.md) file for license rights and limitations (MIT).
+See the [LICENSE](./LICENSE.md) file for license rights and limitations (MIT).
 
 ## Contact
 

@@ -7,7 +7,7 @@ import DomainLayer
 import Foundation
 import Testing
 
-struct LocalDataStoreTest {
+struct LocalDataStoreDriverTest {
     var localDataStoreDriver: LocalDataStoreDriver!
 
     init() {

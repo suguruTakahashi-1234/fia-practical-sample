@@ -181,7 +181,7 @@ enum TargetType: CaseIterable {
 }
 
 enum TestTargetType: CaseIterable {
-    case frameworkTest
+    case driverTest
     case interactorTest
     case presenterTest
     case viewSnapshotTest
@@ -333,7 +333,7 @@ extension TargetType {
 extension TestTargetType {
     var dependencyLibrary: DependencyLibrary {
         switch self {
-        case .frameworkTest:
+        case .driverTest:
             .init(FrameworkTargetType.allCases.map { TargetType.framework($0).dependency } + [
                 .testing,
             ])

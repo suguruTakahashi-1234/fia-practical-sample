@@ -3,7 +3,7 @@ English | [日本語](README.md)
 
 # FITA Sample App
 
-[Framework-Independent Testable Architecture (FITA)](#framework-independent-testable-architecture-fita) を採用した iOS サンプルアプリです。
+This is a sample iOS App that adopts the [Framework-Independent Testable Architecture (FITA)](#framework-independent-testable-architecture-fita).
 
 #### Repository About
 [![GitHub license](https://img.shields.io/github/license/suguruTakahashi-1234/DISample)](https://github.com/suguruTakahashi-1234/DISample/blob/main/LICENSE.md)

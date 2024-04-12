@@ -19,10 +19,12 @@ public enum DebugShortcutViewType {
 @MainActor
 public struct DebugShortcutViewListView<Dependency: AppRootRouterDependency>: View {
     private let router: AppRootRouter<Dependency>
+    private let debugRouterType: DebugRouterType
     @State private var presenter: DebugShortcutViewListPresenter<Dependency>
 
-    public init(router: AppRootRouter<Dependency>) {
+    public init(router: AppRootRouter<Dependency>, debugRouterType: DebugRouterType) {
         self.router = router
+        self.debugRouterType = debugRouterType
         presenter = DebugShortcutViewListPresenter(dependency: router.dependency)
     }
 
@@ -38,7 +40,7 @@ public struct DebugShortcutViewListView<Dependency: AppRootRouterDependency>: Vi
                 }
             }
         }
-        .navigationTitle(String(localized: "画面一覧", bundle: .module))
+        .navigationTitle(String(localized: "画面一覧 - \(debugRouterType.description)", bundle: .module))
         .task {
             await presenter.onAppear()
         }
@@ -65,7 +67,7 @@ private extension DebugShortcutViewType {
         case .onboarding:
             String(localized: "オンボーディング", bundle: .module)
         case .licenseList:
-            String(localized: "ライセンス", bundle: .module)
+            String(localized: "ライセンス一覧", bundle: .module)
         case .licenseDetail:
             String(localized: "ライセンス詳細", bundle: .module)
         case .taskList:
@@ -117,13 +119,11 @@ private extension DebugShortcutViewType {
 import PreviewSnapshots
 
 struct DebugShortcutViewListView_Previews: PreviewProvider, SnapshotTestable {
-    static var snapshots: PreviewSnapshots<AppRootRouterDependencyMock> {
+    static var snapshots: PreviewSnapshots<DebugRouterType> {
         .init(
-            configurations: [
-                UITestPreviewType.standard.configuration,
-            ],
-            configure: { dependency in
-                DebugShortcutViewListView(router: AppRootRouter(dependency: dependency))
+            configurations: DebugRouterType.allCases.map { debugRouterType in .init(name: debugRouterType.description, state: debugRouterType) },
+            configure: { debugRouterType in
+                DebugShortcutViewListView(router: AppRootRouter.random, debugRouterType: debugRouterType)
                     .navigationStacked()
             }
         )

@@ -37,8 +37,8 @@ public struct SettingView<Dependency: AppRootRouterDependency>: View {
             }
 
             Section("") {
-                NavigationLink {
-                    router.createDebugMenuView()
+                Button {
+                    presenter.onTapDebugMenu()
                 } label: {
                     Label(
                         title: { Text("デバッグメニュー", bundle: .module) },
@@ -49,6 +49,10 @@ public struct SettingView<Dependency: AppRootRouterDependency>: View {
             .isHidden(!presenter.isDebugBuild, remove: true)
         }
         .navigationTitle(String(localized: "設定", bundle: .module))
+        .fullScreenCover(isPresented: $presenter.shouldShowDebugMenu, content: {
+            router.createDebugMenuView()
+                .navigationStacked()
+        })
         .task {
             await presenter.onAppear()
         }

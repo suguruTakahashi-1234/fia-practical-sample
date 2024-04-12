@@ -15,6 +15,10 @@ public final class AppRootRouter<Dependency: AppRootRouterDependency> {
         self.dependency = dependency
     }
 
+    deinit {
+        OSLogDriver.deinitLog()
+    }
+
     public func createAppRootView() -> AppRootView<Dependency> {
         AppRootView(router: self)
     }
@@ -54,8 +58,8 @@ public final class AppRootRouter<Dependency: AppRootRouterDependency> {
         DebugMenuView(router: self)
     }
 
-    public func createDebugShortcutViewListView() -> DebugShortcutViewListView<Dependency> {
-        DebugShortcutViewListView(router: self)
+    public func createDebugShortcutViewListView(debugRouterType: DebugRouterType) -> DebugShortcutViewListView<Dependency> {
+        DebugShortcutViewListView(router: self, debugRouterType: debugRouterType)
     }
 }
 

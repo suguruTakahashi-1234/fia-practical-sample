@@ -20,6 +20,7 @@ public enum SFSymbols: String {
     case rectangleOnRectangle
     case squareAndPencil
     case squareGrid2x2
+    case xmark
 
     public var name: String {
         // SFSymbols の数字の区切りが一定ではないので数字が含まれるものは定義したほうが混乱を防げます

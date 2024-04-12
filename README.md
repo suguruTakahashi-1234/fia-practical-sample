@@ -160,39 +160,33 @@ App UI テスト (XCUITest) と Interactor のテストでは、実際（Actual�
 
 ### Framework-Independent Testable Architecture (FITA)
 
-The Framework-Independent Testable Architecture (FITA) is designed to create a clear separation of concerns among the components of a software application. This is achieved by organizing the code into distinct layers with specific roles:
+フレームワーク独立テスタブル・アーキテクチャー（FITA）は、ソフトウェア・アプリケーションのコンポーネント間で明確な懸念事項の分離を実現するように設計されている。これは、コードを特定の役割を持つ明確なレイヤーに編成することで達成される：
 
-- **Development and Production App Layer**: These are the entry points for the application in development and production environments, respectively. They utilize Dependency Injection (DI) to manage dependencies.
-- **Presentation Layer**: It holds the views and the user interface logic, connecting the UI with the application logic through routers and presenters.
-- **Domain Layer**: This central layer contains the business logic, represented by UseCases and Entities, which are the core functionalities and data models of the application.
-- **Framework Layer**: Includes abstractions over the external framework components the application relies on, allowing for the decoupling from any specific framework.
-- **Third Party Layer**: Encompasses libraries and tools from third-party sources that the application depends on.
-- **DI Layer**: Serves as a bridge for dependency injection, providing the necessary dependencies to different parts of the application.
+- **Domain Layer**: 
+  - **Entity**: 
+  - **DriverProtocol**: 
+  - **UseCase**: 
+- **Presentation Layer**: 
+  - **Router**: 
+  - **View**: 
+  - **Presenter**: 
+  - **Interactor**: 
+  - **xxxxDependency**:
+  - **MockDependencyInjector**: 
+- **Framework Layer**: 
+  - **Driver**: 
+- **Third Party Layer**:
+  - **Third Party Library**:
+- **DI Layer**:
+  - **DependencyInjector**: 
+- **App Layer**: アプリのエントリーポイント
+  - **Development**: 
+  - **Production**: 
 
-In FITA, each layer is independent and interchangeable, which enables testing each part in isolation from the frameworks and external dependencies.
+FITAでは、各レイヤーは独立しており、交換可能であるため、フレームワークや外部依存関係から切り離して各部をテストすることができる。
 
 ![](./asset/drawio/architecture.drawio.svg)
 
-- Domain Layer: 
-  - Entity: 
-  - DriverProtocol: 
-  - UseCase: 
-- Presentation Layer: 
-  - Router: 
-  - View: 
-  - Presenter: 
-  - Interactor: 
-  - xxxxDependency:
-  - MockDependencyInjector: 
-- Framework Layer: 
-  - Driver: 
-- Third Party Layer:
-  - Third Party Library:
-- DI Layer:
-  - DependencyInjector: 
-- App Layer: アプリのエントリーポイント
-  - Development: 
-  - Production: 
 
 ### Advantages and Disadvantages of FITA
 

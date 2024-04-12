@@ -160,18 +160,19 @@ App UI テスト (XCUITest) と Interactor のテストでは、実際（Actual�
 
 ### Framework-Independent Testable Architecture (FITA)
 
-フレームワーク独立テスタブル・アーキテクチャー（FITA）は、ソフトウェア・アプリケーションのコンポーネント間で明確な懸念事項の分離を実現するように設計されている。これは、コードを特定の役割を持つ明確なレイヤーに編成することで達成される：
+Framework-Independent Testable Architecture (FITA) は、ソフトウェア・アプリケーションのコンポーネント間の明確な関心の分離を実現するように設計されています。これは、以下のような特定の役割を持つ明確なレイヤーにコードを編成することで達成されます：
 
 - **Domain Layer**: 
   - **Entity**: 
   - **DriverProtocol**: 
   - **UseCase**: 
 - **Presentation Layer**: 
-  - **Router**: 
-  - **View**: 
-  - **Presenter**: 
   - **Interactor**: 
-  - **xxxxDependency**:
+  - **Presenter**: 
+  - **View**: 
+  - **Router**: 
+  - **MockDriver**: 
+  - **xxxDependency**:
   - **MockDependencyInjector**: 
 - **Framework Layer**: 
   - **Driver**: 
@@ -185,8 +186,17 @@ App UI テスト (XCUITest) と Interactor のテストでは、実際（Actual�
 
 FITAでは、各レイヤーは独立しており、交換可能であるため、フレームワークや外部依存関係から切り離して各部をテストすることができる。
 
-![](./asset/drawio/architecture.drawio.svg)
+<div align="center">
+<img src="./asset/drawio/architecture_outline.drawio.svg"/>
+</div>
 
+<div align="center">
+<img src="./asset/drawio/architecture_circle.drawio.svg"/>
+</div>
+
+<div align="center">
+<img src="./asset/drawio/architecture_detail.drawio.svg"/>
+</div>
 
 ### Advantages and Disadvantages of FITA
 

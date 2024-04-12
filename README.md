@@ -1,9 +1,9 @@
 
 日本語 | [English](./README.en.md)
 
-# FITA Sample App
+# FIDA Sample App
 
-このリポジトリは Swift で実装する iOS アプリの設計に [Framework-Independent Testable Architecture (FITA)](#framework-independent-testable-architecture-fita) を適応したサンプルアプリになります。
+このリポジトリは Swift で実装する iOS アプリの設計に [Framework-Independent Development Architecture (FIDA)](#framework-independent-testable-architecture-FIDA) を適応したサンプルアプリになります。
 
 #### Repository About
 [![GitHub license](https://img.shields.io/github/license/suguruTakahashi-1234/DISample)](https://github.com/suguruTakahashi-1234/DISample/blob/main/LICENSE.md)
@@ -126,7 +126,7 @@ $ make setup
 
 ## アーキテクチャ
 
-[Framework-Independent Testable Architecture (FITA)](#framework-independent-testable-architecture-fita) とは Clean Architecture の設計概念を元に、Swift Package Manager によるマルチモジュール構成でレイヤーごとにモジュールを分割して、適切な依存方向を定めることで、サードパーティー製ライブラリを含んだフレームワーク層に依存しない形で、プレゼンテーション層およびアプリケーション層のテストを実現することを目的としてアーキテクチャになります。
+[Framework-Independent Development Architecture (FIDA)](#framework-independent-testable-architecture-FIDA) とは Clean Architecture の設計概念を元に、Swift Package Manager によるマルチモジュール構成でレイヤーごとにモジュールを分割して、適切な依存方向を定めることで、サードパーティー製ライブラリを含んだフレームワーク層に依存しない形で、プレゼンテーション層およびアプリケーション層のテストを実現することを目的としてアーキテクチャになります。
 
 上記のような Clean Architecture を採用するメリットに加えて、フレームワーク層に依存しないクリーンな層では高速なビルドが可能になり、これは Xcode でのビルドを何度も繰り返す iOS エンジニアにとって、非常に大きな開発体験の向上に繋がります。
 
@@ -158,9 +158,9 @@ Swfit Package Manager の登場によって、[isowords](https://github.com/poin
 App UI テスト (XCUITest) と Interactor のテストでは、実際（Actual）の Dirver を使った場合と Mock の Dirver を使った場合の両方を定義してい
 その比較を行うシチュエーションとしては、API を疎通する画面で不具合が生じた時に、それがアプリ側の原因なのか、API側の原因なのかの、原因切り分けに使うことができ
 
-### Framework-Independent Testable Architecture (FITA)
+### Framework-Independent Development Architecture (FIDA)
 
-Framework-Independent Testable Architecture (FITA) は、ソフトウェア・アプリケーションのコンポーネント間の明確な関心の分離を実現するように設計されています。これは、以下のような特定の役割を持つ明確なレイヤーにコードを編成することで達成されます：
+Framework-Independent Development Architecture (FIDA) は、ソフトウェア・アプリケーションのコンポーネント間の明確な関心の分離を実現するように設計されています。これは、以下のような特定の役割を持つ明確なレイヤーにコードを編成することで達成されます：
 
 - **Domain Layer**: 
   - **Entity**: 
@@ -184,7 +184,7 @@ Framework-Independent Testable Architecture (FITA) は、ソフトウェア・�
   - **Development**: 
   - **Production**: 
 
-FITAでは、各レイヤーは独立しており、交換可能であるため、フレームワークや外部依存関係から切り離して各部をテストすることができる。
+FIDAでは、各レイヤーは独立しており、交換可能であるため、フレームワークや外部依存関係から切り離して各部をテストすることができる。
 
 <div align="center">
 <img src="./asset/drawio/architecture_outline.drawio.svg"/>
@@ -198,9 +198,9 @@ FITAでは、各レイヤーは独立しており、交換可能であるため�
 <img src="./asset/drawio/architecture_detail.drawio.svg"/>
 </div>
 
-### Advantages and Disadvantages of FITA
+### Advantages and Disadvantages of FIDA
 
-このセクションでは、ソフトウェア開発におけるFITAの採用の利点と欠点について議論します。
+このセクションでは、ソフトウェア開発におけるFIDAの採用の利点と欠点について議論します。
 
 #### メリット
 

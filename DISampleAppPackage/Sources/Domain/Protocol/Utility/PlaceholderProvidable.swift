@@ -5,11 +5,11 @@
 
 import Foundation
 
-public protocol PlaceholderProvidable {
+public protocol PlaceholderProvider {
     static var placeholder: Self { get }
 }
 
-public extension Array where Element: PlaceholderProvidable {
+public extension Array where Element: PlaceholderProvider {
     static var placeholders: [Element] {
         [.placeholder]
     }

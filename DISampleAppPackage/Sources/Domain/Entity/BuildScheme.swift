@@ -13,4 +13,4 @@ public enum BuildScheme: Sendable {
 }
 
 /// for test
-extension BuildScheme: RandomValueProvidableForEnum {}
+extension BuildScheme: RandomValueProviderForEnum {}

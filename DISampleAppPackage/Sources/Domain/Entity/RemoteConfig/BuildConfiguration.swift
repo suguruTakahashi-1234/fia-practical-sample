@@ -17,4 +17,4 @@ public extension BuildConfiguration {
     }
 }
 
-extension BuildConfiguration: RandomValueProvidableForEnum {}
+extension BuildConfiguration: RandomValueProviderForEnum {}

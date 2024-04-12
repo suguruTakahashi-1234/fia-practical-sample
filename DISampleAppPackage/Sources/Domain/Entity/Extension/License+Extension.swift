@@ -5,13 +5,13 @@
 
 import Foundation
 
-extension License: RandomValueProvidable {
+extension License: RandomValueProvider {
     public static var random: License {
         .init(id: .random, name: .random, text: .random)
     }
 }
 
-extension License: SizeValueProvidable {
+extension License: SizeValueProvider {
     public static var sizeS: License {
         .init(id: .random, name: .sizeS, text: .sizeS)
     }
@@ -25,7 +25,7 @@ extension License: SizeValueProvidable {
     }
 }
 
-extension License: PlaceholderProvidable {
+extension License: PlaceholderProvider {
     public static var placeholder: License {
         .init(id: .random, name: .placeholder, text: .placeholder)
     }

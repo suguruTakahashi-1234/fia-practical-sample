@@ -5,7 +5,7 @@
 
 import Foundation
 
-extension Int: RandomValueProvidable {
+extension Int: RandomValueProvider {
     public static var random: Int {
         anyInteger
     }
@@ -36,7 +36,7 @@ extension Int: RandomValueProvidable {
     }
 }
 
-extension Int: PlaceholderProvidable {
+extension Int: PlaceholderProvider {
     public static var placeholder: Int {
         999_999
     }

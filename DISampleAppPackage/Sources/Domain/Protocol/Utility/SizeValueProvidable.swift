@@ -5,13 +5,13 @@
 
 import Foundation
 
-public protocol SizeValueProvidable {
+public protocol SizeValueProvider {
     static var sizeS: Self { get }
     static var sizeM: Self { get }
     static var sizeL: Self { get }
 }
 
-public extension Array where Element: SizeValueProvidable {
+public extension Array where Element: SizeValueProvider {
     static var multipleSizeS: [Element] {
         [.sizeS]
     }

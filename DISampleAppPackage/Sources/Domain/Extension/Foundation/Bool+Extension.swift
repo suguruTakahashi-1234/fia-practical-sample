@@ -5,7 +5,7 @@
 
 import Foundation
 
-extension Bool: RandomValueProvidable {
+extension Bool: RandomValueProvider {
     public static var random: Bool {
         .random()
     }

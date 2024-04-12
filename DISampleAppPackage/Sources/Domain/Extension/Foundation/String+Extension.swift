@@ -94,7 +94,7 @@ public extension String {
     }
 }
 
-extension String: RandomValueProvidable {
+extension String: RandomValueProvider {
     public static var random: String {
         random(count: Int.random(in: 0...256))
     }
@@ -114,7 +114,7 @@ extension String: RandomValueProvidable {
     }
 }
 
-extension String: SizeValueProvidable {
+extension String: SizeValueProvider {
     public static var sizeS: String {
         String(localized: "短い文字列", bundle: .module)
     }
@@ -128,7 +128,7 @@ extension String: SizeValueProvidable {
     }
 }
 
-extension String: PlaceholderProvidable {
+extension String: PlaceholderProvider {
     public static var placeholder: String {
         "abc123あいう漢字カナ"
     }

@@ -5,11 +5,11 @@
 
 import Foundation
 
-public protocol SnakeCasedStructNameProvidable {
+public protocol SnakeCasedStructNameProvider {
     var instanceSnakeCasedStructName: String { get }
 }
 
-public extension SnakeCasedStructNameProvidable {
+public extension SnakeCasedStructNameProvider {
     var instanceSnakeCasedStructName: String {
         String(describing: type(of: self)).toSnakeCase
     }

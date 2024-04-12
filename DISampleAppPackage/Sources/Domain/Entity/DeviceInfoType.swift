@@ -26,4 +26,4 @@ public enum DeviceInfoType: Sendable {
 extension DeviceInfoType: CaseIterable {}
 
 /// for test
-extension DeviceInfoType: RandomValueProvidableForEnum {}
+extension DeviceInfoType: RandomValueProviderForEnum {}

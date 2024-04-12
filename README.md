@@ -3,7 +3,7 @@
 
 # FIDA Sample App
 
-このリポジトリは Swift で実装する iOS アプリの設計に [Framework-Independent Development Architecture (FIDA)](#framework-independent-testable-architecture-FIDA) を適応したサンプルアプリになります。
+このリポジトリは Swift で実装する iOS アプリの設計に [Framework-Independent Development Architecture (FIDA)](#framework-independent-development-architecture-fida) を適応したサンプルアプリになります。
 
 #### Repository About
 [![GitHub license](https://img.shields.io/github/license/suguruTakahashi-1234/DISample)](https://github.com/suguruTakahashi-1234/DISample/blob/main/LICENSE.md)
@@ -126,7 +126,7 @@ $ make setup
 
 ## アーキテクチャ
 
-[Framework-Independent Development Architecture (FIDA)](#framework-independent-testable-architecture-FIDA) とは Clean Architecture の設計概念を元に、Swift Package Manager によるマルチモジュール構成でレイヤーごとにモジュールを分割して、適切な依存方向を定めることで、サードパーティー製ライブラリを含んだフレームワーク層に依存しない形で、プレゼンテーション層およびアプリケーション層のテストを実現することを目的としてアーキテクチャになります。
+[Framework-Independent Development Architecture (FIDA)](#framework-independent-development-architecture-FIDA) とは Clean Architecture の設計概念を元に、Swift Package Manager によるマルチモジュール構成でレイヤーごとにモジュールを分割して、適切な依存方向を定めることで、サードパーティー製ライブラリを含んだフレームワーク層に依存しない形で、プレゼンテーション層およびアプリケーション層のテストを実現することを目的としてアーキテクチャになります。
 
 上記のような Clean Architecture を採用するメリットに加えて、フレームワーク層に依存しないクリーンな層では高速なビルドが可能になり、これは Xcode でのビルドを何度も繰り返す iOS エンジニアにとって、非常に大きな開発体験の向上に繋がります。
 

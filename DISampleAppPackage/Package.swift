@@ -247,7 +247,7 @@ let package = Package(
     products: TargetType.allCases.map { $0.product },
     dependencies: [
         // Library
-        .package(url: "https://github.com/firebase/firebase-ios-sdk.git", from: "10.23.1"),
+        .package(url: "https://github.com/firebase/firebase-ios-sdk.git", from: "10.24.0"),
         .package(url: "https://github.com/doordash-oss/swiftui-preview-snapshots", from: "1.1.1"),
         .package(url: "https://github.com/EmergeTools/SnapshotPreviews-iOS", from: "0.8.8"),
         .package(url: "https://github.com/apple/swift-syntax", from: "510.0.1"),

@@ -142,14 +142,14 @@ Swfit Package Manager の登場によって、[isowords](https://github.com/poin
 
 以下は、このプロジェクトで定義しているテストの種類と、そのテストによって担保されるテスト対象を示した表になります。
 
-| テストの種類                |    Driver     | テスト対象: |      |           |            |                  |
-| --------------------------- | :-----------: | :---------: | :--: | :-------: | :--------: | :--------------: |
-|                             |               |   Router    | View | Presenter | Interactor |      Driver      |
-| App UI テスト (XCUITest)    | Actual & Mock |      ◎      |  ◯   |     ◯     |     ◯      | ◯ (using Actual) |
-| View スナップショットテスト |     Mock      |      -      |  ◎   |     ◯     |     ◯      |        -         |
-| Presenter ユニットテスト    |     Mock      |      -      |  -   |     ◎     |     ◯      |        -         |
-| Interactor ユニットテスト   | Actual & Mock |      -      |  -   |     -     |     ◎      | ◯ (using Actual) |
-| Driver ユニットテスト       |    Actual     |      -      |  -   |     -     |     -      |        ◎         |
+| テストの種類              |    Driver     | テスト対象: |      |           |            |                  |
+| ------------------------- | :-----------: | :---------: | :--: | :-------: | :--------: | :--------------: |
+|                           |               |   Router    | View | Presenter | Interactor |      Driver      |
+| App UI テスト (XCUITest)  | Actual / Mock |      ◎      |  ◯   |     ◯     |     ◯      | ◯ / - |
+| スナップショットテスト    |     Mock      |      -      |  ◎   |     ◯     |     ◯      |        -         |
+| Presenter ユニットテスト  |     Mock      |      -      |  -   |     ◎     |     ◯      |        -         |
+| Interactor ユニットテスト | Actual / Mock |      -      |  -   |     -     |     ◎      | ◯ / - |
+| Driver ユニットテスト     |    Actual     |      -      |  -   |     -     |     -      |        ◎         |
 
 ※ ◎ : テスト対象、◯ : 付随的にテストされる対象
 

@@ -33,7 +33,7 @@ jobs:
         BRANCH_NAME=$(echo ${{ github.ref }} | sed 's/refs\/heads\///')
         
         # Print the release note URL
-        RELEASE_NOTE_URL="https://github.com/suguruTakahashi-1234/DISample/releases/new?tag=${{ github.event.inputs.tag }}&title=${{ github.event.inputs.tag }}&target=$BRANCH_NAME&prerelease=1"
+        RELEASE_NOTE_URL="https://github.com/suguruTakahashi-1234/fia-practical-sample/releases/new?tag=${{ github.event.inputs.tag }}&title=${{ github.event.inputs.tag }}&target=$BRANCH_NAME&prerelease=1"
         echo "RELEASE_NOTE_URL=$RELEASE_NOTE_URL" >> $GITHUB_ENV
         echo "Release note URL: $RELEASE_NOTE_URL"
 

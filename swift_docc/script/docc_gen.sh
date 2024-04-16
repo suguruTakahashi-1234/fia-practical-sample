@@ -2,9 +2,9 @@
 
 package_name="DISampleAppPackage"
 target_scheme="DomainLayer"
-hosting_base_path="DISample"
+hosting_base_path="fia-practical-sample"
 output_path="./docs"
-github_pages_root_url="https://sugurutakahashi-1234.github.io/DISample"
+github_pages_root_url="https://sugurutakahashi-1234.github.io/$hosting_base_path"
 
 # TODO: 今は複数ターゲットを指定することができないので、それが可能になったらそのオプションを追加する
 # Ref: https://apple.github.io/swift-docc-plugin/documentation/swiftdoccplugin/publishing-to-github-pages/#Generating-the-Documentation-Site

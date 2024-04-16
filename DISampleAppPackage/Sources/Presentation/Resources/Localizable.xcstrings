@@ -21,12 +21,42 @@
         }
       }
     },
+    "Empty" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Empty"
+          }
+        }
+      }
+    },
     "OK" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "OK"
+          }
+        }
+      }
+    },
+    "Original" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Original"
+          }
+        }
+      }
+    },
+    "Random" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Random"
           }
         }
       }
@@ -191,6 +221,16 @@
         }
       }
     },
+    "ライセンス一覧" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "License List"
+          }
+        }
+      }
+    },
     "ライセンス詳細" : {
       "localizations" : {
         "en" : {
@@ -241,12 +281,12 @@
         }
       }
     },
-    "画面一覧" : {
+    "画面一覧 - %@" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "View List"
+            "value" : "View List- %@"
           }
         }
       }

@@ -5,11 +5,11 @@
 
 import Foundation
 
-public protocol RandomValueProvidable {
+public protocol RandomValueProvider {
     static var random: Self { get }
 }
 
-public extension Array where Element: RandomValueProvidable {
+public extension Array where Element: RandomValueProvider {
     static var randoms: [Element] {
         randoms()
     }

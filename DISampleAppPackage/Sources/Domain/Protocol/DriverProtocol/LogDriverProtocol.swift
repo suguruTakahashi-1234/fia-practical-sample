@@ -28,11 +28,11 @@ public extension LogDriverProtocol {
         logging(.deinit(.init(instanceName: file.fileNameWithoutExtension)), level: level, file: file, function: function, line: line)
     }
 
-    func onAppearLog(level: LogLevel = .info, file: String = #filePath, function: String = #function, line: Int = #line) {
+    func onAppearLog(level: LogLevel = .notice, file: String = #filePath, function: String = #function, line: Int = #line) {
         logging(.appearScreen(.init(screenName: file.lastPathComponent.replacingOccurrences(of: "Presenter.swift", with: "").toSnakeCase)), level: level, file: file, function: function, line: line)
     }
 
-    func onDisappearLog(level: LogLevel = .info, file: String = #filePath, function: String = #function, line: Int = #line) {
+    func onDisappearLog(level: LogLevel = .notice, file: String = #filePath, function: String = #function, line: Int = #line) {
         logging(.disappearScreen(.init(screenName: file.lastPathComponent.replacingOccurrences(of: "Presenter.swift", with: "").toSnakeCase)), level: level, file: file, function: function, line: line)
     }
 

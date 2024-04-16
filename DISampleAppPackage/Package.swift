@@ -181,7 +181,7 @@ enum TargetType: CaseIterable {
 }
 
 enum TestTargetType: CaseIterable {
-    case frameworkTest
+    case driverTest
     case interactorTest
     case presenterTest
     case viewSnapshotTest
@@ -247,7 +247,7 @@ let package = Package(
     products: TargetType.allCases.map { $0.product },
     dependencies: [
         // Library
-        .package(url: "https://github.com/firebase/firebase-ios-sdk.git", from: "10.23.1"),
+        .package(url: "https://github.com/firebase/firebase-ios-sdk.git", from: "10.24.0"),
         .package(url: "https://github.com/doordash-oss/swiftui-preview-snapshots", from: "1.1.1"),
         .package(url: "https://github.com/EmergeTools/SnapshotPreviews-iOS", from: "0.8.8"),
         .package(url: "https://github.com/apple/swift-syntax", from: "510.0.1"),
@@ -333,7 +333,7 @@ extension TargetType {
 extension TestTargetType {
     var dependencyLibrary: DependencyLibrary {
         switch self {
-        case .frameworkTest:
+        case .driverTest:
             .init(FrameworkTargetType.allCases.map { TargetType.framework($0).dependency } + [
                 .testing,
             ])

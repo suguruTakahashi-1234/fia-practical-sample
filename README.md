@@ -1,9 +1,9 @@
 
-English | [日本語](README.ja.md)
+English | [日本語](./README.ja.md)
 
-# FITA Sample App
+# FIA Sample App
 
-This is a sample application that adopts the [Framework-Independent Testable Architecture (FITA)](#framework-independent-testable-architecture-fita).
+This repository is a sample iOS application implemented in Swift, based on the design concept of [Clean Architecture](https://blog.cleancoder.com/uncle-bob/2011/11/22/Clean-Architecture.html) adapted to [Framework-Independent Architecture (FIA)](https://github.com/suguruTakahashi-1234/framework-independent-architecture).
 
 #### Repository About
 [![GitHub license](https://img.shields.io/github/license/suguruTakahashi-1234/DISample)](https://github.com/suguruTakahashi-1234/DISample/blob/main/LICENSE.md)
@@ -76,62 +76,55 @@ This is a sample application that adopts the [Framework-Independent Testable Arc
 - Japanese (default)
 - English
 
+### Technical Elements
+
+- **Architecture**
+  - Adaptation of [Framework-Independent Architecture (FIA)](https://github.com/suguruTakahashi-1234/framework-independent-architecture) based on the design concepts of [Clean Architecture](https://blog.cleancoder.com/uncle-bob/2011/11/22/Clean-Architecture.html)
+  - Multi-Modules, Multi-Projects configuration via Swift Package Manager
+- **Testing**
+  - Writing test code using [swift-testing](https://github.com/apple/swift-testing)
+  - Automated generation of test mocks with [Mockolo](https://github.com/uber/mockolo)
+  - Snapshot testing of SwiftUI Previews with [PreviewSnapshots](https://github.com/doordash-oss/swiftui-preview-snapshots)
+  - Multilingual testing support with TestPlan
+  - UI testing with XCUITest
+- **Swift 6 Support**
+  - Support for Swift Concurrency Checking Complete
+  - Implementation of protocols using `any`/`some`
+    - No use of `any protocol`, implemented entirely with `some protocol`
+- **Embracing New Technologies**
+  - Data binding with [Observation](https://developer.apple.com/documentation/observation)
+  - Multilingual support with [String Catalogs](https://developer.apple.com/documentation/xcode/localizing-and-varying-text-with-a-string-catalog)
+- **Improving Development Experience**
+  - CI/CD with Xcode Cloud
+  - Automatic generation of boilerplate code with [Sourcery](https://github.com/krzysztofzablocki/Sourcery)
+  - Static analysis of unused code with [Periphery](https://github.com/peripheryapp/periphery)
+  - Management of library updates with [Renovate](https://github.com/renovatebot/renovate) ([Dashboard Issue](https://github.com/suguruTakahashi-1234/DISample/issues/38))
+  - Documentation as Code initiative with [Swift-DocC](https://www.swift.org/documentation/docc/)
+  - Hosting of [Swift-DocC](https://www.swift.org/documentation/docc/) with GitHub Actions
+- **Library Management**
+  - Swift Package Manager
+  - [Mint](https://github.com/yonaskolb/Mint) (introduced via Swift Package Manager)
+
 ## Getting Started
 
-#### Clone Repository
+### Clone Repository
 
 ```shell
 $ git clone https://github.com/suguruTakahashi-1234/DISample.git
 $ cd DISample
 ```
 
-#### Setup
+### Setup
 
-Running `make setup` command will apply the [Mint](https://github.com/yonaskolb/Mint) and [githooks](https://git-scm.com/docs/githooks) settings, then open `.xcworkspace` and start Xcode.
+The following `make setup` command will apply the settings in [Mint](https://github.com/yonaskolb/Mint) and [githooks](https://git-scm.com/docs/githooks) and open `. xcworkspace` and Xcode will be launched.
 
 ```shell
 $ make setup
 ```
 
-The process being executed by `make setup` is described in the [Makefile](Makefile), and `make help` will give you a list of make commands.
+The process that `make setup` executes is described in [Makefile](./Makefile), and a list of defined make commands is displayed by running `make help`.
 
-## Architecture
-
-This is a sample application that adopts the [Framework-Independent Testable Architecture (FITA)](#framework-independent-testable-architecture-fita).
-
-### Framework-Independent Testable Architecture (FITA)
-
-The Framework-Independent Testable Architecture (FITA) is designed to create a clear separation of concerns among the components of a software application. This is achieved by organizing the code into distinct layers with specific roles:
-
-- **Development and Production App Layer**: These are the entry points for the application in development and production environments, respectively. They utilize Dependency Injection (DI) to manage dependencies.
-- **Presentation Layer**: It holds the views and the user interface logic, connecting the UI with the application logic through routers and presenters.
-- **Domain Layer**: This central layer contains the business logic, represented by UseCases and Entities, which are the core functionalities and data models of the application.
-- **Framework Layer**: Includes abstractions over the external framework components the application relies on, allowing for the decoupling from any specific framework.
-- **Third Party Layer**: Encompasses libraries and tools from third-party sources that the application depends on.
-- **DI Layer**: Serves as a bridge for dependency injection, providing the necessary dependencies to different parts of the application.
-
-In FITA, each layer is independent and interchangeable, which enables testing each part in isolation from the frameworks and external dependencies.
-
-![](./asset/drawio/architecture.drawio.svg)
-
-### Advantages and Disadvantages of FITA
-
-This section discusses the pros and cons of adopting FITA in software development.
-
-#### Advantages
-
-- Testability: Due to the clear separation of concerns and decoupling from frameworks, units of code can be tested independently, which facilitates comprehensive unit testing and TDD (Test-Driven Development).
-- Maintainability: Changes in one layer typically do not affect others, making the codebase easier to maintain and evolve.
-- Flexibility: Framework-independent design allows for easier migration to different frameworks or technologies as needs change or new technologies emerge.
-- Scalability: Each layer can be scaled independently, allowing for targeted optimizations.
-
-#### Disadvantages
-
-- Complexity: The architecture might introduce additional complexity with multiple layers and abstractions, which could be an overkill for simpler applications.
-- Learning Curve: Developers might require time to get accustomed to the architecture and understand how layers interact.
-- Development Time: It might take longer to set up and develop applications due to the need for defining interfaces and dependency injection mechanisms across layers.
-
-### Swift Package Manager Dependencies Diagrams
+## Swift Package Manager Dependencies Diagrams
 
 By executing the following make command, Mermaid files for Swift Package Manager dependencies will be generated (by [depermaid](https://github.com/daikimat/depermaid), [mermaid-cli](https://github.com/mermaid-js/mermaid-cli)).
 
@@ -139,19 +132,21 @@ By executing the following make command, Mermaid files for Swift Package Manager
 $ make spm-dependencies-mermaid-gen
 ```
 
-#### My Targets
+The generated Mermaid is as follows.
+
+### My Targets
 
 ![My Targets Diagram](./asset/image/my_targets.svg)
 
-#### Including Test Targets
+### Including Test Targets
 
 ![Including Test Targets](./asset/image/test_targets.svg)
 
-#### Including Library
+### Including Library
 
 ![Including Library](./asset/image/library_targets.svg)
 
-#### Including All
+### Including All
 
 ![Including All](./asset/image/all_targets.svg)
 
@@ -159,18 +154,22 @@ $ make spm-dependencies-mermaid-gen
 
 ### Xcode Cloud
 
-Please check Xcode Cloud settings via Xcode or [App Store Connect](https://appstoreconnect.apple.com/).
+The CI/CD environment for this project is built by Xcode Cloud.
 
-Currently, Xcode Cloud configuration supports only GUI operations, and configuration files cannot be exported or managed via GitHub.
+Currently, only GUI operations are officially supported for Xcode Cloud configuration, and configuration files are not exported or managed via GitHub.
 
 ### GitHub Actions
+
+The project has the following GitHub Actions set up to aid development.
 
 - [Host Swift-DocC](https://github.com/suguruTakahashi-1234/DISample/actions/workflows/swift_docc_hosting.yml)
 - [Generate Tag & Release Note](https://github.com/suguruTakahashi-1234/DISample/actions/workflows/tag_and_release_note_gen.yml)
 
 ## Documents
 
-- [Swift-DocC](https://sugurutakahashi-1234.github.io/DISample/documentation/domainlayer/) (Only DomainLayer)
+The GitHub Actions of [Host Swift-DocC](https://github.com/suguruTakahashi-1234/DISample/actions/workflows/swift_docc_hosting.yml) are hosting the Swift-DocC of the domain layer code at the following link.
+
+- [DomainLayer](https://sugurutakahashi-1234.github.io/DISample/documentation/domainlayer/)
 
 ## Contributing
 
@@ -178,13 +177,13 @@ Currently, Xcode Cloud configuration supports only GUI operations, and configura
 
 Thank you for your interest in contributing! 🌟
 
-Please check out our [CONTRIBUTING](CONTRIBUTING.md) and [CODE_OF_CONDUCT](CODE_OF_CONDUCT.md) for guidelines on how to contribute.
+Please check out our [CONTRIBUTING](./CONTRIBUTING.md) and [CODE_OF_CONDUCT](./CODE_OF_CONDUCT.md) for guidelines on how to contribute.
 
 ## License
 
 [![GitHub license](https://img.shields.io/github/license/suguruTakahashi-1234/DISample)](https://github.com/suguruTakahashi-1234/DISample/blob/main/LICENSE.md)
 
-See the [LICENSE](LICENSE.md) file for license rights and limitations (MIT).
+See the [LICENSE](./LICENSE.md) file for license rights and limitations (MIT).
 
 ## Contact
 

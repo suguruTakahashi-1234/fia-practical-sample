@@ -6,6 +6,8 @@ import Foundation
 final class SettingPresenter<Dependency: SettingPresenterDependency> {
     private let dependency: Dependency
 
+    var shouldShowDebugMenu = false
+
     var isDebugBuild: Bool {
         dependency.buildEnvDriver.buildConfiguration.isDebug
     }
@@ -26,5 +28,9 @@ final class SettingPresenter<Dependency: SettingPresenterDependency> {
 
     func onDisappear() {
         dependency.logDriver.onDisappearLog()
+    }
+
+    func onTapDebugMenu() {
+        shouldShowDebugMenu = true
     }
 }

@@ -14,7 +14,7 @@
 
 --ranges no-space # ex) "0...9" を "0 ... 9" としないように設定
 
-# Rule List - https://github.com/nicklockwood/SwiftFormat/blob/0.53.4/Rules.md
+# Rule List - https://github.com/nicklockwood/SwiftFormat/blob/main/Rules.md
 
 # Default Rules (enabled by default)
 

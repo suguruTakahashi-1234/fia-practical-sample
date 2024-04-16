@@ -5,17 +5,17 @@
 
 import Foundation
 
-public protocol RandomValueProvidableForEnum: CaseIterable {
+public protocol RandomValueProviderForEnum: CaseIterable {
     static var random: Self { get }
 }
 
-public extension RandomValueProvidableForEnum {
+public extension RandomValueProviderForEnum {
     static var random: Self {
         allCases.randomElement()!
     }
 }
 
-public extension Array where Element: RandomValueProvidableForEnum {
+public extension Array where Element: RandomValueProviderForEnum {
     static var randomSamples: [Element] {
         randomSamples(count: 5)
     }

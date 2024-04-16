@@ -15,7 +15,7 @@ source_dir="${sourcery_package_path}/Sources/Domain"
 output_driver_dir="${source_dir}/Framework/Driver"
 output_driver_protocol_dir="${source_dir}/Protocol/DriverProtocol"
 output_driver_provider_dir="${source_dir}/Protocol/DriverProvider"
-output_driver_test_dir="${sourcery_package_path}/Tests/FrameworkTest/Driver"
+output_driver_test_dir="${sourcery_package_path}/Tests/DriverTest"
 
 current_user=$(whoami)
 current_date=$(date "+%Y/%m/%d")

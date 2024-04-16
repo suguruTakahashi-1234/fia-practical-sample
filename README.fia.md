@@ -42,7 +42,7 @@ Swift Package Manager におけるモジュールの分割は通常、機能に�
 
 以下のリンクは、FIAのコンセプトを実際のプロジェクトに適用したサンプル・コードを含むリポジトリです。これらの例は、FIA の設計原則をよりよく理解し、自身のプロジェクトに適用するのに役立ちます。
 
-- https://github.com/suguruTakahashi-1234/DISample.git
+- https://github.com/suguruTakahashi-1234/fia-practical-sample.git
 
 ## FIA アーキテクチャの詳細
 
@@ -121,7 +121,7 @@ FIA を実装する過程で遭遇する可能性のある技術的課題を以�
      - XCUITest は、実行時間が長く、また、複数のテストケースの作成や変更があった際のメンテナンス性が悪いです。
      - Xcode Previews は、標準機能でのテスト実行ができず、目視での確認が必要であり、問題があっても自動的には検出されません。
 
-これらの問題に対処するためには [Sourcery](https://github.com/krzysztofzablocki/Sourcery)、[Mockolo](https://github.com/uber/mockolo)、[PreviewSnapshots](https://github.com/doordash-oss/swiftui-preview-snapshots) といったライブラリが有効です。それらのライブラリを採用した具体的な実装例については、[こちらの FIA のサンプルリポジトリ](https://github.com/suguruTakahashi-1234/DISample.git) を参照してください。
+これらの問題に対処するためには [Sourcery](https://github.com/krzysztofzablocki/Sourcery)、[Mockolo](https://github.com/uber/mockolo)、[PreviewSnapshots](https://github.com/doordash-oss/swiftui-preview-snapshots) といったライブラリが有効です。それらのライブラリを採用した具体的な実装例については、[こちらの FIA のサンプルリポジトリ](https://github.com/suguruTakahashi-1234/fia-practical-sample.git) を参照してください。
 
 ## License
 

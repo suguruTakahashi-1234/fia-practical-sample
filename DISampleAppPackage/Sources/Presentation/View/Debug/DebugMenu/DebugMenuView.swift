@@ -34,7 +34,7 @@ extension DebugRouterType: CaseIterable {}
 public struct DebugMenuView<Dependency: AppRootRouterDependency>: View {
     private let router: AppRootRouter<Dependency>
     @State private var presenter: DebugMenuPresenter<Dependency>
-    // issue: 【バグ】Environment(\.dismiss) var dismiss を使用すると View の生成の無限ループが発生する #131 https://github.com/suguruTakahashi-1234/DISample/issues/131
+    // issue: 【バグ】Environment(\.dismiss) var dismiss を使用すると View の生成の無限ループが発生する #131 https://github.com/suguruTakahashi-1234/fia-practical-sample/issues/131
     @Environment(\.presentationMode) var presentationMode
 
     /// このように エントリーポイントではなくても任意の保持したい View での Router の生成は可能である

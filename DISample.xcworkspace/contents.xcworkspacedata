@@ -62,10 +62,10 @@
          location = "group:LICENSE.md">
       </FileRef>
       <FileRef
-         location = "group:README.en.md">
+         location = "group:README.md">
       </FileRef>
       <FileRef
-         location = "group:README.md">
+         location = "group:README.ja.md">
       </FileRef>
    </Group>
 </Workspace>

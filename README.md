@@ -1,7 +1,7 @@
 
 English | [日本語](./README.ja.md)
 
-# FIA Sample App
+# FIA Practical Sample
 
 This repository is a sample iOS application implemented in Swift, based on the design concept of [Clean Architecture](https://blog.cleancoder.com/uncle-bob/2011/11/22/Clean-Architecture.html) adapted to [Framework-Independent Architecture (FIA)](https://github.com/suguruTakahashi-1234/framework-independent-architecture).
 
@@ -187,4 +187,6 @@ See the [LICENSE](./LICENSE.md) file for license rights and limitations (MIT).
 
 ## Contact
 
-[![X URL](https://img.shields.io/twitter/url?url=https%3A%2F%2Ftwitter.com%2Fikuraikuraaaaaa)](https://twitter.com/ikuraikuraaaaaa)
+For questions or collaborations, please feel free to contact us on [![X URL](https://img.shields.io/twitter/url?url=https%3A%2F%2Ftwitter.com%2Fikuraikuraaaaaa)](https://twitter.com/ikuraikuraaaaaa)
+ or [GitHub Issue](https://github.com/suguruTakahashi-1234/fia-practical-sample/issues).
+ 

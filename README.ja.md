@@ -1,7 +1,7 @@
 
 [English](./README.md) | 日本語
 
-# FIA Sample App
+# FIA Practical Sample
 
 このリポジトリは、Swift で実装された iOS アプリの設計に、Clean Architecture の設計概念に基づく [Framework-Independent Architecture (FIA)](https://github.com/suguruTakahashi-1234/framework-independent-architecture) を適用したサンプルアプリです。
 
@@ -187,4 +187,5 @@ $ make spm-dependencies-mermaid-gen
 
 ## Contact
 
-[![X URL](https://img.shields.io/twitter/url?url=https%3A%2F%2Ftwitter.com%2Fikuraikuraaaaaa)](https://twitter.com/ikuraikuraaaaaa)
+ご質問やコラボレーションについては、[![X URL](https://img.shields.io/twitter/url?url=https%3A%2F%2Ftwitter.com%2Fikuraikuraaaaaa)](https://twitter.com/ikuraikuraaaaaa)
+ または GitHub の [Issue](https://github.com/suguruTakahashi-1234/fia-practical-sample/issues) までお気軽にご連絡ください。

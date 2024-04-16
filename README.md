@@ -111,7 +111,7 @@ This repository is a sample iOS application implemented in Swift, based on the d
 
 ```shell
 $ git clone https://github.com/suguruTakahashi-1234/fia-practical-sample.git
-$ cd DISample
+$ cd fia-practical-sample
 ```
 
 ### Setup
@@ -169,7 +169,7 @@ The project has the following GitHub Actions set up to aid development.
 
 The GitHub Actions of [Host Swift-DocC](https://github.com/suguruTakahashi-1234/fia-practical-sample/actions/workflows/swift_docc_hosting.yml) are hosting the Swift-DocC of the domain layer code at the following link.
 
-- [DomainLayer](https://sugurutakahashi-1234.github.io/DISample/documentation/domainlayer/)
+- [DomainLayer](https://sugurutakahashi-1234.github.io/fia-practical-sample/documentation/domainlayer/)
 
 ## Contributing
 
@@ -189,4 +189,3 @@ See the [LICENSE](./LICENSE.md) file for license rights and limitations (MIT).
 
 For questions or collaborations, please feel free to contact us on [![X URL](https://img.shields.io/twitter/url?url=https%3A%2F%2Ftwitter.com%2Fikuraikuraaaaaa)](https://twitter.com/ikuraikuraaaaaa)
  or [GitHub Issue](https://github.com/suguruTakahashi-1234/fia-practical-sample/issues).
- 

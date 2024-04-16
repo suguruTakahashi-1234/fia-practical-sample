@@ -111,7 +111,7 @@
 
 ```shell
 $ git clone https://github.com/suguruTakahashi-1234/fia-practical-sample.git
-$ cd DISample
+$ cd fia-practical-sample
 ```
 
 ### セットアップ
@@ -169,7 +169,7 @@ $ make spm-dependencies-mermaid-gen
 
 [Host Swift-DocC](https://github.com/suguruTakahashi-1234/fia-practical-sample/actions/workflows/swift_docc_hosting.yml) の GitHub Actions によって、以下のリンクにドメイン層のコードの Swift-DocC をホスティングしています。
 
-- [DomainLayer](https://sugurutakahashi-1234.github.io/DISample/documentation/domainlayer/)
+- [DomainLayer](https://sugurutakahashi-1234.github.io/fia-practical-sample/documentation/domainlayer/)
 
 ## Contributing
 

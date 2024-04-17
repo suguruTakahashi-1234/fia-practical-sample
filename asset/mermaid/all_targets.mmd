@@ -6,17 +6,18 @@ flowchart TD
     DeviceFramework-->DeviceKit[[DeviceKit]]
     DeviceFramework-->DomainLayer
     DomainLayer
+    DriverTest{{DriverTest}}-->DeviceFramework
+    DriverTest{{DriverTest}}-->FirebaseFramework
+    DriverTest{{DriverTest}}-->LicenseFramework
+    DriverTest{{DriverTest}}-->Testing[[Testing]]
     FirebaseFramework-->DomainLayer
     FirebaseFramework-->FirebaseAnalytics[[FirebaseAnalytics]]
     FirebaseFramework-->FirebaseCrashlytics[[FirebaseCrashlytics]]
     FirebaseFramework-->FirebaseRemoteConfig[[FirebaseRemoteConfig]]
-    FrameworkTest{{FrameworkTest}}-->DeviceFramework
-    FrameworkTest{{FrameworkTest}}-->FirebaseFramework
-    FrameworkTest{{FrameworkTest}}-->LicenseFramework
-    FrameworkTest{{FrameworkTest}}-->Testing[[Testing]]
     InteractorTest{{InteractorTest}}-->DependencyInjectionLayer
     InteractorTest{{InteractorTest}}-->Testing[[Testing]]
     LicenseFramework-->DomainLayer
+    LicenseFramework-->LicenseList[[LicenseList]]
     PresentationLayer-->DomainLayer
     PresentationLayer-->PreviewSnapshots[[PreviewSnapshots]]
     PresenterTest{{PresenterTest}}-->PresentationLayer

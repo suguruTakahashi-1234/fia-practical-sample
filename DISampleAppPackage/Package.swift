@@ -226,13 +226,14 @@ private extension PackageDescription.Target.Dependency {
     static let swiftSyntaxMacros: Self = .product(name: "SwiftSyntaxMacros", package: "swift-syntax")
     static let swiftCompilerPlugin: Self = .product(name: "SwiftCompilerPlugin", package: "swift-syntax")
     static let deviceKit: Self = .product(name: "DeviceKit", package: "DeviceKit")
+    static let licenseList: Self = .product(name: "LicenseList", package: "LicenseList")
 
     /// Test
     static let testing: Self = .product(name: "Testing", package: "swift-testing")
 }
 
 private extension PackageDescription.Target.PluginUsage {
-    static let licensesPlugin: Self = .plugin(name: "LicensesPlugin", package: "LicensesPlugin")
+    // static let xxxxPlugin: Self = .plugin(name: "XXXX", package: "XXXX")
 }
 
 // MARK: - Package
@@ -252,12 +253,10 @@ let package = Package(
         .package(url: "https://github.com/EmergeTools/SnapshotPreviews-iOS", from: "0.8.8"),
         .package(url: "https://github.com/apple/swift-syntax", from: "510.0.1"),
         .package(url: "https://github.com/devicekit/DeviceKit.git", from: "5.2.2"),
+        .package(url: "https://github.com/cybozu/LicenseList.git", from: "0.6.0"),
 
         // Test
         .package(url: "https://github.com/apple/swift-testing.git", from: "0.7.0"),
-
-        // Plugin
-        .package(url: "https://github.com/maiyama18/LicensesPlugin", from: "0.1.6"),
 
         // for CLI
         .package(url: "https://github.com/yonaskolb/Mint.git", from: "0.17.5"),
@@ -310,8 +309,7 @@ extension TargetType {
         case .framework(.license):
             .init([
                 TargetType.domain.dependency,
-            ], plugins: [
-                .licensesPlugin,
+                .licenseList,
             ])
         case .presentation:
             .init([

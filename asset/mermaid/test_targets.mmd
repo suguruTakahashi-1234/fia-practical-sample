@@ -5,10 +5,10 @@ flowchart TD
     DependencyInjectionLayer-->PresentationLayer
     DeviceFramework-->DomainLayer
     DomainLayer
+    DriverTest{{DriverTest}}-->DeviceFramework
+    DriverTest{{DriverTest}}-->FirebaseFramework
+    DriverTest{{DriverTest}}-->LicenseFramework
     FirebaseFramework-->DomainLayer
-    FrameworkTest{{FrameworkTest}}-->DeviceFramework
-    FrameworkTest{{FrameworkTest}}-->FirebaseFramework
-    FrameworkTest{{FrameworkTest}}-->LicenseFramework
     InteractorTest{{InteractorTest}}-->DependencyInjectionLayer
     LicenseFramework-->DomainLayer
     PresentationLayer-->DomainLayer

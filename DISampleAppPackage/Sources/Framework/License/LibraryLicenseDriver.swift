@@ -5,6 +5,7 @@
 
 import DomainLayer
 import Foundation
+import LicenseList
 
 public final class LibraryLicenseDriver: LibraryLicenseDriverProtocol {
     public init() {
@@ -16,12 +17,12 @@ public final class LibraryLicenseDriver: LibraryLicenseDriverProtocol {
     }
 
     public var licenseList: [License] {
-        LicensesPlugin.licenses.map { License(from: $0) }.filter { !$0.text.isEmpty }
+        Library.libraries.map { License(from: $0) }.filter { !$0.text.isEmpty }
     }
 }
 
 extension License {
-    init(from licensesPluginLicense: LicensesPlugin.License) {
-        self.init(id: licensesPluginLicense.id, name: licensesPluginLicense.name, text: licensesPluginLicense.licenseText ?? "")
+    init(from licenseListLibrary: LicenseList.Library) {
+        self.init(id: licenseListLibrary.id.uuidString, name: licenseListLibrary.name, text: licenseListLibrary.licenseBody)
     }
 }

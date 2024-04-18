@@ -19,12 +19,12 @@ public enum DebugShortcutViewType {
 @MainActor
 public struct DebugShortcutViewListView<Dependency: AppRootDIContainerDependency>: View {
     private let dependency: Dependency
-    private let debugRouterType: DebugRouterType
+    private let debugDependencyType: DebugDependencyType
     @State private var presenter: DebugShortcutViewListPresenter<Dependency>
 
-    public init(dependency: Dependency, debugRouterType: DebugRouterType) {
+    public init(dependency: Dependency, debugDependencyType: DebugDependencyType) {
         self.dependency = dependency
-        self.debugRouterType = debugRouterType
+        self.debugDependencyType = debugDependencyType
         presenter = DebugShortcutViewListPresenter(dependency: dependency)
     }
 
@@ -40,7 +40,7 @@ public struct DebugShortcutViewListView<Dependency: AppRootDIContainerDependency
                 }
             }
         }
-        .navigationTitle(String(localized: "画面一覧 - \(debugRouterType.description)", bundle: .module))
+        .navigationTitle(String(localized: "画面一覧 - \(debugDependencyType.description)", bundle: .module))
         .task {
             await presenter.onAppear()
         }
@@ -119,11 +119,11 @@ private extension DebugShortcutViewType {
 import PreviewSnapshots
 
 struct DebugShortcutViewListView_Previews: PreviewProvider, SnapshotTestable {
-    static var snapshots: PreviewSnapshots<DebugRouterType> {
+    static var snapshots: PreviewSnapshots<DebugDependencyType> {
         .init(
-            configurations: DebugRouterType.allCases.map { debugRouterType in .init(name: debugRouterType.description, state: debugRouterType) },
-            configure: { debugRouterType in
-                DebugShortcutViewListView(dependency: AppRootDIContainerDependencyMock.random, debugRouterType: debugRouterType)
+            configurations: DebugDependencyType.allCases.map { debugDependencyType in .init(name: debugDependencyType.description, state: debugDependencyType) },
+            configure: { debugDependencyType in
+                DebugShortcutViewListView(dependency: AppRootDIContainerDependencyMock.random, debugDependencyType: debugDependencyType)
                     .navigationStacked()
             }
         )

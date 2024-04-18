@@ -9,7 +9,7 @@ public enum DebugActionType {
     case clearUserDefaults
 }
 
-public enum DebugRouterType {
+public enum DebugDependencyType {
     case original
     case randomMock
     case emptyMock
@@ -26,7 +26,7 @@ public enum DebugRouterType {
     }
 }
 
-extension DebugRouterType: CaseIterable {}
+extension DebugDependencyType: CaseIterable {}
 
 // MARK: - View
 
@@ -50,28 +50,28 @@ public struct DebugMenuView<Dependency: AppRootDIContainerDependency>: View {
         List {
             Section("") {
                 NavigationLink {
-                    DebugShortcutViewListView(dependency: dependency, debugRouterType: DebugRouterType.original)
+                    DebugShortcutViewListView(dependency: dependency, debugDependencyType: DebugDependencyType.original)
                 } label: {
                     Label(
-                        title: { Text("画面一覧 - \(DebugRouterType.original.description)", bundle: .module) },
+                        title: { Text("画面一覧 - \(DebugDependencyType.original.description)", bundle: .module) },
                         icon: { SFSymbols.rectangleOnRectangle.image }
                     )
                 }
 
                 NavigationLink {
-                    DebugShortcutViewListView(dependency: randomMockDependency, debugRouterType: DebugRouterType.randomMock)
+                    DebugShortcutViewListView(dependency: randomMockDependency, debugDependencyType: DebugDependencyType.randomMock)
                 } label: {
                     Label(
-                        title: { Text("画面一覧 - \(DebugRouterType.randomMock.description)", bundle: .module) },
+                        title: { Text("画面一覧 - \(DebugDependencyType.randomMock.description)", bundle: .module) },
                         icon: { SFSymbols.rectangleOnRectangle.image }
                     )
                 }
 
                 NavigationLink {
-                    DebugShortcutViewListView(dependency: emptyMockDependency, debugRouterType: DebugRouterType.emptyMock)
+                    DebugShortcutViewListView(dependency: emptyMockDependency, debugDependencyType: DebugDependencyType.emptyMock)
                 } label: {
                     Label(
-                        title: { Text("画面一覧 - \(DebugRouterType.emptyMock.description)", bundle: .module) },
+                        title: { Text("画面一覧 - \(DebugDependencyType.emptyMock.description)", bundle: .module) },
                         icon: { SFSymbols.rectangleOnRectangle.image }
                     )
                 }

@@ -12,8 +12,8 @@ import Testing
 
 @MainActor
 struct {{ argument.useCaseName }}InteractorTest {
-    var interactor: {{ argument.useCaseName }}Interactor<{{ argument.routerName }}RouterDependencyInjector>!
-    var dependencyInjector: {{ argument.routerName }}RouterDependencyInjector!
+    var interactor: {{ argument.useCaseName }}Interactor<{{ argument.diContainerName }}DIContainer>!
+    var dependencyInjector: {{ argument.diContainerName }}DIContainer!
 
     init() {
         dependencyInjector = .init(buildScheme: .testing)

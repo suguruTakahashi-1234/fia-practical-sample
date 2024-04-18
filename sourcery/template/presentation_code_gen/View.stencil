@@ -9,7 +9,7 @@ import SwiftUI
 // MARK: - View
 
 @MainActor
-public struct {{ argument.screenName }}View<Dependency: {{ argument.routerName }}RouterDependency>: View {
+public struct {{ argument.screenName }}View<Dependency: {{ argument.diContainerName }}DIContainerDependency>: View {
     private let dependency: Dependency
     @State private var presenter: {{ argument.screenName }}Presenter<Dependency>
 
@@ -37,7 +37,7 @@ public struct {{ argument.screenName }}View<Dependency: {{ argument.routerName }
 import PreviewSnapshots
 
 struct {{ argument.screenName }}View_Previews: PreviewProvider, SnapshotTestable {
-    static var snapshots: PreviewSnapshots<{{ argument.routerName }}RouterDependencyMock> {
+    static var snapshots: PreviewSnapshots<{{ argument.diContainerName }}DIContainerDependencyMock> {
         .init(
             configurations: [
                 UITestPreviewType.standard.configuration,

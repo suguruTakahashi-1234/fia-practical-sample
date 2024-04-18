@@ -2,18 +2,18 @@
 
 # 引数の数の確認
 if [ "$#" -ne 2 ]; then
-    echo "Need args: $0 <Router> <View>"
+    echo "Need args: $0 <DI Container> <View>"
     exit 1
 fi
 
 sourcery_package_path="./DISampleAppPackage"
-router_name="$1"
+di_container_name="$1"
 screen_name="$2"
 template_path="./sourcery/template/presentation_code_gen"
 source_dir="${sourcery_package_path}/Sources/Presentation"
 
 output_presentation_dir="${source_dir}/View/${screen_name}"
-output_router_dir="${source_dir}/Rooter/${router_name}"
+output_di_container_dependency_dir="${source_dir}/DIContainerDependency"
 output_test_dir="${sourcery_package_path}/Tests"
 
 current_user=$(whoami)
@@ -34,7 +34,7 @@ remove_sourcery_header() {
 
 # 出力ディレクトリが存在しない場合は作成
 mkdir -p "$output_presentation_dir"
-mkdir -p "$output_router_dir"
+mkdir -p "$output_di_container_dependency_dir"
 mkdir -p "$output_test_dir"
 
 # View 関連
@@ -44,20 +44,20 @@ do
               --sources "$source_dir" \
               --templates "$template_path/${component}.stencil" \
               --output "$output_presentation_dir/${screen_name}${component}.swift" \
-              --args "screenName=$screen_name","routerName=$router_name","userName=$current_user","date=$current_date"
+              --args "screenName=$screen_name","diContainerName=$di_container_name","userName=$current_user","date=$current_date"
 done
 remove_sourcery_header "$output_presentation_dir"
 
-# Router 関連
-for component in "RouterDependency"
+# DIContainer 関連
+for component in "DIContainerDependency"
 do
 swift run --package-path "$sourcery_package_path" mint run sourcery --disableCache \
           --sources "$source_dir" \
           --templates "$template_path/${component}.stencil" \
-          --output "$output_router_dir/${router_name}${component}.swift" \
-          --args "screenName=$screen_name","routerName=$router_name","userName=$current_user","date=$current_date"
+          --output "$output_di_container_dependency_dir/${di_container_name}${component}.swift" \
+          --args "screenName=$screen_name","diContainerName=$di_container_name","userName=$current_user","date=$current_date"
 done
-remove_sourcery_header "$output_router_dir"
+remove_sourcery_header "$output_di_container_dependency_dir"
 
 # Test 関連
 for component in "ViewSnapshotTest" "PresenterTest"
@@ -66,7 +66,7 @@ do
                 --sources "$source_dir" \
                 --templates "$template_path/${component}.stencil" \
                 --output "$output_test_dir/${component}/${screen_name}${component}.swift" \
-                --args "screenName=$screen_name","routerName=$router_name","userName=$current_user","date=$current_date"
+                --args "screenName=$screen_name","diContainerName=$di_container_name","userName=$current_user","date=$current_date"
 done
 remove_sourcery_header "$output_test_dir"
 

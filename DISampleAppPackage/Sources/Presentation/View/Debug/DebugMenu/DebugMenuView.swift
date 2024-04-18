@@ -37,9 +37,9 @@ public struct DebugMenuView<Dependency: AppRootRouterDependency>: View {
     // issue: 【バグ】Environment(\.dismiss) var dismiss を使用すると View の生成の無限ループが発生する #131 https://github.com/suguruTakahashi-1234/fia-practical-sample/issues/131
     @Environment(\.presentationMode) var presentationMode
 
-    /// このように エントリーポイントではなくても任意の保持したい View での Router の生成は可能である
-    private let randomMockRouter = AppRootRouter(dependency: AppRootRouterDependencyMock.random)
-    private let emptyMockRouter = AppRootRouter(dependency: AppRootRouterDependencyMock.empty)
+    /// このように エントリーポイントではなくても任意の保持したい View での dependency の生成は可能である
+    private let randomMockDependency = AppRootRouterDependencyMock.random
+    private let emptyMockDependency = AppRootRouterDependencyMock.empty
 
     public init(dependency: Dependency) {
         self.dependency = dependency
@@ -59,7 +59,7 @@ public struct DebugMenuView<Dependency: AppRootRouterDependency>: View {
                 }
 
                 NavigationLink {
-                    DebugShortcutViewListView(dependency: dependency, debugRouterType: DebugRouterType.randomMock)
+                    DebugShortcutViewListView(dependency: randomMockDependency, debugRouterType: DebugRouterType.randomMock)
                 } label: {
                     Label(
                         title: { Text("画面一覧 - \(DebugRouterType.randomMock.description)", bundle: .module) },
@@ -68,7 +68,7 @@ public struct DebugMenuView<Dependency: AppRootRouterDependency>: View {
                 }
 
                 NavigationLink {
-                    DebugShortcutViewListView(dependency: dependency, debugRouterType: DebugRouterType.emptyMock)
+                    DebugShortcutViewListView(dependency: emptyMockDependency, debugRouterType: DebugRouterType.emptyMock)
                 } label: {
                     Label(
                         title: { Text("画面一覧 - \(DebugRouterType.emptyMock.description)", bundle: .module) },

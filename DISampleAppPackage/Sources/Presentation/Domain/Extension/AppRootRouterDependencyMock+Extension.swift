@@ -7,7 +7,7 @@ import Combine
 import DomainLayer
 import Foundation
 
-public extension AppRootRouterDependencyMock {
+public extension AppRootDIContainerDependencyMock {
     static var buildConfiguration: BuildConfiguration {
         #if DEBUG
             .debug
@@ -22,11 +22,11 @@ public extension AppRootRouterDependencyMock {
         cacheDataStoreDriver: CacheDataStoreDriverProtocolMock = .init(remoteConfigUpdateErrorSubjecter: .init(), appInfoSubjecter: .init(.defaultValue), variantTestSubjecter: .init(.defaultValue)),
         libraryLicenseDriver: LibraryLicenseDriverProtocolMock = .init(),
         deviceInfoDriver: DeviceInfoDriver<DeviceNameDriverProtocolMock> = .init(deviceNameDriver: .init(deviceName: "Mock")),
-        buildEnvDriver: BuildEnvDriverProtocolMock = .init(buildScheme: .development, buildConfiguration: AppRootRouterDependencyMock.buildConfiguration),
+        buildEnvDriver: BuildEnvDriverProtocolMock = .init(buildScheme: .development, buildConfiguration: AppRootDIContainerDependencyMock.buildConfiguration),
         logDriver: LogDriver<LogDriverDependencyMock> = .init(dependency: .init(osLogDriver: OSLogDriver(), firebaseAnalyticsLogDriver: .init(), firebaseCrashlyticsLogDriver: .init())), // OSLogDriver は本物を使う
         clipboardDriver: ClipboardDriver = .init() // テスト時に本物の ClipboardDriver を使ってしまうとペースト許諾のアラートが表示されてテストが実行されないため、Mock に差し替え可能にしているが通常は本物を使う
-    ) -> AppRootRouterDependencyMock {
-        AppRootRouterDependencyMock(
+    ) -> AppRootDIContainerDependencyMock {
+        AppRootDIContainerDependencyMock(
             cacheDataStoreDriver: cacheDataStoreDriver,
             logDriver: logDriver,
             buildEnvDriver: buildEnvDriver,
@@ -37,53 +37,53 @@ public extension AppRootRouterDependencyMock {
         )
     }
 
-    static var empty: AppRootRouterDependencyMock {
+    static var empty: AppRootDIContainerDependencyMock {
         create()
     }
 
-    static var sizeS: AppRootRouterDependencyMock {
+    static var sizeS: AppRootDIContainerDependencyMock {
         create(
             libraryLicenseDriver: .init(licenseList: .multipleSizeS)
         )
     }
 
-    static var sizeM: AppRootRouterDependencyMock {
+    static var sizeM: AppRootDIContainerDependencyMock {
         create(
             libraryLicenseDriver: .init(licenseList: .multipleSizeM)
         )
     }
 
-    static var sizeL: AppRootRouterDependencyMock {
+    static var sizeL: AppRootDIContainerDependencyMock {
         create(
             libraryLicenseDriver: .init(licenseList: .multipleSizeL)
         )
     }
 
-    static var placeholder: AppRootRouterDependencyMock {
+    static var placeholder: AppRootDIContainerDependencyMock {
         create(
             libraryLicenseDriver: .init(licenseList: .placeholders)
         )
     }
 
-    static var releaseBuildConfiguration: AppRootRouterDependencyMock {
+    static var releaseBuildConfiguration: AppRootDIContainerDependencyMock {
         create(
             buildEnvDriver: .init(buildScheme: .development, buildConfiguration: .release)
         )
     }
 
     /// UseDefaults を指定したいケースが多々あるため設置している
-    static func random(localDataStoreDriver: LocalDataStoreDriver = .init()) -> AppRootRouterDependencyMock {
+    static func random(localDataStoreDriver: LocalDataStoreDriver = .init()) -> AppRootDIContainerDependencyMock {
         create(
             localDataStoreDriver: localDataStoreDriver,
             libraryLicenseDriver: .init(licenseList: .randoms)
         )
     }
 
-    static var random: AppRootRouterDependencyMock {
-        AppRootRouterDependencyMock.random()
+    static var random: AppRootDIContainerDependencyMock {
+        AppRootDIContainerDependencyMock.random()
     }
 
-    static var randomForSnapshotTest: AppRootRouterDependencyMock {
+    static var randomForSnapshotTest: AppRootDIContainerDependencyMock {
         let localDataStoreDriver: LocalDataStoreDriver = .init()
 
         // スナップショットテスト時に固定値でないと困るのでlaunchAppCountを毎回リセットする
@@ -92,6 +92,6 @@ public extension AppRootRouterDependencyMock {
         // スナップショットテスト時はオンボーディングは済んでいるものとする
         localDataStoreDriver.isCompletedOnboarding = true
 
-        return AppRootRouterDependencyMock.random(localDataStoreDriver: localDataStoreDriver)
+        return AppRootDIContainerDependencyMock.random(localDataStoreDriver: localDataStoreDriver)
     }
 }

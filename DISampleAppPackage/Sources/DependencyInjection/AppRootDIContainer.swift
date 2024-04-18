@@ -11,7 +11,7 @@ import LicenseFramework
 import PresentationLayer
 
 /// ※ UseCase は Presenter の拡張のため DI 層では保持しない
-public final class AppRootRouterDependencyInjector: AppRootRouterDependency, AppRootRouterDependencyInjectorDependency {
+public final class AppRootDIContainer: AppRootDIContainerDependency {
     /// Internal DependencyInjector
     public final class LogDriverDependencyInjector: LogDriverDependency {
         public let osLogDriver: OSLogDriver
@@ -25,12 +25,12 @@ public final class AppRootRouterDependencyInjector: AppRootRouterDependency, App
         }
     }
 
-    /// Data Store
+    /// Data Store Driver
     public let cacheDataStoreDriver: CacheDataStoreDriver
     public let localDataStoreDriver: LocalDataStoreDriver
 
-    /// Internal Driver
-    fileprivate let deviceNameDriver: DeviceNameDriver
+    /// Private Driver
+    private let deviceNameDriver: DeviceNameDriver
 
     /// Generic Driver
     public let buildEnvDriver: BuildEnvDriver
@@ -39,8 +39,8 @@ public final class AppRootRouterDependencyInjector: AppRootRouterDependency, App
     public let libraryLicenseDriver: LibraryLicenseDriver
 
     /// Firenbase Driver
-    fileprivate var firebaseSetupDriver: FirebaseSetupDriver<BuildEnvDriver>
-    fileprivate var firebaseRemoteConfigDriver: FirebaseRemoteConfigDriver<CacheDataStoreDriver>
+    private var firebaseSetupDriver: FirebaseSetupDriver<BuildEnvDriver>
+    private var firebaseRemoteConfigDriver: FirebaseRemoteConfigDriver<CacheDataStoreDriver>
 
     /// Log Driver
     public let logDriver: LogDriver<LogDriverDependencyInjector>
@@ -55,11 +55,11 @@ public final class AppRootRouterDependencyInjector: AppRootRouterDependency, App
 
         OSLogDriver.initLog()
 
-        // DataStore
+        // Data Store Driver
         cacheDataStoreDriver = CacheDataStoreDriver()
         localDataStoreDriver = LocalDataStoreDriver()
 
-        // Internal Driver
+        // Private Driver
         deviceNameDriver = DeviceNameDriver()
 
         // Public Driver
@@ -97,17 +97,4 @@ public final class AppRootRouterDependencyInjector: AppRootRouterDependency, App
             }
         }
     }
-}
-
-/// ここで使われる Driver は DependencyInjector 内でのみ使用されるため、本来必要のない protocol であるが、private な範囲で使用することを明確化するためにあえて定義している
-/// mockable のアノテーションをつけることで生成される Mock ファイルが Presentation 層のため、依存の関係上 mockable とすることはできない
-/// periphery:ignore
-private protocol AppRootRouterDependencyInjectorDependency: AnyObject {
-    associatedtype DeviceNameDriverProtocolAT = DeviceNameDriverProtocol
-    associatedtype FirebaseSetupDriverProtocolAT: FirebaseSetupDriverProtocol
-    associatedtype FirebaseRemoteConfigDriverProtocolAT: FirebaseRemoteConfigDriverProtocol
-
-    var deviceNameDriver: DeviceNameDriverProtocolAT { get }
-    var firebaseSetupDriver: FirebaseSetupDriverProtocolAT { get }
-    var firebaseRemoteConfigDriver: FirebaseRemoteConfigDriverProtocolAT { get }
 }

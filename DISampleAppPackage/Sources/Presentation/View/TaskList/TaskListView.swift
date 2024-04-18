@@ -5,7 +5,7 @@ import SwiftUI
 // MARK: - View
 
 @MainActor
-public struct TaskListView<Dependency: AppRootRouterDependency>: View {
+public struct TaskListView<Dependency: AppRootDIContainerDependency>: View {
     private let dependency: Dependency
     @State private var presenter: TaskListPresenter<Dependency>
 
@@ -34,7 +34,7 @@ public struct TaskListView<Dependency: AppRootRouterDependency>: View {
 import PreviewSnapshots
 
 struct TaskListView_Previews: PreviewProvider, SnapshotTestable {
-    static var snapshots: PreviewSnapshots<AppRootRouterDependencyMock> {
+    static var snapshots: PreviewSnapshots<AppRootDIContainerDependencyMock> {
         .init(
             configurations: [
                 .init(name: "isEnabledNewFeature-True", state: .create(cacheDataStoreDriver: .init(remoteConfigUpdateErrorSubjecter: .init(), appInfoSubjecter: .init(.defaultValue), variantTestSubjecter: .init(.init(isEnabledNewFeature: true))))),

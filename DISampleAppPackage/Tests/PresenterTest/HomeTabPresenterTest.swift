@@ -9,8 +9,8 @@ import Testing
 
 @MainActor
 struct HomeTabPresenterTest {
-    var presenter: HomeTabPresenter<AppRootRouterDependencyMock>!
-    var dependencyInjector: AppRootRouterDependencyMock!
+    var presenter: HomeTabPresenter<AppRootDIContainerDependencyMock>!
+    var dependencyInjector: AppRootDIContainerDependencyMock!
 
     init() {
         dependencyInjector = .random

@@ -6,8 +6,8 @@ import Testing
 
 @MainActor
 struct TaskListPresenterTest {
-    var presenter: TaskListPresenter<AppRootRouterDependencyMock>!
-    var dependencyInjector: AppRootRouterDependencyMock!
+    var presenter: TaskListPresenter<AppRootDIContainerDependencyMock>!
+    var dependencyInjector: AppRootDIContainerDependencyMock!
 
     init() {
         dependencyInjector = .random

@@ -9,7 +9,7 @@ import SwiftUI
 // MARK: - View
 
 @MainActor
-public struct LicenseListView<Dependency: AppRootRouterDependency>: View {
+public struct LicenseListView<Dependency: AppRootDIContainerDependency>: View {
     private let dependency: Dependency
     @State private var presenter: LicenseListPresenter<Dependency>
 
@@ -58,7 +58,7 @@ public struct LicenseListView<Dependency: AppRootRouterDependency>: View {
 import PreviewSnapshots
 
 struct LicenseListView_Previews: PreviewProvider, SnapshotTestable {
-    static var snapshots: PreviewSnapshots<AppRootRouterDependencyMock> {
+    static var snapshots: PreviewSnapshots<AppRootDIContainerDependencyMock> {
         .init(
             configurations: allSizes + [
                 UITestPreviewType.empty.configuration,

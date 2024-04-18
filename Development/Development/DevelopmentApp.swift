@@ -9,16 +9,16 @@ import SwiftUI
 
 @main
 struct DevelopmentApp: App {
-    private let dependency: AppRootRouterDependencyMock
+    private let dependency: AppRootDIContainerDependencyMock
 
     init() {
         LocalDataStoreDriver.allClearForFirstLaunchUITest()
 
         // UIテスト時に固定値であるとテストしやすいのでプレースホルダーモードにするときはそれ用のMockを差し込む（通常時はランダムな値を生成するMockを差し込む）
         if ProcessInfo.processInfo.arguments.contains(Constants.Arguments.placeholderUITest) {
-            dependency = AppRootRouterDependencyMock.placeholder
+            dependency = AppRootDIContainerDependencyMock.placeholder
         } else {
-            dependency = AppRootRouterDependencyMock.random
+            dependency = AppRootDIContainerDependencyMock.random
         }
     }
 

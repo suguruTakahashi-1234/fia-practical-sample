@@ -12,7 +12,7 @@ public enum OnboardingStep {
 // MARK: - View
 
 @MainActor
-public struct OnboardingView<Dependency: AppRootRouterDependency>: View {
+public struct OnboardingView<Dependency: AppRootDIContainerDependency>: View {
     private let dependency: Dependency
     @State private var presenter: OnboardingPresenter<Dependency>
 
@@ -86,7 +86,7 @@ private extension OnboardingStep {
 import PreviewSnapshots
 
 struct OnboardingView_Previews: PreviewProvider, SnapshotTestable {
-    static var snapshots: PreviewSnapshots<(AppRootRouterDependencyMock, OnboardingStep)> {
+    static var snapshots: PreviewSnapshots<(AppRootDIContainerDependencyMock, OnboardingStep)> {
         .init(
             configurations: OnboardingStep.allCases.map { onboardingStep in .init(name: "\(onboardingStep)".initialUppercased, state: (.random, onboardingStep)) },
             configure: { dependency, onboardingStep in

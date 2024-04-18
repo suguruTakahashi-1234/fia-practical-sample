@@ -5,7 +5,7 @@ import SwiftUI
 // MARK: - View
 
 @MainActor
-public struct SettingView<Dependency: AppRootRouterDependency>: View {
+public struct SettingView<Dependency: AppRootDIContainerDependency>: View {
     private let dependency: Dependency
     @State private var presenter: SettingPresenter<Dependency>
 
@@ -67,7 +67,7 @@ public struct SettingView<Dependency: AppRootRouterDependency>: View {
 import PreviewSnapshots
 
 struct SettingView_Previews: PreviewProvider, SnapshotTestable {
-    static var snapshots: PreviewSnapshots<AppRootRouterDependencyMock> {
+    static var snapshots: PreviewSnapshots<AppRootDIContainerDependencyMock> {
         .init(
             configurations: [
                 UITestPreviewType.standard.configuration,

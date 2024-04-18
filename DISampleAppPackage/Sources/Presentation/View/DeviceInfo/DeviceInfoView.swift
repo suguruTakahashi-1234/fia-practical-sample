@@ -5,7 +5,7 @@ import SwiftUI
 // MARK: - View
 
 @MainActor
-public struct DeviceInfoView<Dependency: AppRootRouterDependency>: View {
+public struct DeviceInfoView<Dependency: AppRootDIContainerDependency>: View {
     private let dependency: Dependency
     @State private var presenter: DeviceInfoPresenter<Dependency>
 
@@ -65,7 +65,7 @@ extension DeviceInfoType: Identifiable {
 import PreviewSnapshots
 
 struct DeviceInfoView_Previews: PreviewProvider, SnapshotTestable {
-    static var snapshots: PreviewSnapshots<AppRootRouterDependencyMock> {
+    static var snapshots: PreviewSnapshots<AppRootDIContainerDependencyMock> {
         .init(
             configurations: [
                 UITestPreviewType.standard.configuration,

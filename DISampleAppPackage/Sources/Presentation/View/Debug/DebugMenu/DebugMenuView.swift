@@ -31,15 +31,15 @@ extension DebugRouterType: CaseIterable {}
 // MARK: - View
 
 @MainActor
-public struct DebugMenuView<Dependency: AppRootRouterDependency>: View {
+public struct DebugMenuView<Dependency: AppRootDIContainerDependency>: View {
     private let dependency: Dependency
     @State private var presenter: DebugMenuPresenter<Dependency>
     // issue: 【バグ】Environment(\.dismiss) var dismiss を使用すると View の生成の無限ループが発生する #131 https://github.com/suguruTakahashi-1234/fia-practical-sample/issues/131
     @Environment(\.presentationMode) var presentationMode
 
     /// このように エントリーポイントではなくても任意の保持したい View での dependency の生成は可能である
-    private let randomMockDependency = AppRootRouterDependencyMock.random
-    private let emptyMockDependency = AppRootRouterDependencyMock.empty
+    private let randomMockDependency = AppRootDIContainerDependencyMock.random
+    private let emptyMockDependency = AppRootDIContainerDependencyMock.empty
 
     public init(dependency: Dependency) {
         self.dependency = dependency
@@ -153,7 +153,7 @@ private extension DebugActionType {
 import PreviewSnapshots
 
 struct DebugMenuView_Previews: PreviewProvider, SnapshotTestable {
-    static var snapshots: PreviewSnapshots<AppRootRouterDependencyMock> {
+    static var snapshots: PreviewSnapshots<AppRootDIContainerDependencyMock> {
         .init(
             configurations: [
                 UITestPreviewType.standard.configuration,

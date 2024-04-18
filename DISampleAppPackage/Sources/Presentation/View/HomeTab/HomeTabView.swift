@@ -5,7 +5,7 @@ import SwiftUI
 // MARK: - View
 
 @MainActor
-public struct HomeTabView<Dependency: AppRootRouterDependency>: View {
+public struct HomeTabView<Dependency: AppRootDIContainerDependency>: View {
     private let dependency: Dependency
     @State private var presenter: HomeTabPresenter<Dependency>
 
@@ -50,7 +50,7 @@ private extension HomeTab {
     }
 
     @MainActor @ViewBuilder
-    func contentView(dependency: some AppRootRouterDependency) -> some View {
+    func contentView(dependency: some AppRootDIContainerDependency) -> some View {
         switch self {
         case .task:
             TaskListView(dependency: dependency)
@@ -69,7 +69,7 @@ struct HomeTabView_Previews: PreviewProvider, SnapshotTestable {
         .init(
             configurations: HomeTab.allCases.map { tab in .init(name: "\(tab)".initialUppercased, state: tab) },
             configure: { homeTab in
-                HomeTabView(dependency: AppRootRouterDependencyMock.random, homeTab: homeTab)
+                HomeTabView(dependency: AppRootDIContainerDependencyMock.random, homeTab: homeTab)
             }
         )
     }

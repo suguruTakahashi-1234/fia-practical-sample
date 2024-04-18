@@ -17,7 +17,7 @@ public enum DebugShortcutViewType {
 // MARK: - View
 
 @MainActor
-public struct DebugShortcutViewListView<Dependency: AppRootRouterDependency>: View {
+public struct DebugShortcutViewListView<Dependency: AppRootDIContainerDependency>: View {
     private let dependency: Dependency
     private let debugRouterType: DebugRouterType
     @State private var presenter: DebugShortcutViewListPresenter<Dependency>
@@ -98,7 +98,7 @@ private extension DebugShortcutViewType {
     }
 
     @MainActor @ViewBuilder
-    func contentView(dependency: some AppRootRouterDependency) -> some View {
+    func contentView(dependency: some AppRootDIContainerDependency) -> some View {
         switch self {
         case .deviceInfo:
             DeviceInfoView(dependency: dependency)
@@ -123,7 +123,7 @@ struct DebugShortcutViewListView_Previews: PreviewProvider, SnapshotTestable {
         .init(
             configurations: DebugRouterType.allCases.map { debugRouterType in .init(name: debugRouterType.description, state: debugRouterType) },
             configure: { debugRouterType in
-                DebugShortcutViewListView(dependency: AppRootRouterDependencyMock.random, debugRouterType: debugRouterType)
+                DebugShortcutViewListView(dependency: AppRootDIContainerDependencyMock.random, debugRouterType: debugRouterType)
                     .navigationStacked()
             }
         )

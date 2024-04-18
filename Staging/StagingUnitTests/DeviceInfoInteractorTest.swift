@@ -9,8 +9,8 @@ import DomainLayer
 import XCTest
 
 final class DeviceInfoInteractorTest: XCTestCase {
-    var interactor: DeviceInfoInteractor<AppRootRouterDependencyInjector>!
-    var dependencyInjector: AppRootRouterDependencyInjector!
+    var interactor: DeviceInfoInteractor<AppRootDIContainer>!
+    var dependencyInjector: AppRootDIContainer!
 
     @MainActor
     override func setUpWithError() throws {

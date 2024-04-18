@@ -7,13 +7,13 @@ import PreviewSnapshots
 import SwiftUI
 
 public extension UITestPreviewType {
-    var configuration: PreviewSnapshots<AppRootRouterDependencyMock>.Configuration {
+    var configuration: PreviewSnapshots<AppRootDIContainerDependencyMock>.Configuration {
         .init(name: name, state: mock)
     }
 }
 
 public extension PreviewProvider {
-    static var allSizes: [PreviewSnapshots<AppRootRouterDependencyMock>.Configuration] {
+    static var allSizes: [PreviewSnapshots<AppRootDIContainerDependencyMock>.Configuration] {
         [
             UITestPreviewType.small.configuration,
             UITestPreviewType.medium.configuration,

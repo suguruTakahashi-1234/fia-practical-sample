@@ -10,11 +10,11 @@ import SwiftUI
 
 @main
 struct StagingApp: App {
-    private let dependency: AppRootRouterDependencyInjector
+    private let dependency: AppRootDIContainer
 
     init() {
         LocalDataStoreDriver.allClearForFirstLaunchUITest()
-        dependency = AppRootRouterDependencyInjector(buildScheme: .staging)
+        dependency = AppRootDIContainer(buildScheme: .staging)
     }
 
     var body: some Scene {

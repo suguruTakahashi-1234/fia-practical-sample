@@ -50,7 +50,7 @@ public struct DebugMenuView<Dependency: AppRootRouterDependency>: View {
         List {
             Section("") {
                 NavigationLink {
-                    router.createDebugShortcutViewListView(debugRouterType: DebugRouterType.original)
+                    DebugShortcutViewListView(router: router, debugRouterType: DebugRouterType.original)
                 } label: {
                     Label(
                         title: { Text("画面一覧 - \(DebugRouterType.original.description)", bundle: .module) },
@@ -59,7 +59,7 @@ public struct DebugMenuView<Dependency: AppRootRouterDependency>: View {
                 }
 
                 NavigationLink {
-                    randomMockRouter.createDebugShortcutViewListView(debugRouterType: DebugRouterType.randomMock)
+                    DebugShortcutViewListView(router: router, debugRouterType: DebugRouterType.randomMock)
                 } label: {
                     Label(
                         title: { Text("画面一覧 - \(DebugRouterType.randomMock.description)", bundle: .module) },
@@ -68,7 +68,7 @@ public struct DebugMenuView<Dependency: AppRootRouterDependency>: View {
                 }
 
                 NavigationLink {
-                    emptyMockRouter.createDebugShortcutViewListView(debugRouterType: DebugRouterType.emptyMock)
+                    DebugShortcutViewListView(router: router, debugRouterType: DebugRouterType.emptyMock)
                 } label: {
                     Label(
                         title: { Text("画面一覧 - \(DebugRouterType.emptyMock.description)", bundle: .module) },

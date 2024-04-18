@@ -19,7 +19,7 @@ struct ProductionApp: App {
 
     var body: some Scene {
         WindowGroup {
-            router.createAppRootView()
+            AppRootView(router: router)
         }
     }
 }

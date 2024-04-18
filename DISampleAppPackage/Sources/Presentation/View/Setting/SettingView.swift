@@ -18,7 +18,7 @@ public struct SettingView<Dependency: AppRootRouterDependency>: View {
         List {
             Section("") {
                 NavigationLink {
-                    router.createLicenseListView()
+                    LicenseListView(router: router)
                 } label: {
                     Label(
                         title: { Text("ライセンス", bundle: .module) },
@@ -27,7 +27,7 @@ public struct SettingView<Dependency: AppRootRouterDependency>: View {
                 }
 
                 NavigationLink {
-                    router.createDeviceInfoView()
+                    DeviceInfoView(router: router)
                 } label: {
                     Label(
                         title: { Text("デバイス情報", bundle: .module) },
@@ -50,7 +50,7 @@ public struct SettingView<Dependency: AppRootRouterDependency>: View {
         }
         .navigationTitle(String(localized: "設定", bundle: .module))
         .fullScreenCover(isPresented: $presenter.shouldShowDebugMenu, content: {
-            router.createDebugMenuView()
+            DebugMenuView(router: router)
                 .navigationStacked()
         })
         .task {

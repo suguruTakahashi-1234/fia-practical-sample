@@ -92,7 +92,7 @@ public final class AppRootRouterDependencyInjector: AppRootRouterDependency, App
                 try await firebaseRemoteConfigDriver.setUp()
                 OSLogDriver.debugLog("Completed setup FirebaseRemoteConfigDriver")
             } catch {
-                OSLogDriver.errorLog(error.toAppError)
+                OSLogDriver.errorLog(error.toAppError, level: .fault)
                 assertionFailure("\(error.toAppError))")
             }
         }

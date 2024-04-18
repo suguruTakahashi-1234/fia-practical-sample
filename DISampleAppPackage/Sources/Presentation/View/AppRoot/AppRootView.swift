@@ -21,9 +21,9 @@ public struct AppRootView<Dependency: AppRootRouterDependency>: View {
     public var body: some View {
         Group {
             if presenter.isCompletedOnboarding {
-                router.createHomeTabView()
+                HomeTabView(router: router)
             } else {
-                router.createOnboardingView()
+                OnboardingView(router: router)
                     .navigationStacked()
             }
         }

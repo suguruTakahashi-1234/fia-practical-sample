@@ -19,7 +19,7 @@ struct StagingApp: App {
 
     var body: some Scene {
         WindowGroup {
-            router.createAppRootView()
+            AppRootView(router: router)
         }
     }
 }

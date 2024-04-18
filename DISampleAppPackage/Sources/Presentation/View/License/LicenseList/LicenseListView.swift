@@ -41,7 +41,7 @@ public struct LicenseListView<Dependency: AppRootRouterDependency>: View {
         }
         .navigationTitle(String(localized: "ライセンス", bundle: .module))
         .sheet(item: $presenter.selectedLicense, content: { license in
-            router.createLicenseDetailView(license: license)
+            LicenseDetailView(dependency: router.dependency, license: license)
                 .navigationStacked()
         })
         .task {

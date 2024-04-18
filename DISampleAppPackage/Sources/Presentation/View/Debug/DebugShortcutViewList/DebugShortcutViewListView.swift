@@ -101,15 +101,15 @@ private extension DebugShortcutViewType {
     func contentView(router: AppRootRouter<some AppRootRouterDependency>) -> some View {
         switch self {
         case .deviceInfo:
-            router.createDeviceInfoView()
+            DeviceInfoView(router: router)
         case .onboarding:
-            router.createOnboardingView()
+            OnboardingView(router: router)
         case .licenseList:
-            router.createLicenseListView()
+            LicenseListView(router: router)
         case .licenseDetail:
-            router.createLicenseDetailView(license: .random)
+            LicenseDetailView(dependency: router.dependency, license: .random)
         case .taskList:
-            router.createTaskListView()
+            TaskListView(router: router)
         }
     }
 }

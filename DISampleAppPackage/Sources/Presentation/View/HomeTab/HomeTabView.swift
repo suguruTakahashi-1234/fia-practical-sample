@@ -53,9 +53,9 @@ private extension HomeTab {
     func contentView(router: AppRootRouter<some AppRootRouterDependency>) -> some View {
         switch self {
         case .task:
-            router.createTaskListView()
+            TaskListView(router: router)
         case .setting:
-            router.createSettingView()
+            SettingView(router: router)
         }
     }
 }

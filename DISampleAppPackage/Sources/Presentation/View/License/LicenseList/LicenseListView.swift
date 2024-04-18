@@ -9,13 +9,13 @@ import SwiftUI
 // MARK: - View
 
 @MainActor
-public struct LicenseListView<Dependency: AppRootRouterDependency>: View {
-    private let router: AppRootRouter<Dependency>
+public struct LicenseListView<Dependency: AppRootDIContainerDependency>: View {
+    private let dependency: Dependency
     @State private var presenter: LicenseListPresenter<Dependency>
 
-    public init(router: AppRootRouter<Dependency>) {
-        self.router = router
-        presenter = LicenseListPresenter(dependency: router.dependency)
+    public init(dependency: Dependency) {
+        self.dependency = dependency
+        presenter = LicenseListPresenter(dependency: dependency)
     }
 
     public var body: some View {
@@ -41,7 +41,7 @@ public struct LicenseListView<Dependency: AppRootRouterDependency>: View {
         }
         .navigationTitle(String(localized: "ライセンス", bundle: .module))
         .sheet(item: $presenter.selectedLicense, content: { license in
-            router.createLicenseDetailView(license: license)
+            LicenseDetailView(dependency: dependency, license: license)
                 .navigationStacked()
         })
         .task {
@@ -58,13 +58,13 @@ public struct LicenseListView<Dependency: AppRootRouterDependency>: View {
 import PreviewSnapshots
 
 struct LicenseListView_Previews: PreviewProvider, SnapshotTestable {
-    static var snapshots: PreviewSnapshots<AppRootRouterDependencyMock> {
+    static var snapshots: PreviewSnapshots<AppRootDIContainerDependencyMock> {
         .init(
             configurations: allSizes + [
                 UITestPreviewType.empty.configuration,
             ],
             configure: { dependency in
-                LicenseListView(router: AppRootRouter(dependency: dependency))
+                LicenseListView(dependency: dependency)
                     .navigationStacked()
             }
         )

@@ -12,15 +12,15 @@ public enum OnboardingStep {
 // MARK: - View
 
 @MainActor
-public struct OnboardingView<Dependency: AppRootRouterDependency>: View {
-    private let router: AppRootRouter<Dependency>
+public struct OnboardingView<Dependency: AppRootDIContainerDependency>: View {
+    private let dependency: Dependency
     @State private var presenter: OnboardingPresenter<Dependency>
 
     /// Previews で検証できるように init の引数に tab を設定している（要検討）
     /// SwiftUI の TabView のタップは Binding による更新なので仕方のない側面もある
-    public init(router: AppRootRouter<Dependency>, onboardingStep: OnboardingStep = .introduction) {
-        self.router = router
-        presenter = OnboardingPresenter(dependency: router.dependency, onboardingStep: onboardingStep)
+    public init(dependency: Dependency, onboardingStep: OnboardingStep = .introduction) {
+        self.dependency = dependency
+        presenter = OnboardingPresenter(dependency: dependency, onboardingStep: onboardingStep)
     }
 
     public var body: some View {
@@ -86,11 +86,11 @@ private extension OnboardingStep {
 import PreviewSnapshots
 
 struct OnboardingView_Previews: PreviewProvider, SnapshotTestable {
-    static var snapshots: PreviewSnapshots<(AppRootRouterDependencyMock, OnboardingStep)> {
+    static var snapshots: PreviewSnapshots<(AppRootDIContainerDependencyMock, OnboardingStep)> {
         .init(
             configurations: OnboardingStep.allCases.map { onboardingStep in .init(name: "\(onboardingStep)".initialUppercased, state: (.random, onboardingStep)) },
             configure: { dependency, onboardingStep in
-                OnboardingView(router: AppRootRouter(dependency: dependency), onboardingStep: onboardingStep)
+                OnboardingView(dependency: dependency, onboardingStep: onboardingStep)
                     .navigationStacked()
             }
         )

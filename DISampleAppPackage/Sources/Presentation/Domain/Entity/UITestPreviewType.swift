@@ -35,7 +35,7 @@ public extension UITestPreviewType {
         }
     }
 
-    var mock: AppRootRouterDependencyMock {
+    var mock: AppRootDIContainerDependencyMock {
         switch self {
         case .empty:
             .empty

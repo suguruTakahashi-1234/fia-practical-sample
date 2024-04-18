@@ -9,7 +9,7 @@ public enum DebugActionType {
     case clearUserDefaults
 }
 
-public enum DebugRouterType {
+public enum DebugDependencyType {
     case original
     case randomMock
     case emptyMock
@@ -26,52 +26,52 @@ public enum DebugRouterType {
     }
 }
 
-extension DebugRouterType: CaseIterable {}
+extension DebugDependencyType: CaseIterable {}
 
 // MARK: - View
 
 @MainActor
-public struct DebugMenuView<Dependency: AppRootRouterDependency>: View {
-    private let router: AppRootRouter<Dependency>
+public struct DebugMenuView<Dependency: AppRootDIContainerDependency>: View {
+    private let dependency: Dependency
     @State private var presenter: DebugMenuPresenter<Dependency>
     // issue: 【バグ】Environment(\.dismiss) var dismiss を使用すると View の生成の無限ループが発生する #131 https://github.com/suguruTakahashi-1234/fia-practical-sample/issues/131
     @Environment(\.presentationMode) var presentationMode
 
-    /// このように エントリーポイントではなくても任意の保持したい View での Router の生成は可能である
-    private let randomMockRouter = AppRootRouter(dependency: AppRootRouterDependencyMock.random)
-    private let emptyMockRouter = AppRootRouter(dependency: AppRootRouterDependencyMock.empty)
+    /// このように エントリーポイントではなくても任意の保持したい View での dependency の生成は可能である
+    private let randomMockDependency = AppRootDIContainerDependencyMock.random
+    private let emptyMockDependency = AppRootDIContainerDependencyMock.empty
 
-    public init(router: AppRootRouter<Dependency>) {
-        self.router = router
-        _presenter = .init(wrappedValue: DebugMenuPresenter(dependency: router.dependency))
+    public init(dependency: Dependency) {
+        self.dependency = dependency
+        _presenter = .init(wrappedValue: DebugMenuPresenter(dependency: dependency))
     }
 
     public var body: some View {
         List {
             Section("") {
                 NavigationLink {
-                    router.createDebugShortcutViewListView(debugRouterType: DebugRouterType.original)
+                    DebugShortcutViewListView(dependency: dependency, debugDependencyType: DebugDependencyType.original)
                 } label: {
                     Label(
-                        title: { Text("画面一覧 - \(DebugRouterType.original.description)", bundle: .module) },
+                        title: { Text("画面一覧 - \(DebugDependencyType.original.description)", bundle: .module) },
                         icon: { SFSymbols.rectangleOnRectangle.image }
                     )
                 }
 
                 NavigationLink {
-                    randomMockRouter.createDebugShortcutViewListView(debugRouterType: DebugRouterType.randomMock)
+                    DebugShortcutViewListView(dependency: randomMockDependency, debugDependencyType: DebugDependencyType.randomMock)
                 } label: {
                     Label(
-                        title: { Text("画面一覧 - \(DebugRouterType.randomMock.description)", bundle: .module) },
+                        title: { Text("画面一覧 - \(DebugDependencyType.randomMock.description)", bundle: .module) },
                         icon: { SFSymbols.rectangleOnRectangle.image }
                     )
                 }
 
                 NavigationLink {
-                    emptyMockRouter.createDebugShortcutViewListView(debugRouterType: DebugRouterType.emptyMock)
+                    DebugShortcutViewListView(dependency: emptyMockDependency, debugDependencyType: DebugDependencyType.emptyMock)
                 } label: {
                     Label(
-                        title: { Text("画面一覧 - \(DebugRouterType.emptyMock.description)", bundle: .module) },
+                        title: { Text("画面一覧 - \(DebugDependencyType.emptyMock.description)", bundle: .module) },
                         icon: { SFSymbols.rectangleOnRectangle.image }
                     )
                 }
@@ -153,13 +153,13 @@ private extension DebugActionType {
 import PreviewSnapshots
 
 struct DebugMenuView_Previews: PreviewProvider, SnapshotTestable {
-    static var snapshots: PreviewSnapshots<AppRootRouterDependencyMock> {
+    static var snapshots: PreviewSnapshots<AppRootDIContainerDependencyMock> {
         .init(
             configurations: [
                 UITestPreviewType.standard.configuration,
             ],
             configure: { dependency in
-                DebugMenuView(router: AppRootRouter(dependency: dependency))
+                DebugMenuView(dependency: dependency)
                     .navigationStacked()
             }
         )

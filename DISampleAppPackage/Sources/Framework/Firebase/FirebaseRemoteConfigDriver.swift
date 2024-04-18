@@ -81,7 +81,7 @@ public final class FirebaseRemoteConfigDriver<CacheDataStore: CacheDataStoreDriv
             }
 
             guard let updatedRemoteConfig else {
-                OSLogDriver.debugLog("Unexpected")
+                OSLogDriver.debugLog("Unexpected", level: .fault)
                 cacheDataStoreDriver.remoteConfigUpdateErrorSubjecter.send(AppError.customError("Unexpected"))
                 assertionFailure("Unexpected")
                 return

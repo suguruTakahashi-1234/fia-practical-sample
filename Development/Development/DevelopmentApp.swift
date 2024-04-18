@@ -9,22 +9,22 @@ import SwiftUI
 
 @main
 struct DevelopmentApp: App {
-    private let router: AppRootRouter<AppRootRouterDependencyMock>
+    private let dependency: AppRootDIContainerDependencyMock
 
     init() {
         LocalDataStoreDriver.allClearForFirstLaunchUITest()
 
         // UIテスト時に固定値であるとテストしやすいのでプレースホルダーモードにするときはそれ用のMockを差し込む（通常時はランダムな値を生成するMockを差し込む）
         if ProcessInfo.processInfo.arguments.contains(Constants.Arguments.placeholderUITest) {
-            router = AppRootRouter(dependency: AppRootRouterDependencyMock.placeholder)
+            dependency = AppRootDIContainerDependencyMock.placeholder
         } else {
-            router = AppRootRouter(dependency: AppRootRouterDependencyMock.random)
+            dependency = AppRootDIContainerDependencyMock.random
         }
     }
 
     var body: some Scene {
         WindowGroup {
-            router.createAppRootView()
+            AppRootView(dependency: dependency)
         }
     }
 }

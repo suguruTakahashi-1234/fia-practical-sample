@@ -9,8 +9,8 @@ import Testing
 
 @MainActor
 struct DebugShortcutViewListPresenterTest {
-    var presenter: DebugShortcutViewListPresenter<AppRootRouterDependencyMock>!
-    var dependencyInjector: AppRootRouterDependencyMock!
+    var presenter: DebugShortcutViewListPresenter<AppRootDIContainerDependencyMock>!
+    var dependencyInjector: AppRootDIContainerDependencyMock!
 
     init() {
         dependencyInjector = .random

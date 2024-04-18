@@ -209,7 +209,7 @@ public final class CacheDataStoreDriverProtocolMock: CacheDataStoreDriverProtoco
     }
 }
 
-public final class AppRootRouterDependencyMock: AppRootRouterDependency {
+public final class AppRootDIContainerDependencyMock: AppRootDIContainerDependency {
     public init() { }
     public init(cacheDataStoreDriver: CacheDataStoreDriverProtocolAT, logDriver: LogDriverProtocolAT, buildEnvDriver: BuildEnvDriverProtocolAT, localDataStoreDriver: LocalDataStoreDriverProtocolAT, libraryLicenseDriver: LibraryLicenseDriverProtocolAT, deviceInfoDriver: DeviceInfoDriverProtocolAT, clipboardDriver: ClipboardDriverProtocolAT) {
         self._cacheDataStoreDriver = cacheDataStoreDriver

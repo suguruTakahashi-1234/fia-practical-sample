@@ -5,13 +5,13 @@ import SwiftUI
 // MARK: - View
 
 @MainActor
-public struct DeviceInfoView<Dependency: AppRootRouterDependency>: View {
-    private let router: AppRootRouter<Dependency>
+public struct DeviceInfoView<Dependency: AppRootDIContainerDependency>: View {
+    private let dependency: Dependency
     @State private var presenter: DeviceInfoPresenter<Dependency>
 
-    public init(router: AppRootRouter<Dependency>) {
-        self.router = router
-        presenter = DeviceInfoPresenter(dependency: router.dependency)
+    public init(dependency: Dependency) {
+        self.dependency = dependency
+        presenter = DeviceInfoPresenter(dependency: dependency)
     }
 
     public var body: some View {
@@ -65,13 +65,13 @@ extension DeviceInfoType: Identifiable {
 import PreviewSnapshots
 
 struct DeviceInfoView_Previews: PreviewProvider, SnapshotTestable {
-    static var snapshots: PreviewSnapshots<AppRootRouterDependencyMock> {
+    static var snapshots: PreviewSnapshots<AppRootDIContainerDependencyMock> {
         .init(
             configurations: [
                 UITestPreviewType.standard.configuration,
             ],
             configure: { dependency in
-                DeviceInfoView(router: AppRootRouter(dependency: dependency))
+                DeviceInfoView(dependency: dependency)
                     .navigationStacked()
             }
         )

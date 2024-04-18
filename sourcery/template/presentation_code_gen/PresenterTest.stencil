@@ -9,8 +9,8 @@ import Testing
 
 @MainActor
 struct {{ argument.screenName }}PresenterTest {
-    var presenter: {{ argument.screenName }}Presenter<{{ argument.routerName }}RouterDependencyMock>!
-    var dependencyInjector: {{ argument.routerName }}RouterDependencyMock!
+    var presenter: {{ argument.screenName }}Presenter<{{ argument.diContainerName }}DIContainerDependencyMock>!
+    var dependencyInjector: {{ argument.diContainerName }}DIContainerDependencyMock!
 
     init() {
         dependencyInjector = .random

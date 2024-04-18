@@ -10,8 +10,8 @@ import Testing
 
 @MainActor
 struct LicenseListPresenterTest {
-    var presenter: LicenseListPresenter<AppRootRouterDependencyMock>!
-    var dependencyInjector: AppRootRouterDependencyMock!
+    var presenter: LicenseListPresenter<AppRootDIContainerDependencyMock>!
+    var dependencyInjector: AppRootDIContainerDependencyMock!
     var license: License!
 
     init() {

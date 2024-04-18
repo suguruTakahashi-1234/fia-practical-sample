@@ -7,12 +7,12 @@ import DomainLayer
 @testable import PresentationLayer
 import Testing
 
-/// AppRootRouterDependencyMock を用いた場合のサンプル(本物の AppRootRouterDependencyInjector を使わなくてもよい場合)
-/// Development での Unit テストで記述することもできるが、そうすると Development を scheme に指定したときに、SwiftUI のプレビューの生成に失敗するので、本物の AppRootRouterDependencyInjector を使わなくてもよい場合は SPM 側のテストで記述することを推奨する
+/// AppRootDIContainerDependencyMock を用いた場合のサンプル(本物の AppRootDIContainer を使わなくてもよい場合)
+/// Development での Unit テストで記述することもできるが、そうすると Development を scheme に指定したときに、SwiftUI のプレビューの生成に失敗するので、本物の AppRootDIContainer を使わなくてもよい場合は SPM 側のテストで記述することを推奨する
 @MainActor
 struct DeviceInfoInteractorDependencyInjectorMockTest {
-    var interactor: DeviceInfoInteractor<AppRootRouterDependencyMock>!
-    var dependencyInjector: AppRootRouterDependencyMock!
+    var interactor: DeviceInfoInteractor<AppRootDIContainerDependencyMock>!
+    var dependencyInjector: AppRootDIContainerDependencyMock!
 
     init() {
         dependencyInjector = .random

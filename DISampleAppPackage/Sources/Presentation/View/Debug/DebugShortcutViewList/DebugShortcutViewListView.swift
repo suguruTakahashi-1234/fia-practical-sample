@@ -17,15 +17,15 @@ public enum DebugShortcutViewType {
 // MARK: - View
 
 @MainActor
-public struct DebugShortcutViewListView<Dependency: AppRootRouterDependency>: View {
-    private let router: AppRootRouter<Dependency>
-    private let debugRouterType: DebugRouterType
+public struct DebugShortcutViewListView<Dependency: AppRootDIContainerDependency>: View {
+    private let dependency: Dependency
+    private let debugDependencyType: DebugDependencyType
     @State private var presenter: DebugShortcutViewListPresenter<Dependency>
 
-    public init(router: AppRootRouter<Dependency>, debugRouterType: DebugRouterType) {
-        self.router = router
-        self.debugRouterType = debugRouterType
-        presenter = DebugShortcutViewListPresenter(dependency: router.dependency)
+    public init(dependency: Dependency, debugDependencyType: DebugDependencyType) {
+        self.dependency = dependency
+        self.debugDependencyType = debugDependencyType
+        presenter = DebugShortcutViewListPresenter(dependency: dependency)
     }
 
     public var body: some View {
@@ -33,14 +33,14 @@ public struct DebugShortcutViewListView<Dependency: AppRootRouterDependency>: Vi
             Section("") {
                 ForEach(DebugShortcutViewType.allCases) { debugMenu in
                     NavigationLink {
-                        debugMenu.contentView(router: router)
+                        debugMenu.contentView(dependency: dependency)
                     } label: {
                         debugMenu.label
                     }
                 }
             }
         }
-        .navigationTitle(String(localized: "画面一覧 - \(debugRouterType.description)", bundle: .module))
+        .navigationTitle(String(localized: "画面一覧 - \(debugDependencyType.description)", bundle: .module))
         .task {
             await presenter.onAppear()
         }
@@ -98,18 +98,18 @@ private extension DebugShortcutViewType {
     }
 
     @MainActor @ViewBuilder
-    func contentView(router: AppRootRouter<some AppRootRouterDependency>) -> some View {
+    func contentView(dependency: some AppRootDIContainerDependency) -> some View {
         switch self {
         case .deviceInfo:
-            router.createDeviceInfoView()
+            DeviceInfoView(dependency: dependency)
         case .onboarding:
-            router.createOnboardingView()
+            OnboardingView(dependency: dependency)
         case .licenseList:
-            router.createLicenseListView()
+            LicenseListView(dependency: dependency)
         case .licenseDetail:
-            router.createLicenseDetailView(license: .random)
+            LicenseDetailView(dependency: dependency, license: .random)
         case .taskList:
-            router.createTaskListView()
+            TaskListView(dependency: dependency)
         }
     }
 }
@@ -119,11 +119,11 @@ private extension DebugShortcutViewType {
 import PreviewSnapshots
 
 struct DebugShortcutViewListView_Previews: PreviewProvider, SnapshotTestable {
-    static var snapshots: PreviewSnapshots<DebugRouterType> {
+    static var snapshots: PreviewSnapshots<DebugDependencyType> {
         .init(
-            configurations: DebugRouterType.allCases.map { debugRouterType in .init(name: debugRouterType.description, state: debugRouterType) },
-            configure: { debugRouterType in
-                DebugShortcutViewListView(router: AppRootRouter.random, debugRouterType: debugRouterType)
+            configurations: DebugDependencyType.allCases.map { debugDependencyType in .init(name: debugDependencyType.description, state: debugDependencyType) },
+            configure: { debugDependencyType in
+                DebugShortcutViewListView(dependency: AppRootDIContainerDependencyMock.random, debugDependencyType: debugDependencyType)
                     .navigationStacked()
             }
         )

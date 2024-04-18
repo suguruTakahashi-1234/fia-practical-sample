@@ -9,8 +9,8 @@ import Testing
 
 @MainActor
 struct AppRootPresenterTest {
-    var presenter: AppRootPresenter<AppRootRouterDependencyMock>!
-    var dependencyInjector: AppRootRouterDependencyMock!
+    var presenter: AppRootPresenter<AppRootDIContainerDependencyMock>!
+    var dependencyInjector: AppRootDIContainerDependencyMock!
 
     init() {
         dependencyInjector = .random

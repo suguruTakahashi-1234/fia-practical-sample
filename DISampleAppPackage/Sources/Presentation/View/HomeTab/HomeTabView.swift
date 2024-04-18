@@ -5,21 +5,21 @@ import SwiftUI
 // MARK: - View
 
 @MainActor
-public struct HomeTabView<Dependency: AppRootRouterDependency>: View {
-    private let router: AppRootRouter<Dependency>
+public struct HomeTabView<Dependency: AppRootDIContainerDependency>: View {
+    private let dependency: Dependency
     @State private var presenter: HomeTabPresenter<Dependency>
 
     /// Previews で検証できるように init の引数に tab を設定している（要検討）
     /// SwiftUI の TabView のタップは Binding による更新なので仕方のない側面もある
-    public init(router: AppRootRouter<Dependency>, homeTab: HomeTab = .task) {
-        self.router = router
-        presenter = HomeTabPresenter(dependency: router.dependency, homeTab: homeTab)
+    public init(dependency: Dependency, homeTab: HomeTab = .task) {
+        self.dependency = dependency
+        presenter = HomeTabPresenter(dependency: dependency, homeTab: homeTab)
     }
 
     public var body: some View {
         TabView(selection: $presenter.selectedTab) {
             ForEach(HomeTab.allCases) { tab in
-                tab.contentView(router: router)
+                tab.contentView(dependency: dependency)
                     .navigationStacked()
                     .tabItem {
                         tab.label
@@ -50,12 +50,12 @@ private extension HomeTab {
     }
 
     @MainActor @ViewBuilder
-    func contentView(router: AppRootRouter<some AppRootRouterDependency>) -> some View {
+    func contentView(dependency: some AppRootDIContainerDependency) -> some View {
         switch self {
         case .task:
-            router.createTaskListView()
+            TaskListView(dependency: dependency)
         case .setting:
-            router.createSettingView()
+            SettingView(dependency: dependency)
         }
     }
 }
@@ -69,7 +69,7 @@ struct HomeTabView_Previews: PreviewProvider, SnapshotTestable {
         .init(
             configurations: HomeTab.allCases.map { tab in .init(name: "\(tab)".initialUppercased, state: tab) },
             configure: { homeTab in
-                HomeTabView(router: AppRootRouter.random, homeTab: homeTab)
+                HomeTabView(dependency: AppRootDIContainerDependencyMock.random, homeTab: homeTab)
             }
         )
     }

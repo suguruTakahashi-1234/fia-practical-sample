@@ -32,7 +32,7 @@ extension DebugRouterType: CaseIterable {}
 
 @MainActor
 public struct DebugMenuView<Dependency: AppRootRouterDependency>: View {
-    private let router: AppRootRouter<Dependency>
+    private let dependency: Dependency
     @State private var presenter: DebugMenuPresenter<Dependency>
     // issue: 【バグ】Environment(\.dismiss) var dismiss を使用すると View の生成の無限ループが発生する #131 https://github.com/suguruTakahashi-1234/fia-practical-sample/issues/131
     @Environment(\.presentationMode) var presentationMode
@@ -41,16 +41,16 @@ public struct DebugMenuView<Dependency: AppRootRouterDependency>: View {
     private let randomMockRouter = AppRootRouter(dependency: AppRootRouterDependencyMock.random)
     private let emptyMockRouter = AppRootRouter(dependency: AppRootRouterDependencyMock.empty)
 
-    public init(router: AppRootRouter<Dependency>) {
-        self.router = router
-        _presenter = .init(wrappedValue: DebugMenuPresenter(dependency: router.dependency))
+    public init(dependency: Dependency) {
+        self.dependency = dependency
+        _presenter = .init(wrappedValue: DebugMenuPresenter(dependency: dependency))
     }
 
     public var body: some View {
         List {
             Section("") {
                 NavigationLink {
-                    DebugShortcutViewListView(router: router, debugRouterType: DebugRouterType.original)
+                    DebugShortcutViewListView(dependency: dependency, debugRouterType: DebugRouterType.original)
                 } label: {
                     Label(
                         title: { Text("画面一覧 - \(DebugRouterType.original.description)", bundle: .module) },
@@ -59,7 +59,7 @@ public struct DebugMenuView<Dependency: AppRootRouterDependency>: View {
                 }
 
                 NavigationLink {
-                    DebugShortcutViewListView(router: router, debugRouterType: DebugRouterType.randomMock)
+                    DebugShortcutViewListView(dependency: dependency, debugRouterType: DebugRouterType.randomMock)
                 } label: {
                     Label(
                         title: { Text("画面一覧 - \(DebugRouterType.randomMock.description)", bundle: .module) },
@@ -68,7 +68,7 @@ public struct DebugMenuView<Dependency: AppRootRouterDependency>: View {
                 }
 
                 NavigationLink {
-                    DebugShortcutViewListView(router: router, debugRouterType: DebugRouterType.emptyMock)
+                    DebugShortcutViewListView(dependency: dependency, debugRouterType: DebugRouterType.emptyMock)
                 } label: {
                     Label(
                         title: { Text("画面一覧 - \(DebugRouterType.emptyMock.description)", bundle: .module) },
@@ -159,7 +159,7 @@ struct DebugMenuView_Previews: PreviewProvider, SnapshotTestable {
                 UITestPreviewType.standard.configuration,
             ],
             configure: { dependency in
-                DebugMenuView(router: AppRootRouter(dependency: dependency))
+                DebugMenuView(dependency: dependency)
                     .navigationStacked()
             }
         )

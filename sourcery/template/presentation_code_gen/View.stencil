@@ -6,21 +6,16 @@
 import DomainLayer
 import SwiftUI
 
-// TODO: Add {{ argument.routerName }}Router
-//public func create{{ argument.screenName }}View() -> {{ argument.screenName }}View<Dependency> {
-//    {{ argument.screenName }}View(router: self)
-//}
-
 // MARK: - View
 
 @MainActor
 public struct {{ argument.screenName }}View<Dependency: {{ argument.routerName }}RouterDependency>: View {
-    private let router: {{ argument.routerName }}Router<Dependency>
+    private let dependency: Dependency
     @State private var presenter: {{ argument.screenName }}Presenter<Dependency>
 
-    public init(router: {{ argument.routerName }}Router<Dependency>) {
-        self.router = router
-        presenter = {{ argument.screenName }}Presenter(dependency: router.dependency)
+    public init(dependency: Dependency) {
+        self.dependency = dependency
+        presenter = {{ argument.screenName }}Presenter(dependency: dependency)
     }
 
     public var body: some View {
@@ -48,7 +43,7 @@ struct {{ argument.screenName }}View_Previews: PreviewProvider, SnapshotTestable
                 UITestPreviewType.standard.configuration,
             ],
             configure: { dependency in
-                {{ argument.screenName }}View(router: {{ argument.routerName }}Router(dependency: dependency))
+                {{ argument.screenName }}View(dependency: dependency)
                     .navigationStacked()
             }
         )

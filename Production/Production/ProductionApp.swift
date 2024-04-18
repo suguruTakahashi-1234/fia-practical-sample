@@ -10,16 +10,16 @@ import SwiftUI
 
 @main
 struct ProductionApp: App {
-    private let router: AppRootRouter<AppRootRouterDependencyInjector>
+    private let dependency: AppRootRouterDependencyInjector
 
     init() {
         LocalDataStoreDriver.allClearForFirstLaunchUITest()
-        router = AppRootRouter(dependency: AppRootRouterDependencyInjector(buildScheme: .production))
+        dependency = AppRootRouterDependencyInjector(buildScheme: .production)
     }
 
     var body: some Scene {
         WindowGroup {
-            AppRootView(router: router)
+            AppRootView(dependency: dependency)
         }
     }
 }

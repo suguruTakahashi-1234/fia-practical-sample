@@ -6,12 +6,12 @@ import SwiftUI
 
 @MainActor
 public struct TaskListView<Dependency: AppRootRouterDependency>: View {
-    private let router: AppRootRouter<Dependency>
+    private let dependency: Dependency
     @State private var presenter: TaskListPresenter<Dependency>
 
-    public init(router: AppRootRouter<Dependency>) {
-        self.router = router
-        presenter = TaskListPresenter(dependency: router.dependency)
+    public init(dependency: Dependency) {
+        self.dependency = dependency
+        presenter = TaskListPresenter(dependency: dependency)
     }
 
     public var body: some View {
@@ -41,7 +41,7 @@ struct TaskListView_Previews: PreviewProvider, SnapshotTestable {
                 .init(name: "isEnabledNewFeature-False", state: .create(cacheDataStoreDriver: .init(remoteConfigUpdateErrorSubjecter: .init(), appInfoSubjecter: .init(.defaultValue), variantTestSubjecter: .init(.init(isEnabledNewFeature: false))))),
             ],
             configure: { dependency in
-                TaskListView(router: AppRootRouter(dependency: dependency))
+                TaskListView(dependency: dependency)
                     .navigationStacked()
             }
         )

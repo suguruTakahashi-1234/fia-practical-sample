@@ -10,20 +10,20 @@ import SwiftUI
 
 @MainActor
 public struct AppRootView<Dependency: AppRootRouterDependency>: View {
-    private let router: AppRootRouter<Dependency>
+    private let dependency: Dependency
     @State private var presenter: AppRootPresenter<Dependency>
 
-    public init(router: AppRootRouter<Dependency>) {
-        self.router = router
-        presenter = AppRootPresenter(dependency: router.dependency)
+    public init(dependency: Dependency) {
+        self.dependency = dependency
+        presenter = AppRootPresenter(dependency: dependency)
     }
 
     public var body: some View {
         Group {
             if presenter.isCompletedOnboarding {
-                HomeTabView(router: router)
+                HomeTabView(dependency: dependency)
             } else {
-                OnboardingView(router: router)
+                OnboardingView(dependency: dependency)
                     .navigationStacked()
             }
         }
@@ -47,7 +47,7 @@ struct AppRootView_Previews: PreviewProvider, SnapshotTestable {
                 UITestPreviewType.standard.configuration,
             ],
             configure: { dependency in
-                AppRootView(router: AppRootRouter(dependency: dependency))
+                AppRootView(dependency: dependency)
             }
         )
     }

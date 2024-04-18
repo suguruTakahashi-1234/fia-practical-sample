@@ -6,19 +6,19 @@ import SwiftUI
 
 @MainActor
 public struct SettingView<Dependency: AppRootRouterDependency>: View {
-    private let router: AppRootRouter<Dependency>
+    private let dependency: Dependency
     @State private var presenter: SettingPresenter<Dependency>
 
-    public init(router: AppRootRouter<Dependency>) {
-        self.router = router
-        presenter = SettingPresenter(dependency: router.dependency)
+    public init(dependency: Dependency) {
+        self.dependency = dependency
+        presenter = SettingPresenter(dependency: dependency)
     }
 
     public var body: some View {
         List {
             Section("") {
                 NavigationLink {
-                    LicenseListView(router: router)
+                    LicenseListView(dependency: dependency)
                 } label: {
                     Label(
                         title: { Text("ライセンス", bundle: .module) },
@@ -27,7 +27,7 @@ public struct SettingView<Dependency: AppRootRouterDependency>: View {
                 }
 
                 NavigationLink {
-                    DeviceInfoView(router: router)
+                    DeviceInfoView(dependency: dependency)
                 } label: {
                     Label(
                         title: { Text("デバイス情報", bundle: .module) },
@@ -50,7 +50,7 @@ public struct SettingView<Dependency: AppRootRouterDependency>: View {
         }
         .navigationTitle(String(localized: "設定", bundle: .module))
         .fullScreenCover(isPresented: $presenter.shouldShowDebugMenu, content: {
-            DebugMenuView(router: router)
+            DebugMenuView(dependency: dependency)
                 .navigationStacked()
         })
         .task {
@@ -74,7 +74,7 @@ struct SettingView_Previews: PreviewProvider, SnapshotTestable {
                 UITestPreviewType.releaseBuildConfiguration.configuration,
             ],
             configure: { dependency in
-                SettingView(router: AppRootRouter(dependency: dependency))
+                SettingView(dependency: dependency)
                     .navigationStacked()
             }
         )

@@ -18,14 +18,14 @@ public enum DebugShortcutViewType {
 
 @MainActor
 public struct DebugShortcutViewListView<Dependency: AppRootRouterDependency>: View {
-    private let router: AppRootRouter<Dependency>
+    private let dependency: Dependency
     private let debugRouterType: DebugRouterType
     @State private var presenter: DebugShortcutViewListPresenter<Dependency>
 
-    public init(router: AppRootRouter<Dependency>, debugRouterType: DebugRouterType) {
-        self.router = router
+    public init(dependency: Dependency, debugRouterType: DebugRouterType) {
+        self.dependency = dependency
         self.debugRouterType = debugRouterType
-        presenter = DebugShortcutViewListPresenter(dependency: router.dependency)
+        presenter = DebugShortcutViewListPresenter(dependency: dependency)
     }
 
     public var body: some View {
@@ -33,7 +33,7 @@ public struct DebugShortcutViewListView<Dependency: AppRootRouterDependency>: Vi
             Section("") {
                 ForEach(DebugShortcutViewType.allCases) { debugMenu in
                     NavigationLink {
-                        debugMenu.contentView(router: router)
+                        debugMenu.contentView(dependency: dependency)
                     } label: {
                         debugMenu.label
                     }
@@ -98,18 +98,18 @@ private extension DebugShortcutViewType {
     }
 
     @MainActor @ViewBuilder
-    func contentView(router: AppRootRouter<some AppRootRouterDependency>) -> some View {
+    func contentView(dependency: some AppRootRouterDependency) -> some View {
         switch self {
         case .deviceInfo:
-            DeviceInfoView(router: router)
+            DeviceInfoView(dependency: dependency)
         case .onboarding:
-            OnboardingView(router: router)
+            OnboardingView(dependency: dependency)
         case .licenseList:
-            LicenseListView(router: router)
+            LicenseListView(dependency: dependency)
         case .licenseDetail:
-            LicenseDetailView(dependency: router.dependency, license: .random)
+            LicenseDetailView(dependency: dependency, license: .random)
         case .taskList:
-            TaskListView(router: router)
+            TaskListView(dependency: dependency)
         }
     }
 }
@@ -123,7 +123,7 @@ struct DebugShortcutViewListView_Previews: PreviewProvider, SnapshotTestable {
         .init(
             configurations: DebugRouterType.allCases.map { debugRouterType in .init(name: debugRouterType.description, state: debugRouterType) },
             configure: { debugRouterType in
-                DebugShortcutViewListView(router: AppRootRouter.random, debugRouterType: debugRouterType)
+                DebugShortcutViewListView(dependency: AppRootRouterDependencyMock.random, debugRouterType: debugRouterType)
                     .navigationStacked()
             }
         )

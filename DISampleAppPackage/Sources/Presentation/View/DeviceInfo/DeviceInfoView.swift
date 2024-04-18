@@ -6,12 +6,12 @@ import SwiftUI
 
 @MainActor
 public struct DeviceInfoView<Dependency: AppRootRouterDependency>: View {
-    private let router: AppRootRouter<Dependency>
+    private let dependency: Dependency
     @State private var presenter: DeviceInfoPresenter<Dependency>
 
-    public init(router: AppRootRouter<Dependency>) {
-        self.router = router
-        presenter = DeviceInfoPresenter(dependency: router.dependency)
+    public init(dependency: Dependency) {
+        self.dependency = dependency
+        presenter = DeviceInfoPresenter(dependency: dependency)
     }
 
     public var body: some View {
@@ -71,7 +71,7 @@ struct DeviceInfoView_Previews: PreviewProvider, SnapshotTestable {
                 UITestPreviewType.standard.configuration,
             ],
             configure: { dependency in
-                DeviceInfoView(router: AppRootRouter(dependency: dependency))
+                DeviceInfoView(dependency: dependency)
                     .navigationStacked()
             }
         )

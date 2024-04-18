@@ -10,16 +10,16 @@ import SwiftUI
 
 @main
 struct StagingApp: App {
-    private let router: AppRootRouter<AppRootRouterDependencyInjector>
+    private let dependency: AppRootRouterDependencyInjector
 
     init() {
         LocalDataStoreDriver.allClearForFirstLaunchUITest()
-        router = AppRootRouter(dependency: AppRootRouterDependencyInjector(buildScheme: .staging))
+        dependency = AppRootRouterDependencyInjector(buildScheme: .staging)
     }
 
     var body: some Scene {
         WindowGroup {
-            AppRootView(router: router)
+            AppRootView(dependency: dependency)
         }
     }
 }

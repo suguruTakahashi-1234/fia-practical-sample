@@ -10,12 +10,12 @@ import SwiftUI
 
 @MainActor
 public struct LicenseListView<Dependency: AppRootRouterDependency>: View {
-    private let router: AppRootRouter<Dependency>
+    private let dependency: Dependency
     @State private var presenter: LicenseListPresenter<Dependency>
 
-    public init(router: AppRootRouter<Dependency>) {
-        self.router = router
-        presenter = LicenseListPresenter(dependency: router.dependency)
+    public init(dependency: Dependency) {
+        self.dependency = dependency
+        presenter = LicenseListPresenter(dependency: dependency)
     }
 
     public var body: some View {
@@ -41,7 +41,7 @@ public struct LicenseListView<Dependency: AppRootRouterDependency>: View {
         }
         .navigationTitle(String(localized: "ライセンス", bundle: .module))
         .sheet(item: $presenter.selectedLicense, content: { license in
-            LicenseDetailView(dependency: router.dependency, license: license)
+            LicenseDetailView(dependency: dependency, license: license)
                 .navigationStacked()
         })
         .task {
@@ -64,7 +64,7 @@ struct LicenseListView_Previews: PreviewProvider, SnapshotTestable {
                 UITestPreviewType.empty.configuration,
             ],
             configure: { dependency in
-                LicenseListView(router: AppRootRouter(dependency: dependency))
+                LicenseListView(dependency: dependency)
                     .navigationStacked()
             }
         )

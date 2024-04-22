@@ -22,9 +22,11 @@ jobs:
           changes_md=$(git diff --name-only origin/main HEAD -- README.md)
           changes_ja=$(git diff --name-only origin/main HEAD -- README.ja.md)
 
-          # Print changes for debug purposes
-          echo "Changes in README.md: $changes_md"
-          echo "Changes in README.ja.md: $changes_ja"
+          # Print detailed changes for debug purposes
+          echo "Detailed changes in README.md:"
+          git diff origin/main HEAD -- README.md
+          echo "Detailed changes in README.ja.md:"
+          git diff origin/main HEAD -- README.ja.md
 
           # Check the update status of README files
           if [ -z "$changes_md" ] && [ -z "$changes_ja" ]; then

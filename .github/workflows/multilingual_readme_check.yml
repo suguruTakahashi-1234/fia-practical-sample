@@ -1,0 +1,41 @@
+name: Multilingual README Check
+
+on:
+  pull_request:
+    paths:
+      - 'README.md'
+      - 'README.ja.md'
+    branches:
+      - main
+
+jobs:
+  validate-readme-updates:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate updates to multilingual README files
+        run: |
+          # Fetch the latest commits from the main branch
+          git fetch origin main
+
+          # Determine if README.md and README.ja.md have been changed
+          changes_md=$(git diff --name-only origin/main HEAD -- README.md)
+          changes_ja=$(git diff --name-only origin/main HEAD -- README.ja.md)
+
+          # Print changes for debug purposes
+          echo "Changes in README.md: $changes_md"
+          echo "Changes in README.ja.md: $changes_ja"
+
+          # Check the update status of README files
+          if [ -z "$changes_md" ] && [ -z "$changes_ja" ]; then
+            # Both files are unchanged
+            echo "No updates needed: Neither README file has been changed."
+            exit 0
+          elif [ -z "$changes_md" ] || [ -z "$changes_ja" ]; then
+            # One file is changed and the other is not
+            echo "Error: Both README.md and README.ja.md must be updated together to ensure multilingual consistency."
+            exit 1
+          else
+            # Both files are changed
+            echo "Success: Both README files have been updated."
+          fi

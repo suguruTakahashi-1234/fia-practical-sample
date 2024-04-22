@@ -42,6 +42,10 @@ This repository is a sample iOS application implemented in Swift, based on the d
 [![GitHub Actions Workflow Status (tag_and_release_note_gen.yml)](https://img.shields.io/github/actions/workflow/status/suguruTakahashi-1234/fia-practical-sample/tag_and_release_note_gen.yml)](https://github.com/suguruTakahashi-1234/fia-practical-sample/actions/workflows/tag_and_release_note_gen.yml)
 [![GitHub Actions Workflow Status (swift_docc_hosting.yml)](https://img.shields.io/github/actions/workflow/status/suguruTakahashi-1234/fia-practical-sample/swift_docc_hosting.yml)](https://github.com/suguruTakahashi-1234/fia-practical-sample/actions/workflows/swift_docc_hosting.yml)
 
+#### Repobeats
+
+![Alt](https://repobeats.axiom.co/api/embed/5b56b1463141243113a329e64307a3ee65984c2f.svg "Repobeats analytics image")
+
 ## Development
 
 ### Requirement

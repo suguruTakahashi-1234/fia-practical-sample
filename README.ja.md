@@ -5,6 +5,12 @@
 
 このリポジトリは、Swift で実装された iOS アプリの設計に、Clean Architecture の設計概念に基づく [Framework-Independent Architecture (FIA)](https://github.com/suguruTakahashi-1234/framework-independent-architecture) を適用したサンプルアプリです。
 
+## デモ
+
+<div align="center">
+<img src="./asset//animation/demo.gif" width="300">
+</div>
+
 #### Repository About
 [![GitHub license](https://img.shields.io/github/license/suguruTakahashi-1234/fia-practical-sample)](https://github.com/suguruTakahashi-1234/fia-practical-sample/blob/main/LICENSE.md)
 [![GitHub Repo stars](https://img.shields.io/github/stars/suguruTakahashi-1234/fia-practical-sample)](https://github.com/suguruTakahashi-1234/fia-practical-sample/stargazers)

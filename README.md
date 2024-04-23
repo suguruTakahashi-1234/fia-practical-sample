@@ -5,6 +5,12 @@ English | [日本語](./README.ja.md)
 
 This repository is a sample iOS application implemented in Swift, based on the design concept of [Clean Architecture](https://blog.cleancoder.com/uncle-bob/2011/11/22/Clean-Architecture.html) adapted to [Framework-Independent Architecture (FIA)](https://github.com/suguruTakahashi-1234/framework-independent-architecture).
 
+## Demo
+
+<div align="center">
+<img src="./asset//animation/demo.gif" width="300">
+</div>
+
 #### Repository About
 [![GitHub license](https://img.shields.io/github/license/suguruTakahashi-1234/fia-practical-sample)](https://github.com/suguruTakahashi-1234/fia-practical-sample/blob/main/LICENSE.md)
 [![GitHub Repo stars](https://img.shields.io/github/stars/suguruTakahashi-1234/fia-practical-sample)](https://github.com/suguruTakahashi-1234/fia-practical-sample/stargazers)

@@ -37,10 +37,6 @@ public struct DebugMenuView<Dependency: AppRootDIContainerDependency>: View {
     // issue: 【バグ】Environment(\.dismiss) var dismiss を使用すると View の生成の無限ループが発生する #131 https://github.com/suguruTakahashi-1234/fia-practical-sample/issues/131
     @Environment(\.presentationMode) var presentationMode
 
-    /// このように エントリーポイントではなくても任意の保持したい View での dependency の生成は可能である
-    private let randomMockDependency = AppRootDIContainerDependencyMock.random
-    private let emptyMockDependency = AppRootDIContainerDependencyMock.empty
-
     public init(dependency: Dependency) {
         self.dependency = dependency
         _presenter = .init(wrappedValue: DebugMenuPresenter(dependency: dependency))
@@ -59,7 +55,8 @@ public struct DebugMenuView<Dependency: AppRootDIContainerDependency>: View {
                 }
 
                 NavigationLink {
-                    DebugShortcutViewListView(dependency: randomMockDependency, debugDependencyType: DebugDependencyType.randomMock)
+                    // このように エントリーポイントではなくても任意の保持したい View での dependency の生成は可能である
+                    DebugShortcutViewListView(dependency: AppRootDIContainerDependencyMock.random, debugDependencyType: DebugDependencyType.randomMock)
                 } label: {
                     Label(
                         title: { Text("画面一覧 - \(DebugDependencyType.randomMock.description)", bundle: .module) },
@@ -68,7 +65,8 @@ public struct DebugMenuView<Dependency: AppRootDIContainerDependency>: View {
                 }
 
                 NavigationLink {
-                    DebugShortcutViewListView(dependency: emptyMockDependency, debugDependencyType: DebugDependencyType.emptyMock)
+                    // このように エントリーポイントではなくても任意の保持したい View での dependency の生成は可能である
+                    DebugShortcutViewListView(dependency: AppRootDIContainerDependencyMock.empty, debugDependencyType: DebugDependencyType.emptyMock)
                 } label: {
                     Label(
                         title: { Text("画面一覧 - \(DebugDependencyType.emptyMock.description)", bundle: .module) },

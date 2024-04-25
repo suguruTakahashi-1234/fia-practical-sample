@@ -53,9 +53,9 @@
 
 ![Alt](https://repobeats.axiom.co/api/embed/5b56b1463141243113a329e64307a3ee65984c2f.svg "Repobeats analytics image")
 
-## 開発
+## Development
 
-### 必要条件
+### Requirement
 
 ![macOS](https://img.shields.io/badge/macOS-14.4.1+-brightgreen?logo=macos)
 ![Xcode](https://img.shields.io/badge/Xcode-15.3-brightgreen?logo=xcode)
@@ -72,7 +72,7 @@
   - Install using your preferred method, e.g., [nodebrew](https://github.com/hokaccha/nodebrew)
   - Used to run npx [mermaid-cli](https://github.com/mermaid-js/mermaid-cli)
 
-### サポートするプラットフォーム
+### Supported Platform
 
 ![Supported Platform (iOS)](https://img.shields.io/badge/iOS-17.4+-brightgreen)
 ![Supported Platform (iPad)](https://img.shields.io/badge/iPadOS-17.4+-brightgreen)
@@ -82,12 +82,12 @@
 - iPadOS
   - 17.4 or Later
 
-### サポートする言語
+### Supported Language
 
 - Japanese (default)
 - English
 
-### 技術要素
+### Technical Elements
 
 - **アーキテクチャ**
   -  Clean Architecture の設計概念をベースにした [Framework-Independent Architecture (FIA)](https://github.com/suguruTakahashi-1234/framework-independent-architecture) の適応
@@ -116,7 +116,13 @@
   - Swfit Package Manager
   - [Mint](https://github.com/yonaskolb/Mint) (Swfit Package Manager 経由での導入)
 
-## はじめ方
+### Architecture
+
+アーキテクチャは以下の図の [Framework-Independent Architecture (FIA)](https://github.com/suguruTakahashi-1234/framework-independent-architecture) を採用している。詳しくは [Framework-Independent Architecture (FIA)](https://github.com/suguruTakahashi-1234/framework-independent-architecture) のリポジトリを参照してください。
+
+![Architecture Detail](./asset/image/architecture_detail.svg)
+
+## Getting Started
 
 ### Clone Repository
 
@@ -125,7 +131,7 @@ $ git clone https://github.com/suguruTakahashi-1234/fia-practical-sample.git
 $ cd fia-practical-sample
 ```
 
-### セットアップ
+### Setup
 
 以下の `make setup`コマンドを実行すると、[Mint](https://github.com/yonaskolb/Mint) と [githooks](https://git-scm.com/docs/githooks) の設定が適用され、`.xcworkspace`を開いて Xcode が起動されます。
 

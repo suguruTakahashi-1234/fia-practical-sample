@@ -116,6 +116,12 @@ This repository is a sample iOS application implemented in Swift, based on the d
   - Swift Package Manager
   - [Mint](https://github.com/yonaskolb/Mint) (introduced via Swift Package Manager)
 
+### Architecture
+
+The architecture is based on the [Framework-Independent Architecture (FIA)](https://github.com/suguruTakahashi-1234/framework-independent-architecture) shown in the figure below. For more information, please refer to the [Framework-Independent Architecture (FIA)](https://github.com/suguruTakahashi-1234/framework-independent-architecture) repository.
+
+![Architecture Detail](./asset/image/architecture_detail.svg)
+
 ## Getting Started
 
 ### Clone Repository

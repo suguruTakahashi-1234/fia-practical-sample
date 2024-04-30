@@ -626,6 +626,22 @@ public final class DebugShortcutViewListPresenterDependencyMock: DebugShortcutVi
     }
 }
 
+public final class DebugViewCatalogListPresenterDependencyMock: DebugViewCatalogListPresenterDependency {
+    public init() { }
+    public init(logDriver: LogDriverProtocolAT) {
+        self._logDriver = logDriver
+    }
+
+    public typealias LogDriverProtocolAT = LogDriver<LogDriverDependencyMock>
+
+    public private(set) var logDriverSetCallCount = 0
+    private var _logDriver: LogDriverProtocolAT!  { didSet { logDriverSetCallCount += 1 } }
+    public var logDriver: LogDriverProtocolAT {
+        get { return _logDriver }
+        set { _logDriver = newValue }
+    }
+}
+
 public final class DeviceInfoInteractorDependencyMock: DeviceInfoInteractorDependency {
     public init() { }
     public init(logDriver: LogDriverProtocolAT, buildEnvDriver: BuildEnvDriverProtocolAT, localDataStoreDriver: LocalDataStoreDriverProtocolAT, deviceInfoDriver: DeviceInfoDriverProtocolAT) {

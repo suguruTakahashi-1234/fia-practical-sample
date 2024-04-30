@@ -1,5 +1,5 @@
 //
-//  Created by sugurutakahashi on 2024/02/15
+//  Created by sugurutakahashi on 2024/04/30
 //  Copyright sugurutakahashi. All rights reserved.
 //
 
@@ -8,7 +8,7 @@ import PresentationLayer
 import SwiftUI
 
 @main
-struct DevelopmentApp: App {
+struct DevelopmentViewCatalogApp: App {
     private let dependency: AppRootDIContainerDependencyMock
 
     init() {
@@ -25,7 +25,9 @@ struct DevelopmentApp: App {
 
     var body: some Scene {
         WindowGroup {
-            AppRootView(dependency: dependency)
+            NavigationStack {
+                DebugViewCatalogListView(dependency: dependency)
+            }
         }
     }
 }

@@ -13,7 +13,9 @@ struct ProductionApp: App {
     private let dependency: AppRootDIContainer
 
     init() {
+        // コマンドライン引数で初回起動UIテストモードが有効であれば UserDefaults をクリアにする
         LocalDataStoreDriver.allClearForFirstLaunchUITest()
+
         dependency = AppRootDIContainer(buildScheme: .production)
     }
 

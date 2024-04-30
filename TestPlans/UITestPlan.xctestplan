@@ -44,6 +44,14 @@
         "identifier" : "44ABAB112B9B5B760039ECF7",
         "name" : "ProductionUITests"
       }
+    },
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:DevelopmentViewCatalog.xcodeproj",
+        "identifier" : "44790EA22BE09E12002EBBDA",
+        "name" : "DevelopmentViewCatalogUITests"
+      }
     }
   ],
   "version" : 1

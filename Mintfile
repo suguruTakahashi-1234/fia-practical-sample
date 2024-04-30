@@ -1,10 +1,10 @@
 # 更新した場合は make mint-bootstrap を実行する
 
 # https://github.com/uber/mockolo
-uber/mockolo@2.0.1
+uber/mockolo@2.1.1
 
 # https://github.com/krzysztofzablocki/Sourcery
-krzysztofzablocki/Sourcery@2.2.2
+krzysztofzablocki/Sourcery@2.2.3
 
 # https://github.com/nicklockwood/SwiftFormat
 nicklockwood/SwiftFormat@0.53.8 # バージョンを変更した場合は .swiftformat ファイルを修正する

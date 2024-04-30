@@ -44,7 +44,7 @@ public struct DebugMenuView<Dependency: AppRootDIContainerDependency>: View {
 
     public var body: some View {
         List {
-            Section("") {
+            Section(String(localized: "ショートカット", bundle: .module)) {
                 NavigationLink {
                     DebugShortcutViewListView(dependency: dependency, debugDependencyType: DebugDependencyType.original)
                 } label: {
@@ -74,8 +74,21 @@ public struct DebugMenuView<Dependency: AppRootDIContainerDependency>: View {
                     )
                 }
             }
+            .textCase(nil)
 
-            Section("") {
+            Section(String(localized: "View Catalog", bundle: .module)) {
+                NavigationLink {
+                    DebugViewCatalogListView(dependency: dependency)
+                } label: {
+                    Label(
+                        title: { Text("View Catalog", bundle: .module) },
+                        icon: { SFSymbols.rectangleOnRectangle.image }
+                    )
+                }
+            }
+            .textCase(nil)
+
+            Section(String(localized: "デザイン システム", bundle: .module)) {
                 NavigationLink {
                     SFSymbolsListView()
                 } label: {
@@ -85,14 +98,16 @@ public struct DebugMenuView<Dependency: AppRootDIContainerDependency>: View {
                     )
                 }
             }
+            .textCase(nil)
 
-            Section("") {
+            Section(String(localized: "デバッグ アクション", bundle: .module)) {
                 ForEach(DebugActionType.allCases) { debugAction in
                     Button(debugAction.name) {
                         presenter.onTapDebugAction(debugAction)
                     }
                 }
             }
+            .textCase(nil)
         }
         .navigationTitle(String(localized: "デバッグメニュー", bundle: .module))
         .toolbar {

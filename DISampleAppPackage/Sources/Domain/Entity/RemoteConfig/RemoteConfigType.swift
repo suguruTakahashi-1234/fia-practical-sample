@@ -20,6 +20,7 @@ public enum RemoteConfigType: CaseIterable, Sendable {
         "\(self)".toSnakeCase
     }
 
+    // TODO: 値付き enum に変更してもよさそう
     public var entityType: any RemoteConfigurable.Type {
         switch self {
         case .appInfo:

@@ -251,7 +251,7 @@ let package = Package(
         .package(url: "https://github.com/doordash-oss/swiftui-preview-snapshots", from: "1.1.1"),
         .package(url: "https://github.com/EmergeTools/SnapshotPreviews-iOS", from: "0.8.8"),
         .package(url: "https://github.com/apple/swift-syntax", from: "510.0.1"),
-        .package(url: "https://github.com/devicekit/DeviceKit.git", from: "5.2.2"),
+        .package(url: "https://github.com/devicekit/DeviceKit.git", from: "5.2.3"),
 
         // Test
         .package(url: "https://github.com/apple/swift-testing.git", from: "0.7.0"),

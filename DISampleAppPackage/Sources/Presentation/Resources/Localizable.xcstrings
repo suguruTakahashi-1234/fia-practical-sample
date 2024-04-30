@@ -11,6 +11,46 @@
         }
       }
     },
+    "// TODO: DeviceInfo" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "// TODO: DeviceInfo"
+          }
+        }
+      }
+    },
+    "// TODO: LicenseDetail" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "// TODO: LicenseDetail"
+          }
+        }
+      }
+    },
+    "// TODO: Onboarding" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "// TODO: Onboarding"
+          }
+        }
+      }
+    },
+    "// TODO: TaskList" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "// TODO: TaskList"
+          }
+        }
+      }
+    },
     "%@" : {
       "localizations" : {
         "en" : {
@@ -71,12 +111,42 @@
         }
       }
     },
+    "Test Case" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Test Case"
+          }
+        }
+      }
+    },
     "UserDefaults の初期化" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Clear UserDefaults"
+          }
+        }
+      }
+    },
+    "View Catalog" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "View Catalog"
+          }
+        }
+      }
+    },
+    "View List" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "View List"
           }
         }
       }
@@ -151,6 +221,16 @@
         }
       }
     },
+    "ショートカット" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Shortcut"
+          }
+        }
+      }
+    },
     "タスク" : {
       "localizations" : {
         "en" : {
@@ -181,12 +261,32 @@
         }
       }
     },
+    "デザイン システム" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Design System"
+          }
+        }
+      }
+    },
     "デバイス情報" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Device Info"
+          }
+        }
+      }
+    },
+    "デバッグ アクション" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Debug Action"
           }
         }
       }

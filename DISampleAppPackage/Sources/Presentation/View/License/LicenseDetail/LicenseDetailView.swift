@@ -11,6 +11,7 @@ import SwiftUI
 @MainActor
 public struct LicenseDetailView<Dependency: LicenseDetailPresenterDependency>: View {
     @State private var presenter: LicenseDetailPresenter<Dependency>
+    @Environment(\.presentationMode) var presentationMode
 
     public init(dependency: Dependency, license: License) {
         presenter = LicenseDetailPresenter(dependency: dependency, license: license)
@@ -27,6 +28,15 @@ public struct LicenseDetailView<Dependency: LicenseDetailPresenterDependency>: V
         }
         .onDisappear {
             presenter.onDisappear()
+        }
+        .toolbar {
+            ToolbarItem(placement: .navigationBarLeading) {
+                Button {
+                    presentationMode.wrappedValue.dismiss()
+                } label: {
+                    SFSymbols.xmark.image
+                }
+            }
         }
     }
 }

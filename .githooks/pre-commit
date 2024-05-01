@@ -23,6 +23,15 @@ if [ -z "$staged_swift_files" ]; then
     exit 0
 fi
 
+# 一括で全てのステージされたSwiftファイルに対してフォーマットチェックを行う
+if $swiftformat_check_command $staged_swift_files; then
+    echo "✅ All staged Swift files pass SwiftFormat checks."
+    exit 0
+else
+    echo "⛔️ SwiftFormat found style violations. Processing each file individually..."
+    should_fail=true
+fi
+
 # 各ステージされたSwiftファイルに対してループ(一つのファイルごとにフォーマッターを走らせているので複数のファイルをステージしているだけ時間がかかってしまうのを解消したい)
 for file in $staged_swift_files; do
     # ステージされていない変更を一時保存
@@ -37,7 +46,6 @@ for file in $staged_swift_files; do
         echo "Formatting required for $file. Applying SwiftFormat..."
         # チェックに失敗した場合はフォーマットを適用
         $swiftformat_format_command "$file"
-        should_fail=true
     fi
 
     # ステージされていない変更を再適用

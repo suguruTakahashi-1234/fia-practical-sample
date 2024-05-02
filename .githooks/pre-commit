@@ -1,60 +1,64 @@
 #!/bin/bash
 
+# SwiftFormatコマンドを使ったフォーマットチェックと適用のスクリプト
 # Ref: SwiftFormatを導入してコード記法を統一化 - https://tech.mirrativ.stream/entry/2022/06/27/060850
 
 tools_package="./DISampleAppPackage"
 
-run_swiftformat() {
-  command="swift run --package-path $tools_package mint run swiftformat $tools_package"
-  command -v $command >/dev/null 2>&1
-  if [ $? -gt 0 ]; then
-    echo "not found swiftformat "
-    exit 1
-  fi
-  $command "$@"
-}
+# SwiftFormatコマンドの基本形
+base_swiftformat_command="swift run --package-path $tools_package mint run swiftformat"
+
+# フォーマット実行のSwiftFormatコマンド
+swiftformat_format_command="$base_swiftformat_command"
+
+# チェック専用のSwiftFormatコマンド
+swiftformat_check_command="$base_swiftformat_command --lint"
 
 should_fail=false
+# ステージされたSwiftファイルをリストアップ
 staged_swift_files=$(git diff --diff-filter=d --staged --name-only | grep -e '\(.*\).swift$')
 
 if [ -z "$staged_swift_files" ]; then
-  # 変更された Swift ファイルが見つからない場合
-  exit 0
+    echo "✅ No staged Swift files found. Exiting."
+    exit 0
 fi
 
-while read file; do
-  # ステージングされていない変更のパッチを作成
-  unstaged_patch=$(git diff "$file")
-  if [ ! -z "$unstaged_patch" ]; then
-    # ステージングされていない変更がある場合は削除
-    git restore $file
-  fi
+# 一括で全てのステージされたSwiftファイルに対してフォーマットチェックを行う
+if $swiftformat_check_command $staged_swift_files; then
+    echo "✅ All staged Swift files pass SwiftFormat checks."
+    exit 0
+else
+    echo "⛔️ SwiftFormat found style violations. Processing each file individually..."
+    should_fail=true
+fi
 
-  # SwiftFormat でステージングされた変更のみをチェック
-  echo "SwiftFormat: search... $file"
-  run_swiftformat --lint $file
-  if [ $? -eq 0 ]; then
-    if [ ! -z "$unstaged_patch" ]; then
-      # パッチがある場合は適用して未ステージの変更を復元
-      echo "$unstaged_patch" | git apply --whitespace=nowarn
+# 各ステージされたSwiftファイルに対してループ(一つのファイルごとにフォーマッターを走らせているので複数のファイルをステージしているだけ時間がかかってしまうのを解消したい)
+for file in $staged_swift_files; do
+    # ステージされていない変更を一時保存
+    unstaged_patch=$(git diff "$file")
+    if [ -n "$unstaged_patch" ]; then
+        # ステージされていない変更を元に戻す
+        git restore "$file"
     fi
-    printf "\n"
-    continue
-  fi
 
-  should_fail=true
-  if [ ! -z "$unstaged_patch" ]; then
-    # パッチがある場合は適用して未ステージの変更を復元
-    echo "$unstaged_patch" | git apply --whitespace=nowarn
-  fi
+    # ステージされたファイルのフォーマットをチェック
+    if ! $swiftformat_check_command "$file"; then
+        echo "Formatting required for $file. Applying SwiftFormat..."
+        # チェックに失敗した場合はフォーマットを適用
+        $swiftformat_format_command "$file"
+    fi
 
-  # ファイルにSwiftFormatを適用（変更が適用されます）
-  echo "SwiftFormat: run... $file"
-  run_swiftformat $file
-  printf "\n"
-done <<< "$staged_swift_files"
+    # ステージされていない変更を再適用
+    if [ -n "$unstaged_patch" ]; then
+        echo "$unstaged_patch" | git apply --whitespace=nowarn
+    fi
+done
 
+# 終了時のメッセージ
 if $should_fail; then
-  echo "⛔️ Change Code By SwiftFormat !!!"
-  exit 1
+    echo "⛔️ Some files were formatted by SwiftFormat. Please review and stage the changes."
+    exit 1
+else
+    echo "✅ All staged Swift files pass SwiftFormat checks."
+    exit 0
 fi

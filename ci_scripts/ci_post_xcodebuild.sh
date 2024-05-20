@@ -15,9 +15,9 @@ if [[ -d "$CI_APP_STORE_SIGNED_APP_PATH" ]] && [[ "$CI_WORKFLOW" == "Distribute 
     # Merge pull request の commit だけを取得して見やすいように 1 行空ける
     if [ -z "$LATEST_TAG" ]; then
         # タグがない場合
-        git log HEAD --oneline --merges --pretty=format:"[%cs] %s %b" | sed -E 's|Merge pull request #[0-9]+ from [^/]+/||' | awk '{print $0 "\n"}' >! $TESTFLIGHT_DIR_PATH/WhatToTest.en-US.txt
+        git log HEAD --oneline --merges --pretty=format:"[%cs] %s %b" | sed -E 's|Merge pull request #[0-9]+ from [^/]+/||' | awk '{print $0 "\n"}' > $TESTFLIGHT_DIR_PATH/WhatToTest.en-US.txt
     else
         # タグがある場合
-        git log $LATEST_TAG..HEAD --oneline --merges --pretty=format:"[%cs] %s %b" | sed -E 's|Merge pull request #[0-9]+ from [^/]+/||' | awk '{print $0 "\n"}' >! $TESTFLIGHT_DIR_PATH/WhatToTest.en-US.txt
+        git log $LATEST_TAG..HEAD --oneline --merges --pretty=format:"[%cs] %s %b" | sed -E 's|Merge pull request #[0-9]+ from [^/]+/||' | awk '{print $0 "\n"}' > $TESTFLIGHT_DIR_PATH/WhatToTest.en-US.txt
     fi
 fi

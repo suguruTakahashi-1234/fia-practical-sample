@@ -254,7 +254,7 @@ let package = Package(
         .package(url: "https://github.com/devicekit/DeviceKit.git", from: "5.2.3"),
 
         // Test
-        .package(url: "https://github.com/apple/swift-testing.git", from: "0.7.0"),
+        .package(url: "https://github.com/apple/swift-testing.git", from: "0.10.0"),
 
         // Plugin
         .package(url: "https://github.com/maiyama18/LicensesPlugin", from: "0.1.6"),

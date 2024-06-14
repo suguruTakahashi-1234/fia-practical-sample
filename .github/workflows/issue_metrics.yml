@@ -1,9 +1,8 @@
 # 月間の Issue Metrics の計測を行う
 name: Issue Metrics
+
 on:
   workflow_dispatch:
-  schedule:
-    - cron: '0 0 1 * *'
 
 permissions:
   contents: read

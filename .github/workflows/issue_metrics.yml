@@ -41,6 +41,8 @@ jobs:
     - name: Create issue
       uses: peter-evans/create-issue-from-file@v5
       with:
-        title: Monthly issue metrics report
+        title: 【Report】Monthly issue metrics
         token: ${{ secrets.GITHUB_TOKEN }}
         content-filepath: ./issue_metrics.md
+        labels: |
+          report

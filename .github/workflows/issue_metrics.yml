@@ -1,4 +1,4 @@
-# 月間のIssue Metrics の計測を行う
+# 月間の Issue Metrics の計測を行う
 name: Issue Metrics
 on:
   workflow_dispatch:

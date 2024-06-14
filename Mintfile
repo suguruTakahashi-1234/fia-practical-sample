@@ -7,7 +7,7 @@ uber/mockolo@2.1.1
 krzysztofzablocki/Sourcery@2.2.3
 
 # https://github.com/nicklockwood/SwiftFormat
-nicklockwood/SwiftFormat@0.53.8 # バージョンを変更した場合は .swiftformat ファイルを修正する
+nicklockwood/SwiftFormat@0.54.0 # バージョンを変更した場合は .swiftformat ファイルを修正する
 
 # https://github.com/peripheryapp/periphery
 peripheryapp/periphery@2.18.0

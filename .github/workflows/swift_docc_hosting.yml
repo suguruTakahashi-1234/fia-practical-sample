@@ -31,7 +31,7 @@ jobs:
           --transform-for-static-hosting \
           --hosting-base-path fia-practical-sample \
           --output-path ./docs
-      - uses: actions/upload-pages-artifact@v3
+      - uses: actions/upload-pages-artifact@v4
         with:
           path: docs
 

@@ -257,7 +257,7 @@ let package = Package(
         .package(url: "https://github.com/apple/swift-testing.git", from: "0.7.0"),
 
         // Plugin
-        .package(url: "https://github.com/maiyama18/LicensesPlugin", from: "0.1.6"),
+        .package(url: "https://github.com/maiyama18/LicensesPlugin", from: "0.2.0"),
 
         // for CLI
         .package(url: "https://github.com/yonaskolb/Mint.git", from: "0.17.5"),

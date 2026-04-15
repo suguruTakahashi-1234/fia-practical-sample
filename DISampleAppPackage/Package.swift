@@ -260,7 +260,7 @@ let package = Package(
         .package(url: "https://github.com/maiyama18/LicensesPlugin", from: "0.1.6"),
 
         // for CLI
-        .package(url: "https://github.com/yonaskolb/Mint.git", from: "0.17.5"),
+        .package(url: "https://github.com/yonaskolb/Mint.git", from: "0.18.0"),
         .package(url: "https://github.com/daikimat/depermaid.git", from: "1.1.0"),
         .package(url: "https://github.com/apple/swift-docc-plugin", from: "1.3.0"),
     ],

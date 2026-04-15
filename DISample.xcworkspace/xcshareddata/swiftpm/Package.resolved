@@ -141,8 +141,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/yonaskolb/Mint.git",
       "state" : {
-        "revision" : "808c2d928552f4bac16ccc83654d3a04f328f1ae",
-        "version" : "0.17.5"
+        "revision" : "7bc67a0b925b949c8becc327bc08f56eeadc0051",
+        "version" : "0.18.0"
       }
     },
     {

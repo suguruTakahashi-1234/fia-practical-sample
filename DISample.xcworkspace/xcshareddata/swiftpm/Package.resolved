@@ -186,8 +186,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/EmergeTools/SnapshotPreviews-iOS",
       "state" : {
-        "revision" : "8a825565235d84ec508430bd4fe2b2e07242bc1c",
-        "version" : "0.8.8"
+        "revision" : "4bd6eed8a0d663a2fab9ffd3f45fd566f762c62c",
+        "version" : "0.18.0"
       }
     },
     {
